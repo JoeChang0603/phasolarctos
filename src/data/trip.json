@@ -1,0 +1,751 @@
+{
+  "title": "2026 Sydney x Melbourne",
+  "subtitle": "Joe Chang 家庭旅遊推薦行程",
+  "dateRange": "2026.09.23 - 2026.10.02",
+  "source": "Notion: Joe Chang / Traveling / 2026 Sydney x Melbourne, Tourism Plan = Recommandation",
+  "generatedAt": "2026-05-21T08:45:00.000Z",
+  "days": [
+    {
+      "id": "day-0-departure",
+      "date": "2026-09-23",
+      "city": "Taipei / Sydney",
+      "title": "出發與交通準備",
+      "summary": "整理 Opal Travel、出境與長程飛行節奏，先把雪梨抵達後會用到的交通工具準備好。",
+      "coverImage": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Sydney%20Airport&output=embed",
+      "accent": "#1f9fb6",
+      "reminders": [
+        {
+          "id": "3672f57c-ec1b-80b9-bfc9-ef60d7de7e3f",
+          "title": "Opal Travel App Download",
+          "note": "出發前下載並設定 Opal Travel，Day 1 抵達雪梨後可以立刻查交通與辦卡。",
+          "notionUrl": "https://www.notion.so/3162f57cec1b80e098f0e371145750a2"
+        },
+        {
+          "id": "3672f57c-ec1b-800e-9d70-e3ced75b3c86",
+          "title": "Tourist Visa",
+          "note": "出發前確認澳洲觀光簽證已完成並可入境。",
+          "notionUrl": "https://www.notion.so/3672f57cec1b800b976ef4d2ceafb94e"
+        },
+        {
+          "id": "3672f57c-ec1b-8003-8511-f42d23d9d3bb",
+          "title": "Military Status",
+          "note": "確認役男出境相關證明或限制已處理。",
+          "notionUrl": "https://www.notion.so/3672f57cec1b806fb303d009f44afbe9"
+        },
+        {
+          "id": "3672f57c-ec1b-800f-a1bc-cf21523214a9",
+          "title": "International Driving License",
+          "note": "自駕段會用到，出發前確認國際駕照或翻譯文件已準備。",
+          "notionUrl": "https://www.notion.so/3672f57cec1b805fa5fbc1cfddd8bc8a"
+        },
+        {
+          "id": "3672f57c-ec1b-807e-a743-c9ee73e793d8",
+          "title": "AUD Exchange",
+          "note": "準備澳幣現金，Notion 行前準備有 500 或 1000 AUD 的選項。",
+          "notionUrl": "https://www.notion.so/3672f57cec1b80c78b61d8f337e2f5cf"
+        }
+      ],
+      "items": [
+        {
+          "id": "2db2f57c-ec1b-8014-a124-f7d651fbce6a",
+          "time": "23:30",
+          "title": "出發",
+          "type": "flight",
+          "location": "TPE T2 to SYD T1",
+          "summary": "China Airlines CI51，9 月 23 日 23:30 從桃園第二航廈出發，9 月 24 日 10:45 抵達 Sydney Kingsford Smith 第一航廈。",
+          "flightDetails": {
+            "flightNo": "CI51",
+            "from": "Taipei Taiwan Taoyuan Intl",
+            "to": "Sydney Kingsford Smith",
+            "departure": "23:30 · 23 Sep 2026",
+            "arrival": "10:45 · 24 Sep 2026",
+            "duration": "09:15",
+            "terminalFrom": "Terminal 2",
+            "terminalTo": "Terminal 1",
+            "baggage": "2PC",
+            "class": "TWLHECB, N",
+            "validUntil": "23 Sep 2026"
+          },
+          "image": "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Airport",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b8014a124f7d651fbce6a",
+          "tags": ["Recommandation", "flight"]
+        }
+      ]
+    },
+    {
+      "id": "day-1-sydney-arrival",
+      "date": "2026-09-24",
+      "city": "Sydney",
+      "title": "抵達雪梨、放行李與校園散步",
+      "summary": "早上從機場進市區，先處理 Opal Card 與飯店行李，下午安排雪梨大學，晚餐吃牛排。",
+      "coverImage": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Furama%20Darling%20Harbour%20Sydney&output=embed",
+      "accent": "#ef7d57",
+      "items": [
+        {
+          "id": "2db2f57c-ec1b-8045-ab12-eaa876cf9fe2",
+          "time": "11:00",
+          "title": "機場到飯店",
+          "type": "transit",
+          "location": "Sydney Airport to Darling Harbour",
+          "summary": "抵達後從機場前往飯店區，銜接 Opal Card 辦理與放行李。",
+          "image": "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Airport+to+Darling+Harbour",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b8045ab12eaa876cf9fe2",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
+          "id": "3162f57c-ec1b-80b5-a465-eee4e7f1916d",
+          "time": "11:00",
+          "title": "Opal Card 辦理",
+          "type": "transit",
+          "location": "Sydney transport",
+          "summary": "先處理雪梨大眾運輸卡，後面搭火車、渡輪與市區移動都會用到。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Opal+Card+Sydney",
+          "notionUrl": "https://www.notion.so/3162f57cec1b80b5a465eee4e7f1916d",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
+          "id": "2db2f57c-ec1b-80a7-a27e-ed61972898e6",
+          "time": "12:00",
+          "title": "飯店放行李",
+          "type": "hotel",
+          "location": "Furama Darling Harbour",
+          "summary": "Notion 關聯住宿為 Furama Darling Harbour，先放行李再開始市區行程。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80a7a27eed61972898e6",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
+          "id": "2db2f57c-ec1b-807e-9521-f37a16d60607",
+          "time": "12:30",
+          "title": "午餐",
+          "type": "food",
+          "location": "Darling Square",
+          "summary": "Notion 關聯 Auvers Dining Darling Square，可作為抵達後第一餐與恢復體力的停靠點。",
+          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auvers+Dining+Darling+Square",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b807e9521f37a16d60607",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2db2f57c-ec1b-80e5-8dc2-f58f5ac6ccb1",
+          "time": "16:00",
+          "title": "雪梨大學",
+          "type": "landmark",
+          "location": "The University of Sydney",
+          "summary": "下午安排校園散步，建築與草坪都適合慢慢逛與拍照。",
+          "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+University+of+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80e58dc2f58f5ac6ccb1",
+          "tags": ["Recommandation", "campus"]
+        },
+        {
+          "id": "2db2f57c-ec1b-802c-8139-e320d511fcb5",
+          "time": "18:00",
+          "title": "晚餐 — 牛排",
+          "type": "food",
+          "location": "Sydney",
+          "summary": "第一天晚上安排牛排餐，讓長途飛行後的晚餐簡單、明確。",
+          "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=steak+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b802c8139e320d511fcb5",
+          "tags": ["Recommandation", "food"]
+        }
+      ]
+    },
+    {
+      "id": "day-2-sydney-harbour-zoo",
+      "date": "2026-09-25",
+      "city": "Sydney",
+      "title": "雪梨港、歌劇院與塔龍加動物園",
+      "summary": "早上早餐後搭配港灣經典景點，主軸是渡輪、纜車與塔龍加動物園，晚上保留可更換餐廳。",
+      "coverImage": "https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Taronga%20Zoo%20Sydney&output=embed",
+      "accent": "#3f8f5f",
+      "items": [
+        {
+          "id": "2db2f57c-ec1b-8032-bc06-cd34fc35a2ec",
+          "time": "08:00",
+          "title": "早餐",
+          "type": "food",
+          "location": "Sydney",
+          "summary": "早餐後開始港灣日行程，Notion 時段抓 08:00 到 09:30。",
+          "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=breakfast+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b8032bc06cd34fc35a2ec",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2db2f57c-ec1b-8085-8820-fe49928f3645",
+          "time": "10:00",
+          "title": "渡輪 + 纜車 + 塔龍加動物園",
+          "type": "landmark",
+          "location": "Taronga Zoo Sydney",
+          "summary": "重點行程是搭渡輪到塔龍加動物園，搭配纜車與園區參觀。",
+          "image": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taronga+Zoo+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80858820fe49928f3645",
+          "tags": ["Recommandation", "zoo", "ferry"]
+        },
+        {
+          "id": "2db2f57c-ec1b-80b7-a06a-d2ad62df1d75",
+          "time": "彈性",
+          "title": "中餐",
+          "type": "food",
+          "location": "Taronga Zoo",
+          "summary": "Notion 備註為帶食物上去或動物園解決，這一餐保留彈性。",
+          "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taronga+Zoo+food",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80b7a06ad2ad62df1d75",
+          "tags": ["Recommandation", "flexible"]
+        },
+        {
+          "id": "2db2f57c-ec1b-800c-8bda-fa62e3a5d1ae",
+          "time": "16:00",
+          "title": "雪梨歌劇院",
+          "type": "landmark",
+          "location": "Sydney Opera House",
+          "summary": "下午回到港灣核心，安排歌劇院作為雪梨經典地標停靠。",
+          "image": "https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Opera+House",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b800c8bdafa62e3a5d1ae",
+          "tags": ["Recommandation", "harbour"]
+        },
+        {
+          "id": "2db2f57c-ec1b-80ce-847f-c50d7827ed50",
+          "time": "18:00",
+          "title": "晚餐",
+          "type": "food",
+          "location": "The Rocks",
+          "summary": "Notion 關聯 Munich Brauhaus Sydney，標記可更換，適合依港灣行程時間調整。",
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Munich+Brauhaus+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80ce847fc50d7827ed50",
+          "tags": ["Recommandation", "food", "flexible"]
+        }
+      ]
+    },
+    {
+      "id": "day-3-sydney-to-melbourne",
+      "date": "2026-09-26",
+      "city": "Sydney / Melbourne",
+      "title": "雪梨收尾與國內線前往墨爾本",
+      "summary": "上午退房與雪梨最後景點，下午前往雪梨國內線機場，傍晚飛到墨爾本並入住。",
+      "coverImage": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Melbourne%20Airport&output=embed",
+      "accent": "#7a6ff0",
+      "items": [
+        {
+          "id": "30f2f57c-ec1b-80ca-b3c8-d5ed33642793",
+          "time": "09:00",
+          "title": "飯店 Checkout",
+          "type": "hotel",
+          "location": "Sydney",
+          "summary": "上午先完成退房與行李整理，讓後續移動到機場比較順。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
+          "notionUrl": "https://www.notion.so/30f2f57cec1b80cab3c8d5ed33642793",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
+          "id": "2db2f57c-ec1b-80c8-a990-f9e62a6fe8a0",
+          "time": "10:00",
+          "title": "雪梨海洋生物水族館",
+          "type": "museum",
+          "location": "SEA LIFE Sydney Aquarium",
+          "summary": "出發前安排達令港附近室內景點，適合控制時間與天氣風險。",
+          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Sydney+Aquarium",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80c8a990f9e62a6fe8a0",
+          "tags": ["Recommandation", "aquarium"]
+        },
+        {
+          "id": "2db2f57c-ec1b-806f-99f3-e07cc1be667e",
+          "time": "14:00",
+          "title": "前往雪梨機場 T2",
+          "type": "transit",
+          "location": "Sydney Domestic Airport T2",
+          "summary": "前往雪梨國內線 T2，為墨爾本航班預留足夠緩衝。",
+          "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Domestic+Airport+T2",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b806f99f3e07cc1be667e",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
+          "id": "2db2f57c-ec1b-8067-9a23-c4f5aaf9703e",
+          "time": "16:05",
+          "title": "國內線 to 墨爾本",
+          "type": "flight",
+          "location": "Sydney to Melbourne",
+          "summary": "Notion 時段為 16:05 到 17:40，抵達後接晚餐與住宿。",
+          "image": "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80679a23c4f5aaf9703e",
+          "tags": ["Recommandation", "flight"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8095-8363-dc5fbe5a12bc",
+          "time": "18:30",
+          "title": "住宿",
+          "type": "hotel",
+          "location": "Melbourne Airport area",
+          "summary": "抵達墨爾本後入住一晚，讓隔天租車與郊區行程更好銜接。",
+          "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+hotel",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80958363dc5fbe5a12bc",
+          "tags": ["Recommandation", "hotel"]
+        }
+      ]
+    },
+    {
+      "id": "day-4-yarra-valley",
+      "date": "2026-09-27",
+      "city": "Melbourne / Ballarat / Yarra Valley",
+      "title": "租車、疏芬山礦場與 Yarra Valley 酒莊",
+      "summary": "從墨爾本開始自駕段，先租車前往 Ballarat 的 Sovereign Hill，傍晚抵達 Balgownie Estate Yarra Valley 並在 Restaurant 1309 晚餐。",
+      "coverImage": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Balgownie%20Estate%20Yarra%20Valley&output=embed",
+      "accent": "#9b6b3f",
+      "items": [
+        {
+          "id": "2dc2f57c-ec1b-80da-9b5a-eda7e088a18a",
+          "time": "08:00",
+          "title": "租車 (3 Days)",
+          "type": "transit",
+          "location": "Melbourne",
+          "summary": "開始墨爾本郊區自駕段，後續 Yarra Valley、Phillip Island 與 Dandenong 都會用車。",
+          "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=car+rental+Melbourne",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80da9b5aeda7e088a18a",
+          "tags": ["Recommandation", "drive"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-801a-9a14-c5f6508d8e73",
+          "time": "10:00",
+          "title": "疏芬山礦場",
+          "type": "landmark",
+          "location": "Sovereign Hill, Ballarat",
+          "summary": "Notion 安排 10:00 到 15:00 參觀 Sovereign Hill，作為 Day 4 自駕往 Yarra Valley 前的主要景點。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Sovereign_Hill_-_Main_Street_lower_looking_S_4.jpg/1280px-Sovereign_Hill_-_Main_Street_lower_looking_S_4.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sovereign+Hill+Ballarat",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b801a9a14c5f6508d8e73",
+          "tags": ["Recommandation", "attraction"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-805e-b1c3-ee8c8ef3ae31",
+          "time": "10:00",
+          "title": "午餐 (園區解決)",
+          "type": "food",
+          "location": "Sovereign Hill",
+          "summary": "Notion 標註午餐在園區解決，配合 Sovereign Hill 10:00 到 15:00 的參觀時間彈性安排。",
+          "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sovereign+Hill+food",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b805eb1c3ee8c8ef3ae31",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8078-9584-ff37c1eba704",
+          "time": "15:00",
+          "title": "Balgownie Estate Yarra Valley",
+          "type": "hotel",
+          "location": "Balgownie Estate Yarra Valley",
+          "summary": "Notion 關聯到已預訂的 Balgownie Estate Yarra Valley，傍晚抵達酒莊與住宿地點。",
+          "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Balgownie+Estate+Yarra+Valley",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80789584ff37c1eba704",
+          "tags": ["Recommandation", "wine", "hotel"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-80f2-987d-f628521fcb20",
+          "time": "18:00",
+          "title": "晚餐",
+          "type": "food",
+          "location": "Restaurant 1309",
+          "summary": "Notion 晚餐關聯 Restaurant 1309，安排在 Balgownie Estate Yarra Valley 內用餐。",
+          "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurant+1309+Balgownie+Estate+Yarra+Valley",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80f2987df628521fcb20",
+          "tags": ["Recommandation", "food", "wine"]
+        }
+      ]
+    },
+    {
+      "id": "day-5-balloon-phillip-island",
+      "date": "2026-09-28",
+      "city": "Yarra Valley / Phillip Island",
+      "title": "熱氣球、月光動物園與菲利普島",
+      "summary": "清晨熱氣球後往南安排動物園與菲利普島看企鵝，這天移動多，餐食以園區或採買補給為主。",
+      "coverImage": "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Phillip%20Island%20Penguin%20Parade&output=embed",
+      "accent": "#c27a2c",
+      "items": [
+        {
+          "id": "2dc2f57c-ec1b-80c3-8d82-cd33234d96e0",
+          "time": "清晨",
+          "title": "熱氣球",
+          "type": "landmark",
+          "location": "Yarra Valley",
+          "summary": "Day 5 的早晨主行程，需依天氣與集合時間調整睡眠與早餐。",
+          "image": "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Yarra+Valley+hot+air+balloon",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80c38d82cd33234d96e0",
+          "tags": ["Recommandation", "balloon"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8034-927f-d26523fd1dc7",
+          "time": "下午",
+          "title": "月光動物園",
+          "type": "landmark",
+          "location": "Moonlit Sanctuary",
+          "summary": "自駕往 Phillip Island 前的動物園停靠，適合看澳洲動物。",
+          "image": "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moonlit+Sanctuary",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b8034927fd26523fd1dc7",
+          "tags": ["Recommandation", "wildlife"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-80c0-8482-d303a360ce69",
+          "time": "晚上",
+          "title": "菲利普島看企鵝",
+          "type": "landmark",
+          "location": "Phillip Island Penguin Parade",
+          "summary": "晚間主行程是 Phillip Island Penguin Parade，需注意夜間保暖與回程時間。",
+          "image": "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phillip+Island+Penguin+Parade",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80c08482d303a360ce69",
+          "tags": ["Recommandation", "penguin"]
+        },
+        {
+          "id": "2de2f57c-ec1b-8056-a8b5-f13e65c450b7",
+          "time": "彈性",
+          "title": "超市採買",
+          "type": "shopping",
+          "location": "On the road",
+          "summary": "Notion 備註為早午晚各一餐的採買補給，降低郊區行程餐廳不確定性。",
+          "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=supermarket+Phillip+Island",
+          "notionUrl": "https://www.notion.so/2de2f57cec1b8056a8b5f13e65c450b7",
+          "tags": ["Recommandation", "supply"]
+        }
+      ]
+    },
+    {
+      "id": "day-6-dandenong",
+      "date": "2026-09-29",
+      "city": "Dandenong / Melbourne",
+      "title": "普芬比利鐵路、無尾熊保護園區與還車",
+      "summary": "自駕尾聲安排 Dandenong 方向景點，下午回墨爾本市區還車，晚上看體力選超市或餐廳。",
+      "coverImage": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Puffing%20Billy%20Railway&output=embed",
+      "accent": "#2f8b7c",
+      "items": [
+        {
+          "id": "2dc2f57c-ec1b-808c-820b-ef0ae4e960dc",
+          "time": "上午",
+          "title": "普芬比利鐵路",
+          "type": "landmark",
+          "location": "Puffing Billy Railway",
+          "summary": "Day 6 的核心景點是 Puffing Billy Railway，搭配 Dandenong 區域行程。",
+          "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b808c820bef0ae4e960dc",
+          "tags": ["Recommandation", "railway"]
+        },
+        {
+          "id": "30f2f57c-ec1b-8079-a1f4-ec1d110ec1b8",
+          "time": "下午",
+          "title": "無尾熊保護園區",
+          "type": "landmark",
+          "location": "Koala conservation area",
+          "summary": "鐵路行程後安排動物保護園區，作為自駕段的最後自然景點。",
+          "image": "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=koala+conservation+Melbourne",
+          "notionUrl": "https://www.notion.so/30f2f57cec1b8079a1f4ec1d110ec1b8",
+          "tags": ["Recommandation", "wildlife"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-80ca-9d04-c5b4f42c334c",
+          "time": "傍晚",
+          "title": "墨爾本市區還車",
+          "type": "transit",
+          "location": "Melbourne CBD",
+          "summary": "回到市區完成還車，後面幾天改以步行與大眾運輸為主。",
+          "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=car+rental+return+Melbourne+CBD",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80ca9d04c5b4f42c334c",
+          "tags": ["Recommandation", "drive"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-80f6-848c-d8f960a45de7",
+          "time": "晚上",
+          "title": "晚餐",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "Notion 標註超市或餐廳，這天保留彈性給自駕後的體力狀態。",
+          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=dinner+Melbourne+CBD",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80f6848cd8f960a45de7",
+          "tags": ["Recommandation", "food", "flexible"]
+        }
+      ]
+    },
+    {
+      "id": "day-7-melbourne-city",
+      "date": "2026-09-30",
+      "city": "Melbourne",
+      "title": "墨爾本大學、塗鴉牆與市區散步",
+      "summary": "回到市區後安排校園、街區、圖書館與購物，移動距離相對短，適合慢慢走。",
+      "coverImage": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Hosier%20Lane%20Melbourne&output=embed",
+      "accent": "#7a6ff0",
+      "items": [
+        {
+          "id": "2dd2f57c-ec1b-80a0-95ea-e05f94350e5c",
+          "time": "08:30",
+          "title": "早餐",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "Day 7 以早餐開始城市散步日，Notion 時段為 08:30 到 09:30。",
+          "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=breakfast+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b80a095eae05f94350e5c",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-80c6-8792-fe7a7afba2f4",
+          "time": "上午",
+          "title": "墨爾本大學",
+          "type": "landmark",
+          "location": "The University of Melbourne",
+          "summary": "校園散步與建築參觀，適合接在早餐後的市區路線。",
+          "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+University+of+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b80c68792fe7a7afba2f4",
+          "tags": ["Recommandation", "campus"]
+        },
+        {
+          "id": "2de2f57c-ec1b-80e6-affe-e1a59dbf6141",
+          "time": "下午",
+          "title": "塗鴉牆",
+          "type": "walk",
+          "location": "Hosier Lane",
+          "summary": "墨爾本經典街頭藝術停靠，適合拍照與接續市中心路線。",
+          "image": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hosier+Lane+Melbourne",
+          "notionUrl": "https://www.notion.so/2de2f57cec1b80e6affee1a59dbf6141",
+          "tags": ["Recommandation", "street-art"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-803c-8ac8-f2d711d0a333",
+          "time": "下午",
+          "title": "圖書館",
+          "type": "landmark",
+          "location": "State Library Victoria",
+          "summary": "安排圖書館作為室內景點與休息點，適合與市區散步串起來。",
+          "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=State+Library+Victoria",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b803c8ac8f2d711d0a333",
+          "tags": ["Recommandation", "library"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-807a-9136-cea6cabc9fe6",
+          "time": "傍晚",
+          "title": "Shopping",
+          "type": "shopping",
+          "location": "Melbourne CBD",
+          "summary": "市區購物時間，適合安排伴手禮或彈性調整行程。",
+          "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=shopping+Melbourne+CBD",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b807a9136cea6cabc9fe6",
+          "tags": ["Recommandation", "shopping"]
+        }
+      ]
+    },
+    {
+      "id": "day-8-melbourne-museum",
+      "date": "2026-10-01",
+      "city": "Melbourne",
+      "title": "墨爾本博物館與甜點日",
+      "summary": "以早餐、可頌與墨爾本博物館串起一天，中間安排午餐、冰淇淋與晚餐。",
+      "coverImage": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Melbourne%20Museum&output=embed",
+      "accent": "#b04d6b",
+      "items": [
+        {
+          "id": "2dc2f57c-ec1b-8002-9a12-e82711008009",
+          "time": "08:00",
+          "title": "早餐",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "Notion 時段為 08:00 到 09:30，作為博物館日前的開始。",
+          "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=breakfast+Melbourne",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80029a12e82711008009",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-8086-8c90-edb0a97ad4f9",
+          "time": "上午",
+          "title": "可頌",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "早餐後加一個可頌停靠，適合安排咖啡與甜點。",
+          "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=croissant+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b80868c90edb0a97ad4f9",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-806d-8bb8-d0ebe6fc5354",
+          "time": "上午",
+          "title": "墨爾本博物館",
+          "type": "museum",
+          "location": "Melbourne Museum",
+          "summary": "室內展館行程，適合天氣不穩或需要降低步行強度的一天。",
+          "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Museum",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b806d8bb8d0ebe6fc5354",
+          "tags": ["Recommandation", "museum"]
+        },
+        {
+          "id": "2de2f57c-ec1b-801d-a2ce-f9fc0b1db6bd",
+          "time": "午餐",
+          "title": "午餐",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "博物館日前後安排午餐，依實際路線調整餐廳。",
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=lunch+Melbourne+Museum",
+          "notionUrl": "https://www.notion.so/2de2f57cec1b801da2cef9fc0b1db6bd",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-80d9-b7e2-de94c8b3bef3",
+          "time": "下午",
+          "title": "冰淇淋",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "下午甜點停靠，讓城市日多一個輕鬆休息點。",
+          "image": "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ice+cream+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b80d9b7e2de94c8b3bef3",
+          "tags": ["Recommandation", "dessert"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-8055-8afe-ff016a00d232",
+          "time": "晚上",
+          "title": "晚餐",
+          "type": "food",
+          "location": "Melbourne",
+          "summary": "Day 8 晚餐保留在墨爾本市區，依當天博物館與甜點路線安排。",
+          "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=dinner+Melbourne+CBD",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b80558afeff016a00d232",
+          "tags": ["Recommandation", "food"]
+        }
+      ]
+    },
+    {
+      "id": "day-9-melbourne-return",
+      "date": "2026-10-02",
+      "city": "Melbourne / Taipei",
+      "title": "維多利亞市場、最後景點與回國",
+      "summary": "最後一天從維多利亞市場早餐開始，依時間選博物館或植物園，傍晚前往機場回國。",
+      "coverImage": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1800&q=85",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Queen%20Victoria%20Market%20Melbourne&output=embed",
+      "accent": "#4b7f9f",
+      "items": [
+        {
+          "id": "3102f57c-ec1b-80db-8ff0-fa796f83553f",
+          "time": "上午",
+          "title": "Check-Out",
+          "type": "hotel",
+          "location": "Melbourne",
+          "summary": "退房後將行李寄放飯店，保留最後一天市區行程的機動性。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+hotel+checkout",
+          "notionUrl": "https://www.notion.so/3102f57cec1b80db8ff0fa796f83553f",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-8012-ac9b-e726eaebf123",
+          "time": "早餐",
+          "title": "早餐 - 維多利雅市場",
+          "type": "food",
+          "location": "Queen Victoria Market",
+          "summary": "最後一天早餐安排維多利亞市場，順路採買或吃點輕食。",
+          "image": "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Queen+Victoria+Market+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b8012ac9be726eaebf123",
+          "tags": ["Recommandation", "market"]
+        },
+        {
+          "id": "2e62f57c-ec1b-80d6-a37d-c04cc9dc8805",
+          "time": "上午",
+          "title": "墨爾本海洋館",
+          "type": "museum",
+          "location": "SEA LIFE Melbourne Aquarium",
+          "summary": "最後一天可選的室內景點，適合接在市場後並控制回機場前的時間。",
+          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Melbourne+Aquarium",
+          "notionUrl": "https://www.notion.so/2e62f57cec1b80d6a37dc04cc9dc8805",
+          "tags": ["Recommandation", "aquarium"]
+        },
+        {
+          "id": "2e62f57c-ec1b-8017-9a7c-ee34830511c4",
+          "time": "下午",
+          "title": "戰爭博物館",
+          "type": "museum",
+          "location": "Shrine of Remembrance",
+          "summary": "Notion 安排的最後一天景點之一，可依時間在海洋館與植物園之間取捨。",
+          "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance+Melbourne",
+          "notionUrl": "https://www.notion.so/2e62f57cec1b80179a7cee34830511c4",
+          "tags": ["Recommandation", "museum"]
+        },
+        {
+          "id": "2e62f57c-ec1b-8025-ba6e-feb4dd3559d9",
+          "time": "下午",
+          "title": "墨爾本皇家植物園",
+          "type": "walk",
+          "location": "Royal Botanic Gardens Victoria",
+          "summary": "若天氣好，植物園是回國前比較放鬆的戶外選項。",
+          "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Victoria+Melbourne",
+          "notionUrl": "https://www.notion.so/2e62f57cec1b8025ba6efeb4dd3559d9",
+          "tags": ["Recommandation", "garden", "optional"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-80ba-a36f-db3e77970d58",
+          "time": "21:50",
+          "title": "回國",
+          "type": "flight",
+          "location": "MEL T2 to TPE T2",
+          "summary": "China Airlines CI58，10 月 2 日 21:50 從 Melbourne Airport 第二航廈出發，10 月 3 日 05:15 抵達桃園第二航廈。",
+          "flightDetails": {
+            "flightNo": "CI58",
+            "from": "Melbourne Melbourne Airport",
+            "to": "Taipei Taiwan Taoyuan Intl",
+            "departure": "21:50 · 02 Oct 2026",
+            "arrival": "05:15 · 03 Oct 2026",
+            "duration": "09:25",
+            "terminalFrom": "Terminal 2",
+            "terminalTo": "Terminal 2",
+            "baggage": "2PC",
+            "class": "AUWWECB, N",
+            "validUntil": "02 Oct 2026"
+          },
+          "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80baa36fdb3e77970d58",
+          "tags": ["Recommandation", "flight"]
+        }
+      ]
+    }
+  ]
+}
