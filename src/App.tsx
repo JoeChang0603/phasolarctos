@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
@@ -688,7 +688,16 @@ function DayRail({
   activeIndex: number;
   onSelect: (index: number) => void;
 }) {
+  const activeStopRef = useRef<HTMLButtonElement | null>(null);
   const travelerPosition = days.length > 1 ? (activeIndex / (days.length - 1)) * 100 : 0;
+
+  useEffect(() => {
+    activeStopRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [activeIndex]);
 
   return (
     <nav className="day-rail" aria-label="選擇旅行日期">
@@ -717,6 +726,7 @@ function DayRail({
                 className={index === activeIndex ? "day-stop active" : "day-stop"}
                 type="button"
                 onClick={() => onSelect(index)}
+                ref={index === activeIndex ? activeStopRef : undefined}
                 aria-current={index === activeIndex ? "page" : undefined}
                 aria-label={`前往 ${dayLabel(day, index)} ${day.city}`}
                 style={accentStyle(day.accent)}
