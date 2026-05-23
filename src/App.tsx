@@ -258,6 +258,9 @@ function routePoint(day: TravelDay, item: TravelItem) {
 }
 
 function flightRouteForDay(day: TravelDay) {
+  const hasGroundItinerary = day.items.some((item) => item.type !== "note" && item.type !== "flight");
+  if (hasGroundItinerary) return undefined;
+
   return day.items.find((item) => item.type === "flight" && item.flightDetails)?.flightDetails;
 }
 
