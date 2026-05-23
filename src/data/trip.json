@@ -3,7 +3,7 @@
   "subtitle": "Joe Chang 家庭旅遊推薦行程",
   "dateRange": "2026.09.23 - 2026.10.02",
   "source": "Notion: Joe Chang / Traveling / 2026 Sydney x Melbourne, Tourism Plan = Recommandation",
-  "generatedAt": "2026-05-21T08:45:00.000Z",
+  "generatedAt": "2026-05-23T01:15:00.000Z",
   "days": [
     {
       "id": "day-0-departure",
@@ -17,32 +17,184 @@
       "reminders": [
         {
           "id": "3672f57c-ec1b-80b9-bfc9-ef60d7de7e3f",
-          "title": "Opal Travel App Download",
-          "note": "出發前下載並設定 Opal Travel，Day 1 抵達雪梨後可以立刻查交通與辦卡。",
-          "notionUrl": "https://www.notion.so/3162f57cec1b80e098f0e371145750a2"
+          "title": "Opal / Contactless Setup",
+          "note": "出發前完成手機錢包與 Opal Travel app 設定，Sydney 段以 contactless payment 為主。",
+          "detail": {
+            "summary": "目前本趟不把 Digital Opal Card 當成可申辦方案；成人旅客使用 Apple Pay / Google Wallet / Samsung Pay 或實體 contactless card 感應 Opal reader 即可。",
+            "sections": [
+              {
+                "title": "台灣出發前",
+                "items": [
+                  "每位旅客選定一張 Visa / Mastercard / American Express 作為主要付款卡。",
+                  "把主要付款卡加入 Apple Pay、Google Wallet 或 Samsung Pay，並在台灣先測試一次感應付款。",
+                  "下載 Opal Travel app，用來查 Sydney 交通路線、票價與即時狀態。",
+                  "可選擇建立 Transport Connect account 來查 contactless travel activity；一般成人旅客不需先申請帳號才能搭車。"
+                ]
+              },
+              {
+                "title": "Sydney 使用規則",
+                "items": [
+                  "同一人整段 Sydney 行程固定使用同一支手機、手錶或同一張實體卡。",
+                  "tap on 與 tap off 必須使用同一個付款媒介，fare cap 與轉乘優惠才會正確累計。",
+                  "不要同一天混用手機 wallet 與實體卡；系統可能視為不同 payment token。",
+                  "Day 1 International Airport Station 與 Day 3 Domestic Airport Station 都會收 airport station access fee。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: Opal Card",
+                "url": "https://www.notion.so/3162f57cec1b808888bedd7745168fac"
+              },
+              {
+                "label": "Transport NSW Contactless",
+                "url": "https://transportnsw.info/tickets-fares/contactless-payments"
+              }
+            ]
+          },
+          "notionUrl": "https://www.notion.so/3162f57cec1b808888bedd7745168fac"
         },
         {
           "id": "3672f57c-ec1b-800e-9d70-e3ced75b3c86",
           "title": "Tourist Visa",
           "note": "出發前確認澳洲觀光簽證已完成並可入境。",
+          "detail": {
+            "summary": "出發前需確認每位旅客已取得澳洲可入境的觀光簽證或 ETA，且護照資料與申請資料一致。",
+            "sections": [
+              {
+                "title": "檢查項目",
+                "items": [
+                  "確認每位旅客護照效期足夠，英文姓名與出生日期無誤。",
+                  "確認簽證或 ETA 已核准，並保存核准信或 app 截圖。",
+                  "核對入境目的為 tourism / holiday，並確認停留期間涵蓋 2026-09-24 至 2026-10-03。",
+                  "把核准文件 PDF 或截圖備份到手機與雲端。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: Tourist Visa",
+                "url": "https://www.notion.so/3672f57cec1b800e9d70e3ced75b3c86"
+              }
+            ]
+          },
           "notionUrl": "https://www.notion.so/3672f57cec1b800b976ef4d2ceafb94e"
         },
         {
           "id": "3672f57c-ec1b-8003-8511-f42d23d9d3bb",
           "title": "Military Status",
-          "note": "確認役男出境相關證明或限制已處理。",
-          "notionUrl": "https://www.notion.so/3672f57cec1b806fb303d009f44afbe9"
+          "note": "未服役役男需完成短期出境核准，並列印核准通知單。",
+          "detail": {
+            "summary": "若同行成員屬於尚未履行兵役義務之役男，本趟 2026-09-23 出境前需完成役男短期出境線上申請，取得役男短期出境核准通知單。",
+            "sections": [
+              {
+                "title": "建議申請時間",
+                "items": [
+                  "官方規則為出境前 3 至 30 天內申請。",
+                  "本趟可申請區間約為 2026-08-24 至 2026-09-20。",
+                  "建議 2026-09-10 至 2026-09-15 完成，避免壓線遇到資料不符或系統問題。"
+                ]
+              },
+              {
+                "title": "申請與文件",
+                "items": [
+                  "準備身分證字號、出生日期、護照號碼、護照效期、出境日 2026-09-23、返台日 2026-10-03。",
+                  "到役男短期出境線上申請系統送出申請。",
+                  "核准後列印役男短期出境核准通知單，並保存 PDF 或截圖。",
+                  "出發當天與護照一起攜帶，作為出境備查文件。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: Military Status",
+                "url": "https://www.notion.so/3672f57cec1b80038511f42d23d9d3bb"
+              },
+              {
+                "label": "役男短期出境線上申請",
+                "url": "https://service.dca.moi.gov.tw/departure/"
+              }
+            ]
+          },
+          "notionUrl": "https://www.notion.so/3672f57cec1b80038511f42d23d9d3bb"
         },
         {
           "id": "3672f57c-ec1b-800f-a1bc-cf21523214a9",
           "title": "International Driving License",
-          "note": "自駕段會用到，出發前確認國際駕照或翻譯文件已準備。",
-          "notionUrl": "https://www.notion.so/3672f57cec1b805fa5fbc1cfddd8bc8a"
+          "note": "Day 4 起 Melbourne / Victoria 自駕，主駕駛與額外駕駛都需準備國際駕照。",
+          "detail": {
+            "summary": "本趟 Day 4 起會在 Victoria 租車自駕，建議出發前在台灣完成中華民國國際駕照申請，並與台灣駕照正本、護照一起攜帶。",
+            "sections": [
+              {
+                "title": "建議辦理時間",
+                "items": [
+                  "建議 2026-08-24 至 2026-09-10 之間完成。",
+                  "最晚建議 2026-09-15 前完成，避免照片、違規罰鍰或駕照資料問題影響辦理。",
+                  "若台灣駕照即將到期、遺失或地址需變更，先處理駕照再申請國際駕照。"
+                ]
+              },
+              {
+                "title": "應備文件",
+                "items": [
+                  "身分證或居留證、台灣駕照正本。",
+                  "最近 2 年內 2 吋彩色照片 2 張。",
+                  "護照正本或影本，用來查核英文姓名。",
+                  "規費新臺幣 250 元；可本人辦理，也可委託他人代辦。"
+                ]
+              },
+              {
+                "title": "租車當天",
+                "items": [
+                  "主駕駛需攜帶台灣駕照正本、中華民國國際駕照、護照、本人名下信用卡。",
+                  "會輪流開車的人都要登記為 additional driver，並各自攜帶駕照與國際駕照。",
+                  "未登記在租車合約上的人不要開車，避免保險失效。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: International Driving License",
+                "url": "https://www.notion.so/3672f57cec1b800fa1bccf21523214a9"
+              },
+              {
+                "label": "交通部公路局",
+                "url": "https://www.thb.gov.tw/cp.aspx?n=96"
+              }
+            ]
+          },
+          "notionUrl": "https://www.notion.so/3672f57cec1b800fa1bccf21523214a9"
         },
         {
           "id": "3672f57c-ec1b-807e-a743-c9ee73e793d8",
           "title": "AUD Exchange",
           "note": "準備澳幣現金，Notion 行前準備有 500 或 1000 AUD 的選項。",
+          "detail": {
+            "summary": "本趟可用信用卡與手機支付為主，澳幣現金作為小額備用；出發前決定攜帶 500 或 1000 AUD。",
+            "sections": [
+              {
+                "title": "出發前",
+                "items": [
+                  "決定本趟現金額度：500 AUD 偏輕量備用，1000 AUD 適合多人分攤與保守準備。",
+                  "換匯後將現金分散保管，不要集中放在同一個包。",
+                  "確認至少一張海外交易可用信用卡與一張備用卡。"
+                ]
+              },
+              {
+                "title": "旅途中",
+                "items": [
+                  "餐廳、交通與大多數付款以卡片或手機支付為主。",
+                  "現金保留給小店、臨時費用、停車或分攤現場費用。",
+                  "每天只帶當日需要的現金量，其餘放行李或保險箱。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: AUD Exchange",
+                "url": "https://www.notion.so/3672f57cec1b807ea743c9ee73e793d8"
+              }
+            ]
+          },
           "notionUrl": "https://www.notion.so/3672f57cec1b80c78b61d8f337e2f5cf"
         }
       ],
@@ -78,8 +230,8 @@
       "id": "day-1-sydney-arrival",
       "date": "2026-09-24",
       "city": "Sydney",
-      "title": "抵達雪梨、放行李與校園散步",
-      "summary": "早上從機場進市區，先處理 Opal Card 與飯店行李，下午安排雪梨大學，晚餐吃牛排。",
+      "title": "抵達雪梨、進市區與雪梨大學",
+      "summary": "抵達 Sydney 後搭 Airport Link 到 Central，先到 Furama 放行李、午餐與 Check-in，下午搭 Bus 前往雪梨大學，晚上到 Macelleria Newtown 吃牛排。",
       "coverImage": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Furama%20Darling%20Harbour%20Sydney&output=embed",
       "accent": "#ef7d57",
@@ -87,34 +239,34 @@
         {
           "id": "2db2f57c-ec1b-8045-ab12-eaa876cf9fe2",
           "time": "11:00",
-          "title": "機場到飯店",
+          "title": "抵達雪梨國際機場",
           "type": "transit",
-          "location": "Sydney Airport to Darling Harbour",
-          "summary": "抵達後從機場前往飯店區，銜接 Opal Card 辦理與放行李。",
+          "location": "Sydney International Airport",
+          "summary": "抵達 Sydney 後完成入境與行李領取，準備轉搭機場快線進市區。",
           "image": "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Airport+to+Darling+Harbour",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+International+Airport",
           "notionUrl": "https://www.notion.so/2db2f57cec1b8045ab12eaa876cf9fe2",
           "tags": ["Recommandation", "transport"]
         },
         {
-          "id": "3162f57c-ec1b-80b5-a465-eee4e7f1916d",
-          "time": "11:00",
-          "title": "Opal Card 辦理",
+          "id": "3682f57c-ec1b-8079-b536-f7d5e05e5fcf",
+          "time": "11:30",
+          "title": "Airport Link 到 Central Station",
           "type": "transit",
-          "location": "Sydney transport",
-          "summary": "先處理雪梨大眾運輸卡，後面搭火車、渡輪與市區移動都會用到。",
+          "location": "Sydney Airport Station to Central Station",
+          "summary": "搭 Airport Link 進市區，Notion 備註車程約 15 分鐘，抵達 Central 後銜接前往 Darling Harbour。",
           "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Opal+Card+Sydney",
-          "notionUrl": "https://www.notion.so/3162f57cec1b80b5a465eee4e7f1916d",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Sydney+Airport+Station&destination=Central+Station+Sydney&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3682f57cec1b8079b536f7d5e05e5fcf",
           "tags": ["Recommandation", "transport"]
         },
         {
           "id": "2db2f57c-ec1b-80a7-a27e-ed61972898e6",
           "time": "12:00",
-          "title": "飯店放行李",
+          "title": "Furama Darling Harbour 放行李",
           "type": "hotel",
           "location": "Furama Darling Harbour",
-          "summary": "Notion 關聯住宿為 Furama Darling Harbour，先放行李再開始市區行程。",
+          "summary": "先到 Furama Darling Harbour 放行李，減少午後移動負擔，再步行前往 Darling Square 午餐。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80a7a27eed61972898e6",
@@ -123,22 +275,103 @@
         {
           "id": "2db2f57c-ec1b-807e-9521-f37a16d60607",
           "time": "12:30",
-          "title": "午餐",
+          "title": "Auvers Dining Darling Square 午餐",
           "type": "food",
-          "location": "Darling Square",
-          "summary": "Notion 關聯 Auvers Dining Darling Square，可作為抵達後第一餐與恢復體力的停靠點。",
+          "location": "Auvers Dining Darling Square",
+          "summary": "抵達後第一餐安排在 Darling Square 的 Auvers Dining，位置靠近飯店，適合補充體力後回飯店 Check-in。",
           "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auvers+Dining+Darling+Square",
           "notionUrl": "https://www.notion.so/2db2f57cec1b807e9521f37a16d60607",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Auvers Darling Square 是位在 Haymarket / Darling Square 的法式靈感藝術咖啡館，主打咖啡、早午餐與帶有 Asian fusion 的 modern Australian 餐點。適合 Day 1 抵達後安排一餐視覺感與口味都比較有記憶點的午餐。",
+            "menuLinks": [
+              {
+                "label": "官方網站 / 菜單入口",
+                "url": "https://www.auverscafe.com.au/"
+              },
+              {
+                "label": "Darling Square Brunch Menu",
+                "url": "https://auvers-cafe.squarespace.com/s/DS-Brunch.pdf"
+              },
+              {
+                "label": "Darling Square Dinner Menu",
+                "url": "https://static1.squarespace.com/static/5815d6436a496367e356a7ba/t/65cec8b2e2ffda57b6f0a9ca/1708050633279/Auvers%2BDS%2BNight%2BMenu%2BV2.pdf"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "XO Seafood / Molluscs Spaghetti",
+                "zhName": "XO 海鮮 / 貝類義大利麵",
+                "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 Darling Harbour 頁面照片區有提到 XO Seafood Spaghetti，晚餐菜單也有 Auvers' XO Molluscs Spaghetti。"
+              },
+              {
+                "name": "Tokyo Banana French Toast",
+                "zhName": "東京香蕉法式吐司",
+                "image": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 Darling Harbour 頁面照片區列出的甜點方向，適合多人分食。"
+              },
+              {
+                "name": "Wagyu Noodle",
+                "zhName": "和牛牛肉拌麵 / 手工蛋麵",
+                "image": "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=500&q=80",
+                "note": "菜單與網路評論頁常見品項，份量與口味較重，適合想吃主餐的人。"
+              },
+              {
+                "name": "Matcha Pancakes",
+                "zhName": "抹茶鬆餅",
+                "image": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80",
+                "note": "多個旅遊與餐飲介紹提到的招牌早午餐品項。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Darling Harbour: Auvers Cafe",
+                "url": "https://www.darlingharbour.com/eat-drink/auvers-cafe"
+              },
+              {
+                "label": "Auvers 官方網站",
+                "url": "https://www.auverscafe.com.au/"
+              },
+              {
+                "label": "Concrete Playground review",
+                "url": "https://concreteplayground.com/sydney/cafes/auvers-cafe-darling-square"
+              }
+            ]
+          }
+        },
+        {
+          "id": "30f2f57c-ec1b-801a-b94b-deb6b861de65",
+          "time": "14:00",
+          "title": "Furama Darling Harbour Check-in",
+          "type": "hotel",
+          "location": "Furama Darling Harbour",
+          "summary": "午餐後回 Furama Darling Harbour 完成 Check-in，整理行李並為下午前往雪梨大學預留緩衝。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
+          "notionUrl": "https://www.notion.so/30f2f57cec1b801ab94bdeb6b861de65",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
+          "id": "3682f57c-ec1b-80be-9bd8-d8dbddd4c847",
+          "time": "15:30",
+          "title": "搭 Bus 前往雪梨大學",
+          "type": "transit",
+          "location": "Furama Darling Harbour to The University of Sydney",
+          "summary": "從飯店區出發搭 Bus 前往雪梨大學，保留換車與步行進校園的緩衝時間。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=The+University+of+Sydney&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3682f57cec1b80be9bd8d8dbddd4c847",
+          "tags": ["Recommandation", "transport"]
         },
         {
           "id": "2db2f57c-ec1b-80e5-8dc2-f58f5ac6ccb1",
           "time": "16:00",
-          "title": "雪梨大學",
+          "title": "雪梨大學校園散步",
           "type": "landmark",
           "location": "The University of Sydney",
-          "summary": "下午安排校園散步，建築與草坪都適合慢慢逛與拍照。",
+          "summary": "抵達後安排校園散步，重點看主樓建築、草坪與周邊街區，節奏維持輕鬆。",
           "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+University+of+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80e58dc2f58f5ac6ccb1",
@@ -147,14 +380,69 @@
         {
           "id": "2db2f57c-ec1b-802c-8139-e320d511fcb5",
           "time": "18:00",
-          "title": "晚餐 — 牛排",
+          "title": "Macelleria Newtown 牛排晚餐",
           "type": "food",
-          "location": "Sydney",
-          "summary": "第一天晚上安排牛排餐，讓長途飛行後的晚餐簡單、明確。",
+          "location": "Macelleria Newtown",
+          "summary": "晚餐安排在 Newtown 的 Macelleria，靠近雪梨大學一帶，第一天晚上以明確的牛排餐收尾。",
           "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=steak+Sydney",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Macelleria+Newtown+73-75+Enmore+Road+Newtown+NSW",
           "notionUrl": "https://www.notion.so/2db2f57cec1b802c8139e320d511fcb5",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Macelleria Newtown 是 Newtown / Enmore Road 一帶的 casual steakhouse，菜單重點是牛排、羊排、漢堡與 butcher-style 肉類主餐。適合 Day 1 雪梨大學後直接在 Newtown 吃一餐明確的牛排晚餐。",
+            "menuLinks": [
+              {
+                "label": "官方網站",
+                "url": "http://www.macelleria.com.au/"
+              },
+              {
+                "label": "Menu PDF",
+                "url": "https://apac-cdn.menuweb.menu/storage/media/companies_menu_pdf/114508562/macelleria-newtown-menu.pdf"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Angus Eye Fillet / Eye Fillet 200g",
+                "zhName": "安格斯菲力 / 200g 菲力牛排",
+                "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500&q=80",
+                "note": "熱門品項清單有 Angus Eye Fillet，菜單也列出 Eye Fillet 200g。"
+              },
+              {
+                "name": "Rib Eye Cutlet 450g",
+                "zhName": "450g 肋眼牛排",
+                "image": "https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=500&q=80",
+                "note": "菜單中的 signature dry-aged steaks 方向，適合想吃較完整牛排的人。"
+              },
+              {
+                "name": "Steak and Fries",
+                "zhName": "牛排薯條",
+                "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=500&q=80",
+                "note": "Sluurpy 熱門品項之一，保守且適合第一天晚餐。"
+              },
+              {
+                "name": "Lamb Cutlets",
+                "zhName": "羊排",
+                "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+                "note": "熱門品項清單與菜單 butcher specials 都有出現，適合不想只吃牛的人。"
+              },
+              {
+                "name": "Retro Burger",
+                "zhName": "Retro 經典漢堡",
+                "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80",
+                "note": "菜單列為 popular items，適合想要輕鬆一點的選擇。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Sluurpy: Macelleria Newtown",
+                "url": "https://www.sluurpy.com/en/sydney/restaurant/4609107/macelleria-newtown"
+              },
+              {
+                "label": "Macelleria Menu PDF",
+                "url": "https://apac-cdn.menuweb.menu/storage/media/companies_menu_pdf/114508562/macelleria-newtown-menu.pdf"
+              }
+            ]
+          }
         }
       ]
     },
@@ -162,31 +450,130 @@
       "id": "day-2-sydney-harbour-zoo",
       "date": "2026-09-25",
       "city": "Sydney",
-      "title": "雪梨港、歌劇院與塔龍加動物園",
-      "summary": "早上早餐後搭配港灣經典景點，主軸是渡輪、纜車與塔龍加動物園，晚上保留可更換餐廳。",
+      "title": "Edition 早餐、渡輪與塔龍加動物園",
+      "summary": "早上從 Furama 出發，到 Edition Roasters 早餐後前往 Circular Quay，搭 Fantasea 渡輪到 Taronga Zoo；下午回到歌劇院散步，晚上在 Munich Brauhaus Sydney 吃德式晚餐。",
       "coverImage": "https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Taronga%20Zoo%20Sydney&output=embed",
       "accent": "#3f8f5f",
       "items": [
         {
+          "id": "3682f57c-ec1b-80d4-8048-e191d104da22",
+          "time": "07:50",
+          "title": "Furama Darling Harbour 出發",
+          "type": "transit",
+          "location": "Furama Darling Harbour",
+          "summary": "從飯店出發，先到 Darling Square 一帶吃早餐，再銜接前往 Circular Quay 的交通。",
+          "image": "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
+          "notionUrl": "https://www.notion.so/3682f57cec1b80d48048e191d104da22",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
           "id": "2db2f57c-ec1b-8032-bc06-cd34fc35a2ec",
           "time": "08:00",
-          "title": "早餐",
+          "title": "Edition Roasters 早餐",
           "type": "food",
-          "location": "Sydney",
-          "summary": "早餐後開始港灣日行程，Notion 時段抓 08:00 到 09:30。",
+          "location": "Edition Roasters Darling Square",
+          "summary": "在 Darling Square 的 Edition Roasters 先吃早餐與咖啡，作為港灣與動物園日的起點。",
           "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=breakfast+Sydney",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Edition+Roasters+Darling+Square",
           "notionUrl": "https://www.notion.so/2db2f57cec1b8032bc06cd34fc35a2ec",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Edition Roasters Darling Square 是 Haymarket / Darling Square 的日系咖啡與早午餐店，主打單品咖啡、濾泡咖啡與 Japanese inspired brunch。Day 2 早上安排在這裡，能以咖啡與輕食開場，位置也方便從 Furama 步行前往。",
+            "menuLinks": [
+              {
+                "label": "官方 Stores 頁面",
+                "url": "https://editionroasters.com/stores/"
+              },
+              {
+                "label": "Edition Day Menu PDF",
+                "url": "https://editionroasters.com/wp-content/uploads/2022/10/Edition_Day_Menu_112022.pdf"
+              },
+              {
+                "label": "Darling Harbour 店家資訊",
+                "url": "https://www.darlingharbour.com/eat-drink/edition-coffee-roasters"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Single Origin Filter Coffee",
+                "zhName": "單品濾泡咖啡 / 手沖咖啡",
+                "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80",
+                "note": "多個介紹都把 Edition 的單品咖啡與濾泡咖啡列為核心特色。"
+              },
+              {
+                "name": "Miso Banana Bread",
+                "zhName": "味噌香蕉蛋糕",
+                "image": "https://images.unsplash.com/photo-1605286978633-2dec93ff88a2?auto=format&fit=crop&w=500&q=80",
+                "note": "菜單與餐飲介紹常見品項，適合早餐分食或搭咖啡。"
+              },
+              {
+                "name": "King Prawn Udon",
+                "zhName": "大蝦烏龍麵",
+                "image": "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?auto=format&fit=crop&w=500&q=80",
+                "note": "Edition 的日系餐點方向之一，適合想吃較飽的人。"
+              },
+              {
+                "name": "Japanese Souffle Pancake",
+                "zhName": "日式舒芙蕾鬆餅",
+                "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=500&q=80",
+                "note": "網路介紹常提到的甜點型早午餐，適合時間充裕時點。"
+              },
+              {
+                "name": "Yuzu Basque Cheesecake",
+                "zhName": "柚子巴斯克乳酪蛋糕",
+                "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80",
+                "note": "日系風味甜點，適合作為咖啡搭配。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Darling Harbour: Edition Coffee Roasters",
+                "url": "https://www.darlingharbour.com/eat-drink/edition-coffee-roasters"
+              },
+              {
+                "label": "Filter Notes review",
+                "url": "https://www.filternotes.com/sydney/edition-roasters"
+              },
+              {
+                "label": "Edition Day Menu PDF",
+                "url": "https://editionroasters.com/wp-content/uploads/2022/10/Edition_Day_Menu_112022.pdf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3682f57c-ec1b-80d1-a9d2-f341286da030",
+          "time": "09:30",
+          "title": "搭地鐵前往 Circular Quay 東側碼頭",
+          "type": "transit",
+          "location": "Furama Darling Harbour to Eastern Pontoon Circular Quay",
+          "summary": "從 Darling Harbour 一帶搭地鐵 / 大眾運輸前往 Circular Quay Eastern Pontoon，準備換乘 Fantasea 渡輪。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=Eastern+Pontoon+Circular+Quay&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3682f57cec1b80d1a9d2f341286da030",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
+          "id": "3682f57c-ec1b-807b-9e99-c48e74efb555",
+          "time": "10:15",
+          "title": "Fantasea 渡輪前往 Taronga Zoo",
+          "type": "transit",
+          "location": "Circular Quay to Taronga Zoo Wharf",
+          "summary": "搭 Fantasea Cruising Sydney 前往 Taronga Zoo。Notion 備註提醒：需出示 email 確認信，在 Darling Harbour 26 號碼頭、Circular Quay 6 號碼頭或登船後領取登船證與塔龍加動物園門票。",
+          "image": "https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Eastern+Pontoon+Circular+Quay&destination=Taronga+Zoo+Wharf&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3682f57cec1b807b9e99c48e74efb555",
+          "tags": ["Recommandation", "transport", "ferry"]
         },
         {
           "id": "2db2f57c-ec1b-8085-8820-fe49928f3645",
-          "time": "10:00",
-          "title": "渡輪 + 纜車 + 塔龍加動物園",
+          "time": "10:30",
+          "title": "Taronga Zoo Sydney",
           "type": "landmark",
           "location": "Taronga Zoo Sydney",
-          "summary": "重點行程是搭渡輪到塔龍加動物園，搭配纜車與園區參觀。",
+          "summary": "Day 2 主行程是 Taronga Zoo Sydney，安排約 10:30 到 15:10 參觀園區，需留意票券與回程渡輪時間。",
           "image": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taronga+Zoo+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80858820fe49928f3645",
@@ -194,23 +581,104 @@
         },
         {
           "id": "2db2f57c-ec1b-80b7-a06a-d2ad62df1d75",
-          "time": "彈性",
-          "title": "中餐",
+          "time": "12:00",
+          "title": "Taronga Zoo 園區午餐",
           "type": "food",
-          "location": "Taronga Zoo",
-          "summary": "Notion 備註為帶食物上去或動物園解決，這一餐保留彈性。",
+          "location": "Taronga Zoo Sydney",
+          "summary": "午餐安排在塔龍加動物園園區內解決，也可依當天狀況改成自備簡單食物。",
           "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taronga+Zoo+food",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80b7a06ad2ad62df1d75",
-          "tags": ["Recommandation", "flexible"]
+          "tags": ["Recommandation", "flexible"],
+          "restaurantGuide": {
+            "intro": "Taronga Zoo Sydney 園區內有三種午餐策略：Forage & Graze 靠近主入口，適合咖啡、肉派、香腸卷與三明治；Taronga Food Market 位在園區中央，適合邊逛邊快速補給；Saltwater Bistro 則是較完整的坐下用餐選擇，有港灣景觀，主打炸魚薯條、漢堡與義大利麵。Day 2 建議以 Taronga Food Market 當快速午餐，若時間充裕再改 Saltwater Bistro。",
+            "menuLinks": [
+              {
+                "label": "Taronga Eats & Treats",
+                "url": "https://www.taronga.org.au/sydney-zoo/plan/visitor-information/food-and-drink"
+              },
+              {
+                "label": "Taronga Food Market Menu",
+                "url": "https://www.meandu.app/tarongazoo-tfm/menu"
+              },
+              {
+                "label": "Saltwater Bistro Menu",
+                "url": "https://www.taronga.org.au/siteassets/tzs/menus/swb_a4-menu_apr26_v2.pdf"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Crispy Fish & Chips",
+                "zhName": "酥炸魚薯條",
+                "image": "https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&w=500&q=80",
+                "note": "官方頁面列為 Saltwater Bistro 的 crowd favourite，也出現在 Taronga Food Market 的餐點圖片描述中。"
+              },
+              {
+                "name": "Gourmet Burger",
+                "zhName": "美式 / 澳式漢堡",
+                "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80",
+                "note": "Saltwater Bistro 特色餐點之一，適合想吃比較有飽足感的人。"
+              },
+              {
+                "name": "Fresh Pasta",
+                "zhName": "現做義大利麵",
+                "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80",
+                "note": "Saltwater Bistro 官方介紹中的主餐品項，適合想坐下來休息用餐。"
+              },
+              {
+                "name": "Nasi Goreng",
+                "zhName": "印尼炒飯",
+                "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=500&q=80",
+                "note": "Taronga Food Market 圖片描述中出現的熱食選項，適合快速午餐。"
+              },
+              {
+                "name": "Pies, Sausage Rolls & Gourmet Sandwiches",
+                "zhName": "肉派、香腸卷與精緻三明治",
+                "image": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=500&q=80",
+                "note": "Forage & Graze 主打的輕食選擇，適合早到、想先買咖啡或簡單補給時使用。"
+              },
+              {
+                "name": "Picnic Lunch",
+                "zhName": "自備野餐午餐",
+                "image": "https://images.unsplash.com/photo-1482482097755-0b595893ba63?auto=format&fit=crop&w=500&q=80",
+                "note": "官方頁面提到園區有草地與野餐桌，可在能看見 Sydney Harbour、Harbour Bridge 與城市天際線的位置用餐。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Taronga Food & Drink",
+                "url": "https://www.taronga.org.au/sydney-zoo/plan/visitor-information/food-and-drink"
+              },
+              {
+                "label": "Taronga Food Market Menu",
+                "url": "https://www.meandu.app/tarongazoo-tfm/menu"
+              },
+              {
+                "label": "Saltwater Bistro Menu",
+                "url": "https://www.taronga.org.au/siteassets/tzs/menus/swb_a4-menu_apr26_v2.pdf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3682f57c-ec1b-8026-af7f-f03c91be2a39",
+          "time": "15:25",
+          "title": "Fantasea 渡輪返回 Circular Quay",
+          "type": "transit",
+          "location": "Taronga Zoo Wharf to Circular Quay",
+          "summary": "從 Taronga Zoo 搭回程渡輪返回 Circular Quay，銜接下午歌劇院與 The Rocks 晚餐。",
+          "image": "https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Taronga+Zoo+Wharf&destination=Circular+Quay+Sydney&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3682f57cec1b8026af7ff03c91be2a39",
+          "tags": ["Recommandation", "transport", "ferry"]
         },
         {
           "id": "2db2f57c-ec1b-800c-8bda-fa62e3a5d1ae",
           "time": "16:00",
-          "title": "雪梨歌劇院",
+          "title": "Sydney Opera House 港灣散步",
           "type": "landmark",
           "location": "Sydney Opera House",
-          "summary": "下午回到港灣核心，安排歌劇院作為雪梨經典地標停靠。",
+          "summary": "回到 Circular Quay 後安排 Sydney Opera House 與港灣周邊散步，作為動物園後的城市景點收尾。",
           "image": "https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Opera+House",
           "notionUrl": "https://www.notion.so/2db2f57cec1b800c8bdafa62e3a5d1ae",
@@ -219,14 +687,77 @@
         {
           "id": "2db2f57c-ec1b-80ce-847f-c50d7827ed50",
           "time": "18:00",
-          "title": "晚餐",
+          "title": "Munich Brauhaus Sydney 晚餐",
           "type": "food",
-          "location": "The Rocks",
-          "summary": "Notion 關聯 Munich Brauhaus Sydney，標記可更換，適合依港灣行程時間調整。",
+          "location": "Munich Brauhaus Sydney",
+          "summary": "晚餐安排在 The Rocks 的 Munich Brauhaus Sydney，從歌劇院或 Circular Quay 步行可到，適合以德式料理與啤酒館氣氛收尾。",
           "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Munich+Brauhaus+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80ce847fc50d7827ed50",
-          "tags": ["Recommandation", "food", "flexible"]
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Munich Brauhaus Sydney 位在 The Rocks，是巴伐利亞風格啤酒餐廳，主打德式豬腳、香腸、炸肉排、pretzel 與啤酒。Day 2 晚餐接在 Circular Quay / Opera House 後，步行動線順。",
+            "menuLinks": [
+              {
+                "label": "官方 Sydney Menu",
+                "url": "https://munichbrauhaus.com.au/menus/sydney/"
+              },
+              {
+                "label": "Menu PDF",
+                "url": "https://apac-cdn.speisekarte.menu/storage/media/companies_menu_pdf/89083897/munich-brauhaus-the-rocks-menu.pdf"
+              },
+              {
+                "label": "The Rocks 店家介紹",
+                "url": "https://therocks.com/eat-drink/munich-brauhaus-the-rocks"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Giant Pretzel",
+                "zhName": "巨型德式椒鹽卷",
+                "image": "https://images.unsplash.com/photo-1598373182133-52452f7691ef?auto=format&fit=crop&w=500&q=80",
+                "note": "德式啤酒餐廳經典開胃品，適合多人分食。"
+              },
+              {
+                "name": "Crispy Pork Knuckle",
+                "zhName": "脆皮德式豬腳",
+                "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80",
+                "note": "The Rocks 介紹提到的經典 Bavarian favorite，適合想吃招牌德式主餐。"
+              },
+              {
+                "name": "Jagerschnitzel",
+                "zhName": "獵人醬德式炸肉排",
+                "image": "https://images.unsplash.com/photo-1598514982901-ae62764ae75e?auto=format&fit=crop&w=500&q=80",
+                "note": "菜單頁常見 schnitzel 品項，份量穩定且容易分食。"
+              },
+              {
+                "name": "Char-grilled Nurnberger",
+                "zhName": "炭烤紐倫堡香腸",
+                "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=500&q=80",
+                "note": "Sluurpy 菜單列出的 sausage 品項，適合搭啤酒或共享。"
+              },
+              {
+                "name": "Sausage Platter",
+                "zhName": "德式香腸拼盤",
+                "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80",
+                "note": "德式餐廳安全牌，適合多人一起點不同口味。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Munich Brauhaus 官方 Sydney Menu",
+                "url": "https://munichbrauhaus.com.au/menus/sydney/"
+              },
+              {
+                "label": "The Rocks: Munich Brauhaus",
+                "url": "https://therocks.com/eat-drink/munich-brauhaus-the-rocks"
+              },
+              {
+                "label": "Sluurpy menu",
+                "url": "https://au.sluurpy.com/sydney/restaurant/4609304/munich-brauhaus/browse/2279023/menu"
+              }
+            ]
+          }
         }
       ]
     },
@@ -234,69 +765,312 @@
       "id": "day-3-sydney-to-melbourne",
       "date": "2026-09-26",
       "city": "Sydney / Melbourne",
-      "title": "雪梨收尾與國內線前往墨爾本",
-      "summary": "上午退房與雪梨最後景點，下午前往雪梨國內線機場，傍晚飛到墨爾本並入住。",
+      "title": "Sydney 收尾、SEA LIFE 與飛往 Melbourne",
+      "summary": "早上從 Furama 步行到 Paramount Coffee Project 早餐，Checkout 後安排 SEA LIFE Sydney Aquarium 與 Betty's Burgers 午餐；下午取行李搭 Airport Link 到 Sydney Domestic Airport，傍晚飛抵 Melbourne，晚餐後入住 Novotel Melbourne Airport。",
       "coverImage": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Melbourne%20Airport&output=embed",
       "accent": "#7a6ff0",
       "items": [
         {
+          "id": "3692f57c-ec1b-80de-8eae-e452fd55e35d",
+          "time": "07:30",
+          "title": "步行前往 Paramount Coffee Project",
+          "type": "walk",
+          "location": "Furama Darling Harbour to Paramount Coffee Project",
+          "summary": "從 Furama Darling Harbour 出發步行約 15 分鐘，先到早餐店，再回飯店處理 Checkout。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=Paramount+Coffee+Project+Sydney&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3692f57cec1b80de8eaee452fd55e35d",
+          "tags": ["Recommandation", "walk"]
+        },
+        {
+          "id": "2db2f57c-ec1b-8093-a328-fc9539432226",
+          "time": "08:00",
+          "title": "Paramount Coffee Project 早餐",
+          "type": "food",
+          "location": "Paramount Coffee Project",
+          "summary": "Day 3 早餐安排在 Surry Hills 的 Paramount Coffee Project，主打 specialty coffee 與早午餐，吃完回飯店 Checkout。",
+          "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Paramount+Coffee+Project+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b8093a328fc9539432226",
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Paramount Coffee Project 是 Surry Hills 的人氣咖啡與早午餐店，重點是 specialty coffee、全天候 brunch 與美式 / 澳洲咖啡館風格餐點。Day 3 建議以咖啡加一份主餐為主，避免吃太久影響 Checkout 與水族館時間。",
+            "menuLinks": [
+              {
+                "label": "官方 Menu",
+                "url": "https://www.paramountcoffeeproject.com.au/http/wwwparamountcoffeeprojectcomau/menu"
+              },
+              {
+                "label": "Menu overview",
+                "url": "https://paramount-coffee-project.menustic.com/menu"
+              },
+              {
+                "label": "Uber Eats menu",
+                "url": "https://www.ubereats.com/au/store/paramount-coffee-project/fOvpQwaeQL2AshlV4-9Fbg"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Flat White / Iced Latte",
+                "zhName": "澳式白咖啡 / 冰拿鐵",
+                "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80",
+                "note": "PCP 是咖啡店起家，早餐可先以咖啡作為主軸。"
+              },
+              {
+                "name": "Fried Chicken Waffle",
+                "zhName": "炸雞鬆餅",
+                "image": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=500&q=80",
+                "note": "Menu overview 與熱門品項常見的招牌早午餐，份量較完整。"
+              },
+              {
+                "name": "Shokupan French Toast",
+                "zhName": "生吐司法式吐司",
+                "image": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&q=80",
+                "note": "偏甜的 brunch 選擇，適合多人分食。"
+              },
+              {
+                "name": "PCP Burger",
+                "zhName": "PCP 漢堡",
+                "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80",
+                "note": "適合想吃較有飽足感的人，但早餐後還有中餐，建議共享。"
+              },
+              {
+                "name": "Espresso Banana Bread",
+                "zhName": "濃縮咖啡香蕉蛋糕",
+                "image": "https://images.unsplash.com/photo-1605286978633-2dec93ff88a2?auto=format&fit=crop&w=500&q=80",
+                "note": "適合搭咖啡作為較輕的早餐。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Paramount Coffee Project official menu",
+                "url": "https://www.paramountcoffeeproject.com.au/http/wwwparamountcoffeeprojectcomau/menu"
+              },
+              {
+                "label": "Menu overview",
+                "url": "https://paramount-coffee-project.menustic.com/menu"
+              },
+              {
+                "label": "Uber Eats: Paramount Coffee Project",
+                "url": "https://www.ubereats.com/au/store/paramount-coffee-project/fOvpQwaeQL2AshlV4-9Fbg"
+              }
+            ]
+          }
+        },
+        {
           "id": "30f2f57c-ec1b-80ca-b3c8-d5ed33642793",
           "time": "09:00",
-          "title": "飯店 Checkout",
+          "title": "Furama Darling Harbour Checkout",
           "type": "hotel",
-          "location": "Sydney",
-          "summary": "上午先完成退房與行李整理，讓後續移動到機場比較順。",
+          "location": "Furama Darling Harbour",
+          "summary": "早餐後回飯店 Checkout，並把行李暫放在飯店，方便先去 SEA LIFE 與午餐。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
           "notionUrl": "https://www.notion.so/30f2f57cec1b80cab3c8d5ed33642793",
           "tags": ["Recommandation", "hotel"]
         },
         {
+          "id": "3692f57c-ec1b-80ee-b345-f2d9e29b2647",
+          "time": "09:30",
+          "title": "搭地鐵前往 SEA LIFE Sydney Aquarium",
+          "type": "transit",
+          "location": "Furama Darling Harbour to SEA LIFE Sydney Aquarium",
+          "summary": "從飯店區前往 Darling Harbour 的 SEA LIFE Sydney Aquarium，Notion 路線抓約 30 分鐘，時間上保留換乘與步行緩衝。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=SEA+LIFE+Sydney+Aquarium&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3692f57cec1b80eeb345f2d9e29b2647",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
           "id": "2db2f57c-ec1b-80c8-a990-f9e62a6fe8a0",
           "time": "10:00",
-          "title": "雪梨海洋生物水族館",
+          "title": "SEA LIFE Sydney Aquarium",
           "type": "museum",
           "location": "SEA LIFE Sydney Aquarium",
-          "summary": "出發前安排達令港附近室內景點，適合控制時間與天氣風險。",
+          "summary": "安排 10:00 到 12:00 參觀 SEA LIFE Sydney Aquarium，這是離飯店與午餐都近的室內景點，方便控制下午去機場的時間。",
           "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Sydney+Aquarium",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80c8a990f9e62a6fe8a0",
           "tags": ["Recommandation", "aquarium"]
         },
         {
+          "id": "2db2f57c-ec1b-8046-9af3-dc1535900d1b",
+          "time": "12:00",
+          "title": "Betty's Burgers 午餐",
+          "type": "food",
+          "location": "Betty's Burgers",
+          "summary": "水族館後午餐安排 Betty's Burgers，餐點明確、速度快，適合下午還要取行李與趕國內線航班的節奏。",
+          "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Betty%27s+Burgers+Sydney",
+          "notionUrl": "https://www.notion.so/2db2f57cec1b80469af3dc1535900d1b",
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Betty's Burgers 是澳洲連鎖美式漢堡店，特色是選項不複雜、出餐速度快，適合 Day 3 中午在水族館後快速補給。建議選經典牛肉或炸雞漢堡，搭 fries 或 onion rings 即可。",
+            "menuLinks": [
+              {
+                "label": "官方 Menu",
+                "url": "https://www.bettysburgers.com.au/menu"
+              },
+              {
+                "label": "Sydney menu PDF",
+                "url": "https://apac-cdn.menuweb.menu/storage/media/companies_menu_pdf/113740795/bettys-burgers-sydney-menu.pdf"
+              },
+              {
+                "label": "Uber Eats Circular Quay",
+                "url": "https://www.ubereats.com/au/store/bettys-burgers-circular-quay/TZcatKDaXASjeOqVzEUv8Q"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Betty's Classic",
+                "zhName": "Betty's 經典牛肉漢堡",
+                "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80",
+                "note": "最保守的經典選擇，適合第一次吃 Betty's。"
+              },
+              {
+                "name": "Classic Angus",
+                "zhName": "經典安格斯牛肉漢堡",
+                "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=80",
+                "note": "多個介紹提到的主力牛肉漢堡，肉感較明確。"
+              },
+              {
+                "name": "Crispy Chicken Burger",
+                "zhName": "酥炸雞肉漢堡",
+                "image": "https://images.unsplash.com/photo-1606755962773-d324e2dabd91?auto=format&fit=crop&w=500&q=80",
+                "note": "不想吃牛時的安全選擇。"
+              },
+              {
+                "name": "Classic Stack",
+                "zhName": "經典雙層 Stack 漢堡",
+                "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=500&q=80",
+                "note": "牛肉漢堡加 mushroom burger 的組合，份量較大，適合很餓的人。"
+              },
+              {
+                "name": "Fries / Onion Rings",
+                "zhName": "薯條 / 洋蔥圈",
+                "image": "https://images.unsplash.com/photo-1630431341973-02e1b662ec35?auto=format&fit=crop&w=500&q=80",
+                "note": "配餐共享即可，避免下午搭機前吃太撐。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Betty's Burgers official menu",
+                "url": "https://www.bettysburgers.com.au/menu"
+              },
+              {
+                "label": "Betty's Sydney menu PDF",
+                "url": "https://apac-cdn.menuweb.menu/storage/media/companies_menu_pdf/113740795/bettys-burgers-sydney-menu.pdf"
+              },
+              {
+                "label": "ellaslist: Betty's Burgers Sydney",
+                "url": "https://www.ellaslist.com.au/articles/new-to-sydney-betty-s-burgers-are-gonna-be-a-big-hit"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3692f57c-ec1b-8034-b9a1-c6e2bbfe240e",
+          "time": "13:00",
+          "title": "回 Furama 取行李",
+          "type": "hotel",
+          "location": "Furama Darling Harbour",
+          "summary": "午餐後回 Furama Darling Harbour 取寄放行李，接著直接前往 Sydney Domestic Airport。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
+          "notionUrl": "https://www.notion.so/3692f57cec1b8034b9a1c6e2bbfe240e",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
           "id": "2db2f57c-ec1b-806f-99f3-e07cc1be667e",
-          "time": "14:00",
-          "title": "前往雪梨機場 T2",
+          "time": "13:30",
+          "title": "Airport Link 到 Sydney Domestic Airport",
           "type": "transit",
-          "location": "Sydney Domestic Airport T2",
-          "summary": "前往雪梨國內線 T2，為墨爾本航班預留足夠緩衝。",
+          "location": "Central Station to Sydney Domestic Airport",
+          "summary": "搭 Airport Link 從 Central Station 前往 Domestic Airport，銜接下午國內線航班。這段仍會收 airport station access fee。",
           "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Domestic+Airport+T2",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Central+Station+Sydney&destination=Sydney+Domestic+Airport&travelmode=transit",
           "notionUrl": "https://www.notion.so/2db2f57cec1b806f99f3e07cc1be667e",
           "tags": ["Recommandation", "transport"]
         },
         {
           "id": "2db2f57c-ec1b-8067-9a23-c4f5aaf9703e",
           "time": "16:05",
-          "title": "國內線 to 墨爾本",
+          "title": "國內線飛往 Melbourne",
           "type": "flight",
-          "location": "Sydney to Melbourne",
-          "summary": "Notion 時段為 16:05 到 17:40，抵達後接晚餐與住宿。",
+          "location": "Sydney Domestic Airport to Melbourne Airport",
+          "summary": "Domestic Airline to Melbourne，Notion 時段為 16:05 到 17:40。抵達 Melbourne Airport 後先晚餐，再入住機場旁 Novotel。",
           "image": "https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80679a23c4f5aaf9703e",
           "tags": ["Recommandation", "flight"]
         },
         {
+          "id": "2dc2f57c-ec1b-8088-a795-d50a537901e7",
+          "time": "18:00",
+          "title": "Melbourne Airport 晚餐",
+          "type": "food",
+          "location": "Melbourne Airport",
+          "summary": "抵達 Melbourne Airport 後先在機場用餐，再移動到 Novotel Melbourne Airport。選擇以距離抵達航廈近、速度快為優先。",
+          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+restaurants",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b8088a795d50a537901e7",
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Day 3 晚餐是在 Melbourne Airport 抵達後的機場用餐，建議不要安排太複雜，優先找抵達航廈附近、出餐快、方便帶行李的店。Melbourne Airport 官方 Eat & Drink directory 可依 T1/T2/T3/T4 篩選。",
+            "menuLinks": [
+              {
+                "label": "Melbourne Airport Eat & Drink",
+                "url": "https://www.melbourneairport.com.au/directory/eat"
+              },
+              {
+                "label": "Airport map",
+                "url": "https://www.melbourneairport.com.au/airport-map"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Grill'd",
+                "zhName": "漢堡與薯條",
+                "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80",
+                "note": "機場常見穩定選擇，適合抵達後快速吃一餐。"
+              },
+              {
+                "name": "Roll'd",
+                "zhName": "越式米紙卷 / 河粉 / 飯類",
+                "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=500&q=80",
+                "note": "相對清爽，適合不想吃太油的人。"
+              },
+              {
+                "name": "St. Ali Coffee Roasters",
+                "zhName": "咖啡與輕食",
+                "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80",
+                "note": "若抵達後只想簡單吃點或喝咖啡，可以找咖啡店型選擇。"
+              },
+              {
+                "name": "Hungry Jack's / McDonald's",
+                "zhName": "速食安全牌",
+                "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=500&q=80",
+                "note": "最不需要決策的備案，適合航班延誤或大家很累時。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Melbourne Airport Eat & Drink directory",
+                "url": "https://www.melbourneairport.com.au/directory/eat"
+              }
+            ]
+          }
+        },
+        {
           "id": "2dc2f57c-ec1b-8095-8363-dc5fbe5a12bc",
-          "time": "18:30",
-          "title": "住宿",
+          "time": "19:00",
+          "title": "Novotel Melbourne Airport 入住",
           "type": "hotel",
-          "location": "Melbourne Airport area",
-          "summary": "抵達墨爾本後入住一晚，讓隔天租車與郊區行程更好銜接。",
+          "location": "Novotel Melbourne Airport",
+          "summary": "入住 Novotel Melbourne Airport，隔天可直接銜接租車與自駕行程。Notion 備註早餐約 NT$893，可視隔天出發時間決定是否加購。",
           "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+hotel",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Novotel+Melbourne+Airport",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80958363dc5fbe5a12bc",
           "tags": ["Recommandation", "hotel"]
         }
