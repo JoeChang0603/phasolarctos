@@ -14,21 +14,49 @@ export type TravelItem = {
     arrival: string;
     duration: string;
     terminalFrom?: string;
-        terminalTo?: string;
-        baggage?: string;
-        class?: string;
-        validUntil?: string;
-      };
+    terminalTo?: string;
+    baggage?: string;
+    class?: string;
+    validUntil?: string;
+  };
   image?: string;
   mapsUrl?: string;
   notionUrl?: string;
   tags?: string[];
+  restaurantGuide?: {
+    intro: string;
+    menuLinks: Array<{
+      label: string;
+      url: string;
+    }>;
+    recommendations: Array<{
+      name: string;
+      zhName?: string;
+      image?: string;
+      note?: string;
+    }>;
+    sources?: Array<{
+      label: string;
+      url: string;
+    }>;
+  };
 };
 
 export type TravelReminder = {
   id: string;
   title: string;
   note?: string;
+  detail?: {
+    summary: string;
+    sections: Array<{
+      title: string;
+      items: string[];
+    }>;
+    links?: Array<{
+      label: string;
+      url: string;
+    }>;
+  };
   notionUrl?: string;
 };
 
