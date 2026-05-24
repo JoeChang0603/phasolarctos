@@ -1218,7 +1218,7 @@ h1 {
   background: rgba(255, 255, 255, 0.88);
 }
 
-.restaurant-guide-trigger {
+.guide-trigger {
   position: absolute;
   right: 12px;
   bottom: 12px;
@@ -1229,11 +1229,18 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.48);
   border-radius: 50%;
   color: #fff;
-  background: rgba(194, 65, 12, 0.9);
   box-shadow: 0 14px 34px rgba(16, 32, 42, 0.24);
 }
 
-.restaurant-guide-trigger::after {
+.guide-trigger-restaurant {
+  background: rgba(194, 65, 12, 0.92);
+}
+
+.guide-trigger-attraction {
+  background: rgba(21, 128, 61, 0.94);
+}
+
+.guide-trigger::after {
   content: attr(data-tooltip);
   position: absolute;
   right: calc(100% + 10px);
@@ -1257,13 +1264,13 @@ h1 {
   white-space: nowrap;
 }
 
-.restaurant-guide-trigger:hover,
-.restaurant-guide-trigger:focus-visible {
+.guide-trigger:hover,
+.guide-trigger:focus-visible {
   background: #10202a;
 }
 
-.restaurant-guide-trigger:hover::after,
-.restaurant-guide-trigger:focus-visible::after {
+.guide-trigger:hover::after,
+.guide-trigger:focus-visible::after {
   opacity: 1;
   transform: translate(0, -50%);
 }
@@ -2039,22 +2046,22 @@ h1 {
     font-size: 0.78rem;
   }
 
-  .restaurant-guide-trigger {
+  .guide-trigger {
     right: 10px;
     bottom: 10px;
     width: 38px;
     height: 38px;
   }
 
-  .restaurant-guide-trigger::after {
+  .guide-trigger::after {
     right: 0;
     top: auto;
     bottom: calc(100% + 10px);
     transform: translateY(6px);
   }
 
-  .restaurant-guide-trigger:hover::after,
-  .restaurant-guide-trigger:focus-visible::after {
+  .guide-trigger:hover::after,
+  .guide-trigger:focus-visible::after {
     transform: translateY(0);
   }
 

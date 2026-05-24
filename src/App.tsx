@@ -8,6 +8,7 @@ import {
   BusFront,
   CalendarDays,
   ExternalLink,
+  Landmark,
   Luggage,
   MapPin,
   Maximize2,
@@ -1256,6 +1257,7 @@ function ItemImage({
   const Icon = itemIcons[item.type];
   const guideType = item.restaurantGuide ? "restaurant" : item.attractionGuide ? "attraction" : "";
   const guideLabel = guideType === "restaurant" ? "餐廳介紹" : "景點介紹";
+  const GuideIcon = guideType === "restaurant" ? BookOpenText : Landmark;
 
   return (
     <div className="item-image-wrap">
@@ -1265,13 +1267,13 @@ function ItemImage({
       </span>
       {guideType ? (
         <button
-          className="restaurant-guide-trigger"
+          className={`guide-trigger guide-trigger-${guideType}`}
           type="button"
           onClick={() => onOpenGuide(item)}
           aria-label={`開啟 ${item.title} ${guideLabel}`}
           data-tooltip={guideLabel}
         >
-          <BookOpenText size={18} strokeWidth={2.5} />
+          <GuideIcon size={18} strokeWidth={2.5} />
         </button>
       ) : null}
     </div>
