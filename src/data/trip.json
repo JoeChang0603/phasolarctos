@@ -375,7 +375,40 @@
           "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+University+of+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80e58dc2f58f5ac6ccb1",
-          "tags": ["Recommandation", "campus"]
+          "tags": ["Recommandation", "campus"],
+          "attractionGuide": {
+            "intro": "雪梨大學 Camperdown campus 適合安排成傍晚散步。重點放在砂岩哥德式建築、校園中軸與博物館周邊，不需要排成正式參觀也能拍到具代表性的校園畫面。",
+            "highlights": [
+              {
+                "name": "The Quadrangle",
+                "zhName": "主方庭",
+                "note": "校園最具代表性的砂岩建築區，適合從外側、拱廊與草坪角度拍照。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/a/a4/SydneyUniversity_MainQuadrangle_panorama_270.jpg"
+              },
+              {
+                "name": "Great Hall",
+                "zhName": "大禮堂",
+                "note": "校園傳統儀式空間，若遇到活動不開放，外觀與周邊建築仍值得停留。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/83/SydneyUniversity_GreatHall_SandstoneCrest_2.jpg"
+              },
+              {
+                "name": "Chau Chak Wing Museum",
+                "zhName": "周澤榮博物館",
+                "note": "位在主校區旁，若時間足夠可把它當成校園散步的文化補點。",
+                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chau_Chak_Wing_Museum_April_2021.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "University of Sydney campus tours",
+                "url": "https://www.sydney.edu.au/engage/visit/campus-tours.html"
+              },
+              {
+                "label": "Chau Chak Wing Museum guided tours",
+                "url": "https://www.sydney.edu.au/museum/whats-on/guided-tours.html"
+              }
+            ]
+          }
         },
         {
           "id": "2db2f57c-ec1b-802c-8139-e320d511fcb5",
@@ -577,7 +610,40 @@
           "image": "https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Taronga+Zoo+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80858820fe49928f3645",
-          "tags": ["Recommandation", "zoo", "ferry"]
+          "tags": ["Recommandation", "zoo", "ferry"],
+          "attractionGuide": {
+            "intro": "Taronga Zoo 的特色是動物園本身加上雪梨港視角。建議先看當日 keeper talks 與表演時間，再依園區高低差安排路線，避免來回爬坡。",
+            "highlights": [
+              {
+                "name": "Free Flight Birds",
+                "zhName": "飛鳥表演",
+                "note": "以雪梨港作背景，是 Taronga 很有辨識度的表演之一，受天候影響需看當日公告。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/6/69/A_cockatoo_retrieves_a_coin_during_the_Taronga_Zoo_bird_show.jpg"
+              },
+              {
+                "name": "Seal Presentation",
+                "zhName": "海獅表演",
+                "note": "適合安排在午餐前後，能快速補足動物園行程的節奏感。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Seal_at_Taronga_Zoo_-_04.jpg"
+              },
+              {
+                "name": "Keeper Talks",
+                "zhName": "飼育員解說",
+                "note": "長頸鹿、獅子、狐獴等解說時間每天不同，入園後先確認 timetable。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/Taronga_Zoo_giraffe_004.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Taronga keeper talks",
+                "url": "https://www.taronga.org.au/sydney-zoo/presentations-and-keeper-talks"
+              },
+              {
+                "label": "Taronga Zoo Sydney",
+                "url": "https://taronga.org.au/sydney-zoo"
+              }
+            ]
+          }
         },
         {
           "id": "2db2f57c-ec1b-80b7-a06a-d2ad62df1d75",
@@ -682,7 +748,40 @@
           "image": "https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+Opera+House",
           "notionUrl": "https://www.notion.so/2db2f57cec1b800c8bdafa62e3a5d1ae",
-          "tags": ["Recommandation", "harbour"]
+          "tags": ["Recommandation", "harbour"],
+          "attractionGuide": {
+            "intro": "Sydney Opera House 港灣散步適合放在傍晚。這段重點不是只拍建築本體，而是把 Opera House、Circular Quay、Harbour Bridge 與海港步道一起串起來。",
+            "highlights": [
+              {
+                "name": "Opera House Forecourt",
+                "zhName": "歌劇院前廣場",
+                "note": "最直接的外觀拍攝點，適合看帆形屋頂與人流氛圍。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sydney_Opera_House_forecourt_and_concourse.jpg"
+              },
+              {
+                "name": "Western Broadwalk",
+                "zhName": "西側濱海步道",
+                "note": "能把 Harbour Bridge 與港景納入畫面，傍晚光線通常更舒服。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/4/4d/AUS_Sydney%2C_Central_Business_District%2C_Sydney_Opera_House_034.jpg"
+              },
+              {
+                "name": "Lower Concourse",
+                "zhName": "下層迎賓區",
+                "note": "官方導覽集合點附近，也適合休息、找洗手間或接到 Circular Quay。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Opera_Bar_02.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Sydney Opera House tours",
+                "url": "https://www.sydneyoperahouse.com/tours"
+              },
+              {
+                "label": "Tour and Dine",
+                "url": "https://www.sydneyoperahouse.com/tours/tour-and-dine"
+              }
+            ]
+          }
         },
         {
           "id": "2db2f57c-ec1b-80ce-847f-c50d7827ed50",
@@ -892,7 +991,40 @@
           "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Sydney+Aquarium",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80c8a990f9e62a6fe8a0",
-          "tags": ["Recommandation", "aquarium"]
+          "tags": ["Recommandation", "aquarium"],
+          "attractionGuide": {
+            "intro": "SEA LIFE Sydney Aquarium 適合當作 Darling Harbour 附近的室內景點。重點可放在 Dugong Island、Shark Valley 與 Penguin Expedition，行程彈性比戶外景點高。",
+            "highlights": [
+              {
+                "name": "Dugong Island",
+                "zhName": "儒艮展區",
+                "note": "SEA LIFE Sydney 的代表展區之一，適合慢慢看水下行為與解說。",
+                "image": "https://www.visitsealife.com/sydney/media/qhblmvul/pig-waving-hello-from-dugong-island-at-sea-life-sydney-aquarium.jpg"
+              },
+              {
+                "name": "Shark Valley",
+                "zhName": "鯊魚谷",
+                "note": "以大型水槽與通道視角為主，是整個館內最有沉浸感的段落。",
+                "image": "https://www.visitsealife.com/sydney/media/dbxndjiw/shark-with-tunnel-in-bg.jpg"
+              },
+              {
+                "name": "Penguin Expedition",
+                "zhName": "企鵝探險",
+                "note": "若當日營運正常，適合放在中後段，注意排隊與館內動線。",
+                "image": "https://www.visitsealife.com/sydney/media/q30nkrwd/penguin-expedition.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "SEA LIFE Sydney animals",
+                "url": "https://www.visitsealife.com/sydney/whats-inside/animals/"
+              },
+              {
+                "label": "SEA LIFE Sydney what's inside",
+                "url": "https://www.visitsealife.com/sydney/whats-inside/"
+              }
+            ]
+          }
         },
         {
           "id": "2db2f57c-ec1b-8046-9af3-dc1535900d1b",
@@ -1120,7 +1252,40 @@
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Sovereign_Hill_-_Main_Street_lower_looking_S_4.jpg/1280px-Sovereign_Hill_-_Main_Street_lower_looking_S_4.jpg",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sovereign+Hill+Ballarat",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b801a9a14c5f6508d8e73",
-          "tags": ["Recommandation", "attraction"]
+          "tags": ["Recommandation", "attraction"],
+          "attractionGuide": {
+            "intro": "Sovereign Hill 是 Ballarat 的 1850 年代淘金鎮生活博物館。建議把時間分成主街、淘金體驗與礦坑/工藝展示三段，才不會只在入口附近停留。",
+            "highlights": [
+              {
+                "name": "Gold Panning",
+                "zhName": "淘金體驗",
+                "note": "官方標示使用真實砂金，找到的小金片可留作紀念，是最經典的互動體驗。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sovereign_Hill_08_-_Gold_Panning_1.jpg"
+              },
+              {
+                "name": "Main Street",
+                "zhName": "淘金鎮主街",
+                "note": "復刻商店、劇院、學校與人物演出集中區，適合邊走邊拍。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/Sovereign_Hill_-_Main_Street_lower_looking_S_3.jpg"
+              },
+              {
+                "name": "Red Hill Mine",
+                "zhName": "紅山礦坑",
+                "note": "可補足 Ballarat 淘金歷史的地下礦坑視角，需留意當日開放與導覽安排。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/6/67/Entrance_to_the_Red_Hill_Mine_at_Sovereign_Hill.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Sovereign Hill official",
+                "url": "https://www.sovereignhill.com.au/"
+              },
+              {
+                "label": "Sovereign Hill gold panning",
+                "url": "https://www.sovereignhill.com.au/events/gold-panning/"
+              }
+            ]
+          }
         },
         {
           "id": "2dc2f57c-ec1b-805e-b1c3-ee8c8ef3ae31",
@@ -1180,7 +1345,40 @@
           "image": "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Yarra+Valley+hot+air+balloon",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80c38d82cd33234d96e0",
-          "tags": ["Recommandation", "balloon"]
+          "tags": ["Recommandation", "balloon"],
+          "attractionGuide": {
+            "intro": "Yarra Valley 熱氣球的核心體驗是日出、葡萄園與山谷地形。因為起飛高度、方向與地點都受天氣影響，當天要以業者通知為準。",
+            "highlights": [
+              {
+                "name": "Sunrise Flight",
+                "zhName": "日出飛行",
+                "note": "清晨穩定氣流是熱氣球常見安排，光線也是拍攝葡萄園與山谷最好的時間。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Yarra_Valley%2C_Melbourne%2C_Australia_%28Unsplash%29.jpg"
+              },
+              {
+                "name": "Vineyard Views",
+                "zhName": "葡萄園視角",
+                "note": "從空中看 Yarra Valley 的葡萄園、農地與起伏丘陵，是與市區熱氣球不同的重點。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/Rochford_Wines_vineyard_in_Yarra_Valley_Australia.jpg"
+              },
+              {
+                "name": "Weather Call",
+                "zhName": "天候確認",
+                "note": "熱氣球行程高度依賴風向與天氣，前一晚與清晨確認訊息比固定地點更重要。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/9/95/Yarra_Valley%2C_Melbourne%2C_Australia_%28Unsplash%29.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Global Ballooning Yarra Valley",
+                "url": "https://www.globalballooning.com.au/yarra-valley/"
+              },
+              {
+                "label": "Go Wild Ballooning",
+                "url": "https://www.gowildballooning.com.au/"
+              }
+            ]
+          }
         },
         {
           "id": "2dc2f57c-ec1b-8034-927f-d26523fd1dc7",
@@ -1192,7 +1390,40 @@
           "image": "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moonlit+Sanctuary",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b8034927fd26523fd1dc7",
-          "tags": ["Recommandation", "wildlife"]
+          "tags": ["Recommandation", "wildlife"],
+          "attractionGuide": {
+            "intro": "Moonlit Sanctuary 是以澳洲原生動物與保育教育為主的野生動物園。這天接在 Yarra Valley 與 Phillip Island 中間，適合抓重點看無尾熊、袋鼠與保育動物。",
+            "highlights": [
+              {
+                "name": "Koalas",
+                "zhName": "無尾熊",
+                "note": "園區代表性動物，建議先確認當日 encounter 或 keeper talk 安排。",
+                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2023/06/encounter-slider-1.jpg"
+              },
+              {
+                "name": "Wallabies and Kangaroos",
+                "zhName": "小袋鼠與袋鼠",
+                "note": "適合安排成輕鬆互動段落，但需依園區規則與動物狀態進行。",
+                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2023/03/night-roos2.jpg"
+              },
+              {
+                "name": "Conservation Species",
+                "zhName": "保育物種",
+                "note": "園區重點在瀕危原生物種繁育與教育，不只是拍照型動物園。",
+                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2023/06/keeper-talk-slider-1030x632.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Moonlit Sanctuary about",
+                "url": "https://moonlitsanctuary.com.au/about-us"
+              },
+              {
+                "label": "Moonlit Sanctuary official",
+                "url": "https://moonlitsanctuary.com.au/"
+              }
+            ]
+          }
         },
         {
           "id": "2dc2f57c-ec1b-80c0-8482-d303a360ce69",
@@ -1204,7 +1435,40 @@
           "image": "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phillip+Island+Penguin+Parade",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80c08482d303a360ce69",
-          "tags": ["Recommandation", "penguin"]
+          "tags": ["Recommandation", "penguin"],
+          "attractionGuide": {
+            "intro": "Phillip Island Penguin Parade 是看小企鵝日落後回巢的重點行程。建議提早到 visitor centre，先看展示與 boardwalk，再到指定座位等候。",
+            "highlights": [
+              {
+                "name": "General Viewing",
+                "zhName": "一般看台",
+                "note": "最基本也最穩定的觀賞方式，需依官方建議在企鵝抵達前提早入場。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Penguin_Parade_3.jpg"
+              },
+              {
+                "name": "Boardwalks",
+                "zhName": "木棧道",
+                "note": "散場往回走時常能更近距離觀察企鵝回巢，但要保持安靜並遵守不可拍照規定。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/4/41/Sunset_view_during_the_penguin_parade_on_Phillip_island.jpg"
+              },
+              {
+                "name": "Visitor Centre",
+                "zhName": "遊客中心",
+                "note": "有展示、餐飲與洗手間，適合作為入場前等待與保暖補給點。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/7/73/Inside_of_Phillip_Island_Penguin_Parade_building.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Penguin Parade official",
+                "url": "https://www.penguins.org.au/public/attractions/penguin-parade/"
+              },
+              {
+                "label": "Visit Victoria penguins",
+                "url": "https://www.visitvictoria.com/regions/phillip-island/see-and-do/nature-and-wildlife/penguins"
+              }
+            ]
+          }
         },
         {
           "id": "2de2f57c-ec1b-8056-a8b5-f13e65c450b7",
@@ -1240,7 +1504,40 @@
           "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b808c820bef0ae4e960dc",
-          "tags": ["Recommandation", "railway"]
+          "tags": ["Recommandation", "railway"],
+          "attractionGuide": {
+            "intro": "Puffing Billy Railway 是 Dandenong Ranges 的蒸汽鐵路體驗。重點在 Belgrave 出發、森林路段、木棧橋與 Menzies Creek / Lakeside 周邊停留。",
+            "highlights": [
+              {
+                "name": "Belgrave Station",
+                "zhName": "Belgrave 車站",
+                "note": "經典出發點，建議預留報到、拍車廂與上車時間。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Belgrave_Puffing_Billy_Station.jpg"
+              },
+              {
+                "name": "Sherbrooke Forest",
+                "zhName": "雪布魯克森林",
+                "note": "從 Belgrave 往山區行駛時的森林段，是蒸汽鐵路氛圍最明顯的部分。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Forests_Commission_Victoria_No._1694_leaving_the_shed_on_the_Puffing_Billy_Railway_-_September_2016_-_03.jpg"
+              },
+              {
+                "name": "Menzies Creek Museum",
+                "zhName": "Menzies Creek 博物館",
+                "note": "若車票與時間允許，可把它當作了解鐵路歷史的補點。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/Puffing_Billy_3A_at_the_Menzies_Creek_Museum_-_September_2016_-_01.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Puffing Billy Belgrave to Menzies Creek",
+                "url": "https://puffingbillyrailway.org.au/experiences/excursion/belgrave-menzies-creek/"
+              },
+              {
+                "label": "Puffing Billy official",
+                "url": "https://puffingbillyrailway.org.au/"
+              }
+            ]
+          }
         },
         {
           "id": "30f2f57c-ec1b-8079-a1f4-ec1d110ec1b8",
@@ -1252,7 +1549,40 @@
           "image": "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=koala+conservation+Melbourne",
           "notionUrl": "https://www.notion.so/30f2f57cec1b8079a1f4ec1d110ec1b8",
-          "tags": ["Recommandation", "wildlife"]
+          "tags": ["Recommandation", "wildlife"],
+          "attractionGuide": {
+            "intro": "Koala Conservation Reserve 以自然棲地與樹冠步道觀察無尾熊為主。比起一般動物園，這裡更適合作為安靜、慢速的保育型景點。",
+            "highlights": [
+              {
+                "name": "Tree Top Koala Boardwalk",
+                "zhName": "樹冠無尾熊步道",
+                "note": "官方標示為容易行走的 loop，可在樹冠高度尋找無尾熊。",
+                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Koala_Conservation_Centre_(7_January_2020)_19.jpg"
+              },
+              {
+                "name": "Woodland Walk",
+                "zhName": "林地步道",
+                "note": "適合找鳥類與其他原生動物，步調比企鵝巡禮更放鬆。",
+                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Koala_Conservation_Centre_-_Phillip_Island_Nature_-_panoramio_(1).jpg"
+              },
+              {
+                "name": "Koala Spotting",
+                "zhName": "尋找無尾熊",
+                "note": "無尾熊常在高處休息，建議慢慢走、抬頭看樹杈與樹幹交會處。",
+                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Photogenic_Koala_on_Phillip_Island.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Koala Conservation Reserve",
+                "url": "https://www.penguins.org.au/attractions/koala-conservation-reserve/"
+              },
+              {
+                "label": "Meet the koalas",
+                "url": "https://www.penguins.org.au/public/attractions/koala-conservation-reserve/meet-the-koalas/"
+              }
+            ]
+          }
         },
         {
           "id": "2dc2f57c-ec1b-80ca-9d04-c5b4f42c334c",
@@ -1312,7 +1642,40 @@
           "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+University+of+Melbourne",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80c68792fe7a7afba2f4",
-          "tags": ["Recommandation", "campus"]
+          "tags": ["Recommandation", "campus"],
+          "attractionGuide": {
+            "intro": "墨爾本大學 Parkville campus 適合安排成城市校園散步。重點可放在 Old Quad、South Lawn 與校園建築氛圍，不需要排太長時間。",
+            "highlights": [
+              {
+                "name": "Old Quad",
+                "zhName": "老方庭",
+                "note": "Parkville campus 的原始核心建築，也是最有歷史感的拍照點。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Old_Quad_colonnade_University_of_Melbourne_2018.jpg"
+              },
+              {
+                "name": "South Lawn",
+                "zhName": "南草坪",
+                "note": "校園休憩空間，適合接在 Old Quad 後當作步行緩衝。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/b/b4/University_of_Melbourne%2C_South_Lawn.jpg"
+              },
+              {
+                "name": "University Libraries",
+                "zhName": "校園圖書館群",
+                "note": "外觀與周邊學生生活感明顯，適合快速感受澳洲大學日常。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/Baillieu_Library.JPG"
+              }
+            ],
+            "links": [
+              {
+                "label": "University of Melbourne Old Quad",
+                "url": "https://www.unimelb.edu.au/old-quad"
+              },
+              {
+                "label": "University of Melbourne",
+                "url": "https://www.unimelb.edu.au/"
+              }
+            ]
+          }
         },
         {
           "id": "2de2f57c-ec1b-80e6-affe-e1a59dbf6141",
@@ -1324,7 +1687,40 @@
           "image": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hosier+Lane+Melbourne",
           "notionUrl": "https://www.notion.so/2de2f57cec1b80e6affee1a59dbf6141",
-          "tags": ["Recommandation", "street-art"]
+          "tags": ["Recommandation", "street-art"],
+          "attractionGuide": {
+            "intro": "Hosier Lane 是墨爾本最具代表性的街頭藝術巷弄之一。作品更新很快，重點是把它當成會變動的戶外畫廊，而不是固定展覽。",
+            "highlights": [
+              {
+                "name": "Hosier Lane murals",
+                "zhName": "Hosier Lane 壁畫",
+                "note": "主巷兩側密度最高，適合用廣角與局部細節各拍一輪。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Street_Art_in_Hosier_Lane_01.jpg"
+              },
+              {
+                "name": "Duckboard Place",
+                "zhName": "Duckboard Place",
+                "note": "若時間足夠，可從 Hosier Lane 延伸到附近巷弄看更多街頭藝術。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/1/16/Hosier_Lane_Street_Art.jpg"
+              },
+              {
+                "name": "Federation Square connection",
+                "zhName": "聯邦廣場動線",
+                "note": "位置靠近 Federation Square 與 Flinders Street，適合排在市區散步線上。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/Fed_Square%2C_Melbourne%2C_north_view_20230219_1.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Visit Victoria Hosier Lane",
+                "url": "https://www.visitmelbourne.com/regions/melbourne/see-and-do/art-and-culture/public-art/vv-hosier-lane"
+              },
+              {
+                "label": "What's On Melbourne street art walk",
+                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/walks/street-art"
+              }
+            ]
+          }
         },
         {
           "id": "2dd2f57c-ec1b-803c-8ac8-f2d711d0a333",
@@ -1336,7 +1732,40 @@
           "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=State+Library+Victoria",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b803c8ac8f2d711d0a333",
-          "tags": ["Recommandation", "library"]
+          "tags": ["Recommandation", "library"],
+          "attractionGuide": {
+            "intro": "State Library Victoria 是墨爾本市中心最適合短停的室內地標之一。核心是 La Trobe Reading Room 的圓頂空間與上層視角。",
+            "highlights": [
+              {
+                "name": "La Trobe Reading Room",
+                "zhName": "拉籌伯閱覽室",
+                "note": "六層高的八角形閱覽室，是圖書館最具代表性的空間。",
+                "image": "https://www.slv.vic.gov.au/sites/default/files/styles/feature_full_width/public/venue_hire_latrobe_reading_room_man_reading.jpg"
+              },
+              {
+                "name": "Dome Gallery",
+                "zhName": "圓頂廊層",
+                "note": "若開放，可從高處看閱覽室全景，是最經典的拍照視角。",
+                "image": "https://www.slv.vic.gov.au/sites/default/files/styles/feature_full_width/public/wo_bigideas_dome.jpg"
+              },
+              {
+                "name": "Cowen Gallery",
+                "zhName": "Cowen Gallery",
+                "note": "適合在進出閱覽室時順路看展，讓停留不只是拍照。",
+                "image": "https://www.slv.vic.gov.au/sites/default/files/styles/feature_full_width/public/rotunda-exhibition.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "La Trobe Reading Room",
+                "url": "https://www.slv.vic.gov.au/visit/our-magnificent-spaces/la-trobe-reading-room"
+              },
+              {
+                "label": "State Library Victoria",
+                "url": "https://www.slv.vic.gov.au/"
+              }
+            ]
+          }
         },
         {
           "id": "2dd2f57c-ec1b-807a-9136-cea6cabc9fe6",
@@ -1348,7 +1777,40 @@
           "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=shopping+Melbourne+CBD",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b807a9136cea6cabc9fe6",
-          "tags": ["Recommandation", "shopping"]
+          "tags": ["Recommandation", "shopping"],
+          "attractionGuide": {
+            "intro": "Melbourne CBD shopping 適合以 Bourke Street Mall 為核心，再依時間接 Emporium、Melbourne Central 或 Queen Victoria Market。重點是集中、好走、容易彈性收尾。",
+            "highlights": [
+              {
+                "name": "Bourke Street Mall",
+                "zhName": "柏克街購物區",
+                "note": "市中心最直接的購物主軸，Myer、David Jones 與大型品牌集中。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Bourke_Street_Mall_2019-09-16.jpg"
+              },
+              {
+                "name": "Emporium Melbourne",
+                "zhName": "Emporium 購物中心",
+                "note": "品牌與餐飲選擇較集中，適合天氣不好或想快速補貨時使用。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Emporium_Melbourne_shopping_centre_01.jpg"
+              },
+              {
+                "name": "Melbourne Central",
+                "zhName": "Melbourne Central",
+                "note": "與車站、商場、餐飲動線整合，適合接在市區散步後。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Basement_Level_of_Melbourne_Central_Shopping_Centre%2C_Melbourne.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Visit Victoria Bourke Street Mall",
+                "url": "https://www.visitmelbourne.com/Regions/Melbourne/Destinations/Bourke-Street-Mall"
+              },
+              {
+                "label": "What's On Melbourne shopping centres",
+                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/melbourne-shopping-centres"
+              }
+            ]
+          }
         }
       ]
     },
@@ -1396,7 +1858,40 @@
           "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Museum",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b806d8bb8d0ebe6fc5354",
-          "tags": ["Recommandation", "museum"]
+          "tags": ["Recommandation", "museum"],
+          "attractionGuide": {
+            "intro": "Melbourne Museum 適合安排成半天室內行程。重點可放在自然史、墨爾本城市故事、First Peoples 展區，以及旁邊的 Royal Exhibition Building 外觀。",
+            "highlights": [
+              {
+                "name": "Forest Gallery",
+                "zhName": "森林展區",
+                "note": "以維多利亞自然環境為核心，是 Melbourne Museum 很有沉浸感的常設展區。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Buff-banded_rail_%28Gallirallus_philippensis%29_at_Melbourne_Museum.jpg"
+              },
+              {
+                "name": "Phar Lap",
+                "zhName": "傳奇賽馬 Phar Lap",
+                "note": "澳洲知名賽馬展示，是 Melbourne Story / 城市記憶相關展區的熱門重點。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/1/14/Phar_Lap_mount%2C_Melbourne_Museum.jpg"
+              },
+              {
+                "name": "Bunjilaka Aboriginal Cultural Centre",
+                "zhName": "Bunjilaka 原住民文化中心",
+                "note": "適合放慢腳步閱讀，補足維多利亞 First Peoples 文化脈絡。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/80/Wominjeka_Bunjilaka.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Melbourne Museum official",
+                "url": "https://museumsvictoria.com.au/melbournemuseum/"
+              },
+              {
+                "label": "Museums Victoria",
+                "url": "https://museumsvictoria.com.au/"
+              }
+            ]
+          }
         },
         {
           "id": "2de2f57c-ec1b-801d-a2ce-f9fc0b1db6bd",
@@ -1480,7 +1975,40 @@
           "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Melbourne+Aquarium",
           "notionUrl": "https://www.notion.so/2e62f57cec1b80d6a37dc04cc9dc8805",
-          "tags": ["Recommandation", "aquarium"]
+          "tags": ["Recommandation", "aquarium"],
+          "attractionGuide": {
+            "intro": "SEA LIFE Melbourne Aquarium 位在市中心河邊，適合當作回國日前的室內景點。重點可放在 Penguin Playground、Ocean Invaders 與大型海洋生物展區。",
+            "highlights": [
+              {
+                "name": "Penguin Playground",
+                "zhName": "企鵝遊樂區",
+                "note": "能看到 King 與 Gentoo penguins，是館內最受歡迎的段落之一。",
+                "image": "https://www.visitsealife.com/melbourne/media/ylbb2smm/slma_gentoo-penguins.jpg"
+              },
+              {
+                "name": "Ocean Invaders",
+                "zhName": "水母展區",
+                "note": "互動式水母展區，視覺效果強，適合拍照與慢慢看。",
+                "image": "https://www.visitsealife.com/melbourne/media/e03khujf/ocean_invaders_2.jpg"
+              },
+              {
+                "name": "Sharks and Oceanarium",
+                "zhName": "鯊魚與大型水槽",
+                "note": "適合安排在中段或結尾，保留較多時間觀察大型魚類與水下視角。",
+                "image": "https://www.visitsealife.com/melbourne/media/fgvjznon/5-shipwreck-explorer.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "SEA LIFE Melbourne what's inside",
+                "url": "https://www.visitsealife.com/melbourne/whats-inside/"
+              },
+              {
+                "label": "SEA LIFE Melbourne exhibits",
+                "url": "https://www.visitsealife.com/melbourne/whats-inside/exhibits/"
+              }
+            ]
+          }
         },
         {
           "id": "2e62f57c-ec1b-8017-9a7c-ee34830511c4",
@@ -1492,7 +2020,40 @@
           "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance+Melbourne",
           "notionUrl": "https://www.notion.so/2e62f57cec1b80179a7cee34830511c4",
-          "tags": ["Recommandation", "museum"]
+          "tags": ["Recommandation", "museum"],
+          "attractionGuide": {
+            "intro": "Shrine of Remembrance 是墨爾本重要的紀念建築與博物館。建議從外部軸線、Sanctuary、Galleries 到 balcony 視角依序參觀。",
+            "highlights": [
+              {
+                "name": "Sanctuary",
+                "zhName": "聖殿空間",
+                "note": "建築核心空間，氛圍莊重，適合安靜參觀。",
+                "image": "https://www.shrine.org.au/sites/default/files/2020-06/shrine-sanctuary_0.jpg"
+              },
+              {
+                "name": "Galleries of Remembrance",
+                "zhName": "紀念展廳",
+                "note": "地下展廳能補足澳洲戰爭與紀念文化的歷史脈絡。",
+                "image": "https://www.shrine.org.au/sites/default/files/2020-06/shrine-galleries.jpg"
+              },
+              {
+                "name": "Balcony",
+                "zhName": "觀景陽台",
+                "note": "可看 Shrine Reserve 與 Melbourne city view，是參觀後段的重點。",
+                "image": "https://www.shrine.org.au/sites/default/files/2021-10/RemembranceDay2018_0048%20%281%29%20copy%201.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Shrine highlights",
+                "url": "https://www.shrine.org.au/shrine-highlights"
+              },
+              {
+                "label": "Shrine of Remembrance",
+                "url": "https://www.shrine.org.au/"
+              }
+            ]
+          }
         },
         {
           "id": "2e62f57c-ec1b-8025-ba6e-feb4dd3559d9",
@@ -1504,7 +2065,40 @@
           "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Victoria+Melbourne",
           "notionUrl": "https://www.notion.so/2e62f57cec1b8025ba6efeb4dd3559d9",
-          "tags": ["Recommandation", "garden", "optional"]
+          "tags": ["Recommandation", "garden", "optional"],
+          "attractionGuide": {
+            "intro": "Royal Botanic Gardens Victoria 的 Melbourne Gardens 適合安排成回國前放鬆散步。建議抓 Guilfoyle's Volcano、湖邊與 Fern Gully 幾個方向，不需要走完整座園區。",
+            "highlights": [
+              {
+                "name": "Guilfoyle's Volcano",
+                "zhName": "Guilfoyle 火山花園",
+                "note": "位在園區高點，有耐旱植物景觀與 Melbourne CBD 視角。",
+                "image": "https://cdn.rbg.vic.gov.au/media/fzmm5ocd/guilfoyle-s-volcano.jpg"
+              },
+              {
+                "name": "Ornamental Lake",
+                "zhName": "景觀湖",
+                "note": "最容易串成放鬆散步的中心區域，適合拍水景與草地。",
+                "image": "https://cdn.rbg.vic.gov.au/media/j15lgcga/punting-on-the-lake-atdw1.jpg"
+              },
+              {
+                "name": "Fern Gully",
+                "zhName": "蕨類谷",
+                "note": "比開闊草坪更有林蔭感，天氣熱時適合當作避暑步道。",
+                "image": "https://cdn.rbg.vic.gov.au/media/t3ibfwrh/rbg-melbourne-ferng-1.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Royal Botanic Gardens Victoria",
+                "url": "https://www.rbg.vic.gov.au/melbourne-gardens/"
+              },
+              {
+                "label": "Guilfoyle's Volcano",
+                "url": "https://rbg.vic.gov.au/melbourne-gardens/discover-melbourne-gardens/melbourne-gardens-living-collections/guilfoyles-volcano/"
+              }
+            ]
+          }
         },
         {
           "id": "2dc2f57c-ec1b-80ba-a36f-db3e77970d58",

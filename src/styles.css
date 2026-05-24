@@ -1517,6 +1517,10 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+.restaurant-modal.is-attraction .restaurant-modal-header span {
+  background: #15803d;
+}
+
 .restaurant-modal-header h3 {
   margin: 14px 0 10px;
   color: #10202a;
@@ -1529,6 +1533,21 @@ h1 {
   color: #40515b;
   font-size: 1rem;
   line-height: 1.75;
+}
+
+.attraction-modal-image {
+  margin: 0 clamp(18px, 4vw, 34px) 18px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 32, 42, 0.1);
+  border-radius: 8px;
+  background: rgba(16, 32, 42, 0.08);
+}
+
+.attraction-modal-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
 }
 
 .restaurant-modal-grid {
@@ -1569,6 +1588,14 @@ h1 {
   background: rgba(194, 65, 12, 0.08);
 }
 
+.restaurant-modal.is-attraction .restaurant-recommendations li {
+  background: rgba(21, 128, 61, 0.08);
+}
+
+.restaurant-recommendations li.without-image {
+  grid-template-columns: 1fr;
+}
+
 .restaurant-recommendations img {
   display: block;
   width: 86px;
@@ -1597,6 +1624,10 @@ h1 {
   font-style: normal;
   font-weight: 900;
   line-height: 1.45;
+}
+
+.restaurant-modal.is-attraction .restaurant-recommendations em {
+  color: #15803d;
 }
 
 .restaurant-recommendations span {
@@ -2084,6 +2115,10 @@ h1 {
 
   .restaurant-modal-grid section {
     padding: 14px;
+  }
+
+  .attraction-modal-image img {
+    aspect-ratio: 16 / 10;
   }
 
   .restaurant-recommendations li {

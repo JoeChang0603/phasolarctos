@@ -1128,7 +1128,7 @@ function ReminderDetailModal({
 }
 
 function Timeline({ day, now }: { day: TravelDay; now: Date }) {
-  const [activeRestaurantItem, setActiveRestaurantItem] = useState<TravelItem | null>(null);
+  const [activeGuideItem, setActiveGuideItem] = useState<TravelItem | null>(null);
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
   const shouldShowNowMarker = day.date === localDateKey(now);
   const markerIndex = shouldShowNowMarker ? currentMarkerIndex(day.items, nowMinutes) : -1;
@@ -1162,7 +1162,7 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <TypeBadge item={item} />
-                <ItemImage item={item} onOpenRestaurantGuide={setActiveRestaurantItem} />
+                <ItemImage item={item} onOpenGuide={setActiveGuideItem} />
                 <div className="item-body">
                   <div className="item-meta">
                     <span>{item.location ?? day.city}</span>
@@ -1186,10 +1186,16 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
         {markerIndex === day.items.length ? <NowMarker minutes={nowMinutes} /> : null}
       </div>
       <AnimatePresence>
-        {activeRestaurantItem?.restaurantGuide ? (
+        {activeGuideItem?.restaurantGuide ? (
           <RestaurantGuideModal
-            item={activeRestaurantItem}
-            onClose={() => setActiveRestaurantItem(null)}
+            item={activeGuideItem}
+            onClose={() => setActiveGuideItem(null)}
+          />
+        ) : null}
+        {activeGuideItem?.attractionGuide ? (
+          <AttractionGuideModal
+            item={activeGuideItem}
+            onClose={() => setActiveGuideItem(null)}
           />
         ) : null}
       </AnimatePresence>
@@ -1242,30 +1248,136 @@ function NowMarker({ minutes }: { minutes: number }) {
 
 function ItemImage({
   item,
-  onOpenRestaurantGuide,
+  onOpenGuide,
 }: {
   item: TravelItem;
-  onOpenRestaurantGuide: (item: TravelItem) => void;
+  onOpenGuide: (item: TravelItem) => void;
 }) {
   const Icon = itemIcons[item.type];
+  const guideType = item.restaurantGuide ? "restaurant" : item.attractionGuide ? "attraction" : "";
+  const guideLabel = guideType === "restaurant" ? "餐廳介紹" : "景點介紹";
+
   return (
     <div className="item-image-wrap">
       {item.image ? <img src={item.image} alt={item.title} loading="lazy" /> : null}
       <span className="item-type-icon" title={item.type}>
         <Icon size={18} />
       </span>
-      {item.restaurantGuide ? (
+      {guideType ? (
         <button
           className="restaurant-guide-trigger"
           type="button"
-          onClick={() => onOpenRestaurantGuide(item)}
-          aria-label={`開啟 ${item.title} 餐廳介紹與菜單`}
-          data-tooltip="餐廳介紹"
+          onClick={() => onOpenGuide(item)}
+          aria-label={`開啟 ${item.title} ${guideLabel}`}
+          data-tooltip={guideLabel}
         >
           <BookOpenText size={18} strokeWidth={2.5} />
         </button>
       ) : null}
     </div>
+  );
+}
+
+function AttractionGuideModal({ item, onClose }: { item: TravelItem; onClose: () => void }) {
+  const guide = item.attractionGuide;
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  if (!guide) return null;
+
+  return createPortal(
+    <motion.div
+      className="restaurant-modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${item.title} 景點介紹`}
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+    >
+      <motion.article
+        className="restaurant-modal is-attraction"
+        onClick={(event) => event.stopPropagation()}
+        initial={{ opacity: 0, y: 18, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 10, scale: 0.98 }}
+        transition={{ duration: 0.22, ease: "easeOut" }}
+      >
+        <button
+          className="restaurant-modal-close"
+          type="button"
+          onClick={onClose}
+          aria-label={`關閉 ${item.title} 景點介紹`}
+        >
+          <X size={19} strokeWidth={2.6} />
+        </button>
+        <div className="restaurant-modal-header">
+          <span>{item.location}</span>
+          <h3>{item.title}</h3>
+          <p>{guide.intro}</p>
+        </div>
+        {item.image ? (
+          <div className="attraction-modal-image">
+            <img src={item.image} alt={`${item.title} 景點照片`} />
+          </div>
+        ) : null}
+        <div className="restaurant-modal-grid">
+          <section>
+            <h4>參觀重點</h4>
+            <ul className="restaurant-recommendations">
+              {guide.highlights.map((highlight) => (
+                <li className={highlight.image ? undefined : "without-image"} key={highlight.name}>
+                  {highlight.image ? (
+                    <img src={highlight.image} alt={highlight.zhName ?? highlight.name} />
+                  ) : null}
+                  <div>
+                    <strong>{highlight.name}</strong>
+                    {highlight.zhName ? <em>{highlight.zhName}</em> : null}
+                    {highlight.note ? <span>{highlight.note}</span> : null}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section>
+            <h4>官方資訊</h4>
+            <div className="restaurant-links">
+              {guide.links.map((link) => (
+                <a href={link.url} target="_blank" rel="noreferrer" key={link.url}>
+                  {link.label}
+                  <ExternalLink size={14} />
+                </a>
+              ))}
+            </div>
+            {guide.sources?.length ? (
+              <div className="restaurant-sources">
+                <span>參考來源</span>
+                {guide.sources.map((source) => (
+                  <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>
+                    {source.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+          </section>
+        </div>
+      </motion.article>
+    </motion.div>,
+    document.body,
   );
 }
 

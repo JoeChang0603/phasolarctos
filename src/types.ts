@@ -40,6 +40,23 @@ export type TravelItem = {
       url: string;
     }>;
   };
+  attractionGuide?: {
+    intro: string;
+    highlights: Array<{
+      name: string;
+      zhName?: string;
+      image?: string;
+      note?: string;
+    }>;
+    links: Array<{
+      label: string;
+      url: string;
+    }>;
+    sources?: Array<{
+      label: string;
+      url: string;
+    }>;
+  };
 };
 
 export type TravelReminder = {
