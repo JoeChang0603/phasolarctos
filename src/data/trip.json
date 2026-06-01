@@ -231,7 +231,7 @@
       "date": "2026-09-24",
       "city": "Sydney",
       "title": "抵達雪梨、進市區與雪梨大學",
-      "summary": "抵達 Sydney 後搭 Airport Link 到 Central，先到 Furama 放行李、午餐與 Check-in，下午搭 Bus 前往雪梨大學，晚上到 Macelleria Newtown 吃牛排。",
+      "summary": "抵達 Sydney 後搭 Airport Link 到 Central，午餐安排 Auvers Dining Darling Square，下午回 Furama Check-in，再以 Bus 前往雪梨大學，晚餐後搭 Tram 返回飯店。",
       "coverImage": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Furama%20Darling%20Harbour%20Sydney&output=embed",
       "accent": "#ef7d57",
@@ -251,26 +251,26 @@
         {
           "id": "3682f57c-ec1b-8079-b536-f7d5e05e5fcf",
           "time": "11:30",
-          "title": "Airport Link 到 Central Station",
+          "title": "Airport Link 前往 Central Station",
           "type": "transit",
           "location": "Sydney Airport Station to Central Station",
-          "summary": "搭 Airport Link 進市區，Notion 備註車程約 15 分鐘，抵達 Central 後銜接前往 Darling Harbour。",
+          "summary": "從 Sydney Airport Station 搭 Airport Link 前往 Central Station，車程約 15 分鐘，抵達後銜接市區行程。",
           "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Sydney+Airport+Station&destination=Central+Station+Sydney&travelmode=transit",
           "notionUrl": "https://www.notion.so/3682f57cec1b8079b536f7d5e05e5fcf",
-          "tags": ["Recommandation", "transport"]
+          "tags": ["Recommandation", "transport", "moving", "train"]
         },
         {
-          "id": "2db2f57c-ec1b-80a7-a27e-ed61972898e6",
-          "time": "12:00",
-          "title": "Furama Darling Harbour 放行李",
-          "type": "hotel",
-          "location": "Furama Darling Harbour",
-          "summary": "先到 Furama Darling Harbour 放行李，減少午後移動負擔，再步行前往 Darling Square 午餐。",
-          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
-          "notionUrl": "https://www.notion.so/2db2f57cec1b80a7a27eed61972898e6",
-          "tags": ["Recommandation", "hotel"]
+          "id": "3702f57c-ec1b-808e-865a-f6a3eedfba49",
+          "time": "12:25",
+          "title": "步行前往 Auvers Dining Darling Square",
+          "type": "walk",
+          "location": "Furama Darling Harbour to Auvers Dining Darling Square",
+          "summary": "從 Furama Darling Harbour 一帶步行到 Auvers Dining Darling Square，Notion 時段為 12:25 到 12:30，作為午餐前的短距離移動。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/Auvers+Dining+Darling+Square,+Shop+4%2F12+Nicolle+Walk,+Haymarket+NSW+2000%E6%BE%B3%E6%B4%B2/@-33.8784292,151.2003339,17z/data=!3m2!4b1!5s0x6b12ae24e647ce31:0xd0f10c4b12db1b46!4m14!4m13!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!1m5!1m1!1s0x6b12af168cf9ae0b:0x9d4bff30bbd17f6!2m2!1d151.2025021!2d-33.8782847!3e2?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3702f57cec1b808e865af6a3eedfba49",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
         },
         {
           "id": "2db2f57c-ec1b-807e-9521-f37a16d60607",
@@ -342,6 +342,18 @@
           }
         },
         {
+          "id": "3702f57c-ec1b-801c-9a3b-cbb688d89fc4",
+          "time": "13:55",
+          "title": "步行返回 Furama Darling Harbour",
+          "type": "walk",
+          "location": "Auvers Dining Darling Square to Furama Darling Harbour",
+          "summary": "從 Auvers Dining Darling Square 步行返回 Furama Darling Harbour，Notion 時段為 13:55 到 14:00，銜接下午 Check-in。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Auvers+Dining+Darling+Square,+Shop+4%2F12+Nicolle+Walk,+Haymarket+NSW+2000%E6%BE%B3%E6%B4%B2/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/@-33.8784292,151.2003339,17z/data=!3m2!4b1!5s0x6b12ae24e647ce31:0xd0f10c4b12db1b46!4m14!4m13!1m5!1m1!1s0x6b12af168cf9ae0b:0x9d4bff30bbd17f6!2m2!1d151.2025021!2d-33.8782847!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!3e2?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3702f57cec1b801c9a3bcbb688d89fc4",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
+        },
+        {
           "id": "30f2f57c-ec1b-801a-b94b-deb6b861de65",
           "time": "14:00",
           "title": "Furama Darling Harbour Check-in",
@@ -355,15 +367,15 @@
         },
         {
           "id": "3682f57c-ec1b-80be-9bd8-d8dbddd4c847",
-          "time": "15:30",
+          "time": "15:45",
           "title": "搭 Bus 前往雪梨大學",
           "type": "transit",
           "location": "Furama Darling Harbour to The University of Sydney",
-          "summary": "從飯店區出發搭 Bus 前往雪梨大學，保留換車與步行進校園的緩衝時間。",
+          "summary": "從 Furama Darling Harbour 搭 Bus 前往雪梨大學，Notion 時段為 15:45 到 16:00，保留進校園與拍照前的緩衝。",
           "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=The+University+of+Sydney&travelmode=transit",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/%E9%9B%AA%E6%A2%A8%E5%A4%A7%E5%AD%B8+2050%E6%BE%B3%E6%B4%B2+New+South+Wales,+Camperdown/@-33.8782751,151.1843421,15z/am=t/data=!4m19!4m18!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!1m5!1m1!1s0x6b12b1d4ab9ef1d9:0x1d017d69037a07c0!2m2!1d151.1867648!2d-33.8884041!2m4!5e3!6e0!7e2!8j1779465600!3e3?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D",
           "notionUrl": "https://www.notion.so/3682f57cec1b80be9bd8d8dbddd4c847",
-          "tags": ["Recommandation", "transport"]
+          "tags": ["Recommandation", "transport", "moving", "bus"]
         },
         {
           "id": "2db2f57c-ec1b-80e5-8dc2-f58f5ac6ccb1",
@@ -409,6 +421,18 @@
               }
             ]
           }
+        },
+        {
+          "id": "3702f57c-ec1b-805c-abc7-d0144d57ed97",
+          "time": "17:30",
+          "title": "步行前往 Macelleria Newtown",
+          "type": "walk",
+          "location": "The University of Sydney to Macelleria Newtown",
+          "summary": "從雪梨大學步行前往 Newtown 的 Macelleria，Notion 時段為 17:30 到 18:00，晚餐前順路銜接校園周邊與 Enmore Road。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%9B%AA%E6%A2%A8%E5%A4%A7%E5%AD%B8+2050%E6%BE%B3%E6%B4%B2+New+South+Wales,+Camperdown/Macelleria+Newtown,+73-75+Enmore+Rd,+Newtown+NSW+2042%E6%BE%B3%E6%B4%B2/@-33.893501,151.1758112,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6b12b1d4ab9ef1d9:0x1d017d69037a07c0!2m2!1d151.1867648!2d-33.8884041!1m5!1m1!1s0x6b12b0382acc5d8b:0xd984bfc905c1992e!2m2!1d151.1751574!2d-33.8984672!3e2?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3702f57cec1b805cabc7d0144d57ed97",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
         },
         {
           "id": "2db2f57c-ec1b-802c-8139-e320d511fcb5",
@@ -476,6 +500,18 @@
               }
             ]
           }
+        },
+        {
+          "id": "3712f57c-ec1b-80b7-ada2-d9ae093ef201",
+          "time": "20:00",
+          "title": "搭 Tram 返回 Furama Darling Harbour",
+          "type": "transit",
+          "location": "Macelleria Newtown to Furama Darling Harbour",
+          "summary": "晚餐後從 Macelleria Newtown 搭 Tram / 大眾運輸返回 Furama Darling Harbour，Notion 時段為 20:00 到 20:30。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Macelleria+Newtown,+73-75+Enmore+Rd,+Newtown+NSW+2042%E6%BE%B3%E6%B4%B2/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/@-33.889527,151.1810984,15z/data=!4m19!4m18!1m5!1m1!1s0x6b12b0382acc5d8b:0xd984bfc905c1992e!2m2!1d151.1751574!2d-33.8984672!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!2m4!5e3!6e0!7e2!8j1780257600!3e3?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3712f57cec1b80b7ada2d9ae093ef201",
+          "tags": ["Recommandation", "transport", "moving", "tram"]
         }
       ]
     },
@@ -484,10 +520,45 @@
       "date": "2026-09-25",
       "city": "Sydney",
       "title": "Edition 早餐、渡輪與塔龍加動物園",
-      "summary": "早上從 Furama 出發，到 Edition Roasters 早餐後前往 Circular Quay，搭 Fantasea 渡輪到 Taronga Zoo；下午回到歌劇院散步，晚上在 Munich Brauhaus Sydney 吃德式晚餐。",
+      "summary": "早上從 Furama 步行到 Edition Roasters 早餐，再搭 Subway 到 Circular Quay 轉 Fantasea 渡輪前往 Taronga Zoo；下午回到歌劇院散步，晚上步行到 Munich Brauhaus Sydney，晚餐後搭 Tram 返回飯店。",
       "coverImage": "https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Taronga%20Zoo%20Sydney&output=embed",
       "accent": "#3f8f5f",
+      "reminders": [
+        {
+          "id": "36d2f57c-ec1b-80b6-a497-e1401460aac7",
+          "title": "Fantasea 領取船票",
+          "note": "前往 Taronga Zoo 前，需先在 Darling Harbour 或 Circular Quay 的 Fantasea 銷售攤位領取船票。",
+          "detail": {
+            "summary": "Day 2 搭 Fantasea 渡輪前往 Taronga Zoo，Notion 新增提醒：船票需在達令港或環形碼頭的 Fantasea 銷售攤位領取。",
+            "sections": [
+              {
+                "title": "領票位置",
+                "items": [
+                  "可在 Darling Harbour 的 Fantasea 銷售攤位領取。",
+                  "也可在 Circular Quay 的 Fantasea 銷售攤位領取。",
+                  "當天行程會先前往 Circular Quay，建議抵達碼頭後優先完成領票。"
+                ]
+              },
+              {
+                "title": "上船前確認",
+                "items": [
+                  "準備好訂票 email、確認信或可供查驗的預訂資料。",
+                  "領完船票後再確認登船碼頭與開船時間。",
+                  "若現場人潮較多，保留排隊與換票緩衝，避免壓到 10:15 渡輪時間。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: Get the Ticket",
+                "url": "https://www.notion.so/36d2f57cec1b800aa9a8e4fafb99b43d"
+              }
+            ]
+          },
+          "notionUrl": "https://www.notion.so/36d2f57cec1b80b6a497e1401460aac7"
+        }
+      ],
       "items": [
         {
           "id": "3682f57c-ec1b-80d4-8048-e191d104da22",
@@ -500,6 +571,18 @@
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
           "notionUrl": "https://www.notion.so/3682f57cec1b80d48048e191d104da22",
           "tags": ["Recommandation", "transport"]
+        },
+        {
+          "id": "3702f57c-ec1b-8009-92d5-cd1d6632332b",
+          "time": "07:50",
+          "title": "步行前往 Edition Roasters",
+          "type": "walk",
+          "location": "Furama Darling Harbour to Edition Roasters Darling Square",
+          "summary": "從 Furama Darling Harbour 步行到 Darling Square 的 Edition Roasters，Notion 時段為 07:50 到 08:00，銜接早餐。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/Edition+Roasters,+60+Darling+Dr,+Haymarket+NSW+2000%E6%BE%B3%E6%B4%B2/@-33.8781523,151.1996629,17z/data=!3m2!4b1!5s0x6b12ae24e647ce31:0xd0f10c4b12db1b46!4m14!4m13!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!1m5!1m1!1s0x6b12afd94663e425:0x254c1153abe4bbe!2m2!1d151.2011511!2d-33.8785445!3e2?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3702f57cec1b800992d5cd1d6632332b",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
         },
         {
           "id": "2db2f57c-ec1b-8032-bc06-cd34fc35a2ec",
@@ -582,11 +665,11 @@
           "title": "搭地鐵前往 Circular Quay 東側碼頭",
           "type": "transit",
           "location": "Furama Darling Harbour to Eastern Pontoon Circular Quay",
-          "summary": "從 Darling Harbour 一帶搭地鐵 / 大眾運輸前往 Circular Quay Eastern Pontoon，準備換乘 Fantasea 渡輪。",
+          "summary": "從 Darling Harbour 一帶搭 Subway / 大眾運輸前往 Circular Quay Eastern Pontoon，Notion 時段為 09:30 到 10:00，準備換乘 Fantasea 渡輪。",
           "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=Eastern+Pontoon+Circular+Quay&travelmode=transit",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/Eastern+Pontoon+Circular+Quay,+7+Macquarie+St,+Sydney+NSW+2000%E6%BE%B3%E6%B4%B2/@-33.8704593,151.1988228,15z/am=t/data=!4m18!4m17!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!1m5!1m1!1s0x6b12ae686458b429:0x6eb23682e32452cb!2m2!1d151.2126107!2d-33.8600403!2m3!6e0!7e2!8j1779525000!3e3?entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D",
           "notionUrl": "https://www.notion.so/3682f57cec1b80d1a9d2f341286da030",
-          "tags": ["Recommandation", "transport"]
+          "tags": ["Recommandation", "transport", "moving", "subway"]
         },
         {
           "id": "3682f57c-ec1b-807b-9e99-c48e74efb555",
@@ -594,11 +677,11 @@
           "title": "Fantasea 渡輪前往 Taronga Zoo",
           "type": "transit",
           "location": "Circular Quay to Taronga Zoo Wharf",
-          "summary": "搭 Fantasea Cruising Sydney 前往 Taronga Zoo。Notion 備註提醒：需出示 email 確認信，在 Darling Harbour 26 號碼頭、Circular Quay 6 號碼頭或登船後領取登船證與塔龍加動物園門票。",
+          "summary": "搭 Fantasea Cruising Sydney 前往 Taronga Zoo，Notion 時段為 10:15 到 10:30。需出示 email 確認信，在 Darling Harbour 26 號碼頭、Circular Quay 6 號碼頭或登船後領取登船證與塔龍加動物園門票。",
           "image": "https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Eastern+Pontoon+Circular+Quay&destination=Taronga+Zoo+Wharf&travelmode=transit",
           "notionUrl": "https://www.notion.so/3682f57cec1b807b9e99c48e74efb555",
-          "tags": ["Recommandation", "transport", "ferry"]
+          "tags": ["Recommandation", "transport", "moving", "ferry"]
         },
         {
           "id": "2db2f57c-ec1b-8085-8820-fe49928f3645",
@@ -732,11 +815,11 @@
           "title": "Fantasea 渡輪返回 Circular Quay",
           "type": "transit",
           "location": "Taronga Zoo Wharf to Circular Quay",
-          "summary": "從 Taronga Zoo 搭回程渡輪返回 Circular Quay，銜接下午歌劇院與 The Rocks 晚餐。",
+          "summary": "從 Taronga Zoo 搭回程渡輪返回 Circular Quay，Notion 時段為 15:25 到 16:00，銜接下午歌劇院與 The Rocks 晚餐。",
           "image": "https://images.unsplash.com/photo-1524704796725-9fc3044a58b2?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Taronga+Zoo+Wharf&destination=Circular+Quay+Sydney&travelmode=transit",
           "notionUrl": "https://www.notion.so/3682f57cec1b8026af7ff03c91be2a39",
-          "tags": ["Recommandation", "transport", "ferry"]
+          "tags": ["Recommandation", "transport", "moving", "ferry"]
         },
         {
           "id": "2db2f57c-ec1b-800c-8bda-fa62e3a5d1ae",
@@ -782,6 +865,18 @@
               }
             ]
           }
+        },
+        {
+          "id": "3702f57c-ec1b-80f5-8667-c5f1fcf64d8b",
+          "time": "17:45",
+          "title": "步行前往 Munich Brauhaus Sydney",
+          "type": "walk",
+          "location": "Sydney Opera House to Munich Brauhaus Sydney",
+          "summary": "從 Sydney Opera House 步行前往 The Rocks 的 Munich Brauhaus Sydney，Notion 時段為 17:45 到 18:00，銜接晚餐。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%9B%AA%E6%A2%A8%E6%AD%8C%E5%8A%87%E9%99%A2+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Sydney/Munich+Brauhaus+Sydney,+33+Playfair+St+%26,+Argyle+St,+The+Rocks+NSW+2000%E6%BE%B3%E6%B4%B2/@-33.859039,151.2091002,17z/data=!3m2!4b1!5s0x6b12ae42d02ad381:0xfb658c93d0b2f3c8!4m14!4m13!1m5!1m1!1s0x6b12ae665e892fdd:0x3133f8d75a1ac251!2m2!1d151.2152967!2d-33.8567844!1m5!1m1!1s0x6b12ae42c4b89bd9:0xd653bef0fb4e8444!2m2!1d151.208113!2d-33.8589405!3e2?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3702f57cec1b80f58667c5f1fcf64d8b",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
         },
         {
           "id": "2db2f57c-ec1b-80ce-847f-c50d7827ed50",
@@ -857,6 +952,18 @@
               }
             ]
           }
+        },
+        {
+          "id": "3712f57c-ec1b-807b-9a77-dcf7bc5e044f",
+          "time": "20:00",
+          "title": "搭 Tram 返回 Furama Darling Harbour",
+          "type": "transit",
+          "location": "Munich Brauhaus Sydney to Furama Darling Harbour",
+          "summary": "晚餐後從 Munich Brauhaus Sydney 搭 Tram / 大眾運輸返回 Furama Darling Harbour，Notion 時段為 20:00 到 20:30。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Munich+Brauhaus+Sydney,+33+Playfair+St+%26,+Argyle+St,+The+Rocks+NSW+2000%E6%BE%B3%E6%B4%B2/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/@-33.8679863,151.1983615,15z/am=t/data=!4m19!4m18!1m5!1m1!1s0x6b12ae42c4b89bd9:0xd653bef0fb4e8444!2m2!1d151.208113!2d-33.8589405!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!2m4!5e3!6e0!7e2!8j1780257600!3e3?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3712f57cec1b807b9a77dcf7bc5e044f",
+          "tags": ["Recommandation", "transport", "moving", "tram"]
         }
       ]
     },
@@ -865,22 +972,69 @@
       "date": "2026-09-26",
       "city": "Sydney / Melbourne",
       "title": "Sydney 收尾、SEA LIFE 與飛往 Melbourne",
-      "summary": "早上從 Furama 步行到 Paramount Coffee Project 早餐，Checkout 後安排 SEA LIFE Sydney Aquarium 與 Betty's Burgers 午餐；下午取行李搭 Airport Link 到 Sydney Domestic Airport，傍晚飛抵 Melbourne，晚餐後入住 Novotel Melbourne Airport。",
+      "summary": "早上從 Furama 出發，步行到 Paramount Coffee Project 早餐，Checkout 並寄放行李後搭 Subway 前往 SEA LIFE Sydney Aquarium；中午步行到 Betty's Burgers，下午回飯店取行李，再搭 Airport Link 到 Sydney Domestic Airport，傍晚飛抵 Melbourne。",
       "coverImage": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Melbourne%20Airport&output=embed",
       "accent": "#7a6ff0",
+      "reminders": [
+        {
+          "id": "3712f57c-ec1b-8037-8654-d22531599186",
+          "title": "飯店寄放行李",
+          "note": "Checkout 後先把行李寄放在 Furama，完成 SEA LIFE、午餐後再回飯店取行李去機場。",
+          "detail": {
+            "summary": "Day 3 需要在早餐後回 Furama Darling Harbour Checkout，並將行李寄放在飯店。這樣上午與中午可以輕裝前往 SEA LIFE Sydney Aquarium 與 Betty's Burgers，13:15 再回飯店取行李。",
+            "sections": [
+              {
+                "title": "Checkout 後",
+                "items": [
+                  "09:00 完成 Furama Darling Harbour Checkout。",
+                  "向櫃台確認 luggage storage / leave luggage，留下所有大件行李。",
+                  "隨身只帶護照、錢包、手機、行動電源與搭機必要文件。"
+                ]
+              },
+              {
+                "title": "回飯店取行李",
+                "items": [
+                  "午餐後 13:00 從 Betty's Burgers 搭 Subway / 大眾運輸回 Furama。",
+                  "13:15 到 13:30 取回寄放行李。",
+                  "取行李後直接銜接 Airport Link 前往 Sydney Domestic Airport，不再安排其他停留。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: Leave Luggage",
+                "url": "https://www.notion.so/3712f57cec1b8019b66ed278ca3137ec"
+              }
+            ]
+          },
+          "notionUrl": "https://www.notion.so/3712f57cec1b80378654d22531599186"
+        }
+      ],
       "items": [
         {
           "id": "3692f57c-ec1b-80de-8eae-e452fd55e35d",
           "time": "07:30",
+          "title": "Furama Darling Harbour 出發",
+          "type": "transit",
+          "location": "Furama Darling Harbour",
+          "summary": "從 Furama Darling Harbour 出發，先前往 Surry Hills 的 Paramount Coffee Project 吃早餐，再回飯店 Checkout 與寄放行李。",
+          "image": "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
+          "notionUrl": "https://www.notion.so/3692f57cec1b80de8eaee452fd55e35d",
+          "tags": ["Recommandation", "transport"]
+        },
+        {
+          "id": "3702f57c-ec1b-8047-b392-dcd3f9ff576b",
+          "time": "07:30",
           "title": "步行前往 Paramount Coffee Project",
           "type": "walk",
           "location": "Furama Darling Harbour to Paramount Coffee Project",
-          "summary": "從 Furama Darling Harbour 出發步行約 15 分鐘，先到早餐店，再回飯店處理 Checkout。",
+          "summary": "從 Furama Darling Harbour 步行前往 Paramount Coffee Project，Notion 時段為 07:30 到 07:45，先到早餐店，再回飯店處理 Checkout。",
           "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=Paramount+Coffee+Project+Sydney&travelmode=walking",
-          "notionUrl": "https://www.notion.so/3692f57cec1b80de8eaee452fd55e35d",
-          "tags": ["Recommandation", "walk"]
+          "notionUrl": "https://www.notion.so/3702f57cec1b8047b392dcd3f9ff576b",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
         },
         {
           "id": "2db2f57c-ec1b-8093-a328-fc9539432226",
@@ -963,7 +1117,7 @@
           "title": "Furama Darling Harbour Checkout",
           "type": "hotel",
           "location": "Furama Darling Harbour",
-          "summary": "早餐後回飯店 Checkout，並把行李暫放在飯店，方便先去 SEA LIFE 與午餐。",
+          "summary": "早餐後回飯店 Checkout，並把行李寄放在飯店，方便先去 SEA LIFE 與午餐。Notion 另有「飯店寄放行李」提醒，重點是離開前先完成寄放流程。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
           "notionUrl": "https://www.notion.so/30f2f57cec1b80cab3c8d5ed33642793",
@@ -972,14 +1126,14 @@
         {
           "id": "3692f57c-ec1b-80ee-b345-f2d9e29b2647",
           "time": "09:30",
-          "title": "搭地鐵前往 SEA LIFE Sydney Aquarium",
+          "title": "搭 Subway 前往 SEA LIFE Sydney Aquarium",
           "type": "transit",
           "location": "Furama Darling Harbour to SEA LIFE Sydney Aquarium",
-          "summary": "從飯店區前往 Darling Harbour 的 SEA LIFE Sydney Aquarium，Notion 路線抓約 30 分鐘，時間上保留換乘與步行緩衝。",
+          "summary": "從飯店區搭 Subway / 大眾運輸前往 Darling Harbour 的 SEA LIFE Sydney Aquarium，Notion 時段為 09:30 到 10:00，時間上保留換乘與步行緩衝。",
           "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Furama+Darling+Harbour+Sydney&destination=SEA+LIFE+Sydney+Aquarium&travelmode=transit",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/%E9%9B%AA%E6%A2%A8%E6%B5%B7%E6%B4%8B%E7%94%9F%E7%89%A9%E6%B0%B4%E6%97%8F%E9%A4%A8+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Sydney,+Wheat+Rd/@-33.8743554,151.1954065,16z/am=t/data=!4m18!4m17!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!1m5!1m1!1s0x6b12ae38fb895f61:0x4e751ea315a8cc20!2m2!1d151.2021381!2d-33.8695997!2m3!6e0!7e2!8j1779525000!3e3?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
           "notionUrl": "https://www.notion.so/3692f57cec1b80eeb345f2d9e29b2647",
-          "tags": ["Recommandation", "transport"]
+          "tags": ["Recommandation", "transport", "moving", "subway"]
         },
         {
           "id": "2db2f57c-ec1b-80c8-a990-f9e62a6fe8a0",
@@ -1027,12 +1181,24 @@
           }
         },
         {
-          "id": "2db2f57c-ec1b-8046-9af3-dc1535900d1b",
+          "id": "3712f57c-ec1b-80bf-ba49-f99a1eccaf5d",
           "time": "12:00",
+          "title": "步行前往 Betty's Burgers",
+          "type": "walk",
+          "location": "SEA LIFE Sydney Aquarium to Betty's Burgers",
+          "summary": "從 SEA LIFE Sydney Aquarium 步行前往 Betty's Burgers，Notion 時段為 12:00 到 12:10，銜接午餐。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E9%9B%AA%E6%A2%A8%E6%B5%B7%E6%B4%8B%E7%94%9F%E7%89%A9%E6%B0%B4%E6%97%8F%E9%A4%A8+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Sydney,+Wheat+Rd/Betty's+Burgers,+Shop+4%2F44+Market+St,+Sydney+NSW+2000%E6%BE%B3%E6%B4%B2/@-33.8702574,151.2076878,15.66z/data=!4m14!4m13!1m5!1m1!1s0x6b12ae38fb895f61:0x4e751ea315a8cc20!2m2!1d151.2021381!2d-33.8695997!1m5!1m1!1s0x6b12af78b8e61ef7:0xf4420a8d0240d0ca!2m2!1d151.2057013!2d-33.8706284!3e2?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3712f57cec1b80bfba49f99a1eccaf5d",
+          "tags": ["Recommandation", "transport", "moving", "walking"]
+        },
+        {
+          "id": "2db2f57c-ec1b-8046-9af3-dc1535900d1b",
+          "time": "12:10",
           "title": "Betty's Burgers 午餐",
           "type": "food",
           "location": "Betty's Burgers",
-          "summary": "水族館後午餐安排 Betty's Burgers，餐點明確、速度快，適合下午還要取行李與趕國內線航班的節奏。",
+          "summary": "水族館後午餐安排 Betty's Burgers，Notion 時段為 12:10 到 13:00。餐點明確、速度快，適合下午還要取行李與趕國內線航班的節奏。",
           "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Betty%27s+Burgers+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80469af3dc1535900d1b",
@@ -1102,12 +1268,24 @@
           }
         },
         {
-          "id": "3692f57c-ec1b-8034-b9a1-c6e2bbfe240e",
+          "id": "3712f57c-ec1b-809d-87cf-e91fc4c4aac6",
           "time": "13:00",
+          "title": "搭 Subway 回 Furama 取行李",
+          "type": "transit",
+          "location": "Betty's Burgers to Furama Darling Harbour",
+          "summary": "午餐後從 Betty's Burgers 搭 Subway / 大眾運輸返回 Furama Darling Harbour，Notion 時段為 13:00 到 13:15，準備取寄放行李。",
+          "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Betty's+Burgers,+Shop+4%2F44+Market+St,+Sydney+NSW+2000%E6%BE%B3%E6%B4%B2/%E9%81%94%E4%BB%A4%E6%B8%AF%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97+2000%E6%BE%B3%E6%B4%B2+New+South+Wales,+Darling+Harbour,+Harbour+St/@-33.8750931,151.2000033,16z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6b12af78b8e61ef7:0xf4420a8d0240d0ca!2m2!1d151.2057013!2d-33.8706284!1m5!1m1!1s0x6b12ae24baef7efd:0x3e644e0671b8339d!2m2!1d151.2033928!2d-33.8781537!3e3?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3712f57cec1b809d87cfe91fc4c4aac6",
+          "tags": ["Recommandation", "transport", "moving", "subway"]
+        },
+        {
+          "id": "3692f57c-ec1b-8034-b9a1-c6e2bbfe240e",
+          "time": "13:15",
           "title": "回 Furama 取行李",
           "type": "hotel",
           "location": "Furama Darling Harbour",
-          "summary": "午餐後回 Furama Darling Harbour 取寄放行李，接著直接前往 Sydney Domestic Airport。",
+          "summary": "回 Furama Darling Harbour 取寄放行李，Notion 時段為 13:15 到 13:30，接著直接前往 Sydney Domestic Airport。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Furama+Darling+Harbour+Sydney",
           "notionUrl": "https://www.notion.so/3692f57cec1b8034b9a1c6e2bbfe240e",
@@ -1116,14 +1294,14 @@
         {
           "id": "2db2f57c-ec1b-806f-99f3-e07cc1be667e",
           "time": "13:30",
-          "title": "Airport Link 到 Sydney Domestic Airport",
+          "title": "Airport Link 前往 Sydney Domestic Airport",
           "type": "transit",
           "location": "Central Station to Sydney Domestic Airport",
-          "summary": "搭 Airport Link 從 Central Station 前往 Domestic Airport，銜接下午國內線航班。這段仍會收 airport station access fee。",
+          "summary": "搭 Airport Link 從 Central Station 前往 Domestic Airport，Notion 時段為 13:30 到 14:00，銜接下午國內線航班。這段仍會收 airport station access fee。",
           "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Central+Station+Sydney&destination=Sydney+Domestic+Airport&travelmode=transit",
           "notionUrl": "https://www.notion.so/2db2f57cec1b806f99f3e07cc1be667e",
-          "tags": ["Recommandation", "transport"]
+          "tags": ["Recommandation", "transport", "moving", "train"]
         },
         {
           "id": "2db2f57c-ec1b-8067-9a23-c4f5aaf9703e",
@@ -1224,37 +1402,61 @@
       "id": "day-4-yarra-valley",
       "date": "2026-09-27",
       "city": "Melbourne / Ballarat / Yarra Valley",
-      "title": "租車、疏芬山礦場與 Yarra Valley 酒莊",
-      "summary": "從墨爾本開始自駕段，先租車前往 Ballarat 的 Sovereign Hill，傍晚抵達 Balgownie Estate Yarra Valley 並在 Restaurant 1309 晚餐。",
+      "title": "飯店早餐、暫定租車、Sovereign Hill 與 Yarra Valley",
+      "summary": "早上在 Novotel Melbourne Airport 早餐並 Checkout，接著到 Hertz Melbourne Airport 取車；自駕前往 Sovereign Hill 換票、選擇 Mine Tour 並在園區午餐，下午開往 Balgownie Estate Yarra Valley，晚餐銜接 Restaurant 1309。",
       "coverImage": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Balgownie%20Estate%20Yarra%20Valley&output=embed",
       "accent": "#9b6b3f",
       "items": [
         {
+          "id": "2dc2f57c-ec1b-802a-a51f-f30f62845f30",
+          "time": "07:30",
+          "title": "Novotel Melbourne Airport 早餐 & Checkout",
+          "type": "food",
+          "location": "Novotel Melbourne Airport",
+          "summary": "Day 4 從機場旁飯店早餐與 Checkout 開始，Notion 時段為 07:30 到 08:00。完成退房後銜接 Hertz Melbourne Airport 取車流程。",
+          "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Novotel+Melbourne+Airport",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b802aa51ff30f62845f30",
+          "tags": ["Recommandation", "food", "hotel"]
+        },
+        {
           "id": "2dc2f57c-ec1b-80da-9b5a-eda7e088a18a",
           "time": "08:00",
-          "title": "租車 (3 Days)",
+          "title": "Hertz Melbourne Airport 租車",
           "type": "transit",
-          "location": "Melbourne",
-          "summary": "開始墨爾本郊區自駕段，後續 Yarra Valley、Phillip Island 與 Dandenong 都會用車。",
+          "location": "Hertz Melbourne Airport",
+          "summary": "08:00 到 08:30 在 Hertz Melbourne Airport 取車。Notion 備註取車點為 Melbourne Airport (Tullamarine)，還車點為 Melbourne Downtown - Franklin Street；仍需現場確認車型、保險、駕駛人與取還車條件。",
           "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=car+rental+Melbourne",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hertz+Melbourne+Airport",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80da9b5aeda7e088a18a",
-          "tags": ["Recommandation", "drive"]
+          "tags": ["Recommandation", "drive", "tentative"]
+        },
+        {
+          "id": "36a2f57c-ec1b-8077-b5f7-ebb870710015",
+          "time": "08:30",
+          "title": "自駕前往 Sovereign Hill",
+          "type": "transit",
+          "location": "Melbourne Airport to Sovereign Hill, Ballarat",
+          "summary": "從 Melbourne Airport 自駕前往 Sovereign Hill，Notion 時段為 08:30 到 10:00。這段為 Day 4 第一段長距離自駕，需預留取車、上路與停車緩衝。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E5%A2%A8%E7%88%BE%E6%9C%AC%E6%A9%9F%E5%A0%B4+3045%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne+Airport,+Arrival+Dr/%E7%96%8F%E8%8A%AC%E5%B1%B1%E7%A4%A6%E5%A0%B4+3350%E6%BE%B3%E6%B4%B2+Victoria,+Golden+Point,+Bradshaw+St/@-37.674277,144.0486292,10z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6ad659a9ebaa3917:0xf045676052ff090!2m2!1d144.8429763!2d-37.6708228!1m5!1m1!1s0x6ad144e287e1b55f:0xc8b4ba35e274eecb!2m2!1d143.8663518!2d-37.5750162!3e0?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/36a2f57cec1b8077b5f7ebb870710015",
+          "tags": ["Recommandation", "transport", "moving", "drive"]
         },
         {
           "id": "2dc2f57c-ec1b-801a-9a14-c5f6508d8e73",
           "time": "10:00",
-          "title": "疏芬山礦場",
+          "title": "Sovereign Hill：Mine Tour 與換票",
           "type": "landmark",
           "location": "Sovereign Hill, Ballarat",
-          "summary": "Notion 安排 10:00 到 15:00 參觀 Sovereign Hill，作為 Day 4 自駕往 Yarra Valley 前的主要景點。",
+          "summary": "Notion 更新為 10:00 到 15:00 參觀 Sovereign Hill，重點是到場換票並選擇 Mine Tour 路線。Schedule 票券目前 Booked: Not yet，Klook 票券金額暫記 NT$5,296；Mine Tour 約 45 分鐘，開頭會有短暫全黑段落，三條礦坑路線擇一。",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Sovereign_Hill_-_Main_Street_lower_looking_S_4.jpg/1280px-Sovereign_Hill_-_Main_Street_lower_looking_S_4.jpg",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sovereign+Hill+Ballarat",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b801a9a14c5f6508d8e73",
           "tags": ["Recommandation", "attraction"],
           "attractionGuide": {
-            "intro": "Sovereign Hill 是 Ballarat 的 1850 年代淘金鎮生活博物館。建議把時間分成主街、淘金體驗與礦坑/工藝展示三段，才不會只在入口附近停留。",
+            "intro": "Sovereign Hill 是 Ballarat 的 1850 年代淘金鎮生活博物館。Day 4 需把換票與 Mine Tour 選線放進動線，再把時間分成主街、淘金體驗與礦坑導覽三段，才不會只在入口附近停留。",
             "highlights": [
               {
                 "name": "Gold Panning",
@@ -1269,9 +1471,9 @@
                 "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/Sovereign_Hill_-_Main_Street_lower_looking_S_3.jpg"
               },
               {
-                "name": "Red Hill Mine",
-                "zhName": "紅山礦坑",
-                "note": "可補足 Ballarat 淘金歷史的地下礦坑視角，需留意當日開放與導覽安排。",
+                "name": "Mine Tour / Red Hill Mine",
+                "zhName": "礦坑導覽",
+                "note": "Notion 提醒需到場選擇 Mine Tour 路線；導覽約 45 分鐘，開頭有短暫全黑段落，需依現場時段安排。",
                 "image": "https://upload.wikimedia.org/wikipedia/commons/6/67/Entrance_to_the_Red_Hill_Mine_at_Sovereign_Hill.jpg"
               }
             ],
@@ -1289,23 +1491,66 @@
         },
         {
           "id": "2dc2f57c-ec1b-805e-b1c3-ee8c8ef3ae31",
-          "time": "10:00",
-          "title": "午餐 (園區解決)",
+          "time": "12:00",
+          "title": "Sovereign Hill 園區午餐",
           "type": "food",
           "location": "Sovereign Hill",
-          "summary": "Notion 標註午餐在園區解決，配合 Sovereign Hill 10:00 到 15:00 的參觀時間彈性安排。",
+          "summary": "Notion 將午餐安排在 Sovereign Hill 園區內，時段為 12:00 到 13:00。可依當天 Mine Tour 與園區動線，在 Hope Bakery 或 New York Bakery 擇一快速用餐。",
           "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sovereign+Hill+food",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b805eb1c3ee8c8ef3ae31",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Sovereign Hill 園區午餐以方便銜接參觀為優先。Notion 目前放入 Hope Bakery 與 New York Bakery 的菜單 PDF，建議依 Mine Tour 時段選擇排隊較短、出餐快的選項。",
+            "menuLinks": [
+              {
+                "label": "Hope Bakery menu PDF",
+                "url": "https://storage.googleapis.com/sovereign-hill-media/Hope-Bakery-Menu.pdf"
+              },
+              {
+                "label": "New York Bakery menu PDF",
+                "url": "https://storage.googleapis.com/sovereign-hill-media/New-York-Bakery_MAY_2026.pdf"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Hope Bakery",
+                "zhName": "Hope Bakery 烘焙午餐",
+                "note": "適合快速買麵包、派類或簡單熱食，保留更多時間給園區與 Mine Tour。"
+              },
+              {
+                "name": "New York Bakery",
+                "zhName": "New York Bakery 園區餐點",
+                "note": "Notion 已放入 2026 年 5 月菜單 PDF，可當作午餐主選之一。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Sovereign Hill food menus",
+                "url": "https://www.sovereignhill.com.au/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "36a2f57c-ec1b-803b-b9ab-c4251ff7c40e",
+          "time": "15:00",
+          "title": "自駕前往 Yarra Valley 酒莊",
+          "type": "transit",
+          "location": "Sovereign Hill to Balgownie Estate Yarra Valley",
+          "summary": "Notion 新增下午自駕路線，15:00 從 Sovereign Hill 出發，預計 17:00 抵達 Balgownie Estate Yarra Valley。這段跨 Ballarat 到 Yarra Valley，需預留休息與加油彈性。",
+          "image": "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E7%96%8F%E8%8A%AC%E5%B1%B1%E7%A4%A6%E5%A0%B4+3350%E6%BE%B3%E6%B4%B2+Victoria,+Golden+Point,+Bradshaw+St/Balgownie+Estate+Yarra+Valley,+1309+Melba+Hwy,+Yarra+Glen+VIC+3775%E6%BE%B3%E6%B4%B2/@-37.7367511,144.3049948,10z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6ad144e287e1b55f:0xc8b4ba35e274eecb!2m2!1d143.8663518!2d-37.5750162!1m5!1m1!1s0x6ad7d478073b66a9:0x63f41aee0e6938e2!2m2!1d145.4012298!2d-37.6320571!3e0?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/36a2f57cec1b803bb9abc4251ff7c40e",
+          "tags": ["Recommandation", "transport", "moving", "drive"]
         },
         {
           "id": "2dc2f57c-ec1b-8078-9584-ff37c1eba704",
-          "time": "15:00",
+          "time": "17:00",
           "title": "Balgownie Estate Yarra Valley",
           "type": "hotel",
           "location": "Balgownie Estate Yarra Valley",
-          "summary": "Notion 關聯到已預訂的 Balgownie Estate Yarra Valley，傍晚抵達酒莊與住宿地點。",
+          "summary": "Balgownie Estate Yarra Valley 住宿已完成預訂（Schedule Booked: Done），Notion 金額暫記 NT$13,981。Day 4 17:00 後抵達酒莊住宿，晚餐銜接園區內 Restaurant 1309。",
           "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Balgownie+Estate+Yarra+Valley",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80789584ff37c1eba704",
@@ -1314,10 +1559,10 @@
         {
           "id": "2dc2f57c-ec1b-80f2-987d-f628521fcb20",
           "time": "18:00",
-          "title": "晚餐",
+          "title": "Restaurant 1309 晚餐（待訂位）",
           "type": "food",
           "location": "Restaurant 1309",
-          "summary": "Notion 晚餐關聯 Restaurant 1309，安排在 Balgownie Estate Yarra Valley 內用餐。",
+          "summary": "晚餐安排在 Balgownie Estate Yarra Valley 的 Restaurant 1309，Notion Schedule 標示 Booked: Not yet，代表目前尚未訂位。時段暫抓 18:00 到 20:00，建議住宿確認後再預約餐廳。",
           "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurant+1309+Balgownie+Estate+Yarra+Valley",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80f2987df628521fcb20",
@@ -1329,19 +1574,19 @@
       "id": "day-5-balloon-phillip-island",
       "date": "2026-09-28",
       "city": "Yarra Valley / Phillip Island",
-      "title": "熱氣球、月光動物園與菲利普島",
-      "summary": "清晨熱氣球後往南安排動物園與菲利普島看企鵝，這天移動多，餐食以園區或採買補給為主。",
+      "title": "Yarra Valley 熱氣球、自駕到 Phillip Island 與企鵝歸巢",
+      "summary": "清晨完成 Yarra Valley 熱氣球後回飯店早餐，上午自駕前往 Phillip Island，先到 Coles Cowes 採買與午餐，再到 Hilltop Apartments 入住，傍晚開車前往 Penguin Parade 看 18:15 開始的企鵝歸巢。",
       "coverImage": "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Phillip%20Island%20Penguin%20Parade&output=embed",
       "accent": "#c27a2c",
       "items": [
         {
           "id": "2dc2f57c-ec1b-80c3-8d82-cd33234d96e0",
-          "time": "清晨",
-          "title": "熱氣球",
+          "time": "03:00",
+          "title": "Yarra Valley 熱氣球",
           "type": "landmark",
           "location": "Yarra Valley",
-          "summary": "Day 5 的早晨主行程，需依天氣與集合時間調整睡眠與早餐。",
+          "summary": "Day 5 的清晨主行程，Notion 時段為 03:00 到 07:00。熱氣球已完成預訂，需依業者前一晚通知調整集合時間、地點與穿著。",
           "image": "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Yarra+Valley+hot+air+balloon",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80c38d82cd33234d96e0",
@@ -1381,57 +1626,96 @@
           }
         },
         {
-          "id": "2dc2f57c-ec1b-8034-927f-d26523fd1dc7",
-          "time": "下午",
-          "title": "月光動物園",
-          "type": "landmark",
-          "location": "Moonlit Sanctuary",
-          "summary": "自駕往 Phillip Island 前的動物園停靠，適合看澳洲動物。",
-          "image": "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moonlit+Sanctuary",
-          "notionUrl": "https://www.notion.so/2dc2f57cec1b8034927fd26523fd1dc7",
-          "tags": ["Recommandation", "wildlife"],
-          "attractionGuide": {
-            "intro": "Moonlit Sanctuary 是以澳洲原生動物與保育教育為主的野生動物園。這天接在 Yarra Valley 與 Phillip Island 中間，適合抓重點看無尾熊、袋鼠與保育動物。",
-            "highlights": [
-              {
-                "name": "Koalas",
-                "zhName": "無尾熊",
-                "note": "園區代表性動物，建議先確認當日 encounter 或 keeper talk 安排。",
-                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2023/06/encounter-slider-1.jpg"
-              },
-              {
-                "name": "Wallabies and Kangaroos",
-                "zhName": "小袋鼠與袋鼠",
-                "note": "適合安排成輕鬆互動段落，但需依園區規則與動物狀態進行。",
-                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2023/03/night-roos2.jpg"
-              },
-              {
-                "name": "Conservation Species",
-                "zhName": "保育物種",
-                "note": "園區重點在瀕危原生物種繁育與教育，不只是拍照型動物園。",
-                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2023/06/keeper-talk-slider-1030x632.jpg"
-              }
-            ],
-            "links": [
-              {
-                "label": "Moonlit Sanctuary about",
-                "url": "https://moonlitsanctuary.com.au/about-us"
-              },
-              {
-                "label": "Moonlit Sanctuary official",
-                "url": "https://moonlitsanctuary.com.au/"
-              }
-            ]
-          }
+          "id": "2dc2f57c-ec1b-80ed-a71e-cafc26163f1a",
+          "time": "07:00",
+          "title": "Balgownie Estate 飯店早餐",
+          "type": "food",
+          "location": "Balgownie Estate Yarra Valley",
+          "summary": "熱氣球後回 Balgownie Estate Yarra Valley 早餐，Notion 時段為 07:00 到 09:00。早餐後整理行李，準備上午自駕前往 Phillip Island。",
+          "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Balgownie+Estate+Yarra+Valley",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80eda71ecafc26163f1a",
+          "tags": ["Recommandation", "food", "hotel"]
+        },
+        {
+          "id": "36d2f57c-ec1b-80b8-a3f9-f840f6ec5863",
+          "time": "10:00",
+          "title": "自駕前往 Phillip Island",
+          "type": "transit",
+          "location": "Balgownie Estate Yarra Valley to Coles Cowes",
+          "summary": "從 Balgownie Estate Yarra Valley 自駕前往 Phillip Island，Notion 時段為 10:00 到 12:30，目的地先抓 Coles Cowes，方便抵達後午餐與採買。",
+          "image": "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Balgownie+Estate+Yarra+Valley,+1309+Melba+Hwy,+Yarra+Glen+VIC+3775%E6%BE%B3%E6%B4%B2/Coles+Cowes,+Cnr+Church+St+%26,+Thompson+St,+Cowes+VIC+3922%E6%BE%B3%E6%B4%B2/@-38.0777109,145.0556999,10z/data=!4m18!4m17!1m5!1m1!1s0x6ad7d478073b66a9:0x63f41aee0e6938e2!2m2!1d145.4012298!2d-37.6320571!1m5!1m1!1s0x6ad5ec1b5ddfd065:0x8bf53a3a120102d9!2m2!1d145.2383321!2d-38.4526251!2m3!6e0!7e2!8j1779962400!3e0?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/36d2f57cec1b80b8a3f9f840f6ec5863",
+          "tags": ["Recommandation", "transport", "moving", "drive"]
+        },
+        {
+          "id": "36e2f57c-ec1b-8047-8f2e-eba16b29d640",
+          "time": "12:30",
+          "title": "Pika Sushi Cowes 午餐",
+          "type": "food",
+          "location": "Pika Sushi Cowes",
+          "summary": "抵達 Phillip Island 後先在 Cowes 午餐，Notion 時段為 12:30 到 13:30，地點參考 Pika Sushi Cowes。",
+          "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/place/Pika+Sushi+Cowes/@-38.4502676,145.2334933,15.85z/data=!4m17!1m9!2m8!1z6aSQ5buz!3m5!2z5r6z5rSy57at5aSa5Yip5Lqe55yB6I-y5Yip5pmu5bO2!3s0x6ad5f2404f72b8e7:0x790c0371a1b16c33!4m2!1d145.2038278!2d-38.4898703!6e5!3m6!1s0x6ad5ed4a2bc89b87:0xc51a09ef9712a025!8m2!3d-38.4492911!4d145.238719!15sCgbppJDlu7NaCCIG6aSQ5buzkgEQc3VzaGlfcmVzdGF1cmFudJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOMk5EWTJNemRuUlJBQuABAPoBBAgAEBk!16s%2Fg%2F11t2lqcjl8?entry=ttu&g_ep=EgoyMDI2MDUyNS4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/36e2f57cec1b80478f2eeba16b29d640",
+          "tags": ["Recommandation", "food"]
+        },
+        {
+          "id": "2de2f57c-ec1b-8056-a8b5-f13e65c450b7",
+          "time": "13:30",
+          "title": "Coles Cowes 採買隔日早午餐",
+          "type": "shopping",
+          "location": "Coles Cowes",
+          "summary": "在 Coles Cowes 採買隔日早午餐與住宿補給，Notion 時段為 13:30 到 13:55。重點是隔天早餐、簡單午餐、飲水與車上零食。",
+          "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coles+Cowes+Phillip+Island",
+          "notionUrl": "https://www.notion.so/2de2f57cec1b8056a8b5f13e65c450b7",
+          "tags": ["Recommandation", "supply"]
+        },
+        {
+          "id": "3712f57c-ec1b-80d9-a858-fea2d39f9d83",
+          "time": "13:55",
+          "title": "自駕前往 Hilltop Apartments",
+          "type": "transit",
+          "location": "Coles Cowes to Hilltop Apartments Phillip Island",
+          "summary": "採買後從 Coles Cowes 自駕前往 Hilltop Apartments Phillip Island，Notion 時段為 13:55 到 14:00，先把行李與補給放回住宿。",
+          "image": "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Coles+Cowes,+Cnr+Church+St+%26,+Thompson+St,+Cowes+VIC+3922%E6%BE%B3%E6%B4%B2/Hilltop+Apartments+Phillip+Island,+124-128+Red+Rocks+Rd,+Cowes+VIC+3922%E6%BE%B3%E6%B4%B2/@-38.4579898,145.2097881,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6ad5ec1b5ddfd065:0x8bf53a3a120102d9!2m2!1d145.2383321!2d-38.4526251!1m5!1m1!1s0x6ad5eba2fc0b2d49:0x753e0590304e8883!2m2!1d145.2011862!2d-38.4631799!3e0?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3712f57cec1b80d9a858fea2d39f9d83",
+          "tags": ["Recommandation", "transport", "moving", "drive"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8057-beff-c755529575dc",
+          "time": "14:00",
+          "title": "Hilltop Apartments Phillip Island 入住與休息",
+          "type": "hotel",
+          "location": "Hilltop Apartments Phillip Island",
+          "summary": "Notion 住宿時段為 14:00 到 16:50，先入住 Hilltop Apartments Phillip Island，整理補給與休息，再前往 Penguin Parade。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hilltop+Apartments+Phillip+Island",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b8057beffc755529575dc",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
+          "id": "3712f57c-ec1b-8087-91bf-da0f1d1132db",
+          "time": "16:50",
+          "title": "自駕前往 Penguin Parade",
+          "type": "transit",
+          "location": "Hilltop Apartments Phillip Island to Penguin Parade",
+          "summary": "從 Hilltop Apartments Phillip Island 自駕前往 Penguin Parade，Notion 時段為 16:50 到 17:00，預留停車、入場與等待 18:15 企鵝歸巢的時間。",
+          "image": "https://images.unsplash.com/photo-1470219556762-1771e7f9427d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Hilltop+Apartments+Phillip+Island,+124-128+Red+Rocks+Rd,+Cowes+VIC+3922%E6%BE%B3%E6%B4%B2/Penguin+Parade,+1019+Ventnor+Rd,+Summerlands+VIC+3922%E6%BE%B3%E6%B4%B2/@-38.4809709,145.1830883,13.63z/data=!4m14!4m13!1m5!1m1!1s0x6ad5eba2fc0b2d49:0x753e0590304e8883!2m2!1d145.2011862!2d-38.4631799!1m5!1m1!1s0x6ad59567e8f0b65b:0x9c65b1f136beea27!2m2!1d145.149729!2d-38.5066164!3e0?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
+          "notionUrl": "https://www.notion.so/3712f57cec1b808791bfda0f1d1132db",
+          "tags": ["Recommandation", "transport", "moving", "drive"]
         },
         {
           "id": "2dc2f57c-ec1b-80c0-8482-d303a360ce69",
-          "time": "晚上",
-          "title": "菲利普島看企鵝",
+          "time": "17:00",
+          "title": "Phillip Island Penguin Parade（18:15 開始）",
           "type": "landmark",
           "location": "Phillip Island Penguin Parade",
-          "summary": "晚間主行程是 Phillip Island Penguin Parade，需注意夜間保暖與回程時間。",
+          "summary": "晚間主行程是 Phillip Island Penguin Parade，Notion 時段為 17:00 到 19:00，企鵝歸巢約 18:15 開始。需注意夜間保暖、停車與不可拍照規定。",
           "image": "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Phillip+Island+Penguin+Parade",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80c08482d303a360ce69",
@@ -1471,85 +1755,64 @@
           }
         },
         {
-          "id": "2de2f57c-ec1b-8056-a8b5-f13e65c450b7",
-          "time": "彈性",
-          "title": "超市採買",
-          "type": "shopping",
-          "location": "On the road",
-          "summary": "Notion 備註為早午晚各一餐的採買補給，降低郊區行程餐廳不確定性。",
-          "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=supermarket+Phillip+Island",
-          "notionUrl": "https://www.notion.so/2de2f57cec1b8056a8b5f13e65c450b7",
-          "tags": ["Recommandation", "supply"]
+          "id": "36e2f57c-ec1b-80b3-a965-f2aaa9f5a488",
+          "time": "19:00",
+          "title": "Phillip Island 晚餐",
+          "type": "food",
+          "location": "Phillip Island",
+          "summary": "看完 Penguin Parade 後安排 Phillip Island 晚餐，Notion 時段為 19:00 到 20:00。可依當天體力選擇外食或回住宿處理採買補給。",
+          "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=dinner+Phillip+Island+Cowes",
+          "notionUrl": "https://www.notion.so/36e2f57cec1b80b3a965f2aaa9f5a488",
+          "tags": ["Recommandation", "food"]
         }
       ]
     },
     {
       "id": "day-6-dandenong",
       "date": "2026-09-29",
-      "city": "Dandenong / Melbourne",
-      "title": "普芬比利鐵路、無尾熊保護園區與還車",
-      "summary": "自駕尾聲安排 Dandenong 方向景點，下午回墨爾本市區還車，晚上看體力選超市或餐廳。",
-      "coverImage": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1800&q=85",
-      "mapsEmbedUrl": "https://www.google.com/maps?q=Puffing%20Billy%20Railway&output=embed",
+      "city": "Phillip Island / Pearcedale / Melbourne",
+      "title": "無尾熊保護區、月光動物園與墨爾本還車",
+      "summary": "從 Phillip Island 採買早餐後，先補 Koala Conservation Reserve，再前往 Moonlit Sanctuary；下午回墨爾本 Franklin Street 還車，搭電車到 Docklands 住宿，晚上步行到 Sher Singh 晚餐。",
+      "coverImage": "https://moonlitsanctuary.com.au/wp-content/uploads/2018/10/banner_koala-1.jpg",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Moonlit%20Sanctuary%20Wildlife%20Conservation%20Park&output=embed",
       "accent": "#2f8b7c",
       "items": [
         {
-          "id": "2dc2f57c-ec1b-808c-820b-ef0ae4e960dc",
-          "time": "上午",
-          "title": "普芬比利鐵路",
-          "type": "landmark",
-          "location": "Puffing Billy Railway",
-          "summary": "Day 6 的核心景點是 Puffing Billy Railway，搭配 Dandenong 區域行程。",
-          "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway",
-          "notionUrl": "https://www.notion.so/2dc2f57cec1b808c820bef0ae4e960dc",
-          "tags": ["Recommandation", "railway"],
-          "attractionGuide": {
-            "intro": "Puffing Billy Railway 是 Dandenong Ranges 的蒸汽鐵路體驗。重點在 Belgrave 出發、森林路段、木棧橋與 Menzies Creek / Lakeside 周邊停留。",
-            "highlights": [
-              {
-                "name": "Belgrave Station",
-                "zhName": "Belgrave 車站",
-                "note": "經典出發點，建議預留報到、拍車廂與上車時間。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Belgrave_Puffing_Billy_Station.jpg"
-              },
-              {
-                "name": "Sherbrooke Forest",
-                "zhName": "雪布魯克森林",
-                "note": "從 Belgrave 往山區行駛時的森林段，是蒸汽鐵路氛圍最明顯的部分。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Forests_Commission_Victoria_No._1694_leaving_the_shed_on_the_Puffing_Billy_Railway_-_September_2016_-_03.jpg"
-              },
-              {
-                "name": "Menzies Creek Museum",
-                "zhName": "Menzies Creek 博物館",
-                "note": "若車票與時間允許，可把它當作了解鐵路歷史的補點。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/Puffing_Billy_3A_at_the_Menzies_Creek_Museum_-_September_2016_-_01.jpg"
-              }
-            ],
-            "links": [
-              {
-                "label": "Puffing Billy Belgrave to Menzies Creek",
-                "url": "https://puffingbillyrailway.org.au/experiences/excursion/belgrave-menzies-creek/"
-              },
-              {
-                "label": "Puffing Billy official",
-                "url": "https://puffingbillyrailway.org.au/"
-              }
-            ]
-          }
+          "id": "2dc2f57c-ec1b-80be-9e1f-e830b719ee64",
+          "time": "08:00",
+          "title": "Coles Cowes 早餐與補給",
+          "type": "food",
+          "location": "Coles Cowes",
+          "summary": "Notion 時段為 08:00 到 08:30。先用超市採買處理早餐，也可補齊車上飲水與當天簡單零食。",
+          "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Coles+Cowes",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80be9e1fe830b719ee64",
+          "tags": ["Recommandation", "food", "supermarket"]
         },
         {
-          "id": "30f2f57c-ec1b-8079-a1f4-ec1d110ec1b8",
-          "time": "下午",
-          "title": "無尾熊保護園區",
+          "id": "36e2f57c-ec1b-803a-99b7-f5c6bc553b63",
+          "time": "09:50",
+          "title": "自駕前往 Koala Conservation Reserve",
+          "type": "transit",
+          "location": "Hilltop Apartments Phillip Island → Koala Conservation Reserve",
+          "summary": "從 Phillip Island 住宿點開往 Koala Conservation Reserve，Notion 時段為 09:50 到 10:00。",
+          "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Hilltop+Apartments+Phillip+Island&destination=Koala+Conservation+Reserve+Phillip+Island&travelmode=driving",
+          "notionUrl": "https://www.notion.so/36e2f57cec1b803a99b7f5c6bc553b63",
+          "tags": ["Recommandation", "moving", "driving"]
+        },
+        {
+          "id": "36e2f57c-ec1b-807d-a515-fd76e372d435",
+          "time": "10:00",
+          "title": "Koala Conservation Reserve",
           "type": "landmark",
-          "location": "Koala conservation area",
-          "summary": "鐵路行程後安排動物保護園區，作為自駕段的最後自然景點。",
-          "image": "https://images.unsplash.com/photo-1459262838948-3e2de6c1ec80?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=koala+conservation+Melbourne",
-          "notionUrl": "https://www.notion.so/30f2f57cec1b8079a1f4ec1d110ec1b8",
-          "tags": ["Recommandation", "wildlife"],
+          "location": "Koala Conservation Reserve",
+          "summary": "Notion 時段為 10:00 到 11:00。以樹冠步道與自然棲地觀察無尾熊為主，節奏比企鵝巡禮更安靜，適合作為離開 Phillip Island 前的補點。",
+          "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Koala_Conservation_Centre_(7_January_2020)_19.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Koala+Conservation+Reserve+Phillip+Island",
+          "notionUrl": "https://www.notion.so/36e2f57cec1b807da515fd76e372d435",
+          "tags": ["Recommandation", "wildlife", "attraction"],
           "attractionGuide": {
             "intro": "Koala Conservation Reserve 以自然棲地與樹冠步道觀察無尾熊為主。比起一般動物園，這裡更適合作為安靜、慢速的保育型景點。",
             "highlights": [
@@ -1562,7 +1825,7 @@
               {
                 "name": "Woodland Walk",
                 "zhName": "林地步道",
-                "note": "適合找鳥類與其他原生動物，步調比企鵝巡禮更放鬆。",
+                "note": "適合找鳥類與其他原生動物，步調比市區行程更放鬆。",
                 "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Koala_Conservation_Centre_-_Phillip_Island_Nature_-_panoramio_(1).jpg"
               },
               {
@@ -1585,229 +1848,382 @@
           }
         },
         {
-          "id": "2dc2f57c-ec1b-80ca-9d04-c5b4f42c334c",
-          "time": "傍晚",
-          "title": "墨爾本市區還車",
+          "id": "36e2f57c-ec1b-8039-b321-c6e2bf5c6922",
+          "time": "11:00",
+          "title": "自駕前往 Moonlit Sanctuary",
           "type": "transit",
-          "location": "Melbourne CBD",
-          "summary": "回到市區完成還車，後面幾天改以步行與大眾運輸為主。",
+          "location": "Koala Conservation Reserve → Moonlit Sanctuary Wildlife Conservation Park",
+          "summary": "Notion 時段為 11:00 到 12:00。從 Phillip Island 方向開往 Pearcedale 的 Moonlit Sanctuary，途中預留路況緩衝。",
           "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=car+rental+return+Melbourne+CBD",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Koala+Conservation+Reserve+Phillip+Island&destination=Moonlit+Sanctuary+Wildlife+Conservation+Park&travelmode=driving",
+          "notionUrl": "https://www.notion.so/36e2f57cec1b8039b321c6e2bf5c6922",
+          "tags": ["Recommandation", "moving", "driving"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8034-927f-d26523fd1dc7",
+          "time": "12:00",
+          "title": "Moonlit Sanctuary Wildlife Conservation Park",
+          "type": "landmark",
+          "location": "Moonlit Sanctuary, Pearcedale",
+          "summary": "Notion 時段為 12:00 到 14:00。重點放在 Wallaby Walk、無尾熊互動與 keeper talks，這裡是從 Phillip Island 回 Melbourne 路線上較順的野生動物景點。",
+          "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2018/10/banner_koala-1.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moonlit+Sanctuary+Wildlife+Conservation+Park",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b8034927fd26523fd1dc7",
+          "tags": ["Recommandation", "wildlife", "attraction"],
+          "attractionGuide": {
+            "intro": "Moonlit Sanctuary 是 Mornington Peninsula 一帶的澳洲原生動物保育園區，適合把重點放在近距離觀察袋鼠、無尾熊與 keeper talks；若想加購 encounter，建議事前確認當天名額。",
+            "highlights": [
+              {
+                "name": "Wallaby Walk",
+                "zhName": "袋鼠與小袋鼠步道",
+                "note": "園區招牌體驗，可在指定區域近距離觀察並餵食袋鼠與 wallaby。",
+                "image": "https://i0.wp.com/travability.travel/wp-content/uploads/2021/09/Moonlit-008.jpg?fit=1024%2C768&ssl=1"
+              },
+              {
+                "name": "Koala Encounter",
+                "zhName": "無尾熊近距離互動",
+                "note": "官方 encounter 時段通常需要另行確認或預約，適合想拍照與近距離觀察的人。",
+                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2018/10/banner_koala-1.jpg"
+              },
+              {
+                "name": "Keeper Talks and Encounters",
+                "zhName": "飼育員解說與動物互動",
+                "note": "若時間吻合，可優先看 keeper talks 或 dingo / wombat 等 encounter；遇極端天氣可能取消。",
+                "image": "https://moonlitsanctuary.com.au/wp-content/uploads/2018/10/banner_dingo.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "Moonlit Sanctuary official",
+                "url": "https://moonlitsanctuary.com.au/"
+              },
+              {
+                "label": "Animal encounters and tours",
+                "url": "https://moonlitsanctuary.com.au/visit/animal-encounters/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "36f2f57c-ec1b-8020-85d4-d3748dcbdadc",
+          "time": "12:30",
+          "title": "Moonlit Sanctuary / 超市午餐",
+          "type": "food",
+          "location": "Moonlit Sanctuary or Coles Cowes",
+          "summary": "Notion 時段為 12:30 到 13:00。午餐保留彈性，可在 Moonlit Sanctuary 園區簡單用餐，或用上午超市採買的餐點處理。",
+          "image": "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Moonlit+Sanctuary+cafe",
+          "notionUrl": "https://www.notion.so/36f2f57cec1b802085d4d3748dcbdadc",
+          "tags": ["Recommandation", "food", "flexible"]
+        },
+        {
+          "id": "36e2f57c-ec1b-801f-8032-c82a61db6810",
+          "time": "14:00",
+          "title": "自駕回墨爾本還車點",
+          "type": "transit",
+          "location": "Moonlit Sanctuary Wildlife Conservation Park → Hertz Franklin Street",
+          "summary": "Notion 時段為 14:00 到 15:00。從 Pearcedale 回 Melbourne Downtown - Franklin Street，抵達後準備還車。",
+          "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Moonlit+Sanctuary+Wildlife+Conservation+Park&destination=Hertz+3%2F8+Franklin+St+Melbourne&travelmode=driving",
+          "notionUrl": "https://www.notion.so/36e2f57cec1b801f8032c82a61db6810",
+          "tags": ["Recommandation", "moving", "driving"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-80ca-9d04-c5b4f42c334c",
+          "time": "15:00",
+          "title": "Hertz Franklin Street 還車",
+          "type": "transit",
+          "location": "Hertz Melbourne Downtown - Franklin Street",
+          "summary": "Notion 時段為 15:00 到 16:00。租車目前仍以暫定規劃處理，還車點為 Melbourne Downtown - Franklin Street；後續幾天改以步行與大眾運輸為主。",
+          "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hertz+3%2F8+Franklin+St+Melbourne",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80ca9d04c5b4f42c334c",
-          "tags": ["Recommandation", "drive"]
+          "tags": ["Recommandation", "transportation", "rental-car"]
+        },
+        {
+          "id": "36f2f57c-ec1b-806a-a0ca-dcf6a54db124",
+          "time": "16:00",
+          "title": "搭電車前往 Docklands 住宿",
+          "type": "transit",
+          "location": "Hertz Franklin Street → Melbourne Lifestyle Apartments",
+          "summary": "Notion 時段為 16:00 到 16:30。還車後改搭電車前往 Docklands 的 Melbourne Lifestyle Apartments。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Hertz+3%2F8+Franklin+St+Melbourne&destination=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&travelmode=transit",
+          "notionUrl": "https://www.notion.so/36f2f57cec1b806aa0cadcf6a54db124",
+          "tags": ["Recommandation", "moving", "tram"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8069-9dc4-d9e9d674f297",
+          "time": "16:30",
+          "title": "Melbourne Lifestyle Apartments 入住與休息",
+          "type": "hotel",
+          "location": "Melbourne Lifestyle Apartments",
+          "summary": "交通抵達後先辦理入住與休息；Notion 住宿紀錄自 18:00 起並延伸 3 天。地址位於 Docklands 的 Collins Street。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80699dc4d9e9d674f297",
+          "tags": ["Recommandation", "hotel", "Docklands"]
+        },
+        {
+          "id": "3712f57c-ec1b-809f-92fd-ee2f692fe655",
+          "time": "17:55",
+          "title": "步行前往 Sher Singh",
+          "type": "walk",
+          "location": "Melbourne Lifestyle Apartments → Sher Singh",
+          "summary": "Notion 時段為 17:55 到 18:00。從住宿步行到 Docklands 的 Sher Singh 晚餐。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&destination=Sher+Singh+Docklands&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3712f57cec1b809f92fdee2f692fe655",
+          "tags": ["Recommandation", "moving", "walk"]
         },
         {
           "id": "2dc2f57c-ec1b-80f6-848c-d8f960a45de7",
-          "time": "晚上",
-          "title": "晚餐",
+          "time": "18:00",
+          "title": "Sher Singh 晚餐",
           "type": "food",
-          "location": "Melbourne",
-          "summary": "Notion 標註超市或餐廳，這天保留彈性給自駕後的體力狀態。",
+          "location": "Sher Singh, Docklands",
+          "summary": "Notion 時段為 18:00 到 19:00。還車與入住後安排 Docklands 附近晚餐，地點為 Sher Singh。",
           "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=dinner+Melbourne+CBD",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sher+Singh+807+Bourke+St+Docklands",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80f6848cd8f960a45de7",
-          "tags": ["Recommandation", "food", "flexible"]
+          "tags": ["Recommandation", "food", "Indian"]
         }
       ]
     },
     {
       "id": "day-7-melbourne-city",
       "date": "2026-09-30",
-      "city": "Melbourne",
-      "title": "墨爾本大學、塗鴉牆與市區散步",
-      "summary": "回到市區後安排校園、街區、圖書館與購物，移動距離相對短，適合慢慢走。",
-      "coverImage": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1800&q=85",
-      "mapsEmbedUrl": "https://www.google.com/maps?q=Hosier%20Lane%20Melbourne&output=embed",
+      "city": "Melbourne / Belgrave / Lakeside",
+      "title": "Higher Ground、普芬比利鐵路與 Max on Hardware",
+      "summary": "從 Docklands 搭電車到 Higher Ground 早餐，再搭火車前往 Belgrave，安排 Puffing Billy Railway Belgrave 到 Lakeside 的蒸汽火車行程；午餐在 Lakeside Visitor Centre，傍晚回墨爾本市區吃 Max on Hardware。",
+      "coverImage": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Forests_Commission_Victoria_No._1694_leaving_the_shed_on_the_Puffing_Billy_Railway_-_September_2016_-_03.jpg",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Puffing%20Billy%20Railway%20Belgrave&output=embed",
       "accent": "#7a6ff0",
       "items": [
         {
+          "id": "3712f57c-ec1b-80ee-a746-fb2cca9d5e5e",
+          "time": "07:20",
+          "title": "搭電車前往 Higher Ground",
+          "type": "transit",
+          "location": "Melbourne Lifestyle Apartments → Higher Ground",
+          "summary": "Notion 時段為 07:20 到 07:40。從 Docklands 住宿搭電車前往 Little Bourke Street 的 Higher Ground，作為早餐前的移動。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&destination=Higher+Ground+650+Little+Bourke+St+Melbourne&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3712f57cec1b80eea746fb2cca9d5e5e",
+          "tags": ["Recommandation", "moving", "tram"]
+        },
+        {
           "id": "2dd2f57c-ec1b-80a0-95ea-e05f94350e5c",
-          "time": "08:30",
-          "title": "早餐",
+          "time": "07:40",
+          "title": "Higher Ground 早餐",
           "type": "food",
-          "location": "Melbourne",
-          "summary": "Day 7 以早餐開始城市散步日，Notion 時段為 08:30 到 09:30。",
+          "location": "Higher Ground, Melbourne CBD",
+          "summary": "Notion 時段為 07:40 到 08:30。Higher Ground 位於 650 Little Bourke Street，適合作為前往 Belgrave 搭火車前的早午餐與咖啡停靠。",
           "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=breakfast+Melbourne",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Higher+Ground+650+Little+Bourke+St+Melbourne",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80a095eae05f94350e5c",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food", "brunch"],
+          "restaurantGuide": {
+            "intro": "Higher Ground 是 Little Bourke Street 的 Melbourne CBD 早午餐餐廳，官方定位從咖啡、早餐到午餐皆可；空間由歷史建築改造，適合排在早上出發前。",
+            "menuLinks": [
+              {
+                "label": "Higher Ground menu",
+                "url": "https://highergroundmelbourne.com.au/"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Coffee",
+                "zhName": "咖啡",
+                "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
+                "note": "官方強調咖啡與早午餐服務，早上搭火車前適合先補咖啡。"
+              },
+              {
+                "name": "Breakfast plates",
+                "zhName": "早午餐主餐",
+                "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80",
+                "note": "建議選擇有蛋、麵包或熱食的早午餐盤，後續到 Belgrave 車程較長。"
+              },
+              {
+                "name": "Pastry or light bite",
+                "zhName": "甜點或輕食",
+                "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
+                "note": "若時間偏緊，可選擇輕食搭配咖啡，避免拖到 08:30 後的火車移動。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Higher Ground official",
+                "url": "https://highergroundmelbourne.com.au/"
+              }
+            ]
+          }
         },
         {
-          "id": "2dd2f57c-ec1b-80c6-8792-fe7a7afba2f4",
-          "time": "上午",
-          "title": "墨爾本大學",
+          "id": "36f2f57c-ec1b-80aa-b0b5-e828532cb3ac",
+          "time": "08:30",
+          "title": "搭火車前往 Belgrave",
+          "type": "transit",
+          "location": "Higher Ground → Puffing Billy Railway Belgrave",
+          "summary": "Notion 時段為 08:30 到 10:10。從市區轉乘火車前往 Belgrave，接續 Puffing Billy Railway 的蒸汽火車行程。",
+          "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Higher+Ground+650+Little+Bourke+St+Melbourne&destination=Puffing+Billy+Railway+Belgrave&travelmode=transit",
+          "notionUrl": "https://www.notion.so/36f2f57cec1b80aab0b5e828532cb3ac",
+          "tags": ["Recommandation", "moving", "train"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-808c-820b-ef0ae4e960dc",
+          "time": "11:00",
+          "title": "Puffing Billy Railway：Belgrave 到 Lakeside",
           "type": "landmark",
-          "location": "The University of Melbourne",
-          "summary": "校園散步與建築參觀，適合接在早餐後的市區路線。",
-          "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=The+University+of+Melbourne",
-          "notionUrl": "https://www.notion.so/2dd2f57cec1b80c68792fe7a7afba2f4",
-          "tags": ["Recommandation", "campus"],
+          "location": "Puffing Billy Railway Belgrave to Lakeside",
+          "summary": "Notion 時段為 11:00 到 15:10。從 Belgrave 搭蒸汽火車到 Lakeside 並返回，官方建議整段約需預留 4 小時。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Forests_Commission_Victoria_No._1694_leaving_the_shed_on_the_Puffing_Billy_Railway_-_September_2016_-_03.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway+Belgrave",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b808c820bef0ae4e960dc",
+          "tags": ["Recommandation", "railway", "attraction"],
           "attractionGuide": {
-            "intro": "墨爾本大學 Parkville campus 適合安排成城市校園散步。重點可放在 Old Quad、South Lawn 與校園建築氛圍，不需要排太長時間。",
+            "intro": "Puffing Billy Railway 的 Belgrave 到 Lakeside return 是經典蒸汽鐵路體驗。重點在 Belgrave 出發、Sherbrooke Forest、Trestle Bridge，以及 Lakeside / Emerald Lake Park 的停留。",
             "highlights": [
               {
-                "name": "Old Quad",
-                "zhName": "老方庭",
-                "note": "Parkville campus 的原始核心建築，也是最有歷史感的拍照點。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Old_Quad_colonnade_University_of_Melbourne_2018.jpg"
+                "name": "Belgrave Station",
+                "zhName": "Belgrave 車站",
+                "note": "官方路線從 Belgrave station 出發，建議預留報到、拍車廂與上車時間。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Belgrave_Puffing_Billy_Station.jpg"
               },
               {
-                "name": "South Lawn",
-                "zhName": "南草坪",
-                "note": "校園休憩空間，適合接在 Old Quad 後當作步行緩衝。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/b/b4/University_of_Melbourne%2C_South_Lawn.jpg"
+                "name": "Monbulk Creek Trestle Bridge",
+                "zhName": "Monbulk Creek 木棧橋",
+                "note": "出發後不久會經過 Puffing Billy 最有代表性的木棧橋，是最值得準備相機的段落。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Puffing_Billy_Railway_-_Monbulk_Creek_Trestle_Bridge.jpg"
               },
               {
-                "name": "University Libraries",
-                "zhName": "校園圖書館群",
-                "note": "外觀與周邊學生生活感明顯，適合快速感受澳洲大學日常。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/8/88/Baillieu_Library.JPG"
+                "name": "Lakeside Visitor Centre",
+                "zhName": "Lakeside 遊客中心",
+                "note": "抵達 Lakeside 後可到 Emerald Lake Park 與 Visitor Centre 休息、用餐或看鐵路展示。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/8/84/Puffing_Billy_3A_at_the_Menzies_Creek_Museum_-_September_2016_-_01.jpg"
               }
             ],
             "links": [
               {
-                "label": "University of Melbourne Old Quad",
-                "url": "https://www.unimelb.edu.au/old-quad"
+                "label": "Belgrave to Lakeside return",
+                "url": "https://puffingbillyrailway.org.au/experiences/excursion/belgrave-lakeside/"
               },
               {
-                "label": "University of Melbourne",
-                "url": "https://www.unimelb.edu.au/"
+                "label": "Puffing Billy Railway official",
+                "url": "https://puffingbillyrailway.org.au/"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Puffing Billy Belgrave to Lakeside",
+                "url": "https://puffingbillyrailway.org.au/experiences/excursion/belgrave-lakeside/"
               }
             ]
           }
         },
         {
-          "id": "2de2f57c-ec1b-80e6-affe-e1a59dbf6141",
-          "time": "下午",
-          "title": "塗鴉牆",
-          "type": "walk",
-          "location": "Hosier Lane",
-          "summary": "墨爾本經典街頭藝術停靠，適合拍照與接續市中心路線。",
-          "image": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hosier+Lane+Melbourne",
-          "notionUrl": "https://www.notion.so/2de2f57cec1b80e6affee1a59dbf6141",
-          "tags": ["Recommandation", "street-art"],
-          "attractionGuide": {
-            "intro": "Hosier Lane 是墨爾本最具代表性的街頭藝術巷弄之一。作品更新很快，重點是把它當成會變動的戶外畫廊，而不是固定展覽。",
-            "highlights": [
+          "id": "2dc2f57c-ec1b-80b2-b1de-c34b533f7f7e",
+          "time": "13:00",
+          "title": "Lakeside Visitor Centre 午餐",
+          "type": "food",
+          "location": "Lakeside Visitor Centre Railway Cafe",
+          "summary": "Notion 時段為 13:00 到 13:30。午餐安排在 Puffing Billy Lakeside Visitor Centre，適合利用蒸汽火車行程中段休息。",
+          "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lakeside+Visitor+Centre+Puffing+Billy+Railway+Cafe",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80b2b1dec34b533f7f7e",
+          "tags": ["Recommandation", "food", "railway"],
+          "restaurantGuide": {
+            "intro": "Lakeside Visitor Centre 的 Railway Cafe 位於 Emerald Lake Park 旁，官方說明有室內與戶外座位，菜單包含大人與兒童選項，也可搭配外帶咖啡或午餐。",
+            "menuLinks": [
               {
-                "name": "Hosier Lane murals",
-                "zhName": "Hosier Lane 壁畫",
-                "note": "主巷兩側密度最高，適合用廣角與局部細節各拍一輪。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Street_Art_in_Hosier_Lane_01.jpg"
-              },
-              {
-                "name": "Duckboard Place",
-                "zhName": "Duckboard Place",
-                "note": "若時間足夠，可從 Hosier Lane 延伸到附近巷弄看更多街頭藝術。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/1/16/Hosier_Lane_Street_Art.jpg"
-              },
-              {
-                "name": "Federation Square connection",
-                "zhName": "聯邦廣場動線",
-                "note": "位置靠近 Federation Square 與 Flinders Street，適合排在市區散步線上。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/Fed_Square%2C_Melbourne%2C_north_view_20230219_1.jpg"
+                "label": "Railway Cafe menu",
+                "url": "https://puffingbillyrailway.org.au/lakeside-visitor-centre/visitor-centre-dining/"
               }
             ],
-            "links": [
+            "recommendations": [
               {
-                "label": "Visit Victoria Hosier Lane",
-                "url": "https://www.visitmelbourne.com/regions/melbourne/see-and-do/art-and-culture/public-art/vv-hosier-lane"
+                "name": "Classic Beef Burger",
+                "zhName": "經典牛肉漢堡",
+                "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80",
+                "note": "官方頁面以 classic beef burger 作為菜單示例，適合午餐主餐。"
               },
               {
-                "label": "What's On Melbourne street art walk",
-                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/walks/street-art"
+                "name": "Classic Scones and Tea",
+                "zhName": "司康與茶",
+                "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
+                "note": "官方提供可預購的 scones and tea，適合想吃輕食與甜點的人。"
+              },
+              {
+                "name": "Grazing Box",
+                "zhName": "雙人分享拼盤",
+                "image": "https://images.unsplash.com/photo-1546039907-7fa05f864c02?auto=format&fit=crop&w=900&q=80",
+                "note": "若想坐在 Lakeside 周邊慢慢吃，可考慮官方可預購的 grazing box。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Puffing Billy Visitor Centre Dining",
+                "url": "https://puffingbillyrailway.org.au/lakeside-visitor-centre/visitor-centre-dining/"
               }
             ]
           }
         },
         {
-          "id": "2dd2f57c-ec1b-803c-8ac8-f2d711d0a333",
-          "time": "下午",
-          "title": "圖書館",
-          "type": "landmark",
-          "location": "State Library Victoria",
-          "summary": "安排圖書館作為室內景點與休息點，適合與市區散步串起來。",
-          "image": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=State+Library+Victoria",
-          "notionUrl": "https://www.notion.so/2dd2f57cec1b803c8ac8f2d711d0a333",
-          "tags": ["Recommandation", "library"],
-          "attractionGuide": {
-            "intro": "State Library Victoria 是墨爾本市中心最適合短停的室內地標之一。核心是 La Trobe Reading Room 的圓頂空間與上層視角。",
-            "highlights": [
-              {
-                "name": "La Trobe Reading Room",
-                "zhName": "拉籌伯閱覽室",
-                "note": "六層高的八角形閱覽室，是圖書館最具代表性的空間。",
-                "image": "https://www.slv.vic.gov.au/sites/default/files/styles/feature_full_width/public/venue_hire_latrobe_reading_room_man_reading.jpg"
-              },
-              {
-                "name": "Dome Gallery",
-                "zhName": "圓頂廊層",
-                "note": "若開放，可從高處看閱覽室全景，是最經典的拍照視角。",
-                "image": "https://www.slv.vic.gov.au/sites/default/files/styles/feature_full_width/public/wo_bigideas_dome.jpg"
-              },
-              {
-                "name": "Cowen Gallery",
-                "zhName": "Cowen Gallery",
-                "note": "適合在進出閱覽室時順路看展，讓停留不只是拍照。",
-                "image": "https://www.slv.vic.gov.au/sites/default/files/styles/feature_full_width/public/rotunda-exhibition.jpg"
-              }
-            ],
-            "links": [
-              {
-                "label": "La Trobe Reading Room",
-                "url": "https://www.slv.vic.gov.au/visit/our-magnificent-spaces/la-trobe-reading-room"
-              },
-              {
-                "label": "State Library Victoria",
-                "url": "https://www.slv.vic.gov.au/"
-              }
-            ]
-          }
+          "id": "3702f57c-ec1b-80a5-997f-d182e3587fff",
+          "time": "15:10",
+          "title": "搭火車回墨爾本市區",
+          "type": "transit",
+          "location": "Puffing Billy Lakeside / Belgrave → Max on Hardware",
+          "summary": "Notion 時段為 15:10 到 17:00。結束 Puffing Billy 行程後搭火車回墨爾本市區，晚餐銜接 Hardware Lane。",
+          "image": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Puffing+Billy+Railway+Belgrave&destination=Max+on+Hardware+Melbourne&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3702f57cec1b80a5997fd182e3587fff",
+          "tags": ["Recommandation", "moving", "train"]
         },
         {
-          "id": "2dd2f57c-ec1b-807a-9136-cea6cabc9fe6",
-          "time": "傍晚",
-          "title": "Shopping",
-          "type": "shopping",
-          "location": "Melbourne CBD",
-          "summary": "市區購物時間，適合安排伴手禮或彈性調整行程。",
-          "image": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=shopping+Melbourne+CBD",
-          "notionUrl": "https://www.notion.so/2dd2f57cec1b807a9136cea6cabc9fe6",
-          "tags": ["Recommandation", "shopping"],
-          "attractionGuide": {
-            "intro": "Melbourne CBD shopping 適合以 Bourke Street Mall 為核心，再依時間接 Emporium、Melbourne Central 或 Queen Victoria Market。重點是集中、好走、容易彈性收尾。",
-            "highlights": [
+          "id": "2dd2f57c-ec1b-803d-8d83-f673aeb3fd36",
+          "time": "18:00",
+          "title": "Max on Hardware 晚餐",
+          "type": "food",
+          "location": "Max on Hardware, Hardware Lane",
+          "summary": "Notion 時段為 18:00 到 19:00。回到墨爾本市區後安排 Hardware Lane 的 Max on Hardware 晚餐。",
+          "image": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Max+on+Hardware+54+58+Hardware+Lane+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b803d8d83f673aeb3fd36",
+          "tags": ["Recommandation", "food", "pizzeria"],
+          "restaurantGuide": {
+            "intro": "Max on Hardware 位於 Melbourne CBD 的 Hardware Lane，官方定位是 pizzeria bar restaurant，適合安排為火車回市區後的晚餐。",
+            "menuLinks": [
               {
-                "name": "Bourke Street Mall",
-                "zhName": "柏克街購物區",
-                "note": "市中心最直接的購物主軸，Myer、David Jones 與大型品牌集中。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Bourke_Street_Mall_2019-09-16.jpg"
-              },
-              {
-                "name": "Emporium Melbourne",
-                "zhName": "Emporium 購物中心",
-                "note": "品牌與餐飲選擇較集中，適合天氣不好或想快速補貨時使用。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Emporium_Melbourne_shopping_centre_01.jpg"
-              },
-              {
-                "name": "Melbourne Central",
-                "zhName": "Melbourne Central",
-                "note": "與車站、商場、餐飲動線整合，適合接在市區散步後。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Basement_Level_of_Melbourne_Central_Shopping_Centre%2C_Melbourne.jpg"
+                "label": "Max on Hardware menu",
+                "url": "https://www.maxonhardware.com.au/"
               }
             ],
-            "links": [
+            "recommendations": [
               {
-                "label": "Visit Victoria Bourke Street Mall",
-                "url": "https://www.visitmelbourne.com/Regions/Melbourne/Destinations/Bourke-Street-Mall"
+                "name": "Pizza",
+                "zhName": "披薩",
+                "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80",
+                "note": "餐廳官方定位包含 pizzeria，披薩適合多人分食。"
               },
               {
-                "label": "What's On Melbourne shopping centres",
-                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/melbourne-shopping-centres"
+                "name": "Pasta",
+                "zhName": "義大利麵",
+                "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=80",
+                "note": "若不想吃太重，可搭配披薩點義大利麵分食。"
+              },
+              {
+                "name": "Grilled mains",
+                "zhName": "烤肉類主餐",
+                "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80",
+                "note": "火車日回市區後若想吃正式晚餐，可選擇肉類主餐。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Max on Hardware official",
+                "url": "https://www.maxonhardware.com.au/"
               }
             ]
           }
@@ -1817,44 +2233,191 @@
     {
       "id": "day-8-melbourne-museum",
       "date": "2026-10-01",
-      "city": "Melbourne",
-      "title": "墨爾本博物館與甜點日",
-      "summary": "以早餐、可頌與墨爾本博物館串起一天，中間安排午餐、冰淇淋與晚餐。",
-      "coverImage": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1800&q=85",
+      "city": "Melbourne / Carlton / Fitzroy",
+      "title": "Monforte、Carlton Gardens、墨爾本博物館與 San Telmo",
+      "summary": "從 Docklands 搭電車到 Carlton North，先吃 Monforte Viennoiserie 可頌，再到 Good Measure 喝咖啡，接著 Carlton Gardens、Melbourne Museum、Mile End Bagels、Beku Gelato，晚上步行逛回 CBD 吃 San Telmo。",
+      "coverImage": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Royal_Exhibition_Building_and_Museum_2003-05-29.jpg",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Melbourne%20Museum&output=embed",
       "accent": "#b04d6b",
       "items": [
         {
-          "id": "2dc2f57c-ec1b-8002-9a12-e82711008009",
+          "id": "3712f57c-ec1b-800c-9b87-ea071a131152",
           "time": "08:00",
-          "title": "早餐",
-          "type": "food",
-          "location": "Melbourne",
-          "summary": "Notion 時段為 08:00 到 09:30，作為博物館日前的開始。",
-          "image": "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=breakfast+Melbourne",
-          "notionUrl": "https://www.notion.so/2dc2f57cec1b80029a12e82711008009",
-          "tags": ["Recommandation", "food"]
+          "title": "搭電車前往 Monforte Viennoiserie",
+          "type": "transit",
+          "location": "Melbourne Lifestyle Apartments → Monforte Viennoiserie",
+          "summary": "Notion 時段為 08:00 到 08:40。從 Docklands 住宿搭電車到 Carlton North，先前往 Monforte Viennoiserie 吃可頌早餐。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&destination=Monforte+Viennoiserie+Carlton+North&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3712f57cec1b800c9b87ea071a131152",
+          "tags": ["Recommandation", "moving", "tram"]
         },
         {
           "id": "2dd2f57c-ec1b-8086-8c90-edb0a97ad4f9",
-          "time": "上午",
-          "title": "可頌",
+          "time": "08:40",
+          "title": "Monforte Viennoiserie 可頌早餐",
           "type": "food",
-          "location": "Melbourne",
-          "summary": "早餐後加一個可頌停靠，適合安排咖啡與甜點。",
+          "location": "Monforte Viennoiserie, Carlton North",
+          "summary": "Notion 時段為 08:40 到 09:00。Monforte 主打小批量 viennoiserie，這段以可頌和甜點作為 Day 8 的早餐。",
           "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=croissant+Melbourne",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Monforte+Viennoiserie+585a+Canning+St+Carlton+North",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80868c90edb0a97ad4f9",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food", "bakery"],
+          "restaurantGuide": {
+            "intro": "Monforte Viennoiserie 是 Carlton North 的可頌與法式麵包甜點店。Notion 指定這裡作為早餐，建議以招牌可頌為主，不要排太長停留時間。",
+            "menuLinks": [
+              {
+                "label": "Monforte official",
+                "url": "https://monforte.com.au/"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Leatherwood Honey & Sea Salt Croissant",
+                "zhName": "皮革木蜂蜜海鹽可頌",
+                "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80",
+                "note": "Monforte 的 signature item 之一，適合當作優先品項。"
+              },
+              {
+                "name": "Classic Croissant",
+                "zhName": "經典可頌",
+                "image": "https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=900&q=80",
+                "note": "第一次去可先點基本款，確認奶油香氣與層次。"
+              },
+              {
+                "name": "Seasonal Viennoiserie",
+                "zhName": "季節限定法式甜點",
+                "image": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=900&q=80",
+                "note": "店家品項會變動，現場若有季節款可加點分食。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Monforte official",
+                "url": "https://monforte.com.au/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-804f-aeb2-d939c850298c",
+          "time": "09:00",
+          "title": "搭公車前往 Good Measure",
+          "type": "transit",
+          "location": "Monforte Viennoiserie → Good Measure",
+          "summary": "Notion 時段為 09:00 到 09:15。從 Monforte 移動到 Carlton 的 Good Measure，銜接咖啡休息。",
+          "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Monforte+Viennoiserie+Carlton+North&destination=Good+Measure+193+Lygon+St+Carlton&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3712f57cec1b804faeb2d939c850298c",
+          "tags": ["Recommandation", "moving", "bus"]
+        },
+        {
+          "id": "2dc2f57c-ec1b-8002-9a12-e82711008009",
+          "time": "09:15",
+          "title": "Good Measure 咖啡",
+          "type": "food",
+          "location": "Good Measure, Carlton",
+          "summary": "Notion 時段為 09:15 到 09:30。Good Measure 位於 Lygon Street，適合作為可頌後的咖啡停靠，重點可放在 Mont Blanc coffee。",
+          "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Good+Measure+193+Lygon+St+Carlton",
+          "notionUrl": "https://www.notion.so/2dc2f57cec1b80029a12e82711008009",
+          "tags": ["Recommandation", "food", "coffee"],
+          "restaurantGuide": {
+            "intro": "Good Measure 是 Carlton 的 cafe / bar，特色是帶日本風格的咖啡與輕食。官方與 Melbourne 城市介紹都提到它的 Mont Blanc coffee，是這站最值得點的品項。",
+            "menuLinks": [
+              {
+                "label": "Good Measure listing",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/good-measure"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Mont Blanc Coffee",
+                "zhName": "蒙布朗咖啡",
+                "image": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=80",
+                "note": "Good Measure 的代表性咖啡品項，適合當作這站主角。"
+              },
+              {
+                "name": "Batch Brew or Cold Filter",
+                "zhName": "批次手沖或冷萃濾泡咖啡",
+                "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=900&q=80",
+                "note": "想要清爽一點可選濾泡類，後面還有博物館與步行行程。"
+              },
+              {
+                "name": "Ramen Egg Salad Sandwich",
+                "zhName": "拉麵蛋沙拉三明治",
+                "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+                "note": "What’s On Melbourne 提到的 original sandwich，可作為分食輕食。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "What's On Melbourne Good Measure",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/good-measure"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-80c4-9e1c-e0dc548c8024",
+          "time": "09:30",
+          "title": "步行前往 Carlton Gardens",
+          "type": "walk",
+          "location": "Good Measure → Carlton Gardens",
+          "summary": "Notion 時段為 09:30 到 09:40。從 Good Measure 步行到 Carlton Gardens，作為博物館前的戶外緩衝。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Good+Measure+193+Lygon+St+Carlton&destination=Carlton+Gardens+Melbourne&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3712f57cec1b80c49e1ce0dc548c8024",
+          "tags": ["Recommandation", "moving", "walk"]
+        },
+        {
+          "id": "3712f57c-ec1b-801f-b4ea-cc4e5a5a3811",
+          "time": "09:40",
+          "title": "Carlton Gardens 野餐與散步",
+          "type": "landmark",
+          "location": "Carlton Gardens",
+          "summary": "Notion 時段為 09:40 到 10:00。用短時間在 Carlton Gardens 散步或野餐，接著進 Melbourne Museum。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Royal_Exhibition_Building_and_Carlton_Gardens.jpg/1280px-Royal_Exhibition_Building_and_Carlton_Gardens.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Carlton+Gardens+Melbourne",
+          "notionUrl": "https://www.notion.so/3712f57cec1b801fb4eacc4e5a5a3811",
+          "tags": ["Recommandation", "garden", "attraction"],
+          "attractionGuide": {
+            "intro": "Carlton Gardens 位在 Royal Exhibition Building 與 Melbourne Museum 周邊，適合作為博物館前的戶外休息點。這段時間不長，重點放在花園軸線、噴泉與建築外觀即可。",
+            "highlights": [
+              {
+                "name": "Royal Exhibition Building View",
+                "zhName": "皇家展覽館外觀",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Royal_Exhibition_Building_and_Carlton_Gardens.jpg/1280px-Royal_Exhibition_Building_and_Carlton_Gardens.jpg",
+                "note": "Carlton Gardens 最經典的視角，適合在進博物館前快速拍照。"
+              },
+              {
+                "name": "Hochgurtel Fountain",
+                "zhName": "Hochgurtel 噴泉",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Carlton_Gardens_fountain.jpg/1280px-Carlton_Gardens_fountain.jpg",
+                "note": "位在展覽館前方的地標噴泉，可順路停留。"
+              },
+              {
+                "name": "Garden Lawns",
+                "zhName": "花園草地",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/4/42/AUS_Melbourne%2C_Melbourne%2C_Carlton_Gardens_005.jpg",
+                "note": "如果天氣好，可用 10 到 20 分鐘坐下休息或吃簡單點心。"
+              }
+            ],
+            "links": [
+              {
+                "label": "Carlton Gardens",
+                "url": "https://www.melbourne.vic.gov.au/carlton-gardens"
+              }
+            ]
+          }
         },
         {
           "id": "2dd2f57c-ec1b-806d-8bb8-d0ebe6fc5354",
-          "time": "上午",
-          "title": "墨爾本博物館",
+          "time": "10:00",
+          "title": "Melbourne Museum",
           "type": "museum",
           "location": "Melbourne Museum",
-          "summary": "室內展館行程，適合天氣不穩或需要降低步行強度的一天。",
+          "summary": "Notion 時段為 10:00 到 12:00。室內展館行程，重點放在自然史、墨爾本城市故事、First Peoples 展區，以及旁邊的 Royal Exhibition Building 外觀。",
           "image": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Museum",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b806d8bb8d0ebe6fc5354",
@@ -1894,40 +2457,193 @@
           }
         },
         {
+          "id": "3712f57c-ec1b-8050-a760-d0d1bdc234e1",
+          "time": "12:00",
+          "title": "步行前往 Mile End Bagels",
+          "type": "walk",
+          "location": "Melbourne Museum → Mile End Bagels",
+          "summary": "Notion 時段為 12:00 到 12:10。從 Melbourne Museum 步行到 Fitzroy 的 Mile End Bagels 午餐。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Melbourne+Museum&destination=Mile+End+Bagels+14+Johnston+St+Fitzroy&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3712f57cec1b8050a760d0d1bdc234e1",
+          "tags": ["Recommandation", "moving", "walk"]
+        },
+        {
           "id": "2de2f57c-ec1b-801d-a2ce-f9fc0b1db6bd",
-          "time": "午餐",
-          "title": "午餐",
+          "time": "12:10",
+          "title": "Mile End Bagels 午餐",
           "type": "food",
-          "location": "Melbourne",
-          "summary": "博物館日前後安排午餐，依實際路線調整餐廳。",
-          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=lunch+Melbourne+Museum",
+          "location": "Mile End Bagels, Fitzroy",
+          "summary": "Notion 時段為 12:10 到 13:00。午餐安排在 Fitzroy 的 Mile End Bagels，適合接在 Melbourne Museum 後步行前往。",
+          "image": "https://cdn.sanity.io/images/k6tib1ee/production/1bf8fd7b4988f3e7d7e68a04c5889973f0e0cc5d-2590x2590.jpg?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/place/Mile+End+Bagels/@-37.7981013,144.9729172,17z/data=!4m7!3m6!1s0x6ad642d882561f35:0x68ab3a9b6b5a1a40!8m2!3d-37.7981056!4d144.9754921!10e9!16s%2Fg%2F11ckr5nm9z?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D",
           "notionUrl": "https://www.notion.so/2de2f57cec1b801da2cef9fc0b1db6bd",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food", "bagel"],
+          "restaurantGuide": {
+            "intro": "Mile End Bagels Fitzroy 以 wood-fired bagels 為主，官方列出 Fitzroy 店址為 14-16 Johnston Street。適合在博物館後吃較紮實但不會太正式的午餐。",
+            "menuLinks": [
+              {
+                "label": "Mile End Bagels official",
+                "url": "https://mile-end.com.au/"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Smoked salmon, dill & caper cream cheese, tomato & onion",
+                "zhName": "煙燻鮭魚、蒔蘿酸豆奶油起司、番茄與洋蔥貝果",
+                "image": "https://cdn.sanity.io/images/k6tib1ee/production/1bf8fd7b4988f3e7d7e68a04c5889973f0e0cc5d-2590x2590.jpg?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 品項，適合想吃經典煙燻鮭魚組合的人。"
+              },
+              {
+                "name": "Cream cheese",
+                "zhName": "奶油起司貝果",
+                "image": "https://cdn.sanity.io/images/k6tib1ee/production/acf5bf80771d45227e7e598643011a0e2dfa2776-2534x2534.jpg?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 的基本款，可選 plain、dill & caper、chive、cashew 或 matcha。"
+              },
+              {
+                "name": "Brisket pastrami, hot 'n' sweet mustard, cream cheese & pickles",
+                "zhName": "牛胸肉燻牛肉、甜辣芥末、奶油起司與酸黃瓜貝果",
+                "image": "https://cdn.sanity.io/images/k6tib1ee/production/5b8ec49bbdcb92ad19979c573bfcd525e57c81d6-2588x2588.jpg?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 品項，想吃比較飽或偏鹹食可優先考慮。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Mile End Bagels official",
+                "url": "https://mile-end.com.au/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-8013-b7c1-fedebadae31d",
+          "time": "16:00",
+          "title": "步行前往 Beku Gelato",
+          "type": "walk",
+          "location": "Melbourne Museum → Beku Gelato Carlton",
+          "summary": "Notion 時段為 16:00 到 16:10。從博物館區域步行到 Lygon Street 的 Beku Gelato，作為下午甜點停靠。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Melbourne+Museum&destination=Beku+Gelato+Carlton&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3712f57cec1b8013b7c1fedebadae31d",
+          "tags": ["Recommandation", "moving", "walk"]
         },
         {
           "id": "2dd2f57c-ec1b-80d9-b7e2-de94c8b3bef3",
-          "time": "下午",
-          "title": "冰淇淋",
+          "time": "16:10",
+          "title": "Bekù Gelato Carlton",
           "type": "food",
-          "location": "Melbourne",
-          "summary": "下午甜點停靠，讓城市日多一個輕鬆休息點。",
+          "location": "Bekù Gelato, Carlton",
+          "summary": "Notion 時段為 16:10 到 16:20。Bekù Gelato 主打東南亞風味與義式 gelato 技法，適合在博物館後補一個輕甜點。",
           "image": "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=ice+cream+Melbourne",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Beku+Gelato+150+Lygon+St+Carlton",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80d9b7e2de94c8b3bef3",
-          "tags": ["Recommandation", "dessert"]
+          "tags": ["Recommandation", "food", "dessert"],
+          "restaurantGuide": {
+            "intro": "Bekù Gelato Carlton 把義式 gelato 技法和東南亞風味結合，官方列出的 signature flavours 包含 Ube、Matcha、Durian、Teh Tarik、Cendol、Calamansi 等。",
+            "menuLinks": [
+              {
+                "label": "Bekù Gelato official",
+                "url": "https://www.beku.com.au/"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Ube",
+                "zhName": "紫薯",
+                "image": "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 signature flavour，顏色與風味都明顯，適合第一次點。"
+              },
+              {
+                "name": "Teh Tarik",
+                "zhName": "拉茶",
+                "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80",
+                "note": "東南亞奶茶風味，適合想點非水果類的人。"
+              },
+              {
+                "name": "Cendol or Calamansi",
+                "zhName": "煎蕊或酸柑",
+                "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
+                "note": "想要更有東南亞特色可選 Cendol；想清爽可看 Calamansi。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Bekù Gelato official",
+                "url": "https://www.beku.com.au/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-8072-a611-e8bb250f4365",
+          "time": "16:20",
+          "title": "步行逛街前往 San Telmo",
+          "type": "walk",
+          "location": "Bekù Gelato Carlton → San Telmo",
+          "summary": "Notion 時段為 16:20 到 17:30。從 Carlton 往 CBD 的 San Telmo 步行移動，可沿途逛街與彈性停留。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Beku+Gelato+Carlton&destination=San+Telmo+14+Meyers+Pl+Melbourne&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3712f57cec1b8072a611e8bb250f4365",
+          "tags": ["Recommandation", "moving", "walk", "shopping"]
         },
         {
           "id": "2dd2f57c-ec1b-8055-8afe-ff016a00d232",
-          "time": "晚上",
-          "title": "晚餐",
+          "time": "17:30",
+          "title": "San Telmo 晚餐",
           "type": "food",
-          "location": "Melbourne",
-          "summary": "Day 8 晚餐保留在墨爾本市區，依當天博物館與甜點路線安排。",
-          "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=dinner+Melbourne+CBD",
+          "location": "San Telmo, Melbourne CBD",
+          "summary": "Notion 時段為 17:30 到 19:30。San Telmo 是阿根廷風格餐廳，適合以共享菜、empanadas、parrilla 烤肉與牛排作為 Day 8 晚餐。",
+          "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San+Telmo+14+Meyers+Pl+Melbourne",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80558afeff016a00d232",
-          "tags": ["Recommandation", "food"]
+          "tags": ["Recommandation", "food", "steakhouse"],
+          "restaurantGuide": {
+            "intro": "San Telmo 是 Melbourne CBD 的 Argentine restaurant，菜單以 sharing style、empanadas、chorizo、morcilla、premium steak 與 parrilla charcoal grill 為核心。",
+            "menuLinks": [
+              {
+                "label": "San Telmo menu",
+                "url": "https://san-telmo-melbourne.squarespace.com/menu"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Beef Empanada",
+                "zhName": "阿根廷牛肉餡餅",
+                "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80",
+                "note": "適合先點來分食，是阿根廷餐廳常見開場小點。"
+              },
+              {
+                "name": "Premium Steak from the Parrilla",
+                "zhName": "炭烤牛排",
+                "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80",
+                "note": "官方菜單核心是 charcoal grill，想吃正式晚餐可把牛排作主菜。"
+              },
+              {
+                "name": "Dulce de Leche Flan or Alfajores",
+                "zhName": "牛奶焦糖布丁或夾心餅",
+                "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
+                "note": "官方介紹提到 dulce de leche 甜點，是晚餐收尾選項。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "San Telmo menu",
+                "url": "https://san-telmo-melbourne.squarespace.com/menu"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-801a-80af-cfc56cfa20b8",
+          "time": "19:30",
+          "title": "搭電車返回飯店",
+          "type": "transit",
+          "location": "San Telmo → Melbourne Lifestyle Apartments",
+          "summary": "Notion 時段為 19:30 到 20:00。晚餐後從 CBD 搭電車回 Docklands 住宿。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=San+Telmo+14+Meyers+Pl+Melbourne&destination=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3712f57cec1b801a80afcfc56cfa20b8",
+          "tags": ["Recommandation", "moving", "tram"]
         }
       ]
     },
@@ -1935,170 +2651,525 @@
       "id": "day-9-melbourne-return",
       "date": "2026-10-02",
       "city": "Melbourne / Taipei",
-      "title": "維多利亞市場、最後景點與回國",
-      "summary": "最後一天從維多利亞市場早餐開始，依時間選博物館或植物園，傍晚前往機場回國。",
-      "coverImage": "https://images.unsplash.com/photo-1545048702-79362596cdc9?auto=format&fit=crop&w=1800&q=85",
-      "mapsEmbedUrl": "https://www.google.com/maps?q=Queen%20Victoria%20Market%20Melbourne&output=embed",
+      "title": "墨爾本市區散步、最後採買與回國",
+      "summary": "最後一天退房寄放行李後，從 Carlton 的 Seven Seeds 開始，串起墨爾本大學、Queen Victoria Market、Flagstaff Gardens、Chin Chin、Kumo Desserts、State Library Victoria 與最後採買，晚上取行李後搭 SkyBus 前往機場回國。",
+      "coverImage": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=State%20Library%20Victoria%20Melbourne&output=embed",
       "accent": "#4b7f9f",
       "items": [
         {
           "id": "3102f57c-ec1b-80db-8ff0-fa796f83553f",
-          "time": "上午",
-          "title": "Check-Out",
+          "time": "10:00",
+          "title": "Check-Out 並寄放行李",
           "type": "hotel",
-          "location": "Melbourne",
-          "summary": "退房後將行李寄放飯店，保留最後一天市區行程的機動性。",
+          "location": "Melbourne Lifestyle Apartments",
+          "summary": "Notion 時段為 10:00 到 10:30。退房後先把行李寄放在住宿處，讓最後一天能輕裝走市區行程。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+hotel+checkout",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins",
           "notionUrl": "https://www.notion.so/3102f57cec1b80db8ff0fa796f83553f",
           "tags": ["Recommandation", "hotel"]
         },
         {
-          "id": "2dd2f57c-ec1b-8012-ac9b-e726eaebf123",
-          "time": "早餐",
-          "title": "早餐 - 維多利雅市場",
+          "id": "3712f57c-ec1b-8083-87a5-d929233b75ab",
+          "time": "10:30",
+          "title": "搭電車前往 Seven Seeds",
+          "type": "transit",
+          "location": "Melbourne Lifestyle Apartments → Seven Seeds Coffee Roasters",
+          "summary": "Notion 時段為 10:30 到 11:00。從 Docklands 搭電車到 Carlton，前往 Seven Seeds 吃早餐。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&destination=Seven+Seeds+Coffee+Roasters+Carlton&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3712f57cec1b808387a5d929233b75ab",
+          "tags": ["Recommandation", "moving", "tram"]
+        },
+        {
+          "id": "3712f57c-ec1b-8098-af4b-d27219ea6b59",
+          "time": "11:00",
+          "title": "Seven Seeds 早餐",
           "type": "food",
+          "location": "Seven Seeds Coffee Roasters, Carlton",
+          "summary": "Notion 時段為 11:00 到 12:00。以 Carlton 的 Seven Seeds 作為最後一天早餐與咖啡起點，再步行前往墨爾本大學。",
+          "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Seven+Seeds+Coffee+Roasters+114+Berkeley+St+Carlton",
+          "notionUrl": "https://www.notion.so/3712f57cec1b8098af4bd27219ea6b59",
+          "tags": ["Recommandation", "food", "coffee"],
+          "restaurantGuide": {
+            "intro": "Seven Seeds Carlton 是墨爾本知名 specialty coffee roaster / cafe，本段重點放在早餐、咖啡與後續步行到墨爾本大學的節奏。",
+            "menuLinks": [
+              {
+                "label": "Seven Seeds Carlton",
+                "url": "https://sevenseeds.com.au/pages/seven-seeds-carlton"
+              },
+              {
+                "label": "Seven Seeds menu",
+                "url": "https://cdn.shopify.com/s/files/1/0168/5442/files/MENU_TEMPLATE_Autumn_2026_1_-3_3.pdf?v=1772656312"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "House coffee",
+                "zhName": "店內咖啡",
+                "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
+                "note": "以咖啡烘焙起家的店，早餐建議先點一杯咖啡作為主軸。"
+              },
+              {
+                "name": "Seasonal breakfast plate",
+                "zhName": "季節早餐盤",
+                "note": "依到訪時段的官方菜單選熱食，適合支撐後面市區步行。"
+              },
+              {
+                "name": "Pastry or toast",
+                "zhName": "甜點或吐司類早餐",
+                "note": "若不想吃太飽，可選較輕量的麵包、吐司或甜點搭咖啡。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Seven Seeds Carlton",
+                "url": "https://sevenseeds.com.au/pages/seven-seeds-carlton"
+              },
+              {
+                "label": "What's On Melbourne",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/seven-seeds-coffee-roasters"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-8099-a02f-d7b214cacf34",
+          "time": "12:00",
+          "title": "步行前往墨爾本大學",
+          "type": "walk",
+          "location": "Seven Seeds Coffee Roasters → University of Melbourne",
+          "summary": "Notion 時段為 12:00 到 12:10。從 Seven Seeds 步行到 University of Melbourne 校園。",
+          "image": "https://images.unsplash.com/photo-1475727946784-2890c8fdb9c8?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Seven+Seeds+Coffee+Roasters,+114+Berkeley+St,+Carlton+VIC+3053%E6%BE%B3%E6%B4%B2/%E5%A2%A8%E7%88%BE%E6%9C%AC%E5%A4%A7%E5%AD%B8+3010%E6%BE%B3%E6%B4%B2+Victoria,+Parkville/@-37.8006585,144.9572041,17z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x6ad65d329277dcbd:0x5a84ac1c84d8781e!2m2!1d144.9590027!2d-37.8029711!1m5!1m1!1s0x6ad642d45c07254b:0xeacb63e2b725ff6d!2m2!1d144.960974!2d-37.7983459!2m3!6e0!7e2!8j1780302600!3e3",
+          "notionUrl": "https://www.notion.so/3712f57cec1b8099a02fd7b214cacf34",
+          "tags": ["Recommandation", "moving", "walk"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-80c6-8792-fe7a7afba2f4",
+          "time": "12:10",
+          "title": "墨爾本大學校園散步",
+          "type": "landmark",
+          "location": "University of Melbourne",
+          "summary": "Notion 時段為 12:10 到 12:30。短時間走 University of Melbourne 的校園重點，適合看 Old Quad、主要草坪與歷史建築氛圍。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Old_Quad_lawn_University_of_Melbourne_2018.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=University+of+Melbourne+Parkville",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b80c68792fe7a7afba2f4",
+          "tags": ["Recommandation", "attraction", "campus"],
+          "attractionGuide": {
+            "intro": "University of Melbourne Parkville campus 適合安排成 20 分鐘左右的校園散步。重點放在 Old Quad、Old Quad lawn 與校園歷史建築廊道。",
+            "highlights": [
+              {
+                "name": "Old Quad",
+                "zhName": "Old Quad 古典校園建築",
+                "note": "墨爾本大學最具代表性的歷史校園空間之一，適合快速拍照與感受校園氛圍。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Old_Quad_colonnade_University_of_Melbourne_2018.jpg"
+              },
+              {
+                "name": "Old Quad Lawn",
+                "zhName": "Old Quad 草坪",
+                "note": "短暫停留時最容易掌握的開闊視角，可接在建築廊道後看。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Old_Quad_lawn_University_of_Melbourne_2018.jpg"
+              },
+              {
+                "name": "Southern Colonnade",
+                "zhName": "南側拱廊",
+                "note": "保留校園古典建築感的走廊視角，適合拍建築線條。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Southern_colonnade_Old_Quad_University_of_Melbourne_2018.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "University of Melbourne",
+                "url": "https://www.unimelb.edu.au/"
+              },
+              {
+                "label": "Wikimedia Commons Old Quad",
+                "url": "https://commons.wikimedia.org/wiki/File:Old_Quad_lawn_University_of_Melbourne_2018.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3712f57c-ec1b-803f-afa2-e6a01506b730",
+          "time": "12:30",
+          "title": "步行前往 Queen Victoria Market",
+          "type": "walk",
+          "location": "University of Melbourne → Queen Victoria Market",
+          "summary": "Notion 時段為 12:30 到 12:40。從墨爾本大學步行到 Queen Victoria Market。",
+          "image": "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E5%A2%A8%E7%88%BE%E6%9C%AC%E5%A4%A7%E5%AD%B8+3010%E6%BE%B3%E6%B4%B2+Victoria,+Parkville/%E7%B6%AD%E5%A4%9A%E5%88%A9%E4%BA%9E%E5%B8%82%E5%A0%B4+3000%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne,+Queen+St/@-37.8029627,144.9534048,16z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x6ad642d45c07254b:0xeacb63e2b725ff6d!2m2!1d144.960974!2d-37.7983459!1m5!1m1!1s0x6ad65d34379057b1:0xf0456760532d450!2m2!1d144.956785!2d-37.8075798!2m3!6e0!7e2!8j1780302600!3e2",
+          "notionUrl": "https://www.notion.so/3712f57cec1b803fafa2e6a01506b730",
+          "tags": ["Recommandation", "moving", "walk"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-8012-ac9b-e726eaebf123",
+          "time": "12:40",
+          "title": "Queen Victoria Market 採買",
+          "type": "shopping",
           "location": "Queen Victoria Market",
-          "summary": "最後一天早餐安排維多利亞市場，順路採買或吃點輕食。",
-          "image": "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=1200&q=80",
+          "summary": "Notion 時段為 12:40 到 13:30。把 Queen Victoria Market 作為最後一天市區採買點，可看熟食、伴手禮與市場建築。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1535.jpg/1280px-Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1535.jpg",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Queen+Victoria+Market+Melbourne",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b8012ac9be726eaebf123",
-          "tags": ["Recommandation", "market"]
-        },
-        {
-          "id": "2e62f57c-ec1b-80d6-a37d-c04cc9dc8805",
-          "time": "上午",
-          "title": "墨爾本海洋館",
-          "type": "museum",
-          "location": "SEA LIFE Melbourne Aquarium",
-          "summary": "最後一天可選的室內景點，適合接在市場後並控制回機場前的時間。",
-          "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Melbourne+Aquarium",
-          "notionUrl": "https://www.notion.so/2e62f57cec1b80d6a37dc04cc9dc8805",
-          "tags": ["Recommandation", "aquarium"],
+          "tags": ["Recommandation", "attraction", "shopping"],
           "attractionGuide": {
-            "intro": "SEA LIFE Melbourne Aquarium 位在市中心河邊，適合當作回國日前的室內景點。重點可放在 Penguin Playground、Ocean Invaders 與大型海洋生物展區。",
+            "intro": "Queen Victoria Market 是墨爾本市中心代表性市場，這段建議以短時間採買與快速逛重點為主。",
             "highlights": [
               {
-                "name": "Penguin Playground",
-                "zhName": "企鵝遊樂區",
-                "note": "能看到 King 與 Gentoo penguins，是館內最受歡迎的段落之一。",
-                "image": "https://www.visitsealife.com/melbourne/media/ylbb2smm/slma_gentoo-penguins.jpg"
+                "name": "Market Sheds",
+                "zhName": "市場棚架區",
+                "note": "最能感受到傳統市場節奏的區域，適合快速逛伴手禮與小物。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1535.jpg/1280px-Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1535.jpg"
               },
               {
-                "name": "Ocean Invaders",
-                "zhName": "水母展區",
-                "note": "互動式水母展區，視覺效果強，適合拍照與慢慢看。",
-                "image": "https://www.visitsealife.com/melbourne/media/e03khujf/ocean_invaders_2.jpg"
+                "name": "Fresh Produce Area",
+                "zhName": "生鮮與食材區",
+                "note": "若想看市場日常，可優先走蔬果、生鮮與熟食周邊。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/2/22/Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1543.jpg"
               },
               {
-                "name": "Sharks and Oceanarium",
-                "zhName": "鯊魚與大型水槽",
-                "note": "適合安排在中段或結尾，保留較多時間觀察大型魚類與水下視角。",
-                "image": "https://www.visitsealife.com/melbourne/media/fgvjznon/5-shipwreck-explorer.jpg"
+                "name": "Market Facade",
+                "zhName": "市場外觀",
+                "note": "離開前可在市場外側快速拍照，再步行往 Flagstaff Gardens。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1542.jpg"
               }
             ],
             "links": [
               {
-                "label": "SEA LIFE Melbourne what's inside",
-                "url": "https://www.visitsealife.com/melbourne/whats-inside/"
+                "label": "Queen Victoria Market",
+                "url": "https://qvm.com.au/"
               },
               {
-                "label": "SEA LIFE Melbourne exhibits",
-                "url": "https://www.visitsealife.com/melbourne/whats-inside/exhibits/"
+                "label": "Wikimedia Commons Queen Victoria Market",
+                "url": "https://commons.wikimedia.org/wiki/File:Melbourne_(AU),_Queen_Victoria_Market_--_2019_--_1535.jpg"
               }
             ]
           }
         },
         {
-          "id": "2e62f57c-ec1b-8017-9a7c-ee34830511c4",
-          "time": "下午",
-          "title": "戰爭博物館",
-          "type": "museum",
-          "location": "Shrine of Remembrance",
-          "summary": "Notion 安排的最後一天景點之一，可依時間在海洋館與植物園之間取捨。",
-          "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance+Melbourne",
-          "notionUrl": "https://www.notion.so/2e62f57cec1b80179a7cee34830511c4",
-          "tags": ["Recommandation", "museum"],
-          "attractionGuide": {
-            "intro": "Shrine of Remembrance 是墨爾本重要的紀念建築與博物館。建議從外部軸線、Sanctuary、Galleries 到 balcony 視角依序參觀。",
-            "highlights": [
-              {
-                "name": "Sanctuary",
-                "zhName": "聖殿空間",
-                "note": "建築核心空間，氛圍莊重，適合安靜參觀。",
-                "image": "https://www.shrine.org.au/sites/default/files/2020-06/shrine-sanctuary_0.jpg"
-              },
-              {
-                "name": "Galleries of Remembrance",
-                "zhName": "紀念展廳",
-                "note": "地下展廳能補足澳洲戰爭與紀念文化的歷史脈絡。",
-                "image": "https://www.shrine.org.au/sites/default/files/2020-06/shrine-galleries.jpg"
-              },
-              {
-                "name": "Balcony",
-                "zhName": "觀景陽台",
-                "note": "可看 Shrine Reserve 與 Melbourne city view，是參觀後段的重點。",
-                "image": "https://www.shrine.org.au/sites/default/files/2021-10/RemembranceDay2018_0048%20%281%29%20copy%201.jpg"
-              }
-            ],
-            "links": [
-              {
-                "label": "Shrine highlights",
-                "url": "https://www.shrine.org.au/shrine-highlights"
-              },
-              {
-                "label": "Shrine of Remembrance",
-                "url": "https://www.shrine.org.au/"
-              }
-            ]
-          }
-        },
-        {
-          "id": "2e62f57c-ec1b-8025-ba6e-feb4dd3559d9",
-          "time": "下午",
-          "title": "墨爾本皇家植物園",
+          "id": "3712f57c-ec1b-8045-9d9b-e9f926fe9996",
+          "time": "13:30",
+          "title": "步行前往 Flagstaff Gardens",
           "type": "walk",
-          "location": "Royal Botanic Gardens Victoria",
-          "summary": "若天氣好，植物園是回國前比較放鬆的戶外選項。",
-          "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Victoria+Melbourne",
-          "notionUrl": "https://www.notion.so/2e62f57cec1b8025ba6efeb4dd3559d9",
-          "tags": ["Recommandation", "garden", "optional"],
+          "location": "Queen Victoria Market → Flagstaff Gardens",
+          "summary": "Notion 時段為 13:30 到 13:35。從市場步行到 Flagstaff Gardens。",
+          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E7%B6%AD%E5%A4%9A%E5%88%A9%E4%BA%9E%E5%B8%82%E5%A0%B4+3000%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne,+Queen+St/%E6%97%97%E6%A1%BF%E8%8A%B1%E5%9C%92+3003%E6%BE%B3%E6%B4%B2+Victoria,+West+Melbourne,+William+St/@-37.8090687,144.9543693,18z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x6ad65d34379057b1:0xf0456760532d450!2m2!1d144.956785!2d-37.8075798!1m5!1m1!1s0x6ad65d49e9ed019d:0xf04567605318580!2m2!1d144.9545199!2d-37.8105577!2m3!6e0!7e2!8j1780302600!3e2",
+          "notionUrl": "https://www.notion.so/3712f57cec1b80459d9be9f926fe9996",
+          "tags": ["Recommandation", "moving", "walk"]
+        },
+        {
+          "id": "30f2f57c-ec1b-8074-8f51-d9bfa9ec2d18",
+          "time": "13:35",
+          "title": "Flagstaff Gardens 散步",
+          "type": "walk",
+          "location": "Flagstaff Gardens",
+          "summary": "Notion 時段為 13:35 到 14:00。短暫在 Flagstaff Gardens 放鬆散步，作為市場與 CBD 午餐之間的緩衝。",
+          "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6IjY5ZjMzZmJlLTdhNTItNDhjYy1hNWRiLWVhMDEzZjBlNDEyZiIsInB1ciI6ImJsb2JfaWQifX0=--91dd8e016e2a1f94c6c33175c95227b1d1254cba/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/Flagstaff-Gardens.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Flagstaff+Gardens+Melbourne",
+          "notionUrl": "https://www.notion.so/30f2f57cec1b80748f51d9bfa9ec2d18",
+          "tags": ["Recommandation", "attraction", "park"],
           "attractionGuide": {
-            "intro": "Royal Botanic Gardens Victoria 的 Melbourne Gardens 適合安排成回國前放鬆散步。建議抓 Guilfoyle's Volcano、湖邊與 Fern Gully 幾個方向，不需要走完整座園區。",
+            "intro": "Flagstaff Gardens 是 Melbourne CBD 北側的老公園，適合作為最後一天中段的短暫休息點。",
             "highlights": [
               {
-                "name": "Guilfoyle's Volcano",
-                "zhName": "Guilfoyle 火山花園",
-                "note": "位在園區高點，有耐旱植物景觀與 Melbourne CBD 視角。",
-                "image": "https://cdn.rbg.vic.gov.au/media/fzmm5ocd/guilfoyle-s-volcano.jpg"
+                "name": "Garden Lawns",
+                "zhName": "草地與林蔭",
+                "note": "短時間停留可在草地與樹蔭附近休息，補一點體力。",
+                "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6IjY5ZjMzZmJlLTdhNTItNDhjYy1hNWRiLWVhMDEzZjBlNDEyZiIsInB1ciI6ImJsb2JfaWQifX0=--91dd8e016e2a1f94c6c33175c95227b1d1254cba/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/Flagstaff-Gardens.jpg"
               },
               {
-                "name": "Ornamental Lake",
-                "zhName": "景觀湖",
-                "note": "最容易串成放鬆散步的中心區域，適合拍水景與草地。",
-                "image": "https://cdn.rbg.vic.gov.au/media/j15lgcga/punting-on-the-lake-atdw1.jpg"
+                "name": "William Street Edge",
+                "zhName": "William Street 公園邊界",
+                "note": "從市場走過來會接近這一側，動線最自然。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Flagstaff_Gardens_sign_on_William_Street%2C_Melbourne.jpg"
               },
               {
-                "name": "Fern Gully",
-                "zhName": "蕨類谷",
-                "note": "比開闊草坪更有林蔭感，天氣熱時適合當作避暑步道。",
-                "image": "https://cdn.rbg.vic.gov.au/media/t3ibfwrh/rbg-melbourne-ferng-1.jpg"
+                "name": "Garden Paths",
+                "zhName": "公園步道",
+                "note": "不需要完整繞園，沿主要步道走到下一段 CBD 方向即可。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Path_in_Flagstaff_Gardens_looking_south_near_King_Street%2C_Melbourne.jpg"
               }
             ],
             "links": [
               {
-                "label": "Royal Botanic Gardens Victoria",
-                "url": "https://www.rbg.vic.gov.au/melbourne-gardens/"
-              },
-              {
-                "label": "Guilfoyle's Volcano",
-                "url": "https://rbg.vic.gov.au/melbourne-gardens/discover-melbourne-gardens/melbourne-gardens-living-collections/guilfoyles-volcano/"
+                "label": "What's On Melbourne Flagstaff Gardens",
+                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/flagstaff-gardens"
               }
             ]
           }
+        },
+        {
+          "id": "3722f57c-ec1b-80dd-b632-e62042a01cbe",
+          "time": "14:00",
+          "title": "沿途逛街步行前往 Chin Chin",
+          "type": "walk",
+          "location": "Flagstaff Gardens → Chin Chin",
+          "summary": "Notion 時段為 14:00 到 15:00。從 Flagstaff Gardens 往 Flinders Lane 方向步行，途中可順路逛 CBD。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/%E6%97%97%E6%A1%BF%E8%8A%B1%E5%9C%92+3003%E6%BE%B3%E6%B4%B2+Victoria,+West+Melbourne,+William+St/Chin+Chin,+125+Flinders+Ln,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/@-37.8127437,144.9568922,15.67z/data=!4m14!4m13!1m5!1m1!1s0x6ad65d49e9ed019d:0xf04567605318580!2m2!1d144.9545199!2d-37.8105577!1m5!1m1!1s0x6ad642b7c4d2fdff:0x12d60c9c7ec005bd!2m2!1d144.9703757!2d-37.8156149!3e2",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80ddb632e62042a01cbe",
+          "tags": ["Recommandation", "moving", "walk", "shopping"]
+        },
+        {
+          "id": "2e42f57c-ec1b-8074-8898-cdc03416938f",
+          "time": "15:00",
+          "title": "Chin Chin 午餐",
+          "type": "food",
+          "location": "Chin Chin Melbourne",
+          "summary": "Notion 時段為 15:00 到 16:00。午餐安排在 Flinders Lane 的 Chin Chin，建議抓分享式菜色，避免吃太重影響後面甜點與機場節奏。",
+          "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Banquet-90-1360x910.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chin+Chin+125+Flinders+Lane+Melbourne",
+          "notionUrl": "https://www.notion.so/2e42f57cec1b80748898cdc03416938f",
+          "tags": ["Recommandation", "food"],
+          "restaurantGuide": {
+            "intro": "Chin Chin Melbourne 位在 125 Flinders Lane，主打澳洲式 South East Asian food，適合多人共享。這天後面還有甜點與機場移動，建議以 2-3 道分享菜加主食控制份量。",
+            "menuLinks": [
+              {
+                "label": "Chin Chin menu",
+                "url": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2026/06/CCM_MainMenu-Banchetto_26.05.26_Sample.pdf"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Tuna tartare",
+                "zhName": "鮪魚塔塔",
+                "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Tuna-tartare-59-1360x910.jpg",
+                "note": "官方圖庫中的清爽海鮮冷盤，適合當午餐開場。"
+              },
+              {
+                "name": "Pork ribs",
+                "zhName": "豬肋排",
+                "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Pork-ribs-37-1360x910.jpg",
+                "note": "適合多人分食，口味會比冷盤更有主菜感。"
+              },
+              {
+                "name": "Butter chicken",
+                "zhName": "奶油雞",
+                "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Butter-chicken-32-1360x910.jpg",
+                "note": "若想補主食與醬汁類菜色，可作為共享主菜。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Chin Chin Melbourne",
+                "url": "https://www.chinchin.melbourne/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3722f57c-ec1b-80be-858a-dbda59ba86b1",
+          "time": "16:00",
+          "title": "沿途逛街步行前往 Kumo Desserts",
+          "type": "walk",
+          "location": "Chin Chin → Kumo Desserts Melbourne",
+          "summary": "Notion 時段為 16:00 到 17:00。從 Chin Chin 步行到 Kumo Desserts，途中可順路逛 CBD。",
+          "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Chin+Chin,+125+Flinders+Ln,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/Kumo+Desserts+Melbourne,+198+Little+Lonsdale+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/@-37.8119045,144.9613473,15.96z/data=!3m1!5s0x6ad642cae96e5483:0xe2c955d3c4c52ef5!4m14!4m13!1m5!1m1!1s0x6ad642b7c4d2fdff:0x12d60c9c7ec005bd!2m2!1d144.9703757!2d-37.8156149!1m5!1m1!1s0x6ad643a164cbbf61:0x9ab8957462ee32ee!2m2!1d144.9635272!2d-37.8107337!3e2",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80be858adbda59ba86b1",
+          "tags": ["Recommandation", "moving", "walk", "shopping"]
+        },
+        {
+          "id": "3722f57c-ec1b-80ee-91c0-f12e0aac6477",
+          "time": "17:00",
+          "title": "Kumo Desserts 點心",
+          "type": "food",
+          "location": "Kumo Desserts Melbourne",
+          "summary": "Notion 時段為 17:00 到 17:30。以 Kumo Desserts 作為晚餐前甜點休息點，主軸是 soufflé pancakes 與 house drinks。",
+          "image": "https://static.wixstatic.com/media/28bb98_bb72c45b43274a3e9a54c30817cb8959~mv2.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumo+Desserts+Melbourne+198+Little+Lonsdale+St",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80ee91c0f12e0aac6477",
+          "tags": ["Recommandation", "food", "dessert"],
+          "restaurantGuide": {
+            "intro": "Kumo Desserts Melbourne 主打日式 soufflé pancakes，官方提醒 pancakes 為 dine-in only，且需要約 20 分鐘製作時間；這段抓 30 分鐘會比較緊，建議提前決定口味。",
+            "menuLinks": [
+              {
+                "label": "Kumo Desserts",
+                "url": "https://www.kumodesserts.com/"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Sunny Honey",
+                "zhName": "蜂蜜舒芙蕾鬆餅",
+                "image": "https://static.wixstatic.com/media/28bb98_bb72c45b43274a3e9a54c30817cb8959~mv2.jpg",
+                "note": "官方頁面列出的 soufflé pancake 口味，適合第一次點。"
+              },
+              {
+                "name": "Strawberry Skies",
+                "zhName": "草莓舒芙蕾鬆餅",
+                "image": "https://static.wixstatic.com/media/28bb98_0ec8d290ab1e4e3d8dd63ea8466ecab5~mv2.jpg",
+                "note": "水果感較明顯，適合多人分食。"
+              },
+              {
+                "name": "Boba Brulee Bomb",
+                "zhName": "珍珠布蕾舒芙蕾鬆餅",
+                "image": "https://static.wixstatic.com/media/28bb98_969242c43247450d8c45635b6743254d~mv2.jpg",
+                "note": "甜度與份量感較高，適合想吃特色款時選。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Kumo Desserts",
+                "url": "https://www.kumodesserts.com/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3722f57c-ec1b-80d4-ba3e-f07c55dc2986",
+          "time": "17:30",
+          "title": "步行前往 State Library Victoria",
+          "type": "walk",
+          "location": "Kumo Desserts Melbourne → State Library Victoria",
+          "summary": "Notion 時段為 17:30 到 17:40。從 Kumo Desserts 步行到 State Library Victoria。",
+          "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Kumo+Desserts+Melbourne,+198+Little+Lonsdale+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/State+Library+Victoria,+328+Swanston+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/@-37.8100723,144.9650256,16.16z/data=!3m1!5s0x6ad642cae96e5483:0xe2c955d3c4c52ef5!4m14!4m13!1m5!1m1!1s0x6ad643a164cbbf61:0x9ab8957462ee32ee!2m2!1d144.9635272!2d-37.8107337!1m5!1m1!1s0x6ad642cb954b1ce9:0xf187674ba9830e78!2m2!1d144.9654504!2d-37.8097255!3e2",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80d4ba3ef07c55dc2986",
+          "tags": ["Recommandation", "moving", "walk"]
+        },
+        {
+          "id": "2dd2f57c-ec1b-803c-8ac8-f2d711d0a333",
+          "time": "17:40",
+          "title": "State Library Victoria 與最後逛街",
+          "type": "landmark",
+          "location": "State Library Victoria / Melbourne CBD",
+          "summary": "Notion 時段為 17:40 到 18:50。先看 State Library Victoria 的閱讀室與公共空間，再把剩餘時間留給 CBD 最後採買。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/State_Library_Victoria%2C_La_Trobe_Reading_Room_Dome.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=State+Library+Victoria+Melbourne",
+          "notionUrl": "https://www.notion.so/2dd2f57cec1b803c8ac8f2d711d0a333",
+          "tags": ["Recommandation", "attraction", "shopping"],
+          "attractionGuide": {
+            "intro": "State Library Victoria 是 Melbourne CBD 內最適合短暫停留的室內景點之一。這段可先看 La Trobe Reading Room，再依時間在 Swanston / Melbourne Central 一帶採買。",
+            "highlights": [
+              {
+                "name": "La Trobe Reading Room",
+                "zhName": "La Trobe 圓頂閱讀室",
+                "note": "圖書館最經典的空間，建議優先上樓看俯視角。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/c/cd/State_Library_of_Victoria_La_Trobe_Reading_room_5th_floor_view.jpg"
+              },
+              {
+                "name": "Reading Room Dome",
+                "zhName": "閱讀室圓頂",
+                "note": "若時間不多，抓圓頂視角與中央閱讀桌即可。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/State_Library_Victoria%2C_La_Trobe_Reading_Room_Dome.jpg"
+              },
+              {
+                "name": "Swanston Street / Melbourne Central",
+                "zhName": "Swanston Street 與 Melbourne Central 採買",
+                "note": "離圖書館近，適合作為回飯店前的最後逛街區域。",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/d/da/State_Library_of_Victoria%2C_La_Trobe_Reading_Room.jpg"
+              }
+            ],
+            "links": [
+              {
+                "label": "State Library Victoria",
+                "url": "https://www.slv.vic.gov.au/"
+              },
+              {
+                "label": "La Trobe Reading Room",
+                "url": "https://www.slv.vic.gov.au/visit/our-magnificent-spaces/la-trobe-reading-room"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3722f57c-ec1b-808f-a35c-ea59e8d5344b",
+          "time": "18:50",
+          "title": "Stalactites Restaurant 外帶晚餐",
+          "type": "food",
+          "location": "Stalactites Restaurant",
+          "summary": "Notion 時段為 18:50 到 19:20。回飯店取行李前先外帶晚餐，適合帶到機場前補充體力。",
+          "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327777-7CE6UYV0P0BT7BWIADGC/DSC01004+copy.jpg?format=1000w",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stalactites+Restaurant+177+Lonsdale+St+Melbourne",
+          "notionUrl": "https://www.notion.so/3722f57cec1b808fa35cea59e8d5344b",
+          "tags": ["Recommandation", "food", "takeaway"],
+          "restaurantGuide": {
+            "intro": "Stalactites 是 Melbourne CBD 的 Greek restaurant。Notion Schedule 內有特別註記雞肉捲 Chicken Giros，本段建議以外帶、好拿、上車前可快速食用的品項為主。",
+            "menuLinks": [
+              {
+                "label": "Stalactites Restaurant",
+                "url": "https://www.stalactites.com.au/"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Chicken Giros",
+                "zhName": "雞肉希臘捲",
+                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327753-TIMGANQIHNYSERUGXKFS/Salactites_hr+57+copy.jpg?format=1000w",
+                "note": "Notion 內已註記的外帶重點，適合帶著走。"
+              },
+              {
+                "name": "Souvlaki / Gyros",
+                "zhName": "希臘烤肉捲",
+                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327790-CXCU853ZO0YMRHR3F23R/Salactites_hr+92.jpg?format=1000w",
+                "note": "若想要更飽足，可選肉類捲餅類品項。"
+              },
+              {
+                "name": "Greek share plate",
+                "zhName": "希臘分享盤",
+                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327898-KU2NMJGWHMALGR48WJOM/DSC00634.jpg?format=1000w",
+                "note": "若不急著上車，可在店內或附近簡單分食。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Stalactites Restaurant",
+                "url": "https://www.stalactites.com.au/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3722f57c-ec1b-80f7-8898-f7b5a3ba7181",
+          "time": "19:20",
+          "title": "搭電車回飯店取行李",
+          "type": "transit",
+          "location": "Stalactites Restaurant → Melbourne Lifestyle Apartments",
+          "summary": "Notion 時段為 19:20 到 19:50。從 Stalactites 搭電車回 Docklands 住宿處取行李。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Stalactites+Restaurant,+177%2F183+Lonsdale+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/Melbourne+Lifestyle+Apartments+-+Best+Views+on+Collins,+893A+Collins+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/@-37.8152502,144.945625,15z/data=!3m2!4b1!5s0x6ad642cbc00ace7f:0xdda4724d97e5def5!4m14!4m13!1m5!1m1!1s0x6ad642c97c8b639f:0x87e73340c32b8f32!2m2!1d144.9670491!2d-37.8110808!1m5!1m1!1s0x6ad65dbc86c175e3:0x9027995d87247ad7!2m2!1d144.9417445!2d-37.8209756!3e3",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80f78898f7b5a3ba7181",
+          "tags": ["Recommandation", "moving", "tram"]
+        },
+        {
+          "id": "3722f57c-ec1b-801f-a523-d297cbc2522a",
+          "time": "19:50",
+          "title": "飯店取行李",
+          "type": "hotel",
+          "location": "Melbourne Lifestyle Apartments",
+          "summary": "Notion 時段為 19:50 到 20:00。回住宿處取回寄放行李，準備前往 Southern Cross 搭 SkyBus。",
+          "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins",
+          "notionUrl": "https://www.notion.so/3722f57cec1b801fa523d297cbc2522a",
+          "tags": ["Recommandation", "hotel"]
+        },
+        {
+          "id": "3722f57c-ec1b-8042-a206-d175a4aaaf3a",
+          "time": "20:00",
+          "title": "搭電車前往 Southern Cross",
+          "type": "transit",
+          "location": "Melbourne Lifestyle Apartments → Southern Cross Station",
+          "summary": "Notion 時段為 20:00 到 20:20。從住宿處搭電車到 Southern Cross，銜接 SkyBus 前往機場。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Melbourne+Lifestyle+Apartments+-+Best+Views+on+Collins,+893A+Collins+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/Southern+Cross,+Spencer+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/@-37.8199215,144.9419193,16z/data=!3m2!4b1!5s0x6ad65d4fd0dc81b5:0x7f9ae22ad7e0c9b5!4m14!4m13!1m5!1m1!1s0x6ad65dbc86c175e3:0x9027995d87247ad7!2m2!1d144.9417445!2d-37.8209756!1m5!1m1!1s0x6ad65d4e2e5ae775:0x1d04567609f4e540!2m2!1d144.9525!2d-37.81839!3e3",
+          "notionUrl": "https://www.notion.so/3722f57cec1b8042a206d175a4aaaf3a",
+          "tags": ["Recommandation", "moving", "tram"]
+        },
+        {
+          "id": "2e62f57c-ec1b-804e-b404-eeb6f6e6a668",
+          "time": "20:20",
+          "title": "SkyBus 前往 Melbourne Airport T2",
+          "type": "transit",
+          "location": "Southern Cross Station → Melbourne Airport T2",
+          "summary": "Notion 時段為 20:20 到 21:00。從 Southern Cross 的 SkyBus Stop A / Bay 75 前往 Melbourne Airport 第二航廈。",
+          "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/Melbourne+Lifestyle+Apartments+-+Best+Views+on+Collins,+893A+Collins+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/%E5%A2%A8%E7%88%BE%E6%9C%AC%E6%A9%9F%E5%A0%B4+3045%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne+Airport,+Arrival+Dr/@-37.7457403,144.8160522,12z/am=t/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6ad65dbc86c175e3:0x9027995d87247ad7!2m2!1d144.9417445!2d-37.8209756!1m5!1m1!1s0x6ad659a9ebaa3917:0xf045676052ff090!2m2!1d144.8429763!2d-37.6708228!3e3",
+          "notionUrl": "https://www.notion.so/2e62f57cec1b804eb404eeb6f6e6a668",
+          "tags": ["Recommandation", "moving", "bus", "skybus"]
         },
         {
           "id": "2dc2f57c-ec1b-80ba-a36f-db3e77970d58",
