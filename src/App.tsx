@@ -7,6 +7,7 @@ import {
   BookOpenText,
   BusFront,
   CalendarDays,
+  CarFront,
   ExternalLink,
   Landmark,
   Luggage,
@@ -18,12 +19,14 @@ import {
   Plane,
   Sparkles,
   TrainFront,
+  TrainFrontTunnel,
   Utensils,
   Waves,
   X,
 } from "lucide-react";
 import melbourneSkybusAirportImage from "./assets/melbourne-skybus-airport.png";
 import melbourneSkybusSouthernCrossImage from "./assets/melbourne-skybus-southern-cross.png";
+import melbourneTrainMapImage from "./assets/melbourne-train-network-map.png";
 import tramMapImage from "./assets/melbourne-tram-network.png";
 import sydneyAirportLineImage from "./assets/sydney-t8-airport-line.png";
 import sydneyBusNetworkImage from "./assets/sydney-bus-network-map.jpg";
@@ -41,6 +44,7 @@ const googleMapsStaticApiKey =
 type TransitMap = {
   id:
     | "melbourne-skybus"
+    | "melbourne-train"
     | "melbourne-tram"
     | "sydney-airport"
     | "sydney-bus"
@@ -77,6 +81,139 @@ const itemIcons: Record<TravelItem["type"], typeof MapPin> = {
   transit: Navigation,
   note: CalendarDays,
 };
+
+function isMovingItem(item: TravelItem) {
+  return item.type === "transit" || item.type === "walk";
+}
+
+function movingIconForItem(item: TravelItem) {
+  const tags = item.tags?.map((tag) => tag.toLowerCase()) ?? [];
+  const text = `${item.title} ${item.location ?? ""} ${item.summary} ${item.tags?.join(" ") ?? ""}`
+    .toLowerCase();
+
+  if (tags.some((tag) => tag === "subway" || tag === "metro") || text.includes("地鐵")) {
+    return TrainFrontTunnel;
+  }
+  if (tags.includes("ferry") || text.includes("渡輪") || text.includes("船")) return Waves;
+  if (
+    tags.some((tag) => tag === "tram" || tag === "train" || tag === "rail") ||
+    text.includes("電車") ||
+    text.includes("輕軌") ||
+    text.includes("火車")
+  ) {
+    return TrainFront;
+  }
+  if (tags.includes("bus") || text.includes("公車") || text.includes("巴士")) return BusFront;
+  if (item.type === "walk" || tags.some((tag) => tag === "walk" || tag === "walking")) {
+    return PersonStanding;
+  }
+  if (
+    tags.some((tag) => tag === "driving" || tag === "drive" || tag === "car" || tag === "rental-car") ||
+    /\bdriving\b|\bdrive\b|\bcar\b/.test(text) ||
+    text.includes("自駕") ||
+    text.includes("租車")
+  ) {
+    return CarFront;
+  }
+  if (text.includes("subway") || text.includes("metro")) return TrainFrontTunnel;
+  if (text.includes("ferry")) return Waves;
+  if (text.includes("tram") || text.includes("train") || text.includes("rail") || text.includes("light rail")) {
+    return TrainFront;
+  }
+  if (text.includes("bus")) return BusFront;
+  if (text.includes("walk") || text.includes("步行") || text.includes("走路")) return PersonStanding;
+
+  return Navigation;
+}
+
+function pointLabel(item: TravelItem | undefined, fallback: string) {
+  if (!item) return fallback;
+  return item.location ?? item.title;
+}
+
+function movingLocationEndpoints(item: TravelItem) {
+  const separators = [" to ", " To ", " TO ", "→", "->"];
+  const location = item.location ?? "";
+  const separator = separators.find((candidate) => location.includes(candidate));
+  if (!separator) return null;
+
+  const [from, to] = location.split(separator).map((part) => part.trim());
+  if (!from || !to) return null;
+
+  return { from, to };
+}
+
+function movingEndpoints(day: TravelDay, items: TravelItem[], index: number) {
+  const locationEndpoints = movingLocationEndpoints(items[index]);
+  if (locationEndpoints) return locationEndpoints;
+
+  const previousAnchor = [...items.slice(0, index)].reverse().find((item) => !isMovingItem(item));
+  const nextAnchor = items.slice(index + 1).find((item) => !isMovingItem(item));
+  const current = items[index];
+
+  return {
+    from: pointLabel(previousAnchor, current.location ?? day.city),
+    to: pointLabel(nextAnchor, current.location ?? day.city),
+  };
+}
+
+function isMovingConnectorItem(item: TravelItem) {
+  return isMovingItem(item) && item.tags?.includes("moving");
+}
+
+function movingDurationLabel(item: TravelItem) {
+  const durationById: Record<string, string> = {
+    "3682f57c-ec1b-8079-b536-f7d5e05e5fcf": "約 15-30 分鐘",
+    "3702f57c-ec1b-808e-865a-f6a3eedfba49": "約 5 分鐘",
+    "3702f57c-ec1b-801c-9a3b-cbb688d89fc4": "約 5 分鐘",
+    "3682f57c-ec1b-80be-9bd8-d8dbddd4c847": "約 15 分鐘",
+    "3702f57c-ec1b-805c-abc7-d0144d57ed97": "約 20 分鐘",
+    "3712f57c-ec1b-80b7-ada2-d9ae093ef201": "約 30 分鐘",
+    "3702f57c-ec1b-8009-92d5-cd1d6632332b": "約 10 分鐘",
+    "3682f57c-ec1b-80d1-a9d2-f341286da030": "約 30 分鐘",
+    "3682f57c-ec1b-807b-9e99-c48e74efb555": "約 15 分鐘",
+    "3682f57c-ec1b-8026-af7f-f03c91be2a39": "約 35 分鐘",
+    "3702f57c-ec1b-80f5-8667-c5f1fcf64d8b": "約 15 分鐘",
+    "3712f57c-ec1b-807b-9a77-dcf7bc5e044f": "約 30 分鐘",
+    "3702f57c-ec1b-8047-b392-dcd3f9ff576b": "約 15 分鐘",
+    "3692f57c-ec1b-80ee-b345-f2d9e29b2647": "約 30 分鐘",
+    "3712f57c-ec1b-80bf-ba49-f99a1eccaf5d": "約 10 分鐘",
+    "3712f57c-ec1b-809d-87cf-e91fc4c4aac6": "約 15 分鐘",
+    "2db2f57c-ec1b-806f-99f3-e07cc1be667e": "約 30 分鐘",
+    "36a2f57c-ec1b-8077-b5f7-ebb870710015": "約 1 小時 30 分鐘",
+    "36a2f57c-ec1b-803b-b9ab-c4251ff7c40e": "約 2 小時",
+    "36d2f57c-ec1b-80b8-a3f9-f840f6ec5863": "約 2 小時 30 分鐘",
+    "3712f57c-ec1b-80d9-a858-fea2d39f9d83": "約 5 分鐘",
+    "3712f57c-ec1b-8087-91bf-da0f1d1132db": "約 10 分鐘",
+    "36e2f57c-ec1b-803a-99b7-f5c6bc553b63": "約 10 分鐘",
+    "36e2f57c-ec1b-8039-b321-c6e2bf5c6922": "約 1 小時",
+    "36e2f57c-ec1b-801f-8032-c82a61db6810": "約 1 小時",
+    "36f2f57c-ec1b-806a-a0ca-dcf6a54db124": "約 30 分鐘",
+    "3712f57c-ec1b-809f-92fd-ee2f692fe655": "約 5 分鐘",
+    "3712f57c-ec1b-80ee-a746-fb2cca9d5e5e": "約 20 分鐘",
+    "36f2f57c-ec1b-80aa-b0b5-e828532cb3ac": "約 1 小時 40 分鐘",
+    "3702f57c-ec1b-80a5-997f-d182e3587fff": "約 1 小時 50 分鐘",
+    "3712f57c-ec1b-800c-9b87-ea071a131152": "約 40 分鐘",
+    "3712f57c-ec1b-804f-aeb2-d939c850298c": "約 15 分鐘",
+    "3712f57c-ec1b-80c4-9e1c-e0dc548c8024": "約 10 分鐘",
+    "3712f57c-ec1b-8050-a760-d0d1bdc234e1": "約 10 分鐘",
+    "3712f57c-ec1b-8013-b7c1-fedebadae31d": "約 10 分鐘",
+    "3712f57c-ec1b-8072-a611-e8bb250f4365": "約 1 小時 10 分鐘",
+    "3712f57c-ec1b-801a-80af-cfc56cfa20b8": "約 30 分鐘",
+    "3712f57c-ec1b-8083-87a5-d929233b75ab": "約 30 分鐘",
+    "3712f57c-ec1b-8099-a02f-d7b214cacf34": "約 10 分鐘",
+    "3712f57c-ec1b-803f-afa2-e6a01506b730": "約 10 分鐘",
+    "3712f57c-ec1b-8045-9d9b-e9f926fe9996": "約 5 分鐘",
+    "3722f57c-ec1b-80dd-b632-e62042a01cbe": "約 1 小時",
+    "3722f57c-ec1b-80be-858a-dbda59ba86b1": "約 1 小時",
+    "3722f57c-ec1b-80d4-ba3e-f07c55dc2986": "約 10 分鐘",
+    "3722f57c-ec1b-80f7-8898-f7b5a3ba7181": "約 30 分鐘",
+    "3722f57c-ec1b-8042-a206-d175a4aaaf3a": "約 20 分鐘",
+    "2e62f57c-ec1b-804e-b404-eeb6f6e6a668": "約 40 分鐘",
+  };
+
+  return durationById[item.id] ?? "依當日交通狀況調整";
+}
 
 const transitCities: TransitCity[] = [
   {
@@ -128,6 +265,12 @@ const transitCities: TransitCity[] = [
         icon: TrainFront,
       },
       {
+        id: "melbourne-train",
+        label: "Melbourne Train Map",
+        image: melbourneTrainMapImage,
+        icon: TrainFront,
+      },
+      {
         id: "melbourne-skybus",
         label: "Melbourne SkyBus Map",
         image: melbourneSkybusSouthernCrossImage,
@@ -163,6 +306,7 @@ const dayRouteCoordinates: Record<string, RouteCoordinate[]> = {
     { lat: -33.8600, lng: 151.2126, label: "Circular Quay" },
     { lat: -33.8568, lng: 151.2153, label: "Sydney Opera House" },
     { lat: -33.8599, lng: 151.2090, label: "Munich Brauhaus Sydney" },
+    { lat: -33.8781, lng: 151.2034, label: "Furama Darling Harbour" },
   ],
   "day-3-sydney-to-melbourne": [
     { lat: -33.8781, lng: 151.2034, label: "Furama Darling Harbour" },
@@ -177,39 +321,58 @@ const dayRouteCoordinates: Record<string, RouteCoordinate[]> = {
     { lat: -37.6706, lng: 144.8496, label: "Novotel Melbourne Airport" },
   ],
   "day-4-yarra-valley": [
-    { lat: -37.8136, lng: 144.9631, label: "Melbourne" },
-    { lat: -37.5800, lng: 143.8651, label: "Sovereign Hill, Ballarat" },
-    { lat: -37.6570, lng: 145.4027, label: "Balgownie Estate Yarra Valley" },
-    { lat: -37.6570, lng: 145.4027, label: "Restaurant 1309" },
+    { lat: -37.6706, lng: 144.8496, label: "Novotel Melbourne Airport" },
+    { lat: -37.6708, lng: 144.8430, label: "Hertz Melbourne Airport" },
+    { lat: -37.5750, lng: 143.8664, label: "Sovereign Hill, Ballarat" },
+    { lat: -37.6321, lng: 145.4012, label: "Balgownie Estate Yarra Valley" },
+    { lat: -37.6321, lng: 145.4012, label: "Restaurant 1309" },
   ],
   "day-5-balloon-phillip-island": [
-    { lat: -37.6568, lng: 145.3789, label: "Yarra Valley" },
-    { lat: -38.2224, lng: 145.3115, label: "Moonlit Sanctuary" },
-    { lat: -38.5060, lng: 145.1501, label: "Phillip Island Penguin Parade" },
-    { lat: -38.4513, lng: 145.2390, label: "Phillip Island" },
+    { lat: -37.6321, lng: 145.4012, label: "Balgownie Estate Yarra Valley" },
+    { lat: -38.4526, lng: 145.2383, label: "Coles Cowes" },
+    { lat: -38.4493, lng: 145.2387, label: "Pika Sushi Cowes" },
+    { lat: -38.4632, lng: 145.2012, label: "Hilltop Apartments Phillip Island" },
+    { lat: -38.5066, lng: 145.1497, label: "Phillip Island Penguin Parade" },
   ],
   "day-6-dandenong": [
-    { lat: -37.9088, lng: 145.3553, label: "Puffing Billy Railway" },
+    { lat: -38.4632, lng: 145.2012, label: "Hilltop Apartments Phillip Island" },
     { lat: -38.4867, lng: 145.2644, label: "Koala Conservation Reserve" },
-    { lat: -37.8136, lng: 144.9631, label: "Melbourne CBD" },
+    { lat: -38.2111, lng: 145.2508, label: "Moonlit Sanctuary" },
+    { lat: -37.8074, lng: 144.9624, label: "Hertz Franklin Street" },
+    { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
+    { lat: -37.8196, lng: 144.9450, label: "Sher Singh" },
   ],
   "day-7-melbourne-city": [
-    { lat: -37.8136, lng: 144.9631, label: "Melbourne CBD" },
-    { lat: -37.7964, lng: 144.9612, label: "The University of Melbourne" },
-    { lat: -37.8162, lng: 144.9692, label: "Hosier Lane" },
-    { lat: -37.8098, lng: 144.9652, label: "State Library Victoria" },
+    { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
+    { lat: -37.8159, lng: 144.9531, label: "Higher Ground" },
+    { lat: -37.9077, lng: 145.3566, label: "Puffing Billy Belgrave" },
+    { lat: -37.9273, lng: 145.4389, label: "Lakeside Visitor Centre" },
+    { lat: -37.8138, lng: 144.9604, label: "Max on Hardware" },
   ],
   "day-8-melbourne-museum": [
-    { lat: -37.8136, lng: 144.9631, label: "Melbourne CBD" },
+    { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
+    { lat: -37.7825, lng: 144.9752, label: "Monforte Viennoiserie" },
+    { lat: -37.8012, lng: 144.9667, label: "Good Measure" },
+    { lat: -37.8054, lng: 144.9714, label: "Carlton Gardens" },
     { lat: -37.8033, lng: 144.9717, label: "Melbourne Museum" },
-    { lat: -37.8136, lng: 144.9631, label: "Melbourne CBD" },
+    { lat: -37.7981, lng: 144.9755, label: "Mile End Bagels" },
+    { lat: -37.8036, lng: 144.9667, label: "Beku Gelato Carlton" },
+    { lat: -37.8122, lng: 144.9723, label: "San Telmo" },
+    { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
   ],
   "day-9-melbourne-return": [
-    { lat: -37.8068, lng: 144.9574, label: "Queen Victoria Market" },
-    { lat: -37.8206, lng: 144.9584, label: "SEA LIFE Melbourne Aquarium" },
-    { lat: -37.8304, lng: 144.9730, label: "Shrine of Remembrance" },
-    { lat: -37.8301, lng: 144.9813, label: "Royal Botanic Gardens Victoria" },
-    { lat: -37.6690, lng: 144.8410, label: "Melbourne Airport" },
+    { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
+    { lat: -37.8030, lng: 144.9590, label: "Seven Seeds Coffee Roasters" },
+    { lat: -37.7983, lng: 144.9610, label: "University of Melbourne" },
+    { lat: -37.8076, lng: 144.9568, label: "Queen Victoria Market" },
+    { lat: -37.8106, lng: 144.9545, label: "Flagstaff Gardens" },
+    { lat: -37.8156, lng: 144.9704, label: "Chin Chin" },
+    { lat: -37.8107, lng: 144.9635, label: "Kumo Desserts" },
+    { lat: -37.8097, lng: 144.9655, label: "State Library Victoria" },
+    { lat: -37.8111, lng: 144.9670, label: "Stalactites Restaurant" },
+    { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
+    { lat: -37.8184, lng: 144.9525, label: "Southern Cross Station" },
+    { lat: -37.6708, lng: 144.8430, label: "Melbourne Airport T2" },
   ],
 };
 
@@ -479,6 +642,27 @@ function currentMarkerIndex(items: TravelItem[], nowMinutes: number) {
   });
 
   return nextTimedIndex === -1 ? items.length : nextTimedIndex;
+}
+
+function keyStopsForDay(day: TravelDay) {
+  return day.items
+    .filter((item) => !isMovingConnectorItem(item) && item.type !== "note" && item.type !== "flight")
+    .map((item) => item.location ?? item.title)
+    .filter(Boolean);
+}
+
+function dayTimeRange(day: TravelDay) {
+  const times = day.items
+    .map((item) => parseClockTime(item.time))
+    .filter((time): time is number => time !== null);
+
+  if (!times.length) return "彈性";
+
+  return `${formatClock(Math.min(...times))} - ${formatClock(Math.max(...times))}`;
+}
+
+function daySummaryParagraphs(day: TravelDay) {
+  return [day.summary].filter(Boolean);
 }
 
 export default function App() {
@@ -754,13 +938,31 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
   const staticRouteMapUrl = dayRouteStaticMapUrl(day);
   const flightRoute = flightRouteForDay(day);
   const flightMapUrl = dayFlightMapUrl(day);
+  const summaryParagraphs = daySummaryParagraphs(day);
+  const keyStops = keyStopsForDay(day);
 
   return (
     <aside className="day-overview" style={accentStyle(day.accent)}>
       <div className="day-marker">{dayNumber}</div>
       <p className="date-line">{formatDay(day.date)}</p>
       <h2>{day.title}</h2>
-      <p className="day-summary">{day.summary}</p>
+      <div className="overview-brief" aria-label={`${dayNumber} 當日行程摘要`}>
+        <div className="overview-stat-grid">
+          <div>
+            <span>時間軸</span>
+            <strong>{dayTimeRange(day)}</strong>
+          </div>
+          <div>
+            <span>主要點</span>
+            <strong>{keyStops.length} stops</strong>
+          </div>
+        </div>
+        <div className="day-summary-copy">
+          {summaryParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
       <ReminderWindow reminders={day.reminders} />
       <div className="map-frame">
         {flightRoute ? (
@@ -1090,7 +1292,7 @@ function ReminderDetailModal({
           <X size={19} strokeWidth={2.6} />
         </button>
         <div className="reminder-modal-header">
-          <span>Day 0 Reminder</span>
+          <span>Travel Reminder</span>
           <h3 id="reminder-modal-title">{reminder.title}</h3>
           {reminder.detail?.summary ? <p>{reminder.detail.summary}</p> : null}
         </div>
@@ -1133,57 +1335,77 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
   const shouldShowNowMarker = day.date === localDateKey(now);
   const markerIndex = shouldShowNowMarker ? currentMarkerIndex(day.items, nowMinutes) : -1;
+  const cardSequenceById = new Map<string, number>();
+  let cardSequence = 1;
+  day.items.forEach((item) => {
+    const isConnector = isMovingConnectorItem(item);
+    if (!isConnector) {
+      cardSequenceById.set(item.id, cardSequence);
+      cardSequence += 1;
+    }
+  });
 
   return (
     <>
       <div className="timeline" style={accentStyle(day.accent)}>
-        {day.items.map((item, index) => (
-          <Fragment key={item.id}>
-            {index === markerIndex ? <NowMarker minutes={nowMinutes} /> : null}
-            <motion.article
-              className="timeline-row"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.4, delay: index * 0.07 }}
-              whileHover={{ y: -6 }}
-            >
-              <div
-                className={
-                  parseClockTime(item.time) === null
-                    ? "timeline-axis is-flexible"
-                    : "timeline-axis"
-                }
+        {day.items.map((item, index) => {
+          const showInlineMoving = isMovingConnectorItem(item);
+
+          return (
+            <Fragment key={item.id}>
+              {index === markerIndex ? <NowMarker minutes={nowMinutes} /> : null}
+              <motion.article
+                className={showInlineMoving ? "timeline-row is-moving-connector" : "timeline-row"}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.4, delay: index * 0.07 }}
+                whileHover={showInlineMoving ? undefined : { y: -6 }}
               >
-                <span className="timeline-time">{item.time ?? "彈性"}</span>
-                <span className="timeline-node" />
-              </div>
-              <div className="itinerary-card">
-                <span className="item-sequence" aria-label={`第 ${index + 1} 個行程`}>
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <TypeBadge item={item} />
-                <ItemImage item={item} onOpenGuide={setActiveGuideItem} />
-                <div className="item-body">
-                  <div className="item-meta">
-                    <span>{item.location ?? day.city}</span>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.summary}</p>
-                  <FlightDetails item={item} />
-                  <div className="item-actions">
-                    {item.mapsUrl ? (
-                      <a href={item.mapsUrl} target="_blank" rel="noreferrer">
-                        地圖
-                        <ExternalLink size={15} />
-                      </a>
-                    ) : null}
-                  </div>
+                <div
+                  className={
+                    parseClockTime(item.time) === null
+                      ? "timeline-axis is-flexible"
+                      : "timeline-axis"
+                  }
+                >
+                  <span className="timeline-time">{item.time ?? "彈性"}</span>
+                  <span className="timeline-node" />
                 </div>
-              </div>
-            </motion.article>
-          </Fragment>
-        ))}
+                {showInlineMoving ? (
+                  <MovingConnector day={day} items={day.items} item={item} index={index} />
+                ) : (
+                  <div className="itinerary-card">
+                    <span
+                      className="item-sequence"
+                      aria-label={`第 ${cardSequenceById.get(item.id) ?? index + 1} 個行程`}
+                    >
+                      {String(cardSequenceById.get(item.id) ?? index + 1).padStart(2, "0")}
+                    </span>
+                    <TypeBadge item={item} />
+                    <ItemImage item={item} onOpenGuide={setActiveGuideItem} />
+                    <div className="item-body">
+                      <div className="item-meta">
+                        <span>{item.location ?? day.city}</span>
+                      </div>
+                      <h3>{item.title}</h3>
+                      <p>{item.summary}</p>
+                      <FlightDetails item={item} />
+                      <div className="item-actions">
+                        {item.mapsUrl ? (
+                          <a href={item.mapsUrl} target="_blank" rel="noreferrer">
+                            地圖
+                            <ExternalLink size={15} />
+                          </a>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </motion.article>
+            </Fragment>
+          );
+        })}
         {markerIndex === day.items.length ? <NowMarker minutes={nowMinutes} /> : null}
       </div>
       <AnimatePresence>
@@ -1201,6 +1423,52 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
         ) : null}
       </AnimatePresence>
     </>
+  );
+}
+
+function MovingConnector({
+  day,
+  items,
+  item,
+  index,
+}: {
+  day: TravelDay;
+  items: TravelItem[];
+  item: TravelItem;
+  index: number;
+}) {
+  const Icon = movingIconForItem(item);
+  const endpoints = movingEndpoints(day, items, index);
+  const modeLabel = item.type === "walk" ? "步行移動" : "交通移動";
+  const durationLabel = movingDurationLabel(item);
+
+  return (
+    <div className="moving-connector">
+      <span className="moving-connector-line" aria-hidden="true" />
+      <div
+        className="moving-connector-hotspot"
+        tabIndex={0}
+        aria-label={`查看 ${item.title} 交通資訊`}
+      >
+        <span className="moving-connector-vehicle" aria-hidden="true">
+          <Icon size={18} strokeWidth={2.5} />
+        </span>
+        <div className="moving-connector-popover">
+          <strong>{modeLabel}</strong>
+          <em>{item.title}</em>
+          <span>{endpoints.from}</span>
+          <span>{endpoints.to}</span>
+          <b>大約時間 {durationLabel}</b>
+          <small>{item.summary}</small>
+          {item.mapsUrl ? (
+            <a className="moving-map-link" href={item.mapsUrl} target="_blank" rel="noreferrer">
+              路線
+              <ExternalLink size={15} />
+            </a>
+          ) : null}
+        </div>
+      </div>
+    </div>
   );
 }
 
