@@ -17,6 +17,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 button,
@@ -29,21 +30,26 @@ button {
 }
 
 .app-shell {
+  --day-rail-height: 120px;
+  --day-rail-top: 12px;
+  --day-rail-expanded-height: 188px;
+  --day-rail-expanded-bottom: 24px;
+  --hero-rail-clearance: calc(var(--day-rail-expanded-height) + var(--day-rail-expanded-bottom) + 68px);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: max(620px, 78svh);
   display: flex;
-  align-items: flex-end;
-  padding: 40px clamp(18px, 4vw, 72px) 214px;
+  align-items: center;
+  padding: clamp(64px, 10vh, 112px) clamp(18px, 4vw, 72px) clamp(112px, 15vh, 152px);
   color: #fff;
   isolation: isolate;
 }
 
-.hero-image,
+.hero-carousel,
 .hero-shade {
   position: absolute;
   inset: 0;
@@ -51,38 +57,180 @@ button {
   height: 100%;
 }
 
+.hero-carousel {
+  z-index: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+  user-select: none;
+}
+
 .hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  z-index: -3;
+  pointer-events: none;
 }
 
 .hero-shade {
-  z-index: -2;
+  z-index: 1;
   background:
-    linear-gradient(90deg, rgba(4, 20, 26, 0.82), rgba(4, 20, 26, 0.3) 58%, rgba(4, 20, 26, 0.18)),
-    linear-gradient(0deg, rgba(4, 20, 26, 0.78), transparent 48%);
+    radial-gradient(circle at 22% 42%, rgba(31, 159, 182, 0.24), transparent 28%),
+    linear-gradient(90deg, rgba(4, 20, 26, 0.86), rgba(4, 20, 26, 0.36) 58%, rgba(4, 20, 26, 0.2)),
+    linear-gradient(0deg, rgba(4, 20, 26, 0.76), transparent 52%);
+  pointer-events: none;
+}
+
+.hero-carousel-ui {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(22px, 4vh, 36px);
+  z-index: 4;
+  display: grid;
+  gap: 10px;
+  width: min(520px, calc(100vw - 32px));
+  justify-items: center;
+  transform: translateX(-50%);
+}
+
+.hero-carousel-buttons {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.hero-carousel-buttons button,
+.hero-carousel-dots button {
+  border: 0;
+  padding: 0;
+}
+
+.hero-carousel-buttons button {
+  display: grid;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(4, 20, 26, 0.38);
+  box-shadow: 0 14px 34px rgba(4, 20, 26, 0.22);
+  backdrop-filter: blur(14px);
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.hero-carousel-buttons button:hover,
+.hero-carousel-buttons button:focus-visible {
+  background: rgba(31, 159, 182, 0.54);
+  transform: translateY(-1px);
+}
+
+.hero-carousel-caption {
+  display: inline-flex;
+  min-width: 0;
+  max-width: min(360px, 58vw);
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 9px 16px;
+  color: rgba(255, 255, 255, 0.94);
+  background: rgba(4, 20, 26, 0.42);
+  box-shadow: 0 14px 34px rgba(4, 20, 26, 0.18);
+  font-size: 0.88rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-align: center;
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hero-carousel-dots {
+  display: flex;
+  max-width: min(360px, 72vw);
+  flex-wrap: nowrap;
+  gap: 5px;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.hero-carousel-dots button {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.36);
+  transition:
+    width 160ms ease,
+    background 160ms ease;
+}
+
+.hero-carousel-dots button.active {
+  width: 30px;
+  background: #f4c95d;
 }
 
 .hero-content {
-  width: min(920px, 100%);
+  position: relative;
+  z-index: 3;
+  width: min(900px, 100%);
+  margin-bottom: clamp(30px, 7vh, 84px);
+}
+
+.hero-content::before {
+  content: "";
+  display: block;
+  width: clamp(58px, 8vw, 112px);
+  height: 4px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f4c95d, var(--accent), rgba(255, 255, 255, 0.2));
 }
 
 .trip-kicker {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  color: rgba(255, 255, 255, 0.86);
+  gap: 9px;
+  width: fit-content;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 7px 12px 7px 8px;
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(135deg, rgba(4, 20, 26, 0.54), rgba(31, 159, 182, 0.18));
+  box-shadow: 0 16px 42px rgba(4, 20, 26, 0.18);
   font-size: 0.98rem;
+  font-weight: 850;
+  backdrop-filter: blur(14px);
 }
 
-.trip-kicker span {
-  padding-right: 10px;
-  border-right: 1px solid rgba(255, 255, 255, 0.35);
+.trip-kicker-icon {
+  display: inline-grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border-radius: 50%;
+  color: #10202a;
+  background: linear-gradient(135deg, #f4c95d, #ff8f6f);
+  box-shadow: 0 8px 22px rgba(244, 201, 93, 0.32);
 }
 
-.trip-kicker span:last-child {
-  border-right: 0;
+.trip-kicker-icon svg {
+  stroke-width: 2.6;
+}
+
+.trip-kicker-detail {
+  white-space: nowrap;
 }
 
 h1,
@@ -93,19 +241,37 @@ p {
 }
 
 h1 {
-  max-width: 900px;
-  margin-bottom: 16px;
-  font-size: clamp(3rem, 8vw, 7.25rem);
-  line-height: 0.92;
+  max-width: 860px;
+  margin-bottom: 18px;
+  color: #fff;
+  font-size: clamp(3.35rem, 8vw, 7.15rem);
+  line-height: 0.94;
   letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+}
+
+.hero-content h1 {
+  width: min(920px, 100%);
+  background: linear-gradient(92deg, #ffffff 0%, #f7ecd0 46%, #93e6f0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.34));
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-content p {
-  max-width: 620px;
+  max-width: 680px;
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  line-height: 1.7;
+  border-left: 4px solid color-mix(in srgb, var(--accent) 76%, #fff);
+  padding: 8px 0 9px 16px;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(90deg, rgba(4, 20, 26, 0.34), transparent 88%);
+  font-size: clamp(1.03rem, 1.55vw, 1.24rem);
+  font-weight: 760;
+  line-height: 1.68;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
 .map-quick-actions {
@@ -309,11 +475,54 @@ h1 {
   box-shadow: 0 12px 30px rgba(16, 32, 42, 0.18);
 }
 
+.day-rail-band {
+  position: relative;
+  z-index: 8;
+  min-height: calc(var(--day-rail-expanded-height) + 52px);
+  padding: 24px clamp(18px, 4vw, 72px) 28px;
+  background:
+    linear-gradient(120deg, rgba(31, 159, 182, 0.14), transparent 34%),
+    linear-gradient(260deg, rgba(239, 125, 87, 0.12), transparent 36%),
+    #f5f1e8;
+}
+
 .day-rail {
+  --rail-progress: 0;
+  --rail-target-width: calc(1320px - (200px * var(--rail-progress)));
+  --rail-shell-min-width: 920px;
+  --rail-shell-min-height: calc(226px - (106px * var(--rail-progress)));
+  --rail-shell-padding-top: calc(54px - (19px * var(--rail-progress)));
+  --rail-shell-padding-inline: calc(16px - (2px * var(--rail-progress)));
+  --rail-shell-padding-bottom: calc(34px - (22px * var(--rail-progress)));
+  --rail-line-offset: calc(47px - (5px * var(--rail-progress)));
+  --rail-line-top: calc(70px - (27px * var(--rail-progress)));
+  --rail-line-height: calc(3px - (1px * var(--rail-progress)));
+  --rail-path-offset: calc(47px - (5px * var(--rail-progress)));
+  --rail-path-top: calc(13px - (8px * var(--rail-progress)));
+  --rail-path-height: calc(54px - (18px * var(--rail-progress)));
+  --rail-traveler-width: calc(50px - (14px * var(--rail-progress)));
+  --rail-traveler-height: calc(54px - (18px * var(--rail-progress)));
+  --rail-traveler-person-size: calc(32px - (8px * var(--rail-progress)));
+  --rail-luggage-size: calc(20px - (4px * var(--rail-progress)));
+  --rail-luggage-bottom: calc(4px - (2px * var(--rail-progress)));
+  --rail-stop-min-height: calc(142px - (96px * var(--rail-progress)));
+  --rail-dot-size: calc(18px - (4px * var(--rail-progress)));
+  --rail-dot-border: calc(3px - (1px * var(--rail-progress)));
+  --rail-dot-ring: calc(7px - (2px * var(--rail-progress)));
+  --rail-label-margin: calc(14px - (6px * var(--rail-progress)));
+  --rail-label-font: calc(0.78rem - (0.1rem * var(--rail-progress)));
+  --rail-date-font: calc(0.78rem - (0.08rem * var(--rail-progress)));
+  --rail-title-margin: calc(4px - (2px * var(--rail-progress)));
+  --rail-title-font: calc(0.92rem - (0.2rem * var(--rail-progress)));
+  --rail-title-opacity: calc(1 - var(--rail-progress));
+  --rail-title-max-height: calc(84px - (84px * var(--rail-progress)));
+  --rail-title-max-width: calc(14ch - (3ch * var(--rail-progress)));
+  --rail-radius: calc(8px + (4px * var(--rail-progress)));
   position: absolute;
   left: clamp(18px, 4vw, 72px);
   right: clamp(18px, 4vw, 72px);
   bottom: 24px;
+  z-index: 26;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 5px 2px 2px;
@@ -324,71 +533,153 @@ h1 {
   -webkit-overflow-scrolling: touch;
 }
 
+.day-rail.is-expanded {
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: min(var(--rail-target-width), 100%);
+  margin: 0 auto;
+}
+
+.day-rail.is-docked {
+  position: fixed;
+  top: var(--day-rail-top);
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  z-index: 26;
+  width: min(var(--rail-target-width), calc(100vw - clamp(28px, 6vw, 96px)));
+  padding: 0;
+  transform: translateX(-50%);
+}
+
 .day-rail::-webkit-scrollbar {
   display: none;
 }
 
 .day-track-shell {
   position: relative;
-  min-width: 920px;
-  min-height: 156px;
+  min-width: var(--rail-shell-min-width);
+  height: var(--rail-shell-min-height);
+  min-height: var(--rail-shell-min-height);
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 8px;
-  padding: 54px 16px 12px;
-  background: rgba(4, 20, 26, 0.24);
-  backdrop-filter: blur(18px);
+  border-radius: var(--rail-radius);
+  padding: var(--rail-shell-padding-top) var(--rail-shell-padding-inline) var(--rail-shell-padding-bottom);
+  background: linear-gradient(135deg, rgba(7, 18, 24, 0.78), rgba(32, 48, 52, 0.62));
+  box-shadow: 0 18px 48px rgba(16, 32, 42, 0.16);
+  backdrop-filter: blur(18px) saturate(1.08);
+  transition: min-height 120ms linear, padding 120ms linear, border-radius 140ms ease, box-shadow 140ms ease;
+}
+
+.day-rail.is-docked .day-track-shell {
+  min-width: var(--rail-shell-min-width);
+  height: var(--rail-shell-min-height);
+  min-height: var(--rail-shell-min-height);
+  border-color: rgba(255, 255, 255, 0.22);
+  border-radius: var(--rail-radius);
+  padding: var(--rail-shell-padding-top) var(--rail-shell-padding-inline) var(--rail-shell-padding-bottom);
+  background: linear-gradient(135deg, rgba(7, 18, 24, 0.78), rgba(32, 48, 52, 0.62));
+  box-shadow: 0 18px 48px rgba(16, 32, 42, 0.16);
 }
 
 .day-track-line {
   position: absolute;
-  left: 47px;
-  right: 47px;
-  top: 70px;
-  height: 3px;
+  left: var(--rail-line-offset);
+  right: var(--rail-line-offset);
+  top: var(--rail-line-top);
+  height: var(--rail-line-height);
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.76));
+  transition: left 120ms linear, right 120ms linear, top 120ms linear, height 120ms linear;
+}
+
+.day-rail.is-docked .day-track-line {
+  left: var(--rail-line-offset);
+  right: var(--rail-line-offset);
+  top: var(--rail-line-top);
+  height: var(--rail-line-height);
 }
 
 .traveler-path {
   position: absolute;
-  left: 47px;
-  right: 47px;
-  top: 13px;
+  left: var(--rail-path-offset);
+  right: var(--rail-path-offset);
+  top: var(--rail-path-top);
   z-index: 2;
-  height: 54px;
+  height: var(--rail-path-height);
   pointer-events: none;
+  transition: left 120ms linear, right 120ms linear, top 120ms linear, height 120ms linear;
+}
+
+.day-rail.is-docked .traveler-path {
+  left: var(--rail-path-offset);
+  right: var(--rail-path-offset);
+  top: var(--rail-path-top);
+  height: var(--rail-path-height);
 }
 
 .traveler {
   position: absolute;
   top: 0;
-  width: 50px;
-  height: 54px;
+  width: var(--rail-traveler-width);
+  height: var(--rail-traveler-height);
   color: #fff;
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.4));
   transform: translateX(-50%);
+  transition: width 120ms linear, height 120ms linear, filter 140ms ease;
+}
+
+.day-rail.is-docked .traveler {
+  width: var(--rail-traveler-width);
+  height: var(--rail-traveler-height);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.38));
 }
 
 .traveler-figure {
   position: relative;
   display: flex;
-  width: 50px;
-  height: 54px;
+  width: var(--rail-traveler-width);
+  height: var(--rail-traveler-height);
   align-items: flex-end;
   justify-content: center;
+  transition: width 120ms linear, height 120ms linear;
+}
+
+.day-rail.is-docked .traveler-figure {
+  width: var(--rail-traveler-width);
+  height: var(--rail-traveler-height);
 }
 
 .traveler-person {
   position: relative;
   z-index: 2;
+  width: var(--rail-traveler-person-size);
+  height: var(--rail-traveler-person-size);
+  transition: width 120ms linear, height 120ms linear;
 }
 
 .traveler-luggage {
   position: absolute;
   right: 0;
-  bottom: 4px;
+  bottom: var(--rail-luggage-bottom);
+  width: var(--rail-luggage-size);
+  height: var(--rail-luggage-size);
   color: #f4c95d;
   transform: rotate(-8deg);
+  transition: width 120ms linear, height 120ms linear, bottom 120ms linear;
+}
+
+.day-rail.is-docked .traveler-person {
+  width: var(--rail-traveler-person-size);
+  height: var(--rail-traveler-person-size);
+}
+
+.day-rail.is-docked .traveler-luggage {
+  width: var(--rail-luggage-size);
+  height: var(--rail-luggage-size);
+  bottom: var(--rail-luggage-bottom);
 }
 
 .day-stops {
@@ -410,7 +701,7 @@ h1 {
   display: grid;
   width: 100%;
   min-width: 72px;
-  min-height: 74px;
+  min-height: var(--rail-stop-min-height);
   border: 0;
   padding: 0 6px;
   color: #fff;
@@ -419,19 +710,35 @@ h1 {
   text-align: center;
   justify-items: center;
   touch-action: manipulation;
+  transition: min-height 120ms linear, padding 120ms linear;
+}
+
+.day-rail.is-docked .day-stop {
+  min-height: var(--rail-stop-min-height);
+  padding: 0 5px;
 }
 
 .day-dot {
-  width: 18px;
-  height: 18px;
-  border: 3px solid rgba(255, 255, 255, 0.92);
+  width: var(--rail-dot-size);
+  height: var(--rail-dot-size);
+  border: var(--rail-dot-border) solid rgba(255, 255, 255, 0.92);
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.36);
-  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 var(--rail-dot-ring) rgba(255, 255, 255, 0.1);
   transition:
     transform 180ms ease,
     background 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    width 260ms ease,
+    height 260ms ease,
+    border-width 260ms ease;
+}
+
+.day-rail.is-docked .day-dot {
+  width: var(--rail-dot-size);
+  height: var(--rail-dot-size);
+  border-width: var(--rail-dot-border);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.08);
 }
 
 .day-stop:hover .day-dot,
@@ -441,6 +748,11 @@ h1 {
   box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 28%, transparent);
 }
 
+.day-rail.is-docked .day-stop:hover .day-dot,
+.day-rail.is-docked .day-stop.active .day-dot {
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
 .day-stop-label,
 .day-stop-date,
 .day-stop strong {
@@ -448,30 +760,63 @@ h1 {
 }
 
 .day-stop-label {
-  margin-top: 14px;
+  margin-top: var(--rail-label-margin);
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.78rem;
+  font-size: var(--rail-label-font);
+  transition:
+    margin-top 260ms ease,
+    font-size 260ms ease,
+    opacity 260ms ease;
 }
 
 .day-stop-date {
   margin-top: 3px;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.78rem;
+  font-size: var(--rail-date-font);
   font-weight: 800;
   white-space: nowrap;
+  transition:
+    margin-top 260ms ease,
+    font-size 260ms ease;
 }
 
 .day-stop strong {
-  max-width: 9ch;
-  margin-top: 4px;
+  max-width: var(--rail-title-max-width);
+  max-height: var(--rail-title-max-height);
+  margin-top: var(--rail-title-margin);
   color: #fff;
-  font-size: 0.92rem;
+  font-size: var(--rail-title-font);
   line-height: 1.1;
+  opacity: var(--rail-title-opacity);
+  overflow: hidden;
   overflow-wrap: normal;
   word-break: normal;
+  transition:
+    max-height 120ms linear,
+    margin-top 260ms ease,
+    font-size 260ms ease,
+    opacity 260ms ease;
+}
+
+.day-rail.is-docked .day-stop-label {
+  margin-top: var(--rail-label-margin);
+  font-size: var(--rail-label-font);
+  font-weight: 800;
+}
+
+.day-rail.is-docked .day-stop-date {
+  margin-top: 2px;
+  font-size: var(--rail-date-font);
+}
+
+.day-rail.is-docked .day-stop strong {
+  max-width: 11ch;
+  margin-top: var(--rail-title-margin);
+  font-size: var(--rail-title-font);
 }
 
 .journey {
+  scroll-margin-top: calc(var(--day-rail-height) + var(--day-rail-top) + 28px);
   padding: clamp(32px, 7vw, 82px) clamp(18px, 4vw, 72px);
   background:
     linear-gradient(120deg, rgba(31, 159, 182, 0.12), transparent 32%),
@@ -490,7 +835,7 @@ h1 {
 
 .day-overview {
   position: sticky;
-  top: 22px;
+  top: calc(var(--day-rail-height) + var(--day-rail-top) + 22px);
   padding-top: 8px;
 }
 
@@ -573,6 +918,87 @@ h1 {
   color: #10202a;
   font-size: clamp(1.02rem, 1.8vw, 1.28rem);
   line-height: 1.15;
+}
+
+.overview-icon-groups {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 16px;
+}
+
+.overview-icon-group {
+  display: grid;
+  gap: 7px;
+}
+
+.overview-icon-group-label {
+  color: #687783;
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+}
+
+.overview-icon-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.overview-icon-chip {
+  position: relative;
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, rgba(16, 32, 42, 0.12));
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: #22343d;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(16, 32, 42, 0.06);
+}
+
+.overview-icon-chip svg {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.overview-icon-chip.is-transport {
+  width: 34px;
+  justify-content: center;
+  padding: 0;
+}
+
+.overview-icon-chip.is-transport::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  z-index: 8;
+  width: max-content;
+  max-width: 160px;
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: #fff;
+  background: #10202a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  white-space: nowrap;
+}
+
+.overview-icon-chip.is-transport:hover::after,
+.overview-icon-chip.is-transport:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 .day-summary-copy {
@@ -1113,6 +1539,11 @@ h1 {
 }
 
 .timeline {
+  --timeline-axis-width: 92px;
+  --timeline-gap: 20px;
+  --timeline-axis-padding: 28px;
+  --timeline-time-height: 36px;
+  --timeline-line-x: calc(var(--timeline-axis-width) + (var(--timeline-gap) / 2));
   position: relative;
   display: grid;
   gap: 18px;
@@ -1121,10 +1552,11 @@ h1 {
 .timeline::before {
   content: "";
   position: absolute;
-  left: 87px;
+  left: var(--timeline-line-x);
   top: 10px;
   bottom: 10px;
   width: 2px;
+  transform: translateX(-50%);
   background: linear-gradient(var(--accent), rgba(16, 32, 42, 0.12));
 }
 
@@ -1132,27 +1564,27 @@ h1 {
 .now-marker-row {
   position: relative;
   display: grid;
-  grid-template-columns: 78px minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: var(--timeline-axis-width) minmax(0, 1fr);
+  gap: var(--timeline-gap);
   align-items: start;
 }
 
 .timeline-axis {
   position: relative;
   min-height: 100%;
-  padding-top: 28px;
+  padding-top: var(--timeline-axis-padding);
   text-align: right;
 }
 
 .timeline-time,
 .now-marker-label {
   display: inline-flex;
-  min-height: 28px;
+  min-height: var(--timeline-time-height);
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  padding: 5px 9px;
-  font-size: 0.82rem;
+  padding: 8px 13px;
+  font-size: 0.9rem;
   font-weight: 900;
   line-height: 1;
   white-space: nowrap;
@@ -1171,14 +1603,15 @@ h1 {
 
 .timeline-node {
   position: absolute;
-  left: calc(100% + 1px);
-  top: 34px;
+  left: calc(100% + (var(--timeline-gap) / 2));
+  top: calc(var(--timeline-axis-padding) + (var(--timeline-time-height) / 2));
   z-index: 2;
   width: 16px;
   height: 16px;
   border: 3px solid #f5f1e8;
   border-radius: 50%;
   background: var(--accent);
+  transform: translate(-50%, -50%);
   box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
@@ -1223,16 +1656,16 @@ h1 {
 }
 
 .timeline-row.is-moving-connector {
+  --timeline-axis-padding: 42px;
   min-height: 116px;
   align-items: stretch;
 }
 
 .timeline-row.is-moving-connector .timeline-axis {
-  padding-top: 42px;
+  padding-top: var(--timeline-axis-padding);
 }
 
 .timeline-row.is-moving-connector .timeline-node {
-  top: 48px;
   background: #0f766e;
   box-shadow: 0 0 0 5px rgba(15, 118, 110, 0.14);
 }
@@ -1947,13 +2380,54 @@ h1 {
 }
 
 @media (max-width: 860px) {
-  .hero {
-    min-height: 88vh;
-    padding-bottom: 182px;
+  .app-shell {
+    --day-rail-height: 96px;
+    --day-rail-top: 10px;
+    --hero-rail-clearance: 208px;
   }
 
-  .day-rail {
-    right: 108px;
+  .hero {
+    min-height: max(600px, 74svh);
+    padding-bottom: clamp(104px, 14vh, 136px);
+  }
+
+  .hero-content {
+    margin-bottom: clamp(24px, 5vh, 56px);
+  }
+
+  .hero-carousel-ui {
+    left: 50%;
+    right: auto;
+    bottom: 22px;
+  }
+
+  .day-rail.is-expanded {
+    left: auto;
+    right: auto;
+    width: 100%;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 28px,
+      #000 calc(100% - 28px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 28px,
+      #000 calc(100% - 28px),
+      transparent 100%
+    );
+  }
+
+  .day-rail-band {
+    min-height: 204px;
+    padding: 22px 14px 26px;
+  }
+
+  .day-rail.is-docked {
+    width: calc(100vw - 28px);
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0,
@@ -1974,6 +2448,10 @@ h1 {
 
   .day-track-shell {
     min-width: max(1040px, 100%);
+  }
+
+  .day-rail.is-docked .day-track-shell {
+    min-width: max(900px, 100%);
   }
 
   .day-stops {
@@ -2002,13 +2480,13 @@ h1 {
     aspect-ratio: 16 / 10;
   }
 
-  .timeline::before {
-    left: 79px;
+  .timeline {
+    --timeline-axis-width: 78px;
   }
 
   .timeline-row,
   .now-marker-row {
-    grid-template-columns: 70px minmax(0, 1fr);
+    grid-template-columns: var(--timeline-axis-width) minmax(0, 1fr);
   }
 
   .itinerary-card {
@@ -2022,22 +2500,79 @@ h1 {
 }
 
 @media (max-width: 520px) {
+  .app-shell {
+    --day-rail-height: 88px;
+    --day-rail-top: 8px;
+    --day-rail-expanded-height: 128px;
+    --day-rail-expanded-bottom: 14px;
+    --hero-rail-clearance: 188px;
+  }
+
   .hero {
-    min-height: 86vh;
-    padding: 24px 14px 174px;
+    min-height: max(560px, 70svh);
+    padding: 34px 14px 112px;
+  }
+
+  .hero-content {
+    margin-bottom: 24px;
   }
 
   h1 {
-    font-size: 2.75rem;
+    margin-bottom: 14px;
+    font-size: 2.55rem;
+    line-height: 1;
   }
 
   .trip-kicker {
-    font-size: 0.86rem;
+    gap: 7px;
+    margin-bottom: 12px;
+    padding: 6px 9px 6px 6px;
+    font-size: 0.76rem;
+  }
+
+  .trip-kicker-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero-carousel-ui {
+    left: 50%;
+    right: auto;
+    bottom: 18px;
+    gap: 8px;
+    width: calc(100vw - 28px);
+  }
+
+  .hero-carousel-buttons button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero-carousel-caption {
+    max-width: calc(100vw - 122px);
+    min-height: 36px;
+    padding: 8px 11px;
+    font-size: 0.78rem;
+  }
+
+  .hero-carousel-dots {
+    max-width: 210px;
+    gap: 4px;
+  }
+
+  .hero-carousel-dots button {
+    width: 8px;
+    height: 4px;
+  }
+
+  .hero-carousel-dots button.active {
+    width: 18px;
   }
 
   .hero-content p {
-    font-size: 1rem;
-    line-height: 1.6;
+    padding-left: 12px;
+    font-size: 0.94rem;
+    line-height: 1.55;
   }
 
   .transit-map-button {
@@ -2094,47 +2629,141 @@ h1 {
     margin: 10px 10px -48px auto;
   }
 
-  .day-rail {
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
+  .day-rail.is-expanded {
+    --rail-shell-min-width: 760px;
+    --rail-shell-min-height: calc(156px - (68px * var(--rail-progress)));
+    --rail-shell-padding-top: calc(48px - (19px * var(--rail-progress)));
+    --rail-shell-padding-inline: calc(16px - (4px * var(--rail-progress)));
+    --rail-shell-padding-bottom: calc(10px - (2px * var(--rail-progress)));
+    --rail-line-offset: calc(52px - (16px * var(--rail-progress)));
+    --rail-line-top: calc(62px - (27px * var(--rail-progress)));
+    --rail-path-offset: calc(52px - (16px * var(--rail-progress)));
+    --rail-path-top: calc(9px - (8px * var(--rail-progress)));
+    --rail-path-height: calc(48px - (18px * var(--rail-progress)));
+    --rail-traveler-width: calc(40px - (8px * var(--rail-progress)));
+    --rail-traveler-height: calc(48px - (16px * var(--rail-progress)));
+    --rail-traveler-person-size: calc(30px - (8px * var(--rail-progress)));
+    --rail-luggage-size: calc(20px - (5px * var(--rail-progress)));
+    --rail-stop-min-height: calc(92px - (54px * var(--rail-progress)));
+    --rail-dot-size: calc(13px - (1px * var(--rail-progress)));
+    --rail-dot-border: 2px;
+    --rail-dot-ring: calc(5px - (1px * var(--rail-progress)));
+    --rail-label-margin: calc(11px - (5px * var(--rail-progress)));
+    --rail-label-font: calc(0.68rem - (0.06rem * var(--rail-progress)));
+    --rail-date-font: calc(0.66rem - (0.02rem * var(--rail-progress)));
+    --rail-title-opacity: calc(1 - var(--rail-progress));
+    --rail-title-max-height: calc(48px - (48px * var(--rail-progress)));
+    --rail-title-max-width: 10ch;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
     overflow-x: auto;
     padding: 4px 0 2px;
   }
 
+  .day-rail-band {
+    min-height: 200px;
+    padding: 16px 14px 24px;
+  }
+
+  .day-rail.is-docked {
+    --rail-shell-min-width: 760px;
+    --rail-shell-min-height: calc(156px - (68px * var(--rail-progress)));
+    --rail-shell-padding-top: calc(48px - (19px * var(--rail-progress)));
+    --rail-shell-padding-inline: calc(16px - (4px * var(--rail-progress)));
+    --rail-shell-padding-bottom: calc(10px - (2px * var(--rail-progress)));
+    --rail-line-offset: calc(52px - (16px * var(--rail-progress)));
+    --rail-line-top: calc(62px - (27px * var(--rail-progress)));
+    --rail-path-offset: calc(52px - (16px * var(--rail-progress)));
+    --rail-path-top: calc(9px - (8px * var(--rail-progress)));
+    --rail-path-height: calc(48px - (18px * var(--rail-progress)));
+    --rail-traveler-width: calc(40px - (8px * var(--rail-progress)));
+    --rail-traveler-height: calc(48px - (16px * var(--rail-progress)));
+    --rail-traveler-person-size: calc(30px - (8px * var(--rail-progress)));
+    --rail-luggage-size: calc(20px - (5px * var(--rail-progress)));
+    --rail-stop-min-height: calc(92px - (54px * var(--rail-progress)));
+    --rail-dot-size: calc(13px - (1px * var(--rail-progress)));
+    --rail-dot-border: 2px;
+    --rail-dot-ring: calc(5px - (1px * var(--rail-progress)));
+    --rail-label-margin: calc(11px - (5px * var(--rail-progress)));
+    --rail-label-font: calc(0.68rem - (0.06rem * var(--rail-progress)));
+    --rail-date-font: calc(0.66rem - (0.02rem * var(--rail-progress)));
+    --rail-title-opacity: calc(1 - var(--rail-progress));
+    --rail-title-max-height: calc(48px - (48px * var(--rail-progress)));
+    --rail-title-max-width: 10ch;
+    width: calc(100vw - 28px);
+    padding: 0;
+  }
+
   .day-track-shell {
-    min-width: 760px;
-    min-height: 128px;
-    padding: 48px 16px 10px;
+    min-width: var(--rail-shell-min-width);
+    min-height: var(--rail-shell-min-height);
+    padding: var(--rail-shell-padding-top) var(--rail-shell-padding-inline) var(--rail-shell-padding-bottom);
+  }
+
+  .day-rail.is-docked .day-track-shell {
+    min-width: var(--rail-shell-min-width);
+    min-height: var(--rail-shell-min-height);
+    padding: var(--rail-shell-padding-top) var(--rail-shell-padding-inline) var(--rail-shell-padding-bottom);
   }
 
   .day-track-line {
-    left: 52px;
-    right: 52px;
-    top: 62px;
+    left: var(--rail-line-offset);
+    right: var(--rail-line-offset);
+    top: var(--rail-line-top);
+  }
+
+  .day-rail.is-docked .day-track-line {
+    left: var(--rail-line-offset);
+    right: var(--rail-line-offset);
+    top: var(--rail-line-top);
   }
 
   .traveler-path {
-    left: 52px;
-    right: 52px;
-    top: 9px;
-    height: 48px;
+    left: var(--rail-path-offset);
+    right: var(--rail-path-offset);
+    top: var(--rail-path-top);
+    height: var(--rail-path-height);
+  }
+
+  .day-rail.is-docked .traveler-path {
+    left: var(--rail-path-offset);
+    right: var(--rail-path-offset);
+    top: var(--rail-path-top);
+    height: var(--rail-path-height);
   }
 
   .traveler,
   .traveler-figure {
-    width: 40px;
-    height: 48px;
+    width: var(--rail-traveler-width);
+    height: var(--rail-traveler-height);
+  }
+
+  .day-rail.is-docked .traveler,
+  .day-rail.is-docked .traveler-figure {
+    width: var(--rail-traveler-width);
+    height: var(--rail-traveler-height);
   }
 
   .traveler-person {
-    width: 30px;
-    height: 30px;
+    width: var(--rail-traveler-person-size);
+    height: var(--rail-traveler-person-size);
+  }
+
+  .day-rail.is-docked .traveler-person {
+    width: var(--rail-traveler-person-size);
+    height: var(--rail-traveler-person-size);
   }
 
   .traveler-luggage {
-    width: 20px;
-    height: 20px;
+    width: var(--rail-luggage-size);
+    height: var(--rail-luggage-size);
+  }
+
+  .day-rail.is-docked .traveler-luggage {
+    width: var(--rail-luggage-size);
+    height: var(--rail-luggage-size);
   }
 
   .day-stops {
@@ -2143,15 +2772,27 @@ h1 {
 
   .day-stop {
     min-width: 72px;
-    min-height: 66px;
+    min-height: var(--rail-stop-min-height);
     padding: 0 4px;
   }
 
+  .day-rail.is-docked .day-stop {
+    min-width: 68px;
+    min-height: var(--rail-stop-min-height);
+  }
+
   .day-dot {
-    width: 13px;
-    height: 13px;
-    border-width: 2px;
-    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+    width: var(--rail-dot-size);
+    height: var(--rail-dot-size);
+    border-width: var(--rail-dot-border);
+    box-shadow: 0 0 0 var(--rail-dot-ring) rgba(255, 255, 255, 0.1);
+  }
+
+  .day-rail.is-docked .day-dot {
+    width: var(--rail-dot-size);
+    height: var(--rail-dot-size);
+    border-width: var(--rail-dot-border);
+    box-shadow: 0 0 0 var(--rail-dot-ring) rgba(255, 255, 255, 0.08);
   }
 
   .day-stop:hover .day-dot,
@@ -2159,19 +2800,39 @@ h1 {
     box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 28%, transparent);
   }
 
+  .day-rail.is-docked .day-stop:hover .day-dot,
+  .day-rail.is-docked .day-stop.active .day-dot {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+
   .day-stop-label {
-    margin-top: 11px;
-    font-size: 0.68rem;
+    margin-top: var(--rail-label-margin);
+    font-size: var(--rail-label-font);
     white-space: nowrap;
   }
 
   .day-stop-date {
     margin-top: 3px;
-    font-size: 0.66rem;
+    font-size: var(--rail-date-font);
+  }
+
+  .day-rail.is-docked .day-stop-label {
+    margin-top: var(--rail-label-margin);
+    font-size: var(--rail-label-font);
+  }
+
+  .day-rail.is-docked .day-stop-date {
+    margin-top: 2px;
+    font-size: var(--rail-date-font);
   }
 
   .day-stop strong {
     display: none;
+  }
+
+  .day-rail.is-expanded .day-stop.active strong {
+    display: block;
+    max-width: 12ch;
   }
 
   .journey {
@@ -2219,6 +2880,26 @@ h1 {
   .overview-stat-grid strong {
     font-size: 0.96rem;
     overflow-wrap: anywhere;
+  }
+
+  .overview-icon-groups {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .overview-icon-strip {
+    gap: 7px;
+  }
+
+  .overview-icon-chip {
+    min-height: 31px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
+
+  .overview-icon-chip.is-transport {
+    width: 31px;
+    padding: 0;
   }
 
   .day-summary-copy {
@@ -2272,27 +2953,27 @@ h1 {
   }
 
   .timeline {
+    --timeline-axis-width: 64px;
+    --timeline-gap: 12px;
+    --timeline-axis-padding: 26px;
+    --timeline-time-height: 30px;
     gap: 16px;
-  }
-
-  .timeline::before {
-    left: 58px;
   }
 
   .timeline-row,
   .now-marker-row {
-    grid-template-columns: 52px minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: var(--timeline-axis-width) minmax(0, 1fr);
+    gap: var(--timeline-gap);
   }
 
   .timeline-axis {
-    padding-top: 26px;
+    padding-top: var(--timeline-axis-padding);
   }
 
   .timeline-time {
-    min-height: 24px;
-    padding: 4px 6px;
-    font-size: 0.68rem;
+    min-height: var(--timeline-time-height);
+    padding: 6px 8px;
+    font-size: 0.74rem;
   }
 
   .now-marker-row {
@@ -2313,8 +2994,6 @@ h1 {
   }
 
   .timeline-node {
-    left: calc(100% + 0px);
-    top: 31px;
     width: 14px;
     height: 14px;
     border-width: 2px;

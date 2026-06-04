@@ -1,25 +1,44 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import type { CSSProperties } from "react";
+import type { CSSProperties, PointerEvent } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import {
+  Balloon,
   BellRing,
+  Beef,
   BookOpenText,
+  BottleWine,
   BusFront,
   CalendarDays,
   CarFront,
+  ChevronLeft,
+  ChevronRight,
+  Coffee,
+  Croissant,
+  Dessert,
+  Drumstick,
+  EggFried,
   ExternalLink,
+  Fish,
+  GraduationCap,
+  IceCreamBowl,
   Landmark,
   Luggage,
   MapPin,
   Maximize2,
   Navigation,
+  PawPrint,
   PlaneTakeoff,
   PersonStanding,
   Plane,
+  Sandwich,
+  ShoppingBag,
   Sparkles,
+  Soup,
+  TreePine,
   TrainFront,
   TrainFrontTunnel,
+  TrainTrack,
   Utensils,
   Waves,
   X,
@@ -68,6 +87,40 @@ type RouteCoordinate = {
   lat: number;
   lng: number;
   label: string;
+};
+
+type OverviewIcon = {
+  key: string;
+  label: string;
+  icon: typeof MapPin;
+};
+
+type OverviewIconGroup = {
+  key: "attractions" | "food" | "transport";
+  label: string;
+  icons: OverviewIcon[];
+};
+
+type HeroSlide = {
+  src: string;
+  label: string;
+};
+
+const heroFallbackSlidesByDayId: Record<string, HeroSlide[]> = {
+  "day-0-departure": [
+    {
+      src: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1800&q=85",
+      label: "Sydney",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1800&q=85",
+      label: "Sydney Airport",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1800&q=85",
+      label: "Central Station",
+    },
+  ],
 };
 
 const itemIcons: Record<TravelItem["type"], typeof MapPin> = {
@@ -356,6 +409,7 @@ const dayRouteCoordinates: Record<string, RouteCoordinate[]> = {
     { lat: -37.8054, lng: 144.9714, label: "Carlton Gardens" },
     { lat: -37.8033, lng: 144.9717, label: "Melbourne Museum" },
     { lat: -37.7981, lng: 144.9755, label: "Mile End Bagels" },
+    { lat: -37.8033, lng: 144.9717, label: "Melbourne Museum" },
     { lat: -37.8036, lng: 144.9667, label: "Beku Gelato Carlton" },
     { lat: -37.8122, lng: 144.9723, label: "San Telmo" },
     { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
@@ -393,11 +447,6 @@ function formatRailDate(date: string) {
     month: "numeric",
     day: "numeric",
   }).format(new Date(`${date}T00:00:00`));
-}
-
-function cityLabel(days: TravelDay[]) {
-  const places = days.flatMap((day) => day.city.split("/").map((place) => place.trim()));
-  return Array.from(new Set(places)).join(" / ");
 }
 
 function dayLabel(day: TravelDay, fallbackIndex: number) {
@@ -665,6 +714,439 @@ function daySummaryParagraphs(day: TravelDay) {
   return [day.summary].filter(Boolean);
 }
 
+function heroSlideLabelForItem(day: TravelDay, item: TravelItem) {
+  if (item.location) return item.location;
+  if (item.flightDetails) return `${item.flightDetails.from} → ${item.flightDetails.to}`;
+  if (item.type === "hotel" || item.type === "food" || item.type === "landmark" || item.type === "museum") {
+    return item.title;
+  }
+  return day.city;
+}
+
+function normalizeHeroSlideLabel(label: string) {
+  return label
+    .replace(/\s+(to|To|TO)\s+/g, " / ")
+    .replace(/\s*(→|->)\s*/g, " / ")
+    .trim();
+}
+
+function heroSlidesForDay(day: TravelDay) {
+  const slides: HeroSlide[] = [];
+  const seen = new Set<string>();
+
+  const addSlide = (src: string | undefined, label: string) => {
+    if (!src || seen.has(src)) return;
+    seen.add(src);
+    slides.push({ src, label: normalizeHeroSlideLabel(label) });
+  };
+
+  addSlide(day.coverImage, day.city);
+
+  day.items.forEach((item) => {
+    if (item.type === "transit" || item.type === "walk") return;
+
+    const itemPlaceLabel = heroSlideLabelForItem(day, item);
+
+    addSlide(item.image, itemPlaceLabel);
+    item.attractionGuide?.highlights.forEach((highlight) => {
+      addSlide(highlight.image, itemPlaceLabel);
+    });
+    item.restaurantGuide?.recommendations.forEach((recommendation) => {
+      addSlide(recommendation.image, itemPlaceLabel);
+    });
+  });
+
+  heroFallbackSlidesByDayId[day.id]?.forEach((slide) => addSlide(slide.src, slide.label));
+
+  return slides.slice(0, 14);
+}
+
+function textForItem(item: TravelItem) {
+  const recommendations =
+    item.restaurantGuide?.recommendations
+      .flatMap((recommendation) => [
+        recommendation.name,
+        recommendation.zhName ?? "",
+        recommendation.note ?? "",
+      ])
+      .join(" ") ?? "";
+
+  return `${item.title} ${item.location ?? ""} ${item.summary} ${item.tags?.join(" ") ?? ""} ${recommendations}`
+    .toLowerCase();
+}
+
+function foodIconForItem(item: TravelItem): OverviewIcon {
+  const text = textForItem(item);
+
+  if (text.includes("macelleria") || text.includes("san telmo")) {
+    return { key: "food-steak", label: "牛排", icon: Beef };
+  }
+  if (text.includes("auvers")) {
+    return { key: "food-pasta", label: "義大利麵", icon: Utensils };
+  }
+  if (text.includes("edition roasters") || text.includes("paramount coffee project")) {
+    return { key: "food-brunch", label: "早午餐", icon: EggFried };
+  }
+  if (text.includes("novotel melbourne airport") || text.includes("balgownie estate 飯店早餐")) {
+    return { key: "food-breakfast", label: "早餐", icon: EggFried };
+  }
+  if (text.includes("coles cowes 早餐")) {
+    return { key: "food-supply-breakfast", label: "早餐補給", icon: Sandwich };
+  }
+  if (text.includes("taronga zoo")) {
+    return { key: "food-fish-chips", label: "魚薯條", icon: Fish };
+  }
+  if (text.includes("pika sushi")) {
+    return { key: "food-sushi", label: "壽司", icon: Fish };
+  }
+  if (text.includes("sher singh")) {
+    return { key: "food-curry", label: "咖哩", icon: Soup };
+  }
+  if (text.includes("betty's burgers")) {
+    return { key: "food-burger", label: "漢堡", icon: Sandwich };
+  }
+  if (text.includes("melbourne airport")) {
+    return { key: "food-fast-food", label: "速食", icon: Sandwich };
+  }
+  if (text.includes("restaurant 1309")) {
+    return { key: "food-winery", label: "酒莊餐", icon: BottleWine };
+  }
+  if (text.includes("phillip island 晚餐")) {
+    return { key: "food-dinner", label: "晚餐", icon: Utensils };
+  }
+  if (text.includes("moonlit sanctuary")) {
+    return { key: "food-light-meal", label: "輕食", icon: Sandwich };
+  }
+  if (text.includes("higher ground")) {
+    return { key: "food-brunch", label: "早午餐", icon: EggFried };
+  }
+  if (text.includes("max on hardware")) {
+    return { key: "food-italian", label: "義式料理", icon: Utensils };
+  }
+  if (text.includes("monforte")) {
+    return { key: "food-croissant", label: "可頌", icon: Croissant };
+  }
+  if (text.includes("good measure") || text.includes("seven seeds")) {
+    return { key: "food-coffee", label: "咖啡", icon: Coffee };
+  }
+  if (text.includes("mile end bagels")) {
+    return { key: "food-bagel", label: "貝果", icon: Sandwich };
+  }
+  if (text.includes("bekù") || text.includes("beku gelato")) {
+    return { key: "food-gelato", label: "Gelato", icon: IceCreamBowl };
+  }
+  if (text.includes("chin chin")) {
+    return { key: "food-asian", label: "亞洲料理", icon: Soup };
+  }
+  if (text.includes("kumo desserts")) {
+    return { key: "food-dessert", label: "舒芙蕾", icon: Dessert };
+  }
+  if (text.includes("stalactites")) {
+    return { key: "food-greek", label: "希臘捲餅", icon: Sandwich };
+  }
+  if (text.includes("munich brauhaus")) {
+    return { key: "food-pork", label: "豬排", icon: Drumstick };
+  }
+
+  if (
+    text.includes("burger") ||
+    text.includes("hamburger") ||
+    text.includes("漢堡")
+  ) {
+    return { key: "food-burger", label: "漢堡", icon: Sandwich };
+  }
+  if (
+    text.includes("steak") ||
+    text.includes("beef") ||
+    text.includes("parrilla") ||
+    text.includes("macelleria") ||
+    text.includes("san telmo") ||
+    text.includes("牛排") ||
+    text.includes("烤肉")
+  ) {
+    return { key: "food-steak", label: "牛排", icon: Beef };
+  }
+  if (
+    text.includes("schnitzel") ||
+    text.includes("pork") ||
+    text.includes("brauhaus") ||
+    text.includes("munich") ||
+    text.includes("豬排") ||
+    text.includes("德式")
+  ) {
+    return { key: "food-pork", label: "豬排", icon: Drumstick };
+  }
+  if (text.includes("sushi") || text.includes("壽司")) {
+    return { key: "food-sushi", label: "壽司", icon: Fish };
+  }
+  if (
+    text.includes("curry") ||
+    text.includes("indian") ||
+    text.includes("sher singh") ||
+    text.includes("咖哩") ||
+    text.includes("印度")
+  ) {
+    return { key: "food-curry", label: "咖哩", icon: Soup };
+  }
+  if (
+    text.includes("gelato") ||
+    text.includes("ice cream") ||
+    text.includes("ice-cream") ||
+    text.includes("冰淇淋")
+  ) {
+    return { key: "food-gelato", label: "Gelato", icon: IceCreamBowl };
+  }
+  if (
+    text.includes("soufflé") ||
+    text.includes("souffle") ||
+    text.includes("dessert") ||
+    text.includes("kumo") ||
+    text.includes("甜點") ||
+    text.includes("點心")
+  ) {
+    return { key: "food-dessert", label: "甜點", icon: Dessert };
+  }
+  if (
+    text.includes("viennoiserie") ||
+    text.includes("croissant") ||
+    text.includes("可頌")
+  ) {
+    return { key: "food-croissant", label: "可頌", icon: Croissant };
+  }
+  if (
+    text.includes("bagel") ||
+    text.includes("sandwich") ||
+    text.includes("bakery") ||
+    text.includes("bread") ||
+    text.includes("貝果") ||
+    text.includes("麵包") ||
+    text.includes("烘焙")
+  ) {
+    return { key: "food-bakery", label: "貝果/麵包", icon: Sandwich };
+  }
+  if (
+    text.includes("coffee") ||
+    text.includes("roasters") ||
+    text.includes("cafe") ||
+    text.includes("咖啡")
+  ) {
+    return { key: "food-coffee", label: "咖啡", icon: Coffee };
+  }
+  if (
+    text.includes("breakfast") ||
+    text.includes("brunch") ||
+    text.includes("egg") ||
+    text.includes("早餐") ||
+    text.includes("早午餐")
+  ) {
+    return { key: "food-breakfast", label: "早午餐", icon: EggFried };
+  }
+  if (
+    text.includes("wine") ||
+    text.includes("winery") ||
+    text.includes("yarra") ||
+    text.includes("酒莊")
+  ) {
+    return { key: "food-winery", label: "酒莊餐", icon: BottleWine };
+  }
+  if (
+    text.includes("thai") ||
+    text.includes("chin chin") ||
+    text.includes("asian") ||
+    text.includes("rice") ||
+    text.includes("noodle") ||
+    text.includes("泰式") ||
+    text.includes("亞洲") ||
+    text.includes("飯") ||
+    text.includes("麵")
+  ) {
+    return { key: "food-asian", label: "亞洲料理", icon: Soup };
+  }
+  if (
+    text.includes("greek") ||
+    text.includes("souvlaki") ||
+    text.includes("gyro") ||
+    text.includes("stalactites") ||
+    text.includes("希臘")
+  ) {
+    return { key: "food-greek", label: "希臘捲餅", icon: Sandwich };
+  }
+
+  return { key: "food-meal", label: "餐點", icon: Utensils };
+}
+
+function overviewIconForItem(item: TravelItem): OverviewIcon | null {
+  const text = textForItem(item);
+
+  if (
+    isMovingItem(item) ||
+    item.type === "flight" ||
+    item.type === "note"
+  ) {
+    return null;
+  }
+
+  if (item.type === "food") {
+    return foodIconForItem(item);
+  }
+
+  if (text.includes("balgownie estate") || text.includes("酒莊")) {
+    return { key: "winery", label: "酒莊", icon: BottleWine };
+  }
+
+  if (item.type === "hotel") return null;
+
+  if (text.includes("airport") || text.includes("機場")) return null;
+
+  if (text.includes("library") || text.includes("圖書館")) {
+    return { key: "library", label: "圖書館", icon: BookOpenText };
+  }
+  if (text.includes("opera house") || text.includes("歌劇院")) {
+    return { key: "opera-house", label: "歌劇院", icon: Landmark };
+  }
+  if (text.includes("sea life") || text.includes("aquarium") || text.includes("海洋館") || text.includes("水族館")) {
+    return { key: "aquarium", label: "海洋館", icon: Fish };
+  }
+  if (text.includes("balloon") || text.includes("熱氣球")) {
+    return { key: "balloon", label: "熱氣球", icon: Balloon };
+  }
+  if (text.includes("puffing billy") || text.includes("steam train") || text.includes("蒸汽火車")) {
+    return { key: "steam-railway", label: "蒸汽火車體驗", icon: TrainTrack };
+  }
+  if (text.includes("university") || text.includes("大學") || text.includes("校園")) {
+    return { key: "university", label: "校園", icon: GraduationCap };
+  }
+  if (
+    text.includes("zoo") ||
+    text.includes("taronga") ||
+    text.includes("koala") ||
+    text.includes("penguin") ||
+    text.includes("moonlit") ||
+    text.includes("動物園") ||
+    text.includes("無尾熊") ||
+    text.includes("企鵝")
+  ) {
+    return { key: "wildlife", label: "動物", icon: PawPrint };
+  }
+  if (
+    text.includes("garden") ||
+    text.includes("gardens") ||
+    text.includes("park") ||
+    text.includes("reserve") ||
+    text.includes("公園") ||
+    text.includes("花園") ||
+    text.includes("保護區")
+  ) {
+    return { key: "park", label: "公園", icon: TreePine };
+  }
+  if (text.includes("sovereign hill") || text.includes("淘金鎮") || text.includes("掏金鎮")) {
+    return { key: "gold-rush-town", label: "淘金鎮", icon: Landmark };
+  }
+  if (text.includes("melbourne museum")) {
+    return { key: "museum", label: "博物館", icon: Landmark };
+  }
+  if (text.includes("museum") || text.includes("展館") || text.includes("博物館")) {
+    return { key: "museum", label: "展館", icon: Landmark };
+  }
+  if (
+    item.type === "shopping" ||
+    text.includes("market") ||
+    text.includes("shopping") ||
+    text.includes("coles") ||
+    text.includes("採買") ||
+    text.includes("市場")
+  ) {
+    return { key: "shopping", label: "採買", icon: ShoppingBag };
+  }
+  if (item.type === "landmark") {
+    return { key: "landmark", label: "地標", icon: Landmark };
+  }
+  if (item.type === "museum") {
+    return { key: "museum", label: "展館", icon: Landmark };
+  }
+  return null;
+}
+
+function transportIconForItem(item: TravelItem): OverviewIcon | null {
+  const text = textForItem(item);
+
+  if (item.type === "flight") {
+    return { key: "transport-flight", label: "飛機", icon: Plane };
+  }
+  if (
+    text.includes("hertz") ||
+    text.includes("driving") ||
+    text.includes("drive") ||
+    text.includes("car") ||
+    text.includes("自駕") ||
+    text.includes("租車")
+  ) {
+    return { key: "transport-car", label: "自駕/租車", icon: CarFront };
+  }
+  if (!isMovingItem(item)) return null;
+
+  if (text.includes("airport link") || text.includes("subway") || text.includes("metro") || text.includes("地鐵")) {
+    return { key: "transport-metro", label: "地鐵/機場快線", icon: TrainFrontTunnel };
+  }
+  if (text.includes("ferry") || text.includes("fantasea") || text.includes("渡輪") || text.includes("船")) {
+    return { key: "transport-ferry", label: "渡輪", icon: Waves };
+  }
+  if (text.includes("skybus") || text.includes("bus") || text.includes("公車") || text.includes("巴士")) {
+    return { key: "transport-bus", label: "巴士", icon: BusFront };
+  }
+  if (
+    text.includes("tram") ||
+    text.includes("light rail") ||
+    text.includes("train") ||
+    text.includes("rail") ||
+    text.includes("電車") ||
+    text.includes("輕軌") ||
+    text.includes("火車")
+  ) {
+    return { key: "transport-rail", label: "電車/火車", icon: TrainFront };
+  }
+  if (item.type === "walk" || text.includes("walking") || text.includes("walk") || text.includes("步行")) {
+    return { key: "transport-walk", label: "步行", icon: PersonStanding };
+  }
+
+  return null;
+}
+
+function uniqueIcons(items: TravelItem[], iconForItem: (item: TravelItem) => OverviewIcon | null) {
+  const icons: OverviewIcon[] = [];
+  const seen = new Set<string>();
+
+  items.forEach((item) => {
+    const overviewIcon = iconForItem(item);
+    if (!overviewIcon) return;
+    if (seen.has(overviewIcon.key)) return;
+    seen.add(overviewIcon.key);
+    icons.push(overviewIcon);
+  });
+
+  return icons;
+}
+
+function overviewIconGroupsForDay(day: TravelDay): OverviewIconGroup[] {
+  const attractionIcons = uniqueIcons(
+    day.items.filter((item) => item.type !== "food"),
+    overviewIconForItem,
+  );
+  const foodIcons = uniqueIcons(
+    day.items.filter((item) => item.type === "food"),
+    overviewIconForItem,
+  );
+  const transportIcons = uniqueIcons(day.items, transportIconForItem);
+
+  const groups: OverviewIconGroup[] = [
+    { key: "attractions", label: "景點", icons: attractionIcons },
+    { key: "food", label: "餐廳", icons: foodIcons },
+    { key: "transport", label: "交通", icons: transportIcons },
+  ];
+
+  return groups.filter((group) => group.icons.length > 0);
+}
+
 export default function App() {
   const days = useMemo(
     () => [...trip.days].sort((a, b) => a.date.localeCompare(b.date)),
@@ -674,7 +1156,11 @@ export default function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeTransitMap, setActiveTransitMap] = useState<TransitMap | null>(null);
   const [expandedTransitCity, setExpandedTransitCity] = useState<TransitCity["id"] | null>(null);
+  const [isDayRailDocked, setIsDayRailDocked] = useState(false);
+  const [dayRailProgress, setDayRailProgress] = useState(0);
+  const dayRailBandRef = useRef<HTMLElement | null>(null);
   const activeDay = days[activeIndex];
+  const heroSlides = useMemo(() => heroSlidesForDay(activeDay), [activeDay]);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -693,32 +1179,60 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeTransitMap]);
 
+  useEffect(() => {
+    let frame = 0;
+
+    const updateDockedState = () => {
+      frame = 0;
+      const dayRailBand = dayRailBandRef.current;
+      if (!dayRailBand) return;
+
+      const isMobile = window.matchMedia("(max-width: 520px)").matches;
+      const dockTop = isMobile ? 8 : window.matchMedia("(max-width: 860px)").matches ? 10 : 12;
+      const bandTopPadding = isMobile ? 16 : window.matchMedia("(max-width: 860px)").matches ? 22 : 24;
+      const expandedRailTop = dayRailBand.getBoundingClientRect().top;
+      const shrinkStart = isMobile ? 190 : window.matchMedia("(max-width: 860px)").matches ? 220 : 240;
+      const shrinkDistance = isMobile ? 150 : 190;
+      const nextProgress = Math.min(
+        1,
+        Math.max(0, (shrinkStart - expandedRailTop) / shrinkDistance),
+      );
+
+      setDayRailProgress(nextProgress);
+      setIsDayRailDocked(expandedRailTop <= dockTop - bandTopPadding);
+    };
+
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateDockedState);
+    };
+
+    updateDockedState();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
+
   return (
     <main className="app-shell">
       <section className="hero" aria-label="旅行總覽">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={activeDay.id}
-            className="hero-image"
-            src={activeDay.coverImage}
-            alt=""
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
-        </AnimatePresence>
+        <HeroCarousel slides={heroSlides} />
         <div className="hero-shade" />
         <motion.div
           className="hero-content"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 1, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.62, ease: "easeOut" }}
         >
           <div className="trip-kicker">
-            <CalendarDays size={18} />
-            <span>{trip.dateRange}</span>
-            <span>{cityLabel(days)}</span>
+            <span className="trip-kicker-icon" aria-hidden="true">
+              <CalendarDays size={18} />
+            </span>
+            <span className="trip-kicker-detail">{trip.dateRange}</span>
           </div>
           <h1>{trip.title}</h1>
           <p>{trip.subtitle}</p>
@@ -734,7 +1248,16 @@ export default function App() {
             setExpandedTransitCity(null);
           }}
         />
-        <DayRail days={days} activeIndex={activeIndex} onSelect={setActiveIndex} />
+      </section>
+
+      <section className="day-rail-band" ref={dayRailBandRef} aria-label="每日行程選單">
+        <DayRail
+          days={days}
+          activeIndex={activeIndex}
+          isDocked={isDayRailDocked}
+          progress={dayRailProgress}
+          onSelect={setActiveIndex}
+        />
       </section>
 
       <section className="journey" id="journey" aria-label="每日旅行資訊">
@@ -758,6 +1281,104 @@ export default function App() {
         ) : null}
       </AnimatePresence>
     </main>
+  );
+}
+
+function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const pointerStartX = useRef<number | null>(null);
+  const slideSignature = slides.map((slide) => slide.src).join("|");
+  const activeSlide = slides[activeSlideIndex] ?? slides[0];
+
+  useEffect(() => {
+    setActiveSlideIndex(0);
+  }, [slideSignature]);
+
+  useEffect(() => {
+    if (slides.length < 2) return;
+
+    const interval = window.setInterval(() => {
+      setActiveSlideIndex((currentIndex) => (currentIndex + 1) % slides.length);
+    }, 3000);
+
+    return () => window.clearInterval(interval);
+  }, [slideSignature, slides.length]);
+
+  if (!activeSlide) return null;
+
+  const goToSlide = (direction: -1 | 1) => {
+    if (slides.length < 2) return;
+
+    setActiveSlideIndex((currentIndex) => (
+      currentIndex + direction + slides.length
+    ) % slides.length);
+  };
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (slides.length < 2) return;
+    pointerStartX.current = event.clientX;
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (pointerStartX.current === null) return;
+
+    const distance = event.clientX - pointerStartX.current;
+    pointerStartX.current = null;
+    if (Math.abs(distance) < 48) return;
+
+    goToSlide(distance > 0 ? -1 : 1);
+  };
+
+  return (
+    <>
+      <div
+        className="hero-carousel"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={() => {
+          pointerStartX.current = null;
+        }}
+        aria-label="當日行程照片輪播"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.img
+            key={activeSlide.src}
+            className="hero-image"
+            src={activeSlide.src}
+            alt=""
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          />
+        </AnimatePresence>
+      </div>
+      {slides.length > 1 ? (
+        <div className="hero-carousel-ui" aria-label="切換 Header 圖片">
+          <div className="hero-carousel-buttons">
+            <button type="button" onClick={() => goToSlide(-1)} aria-label="上一張行程照片">
+              <ChevronLeft size={18} />
+            </button>
+            <span className="hero-carousel-caption">{activeSlide.label}</span>
+            <button type="button" onClick={() => goToSlide(1)} aria-label="下一張行程照片">
+              <ChevronRight size={18} />
+            </button>
+          </div>
+          <div className="hero-carousel-dots" aria-label="圖片位置">
+            {slides.map((slide, index) => (
+              <button
+                className={index === activeSlideIndex ? "active" : undefined}
+                type="button"
+                key={slide.src}
+                onClick={() => setActiveSlideIndex(index)}
+                aria-label={`切換到 ${slide.label}`}
+                aria-current={index === activeSlideIndex ? "true" : undefined}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 
@@ -870,25 +1491,39 @@ function TransitMapModal({ map, onClose }: { map: TransitMap; onClose: () => voi
 function DayRail({
   days,
   activeIndex,
+  isDocked,
+  progress,
   onSelect,
 }: {
   days: TravelDay[];
   activeIndex: number;
+  isDocked: boolean;
+  progress: number;
   onSelect: (index: number) => void;
 }) {
+  const railRef = useRef<HTMLElement | null>(null);
   const activeStopRef = useRef<HTMLButtonElement | null>(null);
   const travelerPosition = days.length > 1 ? (activeIndex / (days.length - 1)) * 100 : 0;
 
   useEffect(() => {
-    activeStopRef.current?.scrollIntoView({
+    const rail = railRef.current;
+    const activeStop = activeStopRef.current;
+    if (!rail || !activeStop) return;
+
+    const targetLeft = activeStop.offsetLeft + activeStop.offsetWidth / 2 - rail.clientWidth / 2;
+    rail.scrollTo({
+      left: Math.max(0, targetLeft),
       behavior: "smooth",
-      block: "nearest",
-      inline: "center",
     });
   }, [activeIndex]);
 
   return (
-    <nav className="day-rail" aria-label="選擇旅行日期">
+    <nav
+      className={`day-rail ${isDocked ? "is-docked" : "is-expanded"}`}
+      ref={railRef}
+      style={{ "--rail-progress": progress } as CSSProperties}
+      aria-label="選擇旅行日期"
+    >
       <div className="day-track-shell">
         <div className="day-track-line" />
         <div className="traveler-path" aria-hidden="true">
@@ -940,6 +1575,7 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
   const flightMapUrl = dayFlightMapUrl(day);
   const summaryParagraphs = daySummaryParagraphs(day);
   const keyStops = keyStopsForDay(day);
+  const overviewIconGroups = overviewIconGroupsForDay(day);
 
   return (
     <aside className="day-overview" style={accentStyle(day.accent)}>
@@ -956,6 +1592,28 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
             <span>主要點</span>
             <strong>{keyStops.length} stops</strong>
           </div>
+        </div>
+        <div className="overview-icon-groups" aria-label={`${dayNumber} 當日重點分類`}>
+          {overviewIconGroups.map((group) => (
+            <section className="overview-icon-group" key={group.key} aria-label={group.label}>
+              <span className="overview-icon-group-label">{group.label}</span>
+              <div className="overview-icon-strip">
+                {group.icons.map(({ key, label, icon: Icon }) => (
+                  <span
+                    className={`overview-icon-chip${group.key === "transport" ? " is-transport" : ""}`}
+                    key={key}
+                    title={label}
+                    data-label={label}
+                    aria-label={label}
+                    tabIndex={group.key === "transport" ? 0 : undefined}
+                  >
+                    <Icon size={17} strokeWidth={2.5} aria-hidden="true" />
+                    {group.key === "transport" ? null : <span>{label}</span>}
+                  </span>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
         <div className="day-summary-copy">
           {summaryParagraphs.map((paragraph) => (
@@ -1318,7 +1976,7 @@ function ReminderDetailModal({
             ))}
             {shouldShowNotionLink ? (
               <a href={reminder.notionUrl} target="_blank" rel="noreferrer">
-                Notion
+                資料來源
                 <ExternalLink size={14} />
               </a>
             ) : null}
