@@ -3774,47 +3774,75 @@
           "time": "13:00",
           "title": "Chin Chin 午餐",
           "type": "food",
-          "location": "Chin Chin Melbourne",
-          "summary": "13:00 到 14:00。午餐安排在 Flinders Lane 的 Chin Chin，建議抓分享式菜色，避免吃太重影響後面甜點與機場節奏。",
+          "location": "Chin Chin, 125 Flinders Lane, Melbourne",
+          "summary": "13:00 到 14:00。午餐安排在 125 Flinders Lane 的 Chin Chin，主打 bold South East Asian flavours 與 sharing style 菜色；後面還有 Kumo Desserts、圖書館與機場移動，建議以 2-3 道分享菜加一份主食控制份量。",
           "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Banquet-90-1360x910.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Chin+Chin+125+Flinders+Lane+Melbourne",
+          "mapsUrl": "https://maps.app.goo.gl/xW2ZuJxaLVDbJjWS8",
           "notionUrl": "https://www.notion.so/2e42f57cec1b80748898cdc03416938f",
           "tags": [
             "Recommandation",
             "food"
           ],
           "restaurantGuide": {
-            "intro": "Chin Chin Melbourne 位在 125 Flinders Lane，主打澳洲式 South East Asian food，適合多人共享。這天後面還有甜點與機場移動，建議以 2-3 道分享菜加主食控制份量。",
+            "intro": "Chin Chin Melbourne 位在 125 Flinders Lane，是 Melbourne CBD 的高人氣 South East Asian restaurant。官方網站標示午晚餐 7 天營業、11:00 開始，菜單適合 sharing style；Day 9 這餐接在市區步行後、又要銜接甜點與機場移動，建議避開完整 Feed Me banquet，改成幾道代表菜分食。",
             "menuLinks": [
               {
-                "label": "Chin Chin menu",
+                "label": "Chin Chin Melbourne official",
+                "url": "https://www.chinchin.melbourne/"
+              },
+              {
+                "label": "Chin Chin sample menu",
                 "url": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2026/06/CCM_MainMenu-Banchetto_26.05.26_Sample.pdf"
+              },
+              {
+                "label": "Google Maps: Chin Chin",
+                "url": "https://maps.app.goo.gl/xW2ZuJxaLVDbJjWS8"
               }
             ],
             "recommendations": [
               {
-                "name": "Tuna tartare",
-                "zhName": "鮪魚塔塔",
+                "name": "Kingfish Sashimi",
+                "zhName": "鰤魚生魚片",
                 "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Tuna-tartare-59-1360x910.jpg",
-                "note": "官方圖庫中的清爽海鮮冷盤，適合當午餐開場。"
+                "note": "官方 sample menu 常見品項，搭配 lime、chilli、coconut 與 Thai basil，適合當午餐清爽開場。"
               },
               {
-                "name": "Pork ribs",
-                "zhName": "豬肋排",
+                "name": "Chin Chin Pork Roll Ups",
+                "zhName": "Chin Chin 豬肉捲餅",
                 "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Pork-ribs-37-1360x910.jpg",
-                "note": "適合多人分食，口味會比冷盤更有主菜感。"
+                "note": "官方 sample menu 品項，以 pulled pork pancakes、slaw 與 plum sauce 組合，適合多人分食。"
               },
               {
-                "name": "Butter chicken",
-                "zhName": "奶油雞",
+                "name": "Braised Wagyu Beef Pad Seuw",
+                "zhName": "燉和牛河粉",
                 "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Butter-chicken-32-1360x910.jpg",
-                "note": "若想補主食與醬汁類菜色，可作為共享主菜。"
+                "note": "官方 sample menu 的 rice noodles 類品項，搭配 gai lan 與 crispy shallots，適合補一份主食但不會像 banquet 一樣太重。"
+              },
+              {
+                "name": "Chicken Pad Thai",
+                "zhName": "雞肉泰式炒河粉",
+                "image": "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 sample menu 品項，包含 dried shrimp、bean sprouts 與 peanuts；若想選穩定、容易分食的主食可點。"
+              },
+              {
+                "name": "BBQ King Salmon in Banana Leaf",
+                "zhName": "香蕉葉椰香紅咖哩烤鮭魚",
+                "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 sample menu 品項，banana leaf、coconut red curry 的方向比較有特色，適合想吃海鮮主菜時選。"
               }
             ],
             "sources": [
               {
-                "label": "Chin Chin Melbourne",
+                "label": "Chin Chin Melbourne official",
                 "url": "https://www.chinchin.melbourne/"
+              },
+              {
+                "label": "Chin Chin sample menu",
+                "url": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2026/06/CCM_MainMenu-Banchetto_26.05.26_Sample.pdf"
+              },
+              {
+                "label": "Google Maps: Chin Chin",
+                "url": "https://maps.app.goo.gl/xW2ZuJxaLVDbJjWS8"
               }
             ]
           }
@@ -3841,10 +3869,10 @@
           "time": "15:00",
           "title": "Kumo Desserts 點心",
           "type": "food",
-          "location": "Kumo Desserts Melbourne",
-          "summary": "15:00 到 15:30。以 Kumo Desserts 作為晚餐前甜點休息點，主軸是 soufflé pancakes 與 house drinks。",
+          "location": "Kumo Desserts Melbourne, 198 Little Lonsdale Street, Melbourne",
+          "summary": "15:00 到 15:30。Kumo Desserts 位於 198 Little Lonsdale Street，主打日式 cloud-like soufflé pancakes、house-made drinks 與 specialty lattes；pancakes 僅限內用且需約 20 分鐘製作，這段 30 分鐘會偏緊，建議提前決定口味。",
           "image": "https://static.wixstatic.com/media/28bb98_bb72c45b43274a3e9a54c30817cb8959~mv2.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kumo+Desserts+Melbourne+198+Little+Lonsdale+St",
+          "mapsUrl": "https://maps.app.goo.gl/xoyPLTA11yMm5d2n8",
           "notionUrl": "https://www.notion.so/3722f57cec1b80ee91c0f12e0aac6477",
           "tags": [
             "Recommandation",
@@ -3852,11 +3880,15 @@
             "dessert"
           ],
           "restaurantGuide": {
-            "intro": "Kumo Desserts Melbourne 主打日式 soufflé pancakes，官方提醒 pancakes 為 dine-in only，且需要約 20 分鐘製作時間；這段抓 30 分鐘會比較緊，建議提前決定口味。",
+            "intro": "Kumo Desserts Melbourne 是 198 Little Lonsdale Street 的日式 soufflé pancake 甜點店。官方說明 pancakes 只限內用，因為蓬鬆口感約 15 分鐘後會開始下降；每份也需要約 20 分鐘製作，並有 60 分鐘內用時間限制。Day 9 這站建議以一份 pancake 分食加一杯 house drink 為主，避免影響後續 State Library 與機場節奏。",
             "menuLinks": [
               {
-                "label": "Kumo Desserts",
+                "label": "Kumo Desserts official",
                 "url": "https://www.kumodesserts.com/"
+              },
+              {
+                "label": "Google Maps: Kumo Desserts",
+                "url": "https://maps.app.goo.gl/xoyPLTA11yMm5d2n8"
               }
             ],
             "recommendations": [
@@ -3864,25 +3896,41 @@
                 "name": "Sunny Honey",
                 "zhName": "蜂蜜舒芙蕾鬆餅",
                 "image": "https://static.wixstatic.com/media/28bb98_bb72c45b43274a3e9a54c30817cb8959~mv2.jpg",
-                "note": "官方頁面列出的 soufflé pancake 口味，適合第一次點。"
+                "note": "官方列為 classic，搭配 Manuka honey；第一次到 Kumo 想吃最基本的 fluffy texture，可選這款。"
               },
               {
                 "name": "Strawberry Skies",
                 "zhName": "草莓舒芙蕾鬆餅",
                 "image": "https://static.wixstatic.com/media/28bb98_0ec8d290ab1e4e3d8dd63ea8466ecab5~mv2.jpg",
-                "note": "水果感較明顯，適合多人分食。"
+                "note": "官方 pancake 口味，搭配 strawberry coulis 與 strawberry compote，水果感比較明顯，適合多人分食。"
               },
               {
                 "name": "Boba Brulee Bomb",
                 "zhName": "珍珠布蕾舒芙蕾鬆餅",
                 "image": "https://static.wixstatic.com/media/28bb98_969242c43247450d8c45635b6743254d~mv2.jpg",
-                "note": "甜度與份量感較高，適合想吃特色款時選。"
+                "note": "官方 pancake 口味，搭配 caramelised custard 與 black sugar boba，甜度與份量感較高，適合想吃特色款時選。"
+              },
+              {
+                "name": "Biscoffee",
+                "zhName": "Biscoff 咖啡舒芙蕾鬆餅",
+                "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 pancake 口味，以 Biscoff 與 coffee stuffed soufflé pancake 搭配 mascarpone；喜歡咖啡甜點的人可優先考慮。"
+              },
+              {
+                "name": "Mont Blanc / Mandarin Yuzu",
+                "zhName": "蒙布朗咖啡 / 柑橘柚子氣泡飲",
+                "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 house drinks，若 pancake 來不及等，飲品可外帶；Mont Blanc 是 coffee cream foam，Mandarin Yuzu 則比較清爽。"
               }
             ],
             "sources": [
               {
-                "label": "Kumo Desserts",
+                "label": "Kumo Desserts official",
                 "url": "https://www.kumodesserts.com/"
+              },
+              {
+                "label": "Google Maps: Kumo Desserts",
+                "url": "https://maps.app.goo.gl/xoyPLTA11yMm5d2n8"
               }
             ]
           }
@@ -3957,10 +4005,10 @@
           "time": "16:50",
           "title": "Stalactites Restaurant 外帶晚餐",
           "type": "food",
-          "location": "Stalactites Restaurant",
-          "summary": "16:50 到 17:20。回飯店取行李前先外帶晚餐，適合帶到機場前補充體力。",
+          "location": "Stalactites Restaurant, 177/183 Lonsdale Street, Melbourne",
+          "summary": "16:50 到 17:20。回飯店取行李前先到 Lonsdale Street 的 Stalactites Restaurant 外帶晚餐；這間是 1978 年開始的 Melbourne Greek institution，建議以 chicken gyros souvlaki、mixed gyros 或可快速分食的 Greek takeaway 為主。",
           "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327777-7CE6UYV0P0BT7BWIADGC/DSC01004+copy.jpg?format=1000w",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Stalactites+Restaurant+177+Lonsdale+St+Melbourne",
+          "mapsUrl": "https://maps.app.goo.gl/Ve4GZ4rETPqgY8LdA",
           "notionUrl": "https://www.notion.so/3722f57cec1b808fa35cea59e8d5344b",
           "tags": [
             "Recommandation",
@@ -3968,37 +4016,69 @@
             "takeaway"
           ],
           "restaurantGuide": {
-            "intro": "Stalactites 是 Melbourne CBD 的 Greek restaurant。行程資料內有特別註記雞肉捲 Chicken Giros，本段建議以外帶、好拿、上車前可快速食用的品項為主。",
+            "intro": "Stalactites Restaurant 位在 177/183 Lonsdale Street，是 Melbourne CBD 長年營業的 Greek restaurant / takeaway，Konstandakopoulos family 自 1978 年經營至今。官方菜單的重點是 warm signature pita、house-made tzatziki、spit-roasted chicken / lamb gyros、Greek dips、grilled meats 與 Peloponnese home-style dishes。Day 9 這段要接回飯店取行李與機場巴士，最實用的做法是外帶 souvlaki，不建議點需要坐下慢慢吃的分享盤。",
             "menuLinks": [
               {
                 "label": "Stalactites Restaurant",
                 "url": "https://www.stalactites.com.au/"
+              },
+              {
+                "label": "Stalactites menu",
+                "url": "https://www.stalactites.com.au/menu"
+              },
+              {
+                "label": "Google Maps: Stalactites Restaurant",
+                "url": "https://maps.app.goo.gl/Ve4GZ4rETPqgY8LdA"
               }
             ],
             "recommendations": [
               {
-                "name": "Chicken Giros",
-                "zhName": "雞肉希臘捲",
+                "name": "Chicken Gyros Souvlaki",
+                "zhName": "雞肉希臘烤肉捲",
                 "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327753-TIMGANQIHNYSERUGXKFS/Salactites_hr+57+copy.jpg?format=1000w",
-                "note": "行程資料內已註記的外帶重點，適合帶著走。"
+                "note": "官方 menu 的 famous souvlaki 類別品項，使用 spit-roasted hand-carved chicken gyros，包進 signature pita、lettuce、tomato、onion 與 house-made tzatziki；最適合這段外帶。"
               },
               {
-                "name": "Souvlaki / Gyros",
-                "zhName": "希臘烤肉捲",
+                "name": "Mixed Gyros Souvlaki",
+                "zhName": "雞羊綜合希臘烤肉捲",
                 "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327790-CXCU853ZO0YMRHR3F23R/Salactites_hr+92.jpg?format=1000w",
-                "note": "若想要更飽足，可選肉類捲餅類品項。"
+                "note": "官方 menu 品項，混合 lamb 與 chicken gyros；若想比單一雞肉更有份量與風味，可選這款。"
               },
               {
-                "name": "Greek share plate",
-                "zhName": "希臘分享盤",
+                "name": "Lamb Gyros Souvlaki",
+                "zhName": "羊肉希臘烤肉捲",
+                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327790-CXCU853ZO0YMRHR3F23R/Salactites_hr+92.jpg?format=1000w",
+                "note": "官方 menu 品項，使用 spit-roasted lamb shoulder；喜歡羊肉的人可點，但上車前建議避免加太多醬。"
+              },
+              {
+                "name": "Chicken Gyros Plate",
+                "zhName": "雞肉 Gyros 盤",
                 "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327898-KU2NMJGWHMALGR48WJOM/DSC00634.jpg?format=1000w",
-                "note": "若不急著上車，可在店內或附近簡單分食。"
+                "note": "官方 gyros plate 類別品項，搭配 Greek garden salad 與 chips；如果決定在店內快速吃完，比外帶捲餅更完整。"
+              },
+              {
+                "name": "Appetiser Platter",
+                "zhName": "希臘前菜拼盤",
+                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327898-KU2NMJGWHMALGR48WJOM/DSC00634.jpg?format=1000w",
+                "note": "官方 menu 包含 tzatziki、hommus、taramá、féta、dolmadákia 等；只有時間充裕、想多人分食時才建議。"
               }
             ],
             "sources": [
               {
                 "label": "Stalactites Restaurant",
                 "url": "https://www.stalactites.com.au/"
+              },
+              {
+                "label": "Stalactites menu",
+                "url": "https://www.stalactites.com.au/menu"
+              },
+              {
+                "label": "Google Maps: Stalactites Restaurant",
+                "url": "https://maps.app.goo.gl/Ve4GZ4rETPqgY8LdA"
+              },
+              {
+                "label": "What's On Melbourne: Stalactites Restaurant",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/stalactites-restaurant"
               }
             ]
           }
