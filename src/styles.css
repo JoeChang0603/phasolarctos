@@ -530,6 +530,7 @@ h1 {
   scroll-padding-inline: 42px;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
+  touch-action: pan-x pan-y;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -1567,6 +1568,7 @@ h1 {
   grid-template-columns: var(--timeline-axis-width) minmax(0, 1fr);
   gap: var(--timeline-gap);
   align-items: start;
+  overflow: visible;
 }
 
 .timeline-axis {
@@ -1673,6 +1675,7 @@ h1 {
 .moving-connector {
   position: relative;
   min-height: 116px;
+  overflow: visible;
 }
 
 .moving-connector-line {
@@ -1743,7 +1746,7 @@ h1 {
 
 .moving-connector-popover {
   position: absolute;
-  left: calc(100% + 14px);
+  left: calc(50% + 37px);
   top: 50%;
   z-index: 4;
   display: grid;
@@ -1764,9 +1767,8 @@ h1 {
     transform 160ms ease;
 }
 
-.moving-connector-hotspot:hover .moving-connector-popover,
-.moving-connector-hotspot:focus-visible .moving-connector-popover,
-.moving-connector-hotspot:focus-within .moving-connector-popover {
+.moving-connector:hover .moving-connector-popover,
+.moving-connector:focus-within .moving-connector-popover {
   opacity: 1;
   pointer-events: auto;
   transform: translate(0, -50%);
@@ -3005,7 +3007,9 @@ h1 {
   }
 
   .moving-connector {
+    display: grid;
     min-height: 104px;
+    justify-items: center;
   }
 
   .moving-connector-line {
@@ -3023,16 +3027,27 @@ h1 {
   }
 
   .moving-connector-popover {
-    left: calc(100% + 10px);
+    position: relative;
+    left: auto;
     right: auto;
-    width: min(280px, calc(100vw - 132px));
-    transform: translate(8px, -50%);
+    top: auto;
+    bottom: auto;
+    z-index: 5;
+    display: none;
+    width: min(300px, 100%);
+    max-width: none;
+    max-height: none;
+    margin-top: 76px;
+    overflow: visible;
+    transform: none;
   }
 
-  .moving-connector-hotspot:hover .moving-connector-popover,
-  .moving-connector-hotspot:focus-visible .moving-connector-popover,
-  .moving-connector-hotspot:focus-within .moving-connector-popover {
-    transform: translate(0, -50%);
+  .moving-connector:hover .moving-connector-popover,
+  .moving-connector:focus-within .moving-connector-popover {
+    display: grid;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
   }
 
   .itinerary-card {

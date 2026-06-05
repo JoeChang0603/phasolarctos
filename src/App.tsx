@@ -1286,7 +1286,7 @@ export default function App() {
 
 function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const pointerStartX = useRef<number | null>(null);
+  const pointerStart = useRef<{ x: number; y: number } | null>(null);
   const slideSignature = slides.map((slide) => slide.src).join("|");
   const activeSlide = slides[activeSlideIndex] ?? slides[0];
 
@@ -1316,17 +1316,18 @@ function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
     if (slides.length < 2) return;
-    pointerStartX.current = event.clientX;
+    pointerStart.current = { x: event.clientX, y: event.clientY };
   };
 
   const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
-    if (pointerStartX.current === null) return;
+    if (!pointerStart.current) return;
 
-    const distance = event.clientX - pointerStartX.current;
-    pointerStartX.current = null;
-    if (Math.abs(distance) < 48) return;
+    const distanceX = event.clientX - pointerStart.current.x;
+    const distanceY = event.clientY - pointerStart.current.y;
+    pointerStart.current = null;
+    if (Math.abs(distanceY) > Math.abs(distanceX) || Math.abs(distanceX) < 48) return;
 
-    goToSlide(distance > 0 ? -1 : 1);
+    goToSlide(distanceX > 0 ? -1 : 1);
   };
 
   return (
@@ -1336,7 +1337,7 @@ function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
         onPointerCancel={() => {
-          pointerStartX.current = null;
+          pointerStart.current = null;
         }}
         aria-label="當日行程照片輪播"
       >
@@ -2111,20 +2112,20 @@ function MovingConnector({
         <span className="moving-connector-vehicle" aria-hidden="true">
           <Icon size={18} strokeWidth={2.5} />
         </span>
-        <div className="moving-connector-popover">
-          <strong>{modeLabel}</strong>
-          <em>{item.title}</em>
-          <span>{endpoints.from}</span>
-          <span>{endpoints.to}</span>
-          <b>大約時間 {durationLabel}</b>
-          <small>{item.summary}</small>
-          {item.mapsUrl ? (
-            <a className="moving-map-link" href={item.mapsUrl} target="_blank" rel="noreferrer">
-              路線
-              <ExternalLink size={15} />
-            </a>
-          ) : null}
-        </div>
+      </div>
+      <div className="moving-connector-popover">
+        <strong>{modeLabel}</strong>
+        <em>{item.title}</em>
+        <span>{endpoints.from}</span>
+        <span>{endpoints.to}</span>
+        <b>大約時間 {durationLabel}</b>
+        <small>{item.summary}</small>
+        {item.mapsUrl ? (
+          <a className="moving-map-link" href={item.mapsUrl} target="_blank" rel="noreferrer">
+            路線
+            <ExternalLink size={15} />
+          </a>
+        ) : null}
       </div>
     </div>
   );
