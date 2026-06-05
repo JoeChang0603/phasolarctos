@@ -1738,8 +1738,8 @@
           "time": "18:00",
           "title": "Restaurant 1309 晚餐（待訂位）",
           "type": "food",
-          "location": "Restaurant 1309",
-          "summary": "晚餐安排在 Balgownie Estate Yarra Valley 的 Restaurant 1309，目前 Booked: Not yet，代表目前尚未訂位。時段暫抓 18:00 到 20:00，建議住宿確認後再預約餐廳。",
+          "location": "Restaurant 1309, Balgownie Estate Yarra Valley",
+          "summary": "18:00 到 20:00。晚餐安排在 Balgownie Estate Yarra Valley 的 Restaurant 1309，目前尚未訂位；官方晚餐時段為 18:00-21:00，主打 2/3 course set menu、Yarra Valley 在地食材與 Balgownie estate wines，建議住宿確認後再預約。",
           "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Restaurant+1309+Balgownie+Estate+Yarra+Valley",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80f2987df628521fcb20",
@@ -1747,7 +1747,70 @@
             "Recommandation",
             "food",
             "wine"
-          ]
+          ],
+          "restaurantGuide": {
+            "intro": "Restaurant 1309 是 Balgownie Estate Yarra Valley 的園區餐廳，位在 1309 Melba Highway, Yarra Glen。餐廳主打 Yarra Valley、Victoria 與 Australia 的在地食材，搭配 Balgownie estate-grown wines；晚餐採 2/3 course set menu，座位可安排在 restaurant、deck 或 bar 區。Day 4 抵達酒莊後適合直接在園區用餐，避免傍晚再開車外出。",
+            "menuLinks": [
+              {
+                "label": "Restaurant 1309 official page",
+                "url": "https://www.balgownie.com/yarra-valley/dine/restaurant/"
+              },
+              {
+                "label": "1309 dinner set menu",
+                "url": "https://www.balgownie.com/wp-content/uploads/2026/03/Autumn-2026-1309-3-Course-Dining-Menu-A4.pdf"
+              },
+              {
+                "label": "Graze at 1309 menu",
+                "url": "https://www.balgownie.com/wp-content/uploads/2026/05/1309-Casual-Dining-Menu-Autumn-WEB-2026.pdf"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Two-course / Three-course Dinner Set Menu",
+                "zhName": "二道或三道式晚餐套餐",
+                "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80",
+                "note": "官方晚餐為 2/3 course set menu，2026 autumn menu 標示 two-course $85、three-course $105，適合抵達酒莊後安排完整晚餐。"
+              },
+              {
+                "name": "Cured Buxton Trout",
+                "zhName": "醃漬 Buxton 鱒魚",
+                "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 dinner set menu 的 first course 品項，搭配 lemon aspen、crème fraîche、Avruga caviar 與 leek，適合想吃清爽前菜的人。"
+              },
+              {
+                "name": "Daintree Barramundi",
+                "zhName": "澳洲盲曹主菜",
+                "image": "https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 dinner set menu 的 second course 品項，搭配 miso velouté、fermented tomato 與 sea grapes；菜單建議搭配 Estate Viognier。"
+              },
+              {
+                "name": "Gundagai Lamb Shoulder",
+                "zhName": "Gundagai 羊肩",
+                "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 dinner set menu 的 second course 品項，搭配 potato dauphinoise、chive 與 bordelaise；菜單建議搭配 Railway Block Shiraz。"
+              },
+              {
+                "name": "Balgownie Estate Wine Pairing",
+                "zhName": "Balgownie 酒莊餐酒搭配",
+                "image": "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=500&q=80",
+                "note": "官方頁面強調餐點可搭配 estate wines；若當晚不需要再開車，可考慮依主菜搭配 Pinot Noir、Shiraz、Viognier 或 Chardonnay。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Balgownie: Restaurant 1309",
+                "url": "https://www.balgownie.com/yarra-valley/dine/restaurant/"
+              },
+              {
+                "label": "1309 dinner set menu",
+                "url": "https://www.balgownie.com/wp-content/uploads/2026/03/Autumn-2026-1309-3-Course-Dining-Menu-A4.pdf"
+              },
+              {
+                "label": "Graze at 1309 menu",
+                "url": "https://www.balgownie.com/wp-content/uploads/2026/05/1309-Casual-Dining-Menu-Autumn-WEB-2026.pdf"
+              }
+            ]
+          }
         }
       ]
     },
@@ -2243,16 +2306,89 @@
           "time": "18:00",
           "title": "Sher Singh 晚餐",
           "type": "food",
-          "location": "Sher Singh, Docklands",
-          "summary": "18:00 到 19:00。還車與入住後安排 Docklands 附近晚餐，地點為 Sher Singh。",
-          "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sher+Singh+807+Bourke+St+Docklands",
+          "location": "Sher Singh, 807-809 Bourke St, Docklands",
+          "summary": "18:00 到 19:00。還車與入住後安排 Docklands 附近的 Sher Singh 晚餐，主軸是北印度料理、tandoor 烤物、咖哩與 biryani。",
+          "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://maps.app.goo.gl/noQambW34JBFtY6o",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80f6848cd8f960a45de7",
           "tags": [
             "Recommandation",
             "food",
             "Indian"
-          ]
+          ],
+          "restaurantGuide": {
+            "intro": "Sher Singh Docklands 位在 807-809 Bourke St，是 Docklands 附近可步行抵達的印度餐廳。官方介紹主打 Indian culinary heritage、bold spices、slow-cooked curries 與 tandoor-fired favourites；這天剛完成還車與入住，適合安排一餐口味明確、份量足、可多人分食的晚餐。",
+            "menuLinks": [
+              {
+                "label": "Sher Singh Docklands menu",
+                "url": "https://shersingh.com.au/dockland-menu/"
+              },
+              {
+                "label": "Sher Singh contact / Docklands",
+                "url": "https://shersingh.com.au/contact-us/"
+              },
+              {
+                "label": "Google Maps: Sher Singh",
+                "url": "https://maps.app.goo.gl/noQambW34JBFtY6o"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Tandoori Mix Platter",
+                "zhName": "綜合坦都里烤肉拼盤",
+                "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 Docklands menu 的 non-veg starter，包含多款 chicken tikka 與 seekh kebabs，適合多人先分食。"
+              },
+              {
+                "name": "Amritsari Murgh Makhani / Butter Chicken",
+                "zhName": "阿姆利則奶油雞",
+                "image": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+                "note": "Uber Eats 與菜單常見熱門方向，奶油番茄咖哩基底，搭配 naan 或 basmati rice 比較穩。"
+              },
+              {
+                "name": "Lazeez Paneer Makhani",
+                "zhName": "奶油番茄起司咖哩",
+                "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 menu 標示 Sher Singh's special，適合想點素食主菜或和肉類咖哩搭配。"
+              },
+              {
+                "name": "Chicken Tikka Biryani",
+                "zhName": "雞肉坦都里香料飯",
+                "image": "https://images.unsplash.com/photo-1633945274309-2c16c9682a8c?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 royale biryani 類別品項，適合需要主食份量的人。"
+              },
+              {
+                "name": "Garlic Naan / Cheesy Garlic Naan",
+                "zhName": "蒜香烤餅 / 起司蒜香烤餅",
+                "image": "https://images.unsplash.com/photo-1617692855027-33b14f061079?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 tandoor breads 類別品項，建議搭配 butter chicken、paneer makhani 或其他咖哩。"
+              },
+              {
+                "name": "Gulab Jamun / Rasmalai Tiramisu",
+                "zhName": "印度糖漿甜球 / 拉斯馬萊提拉米蘇",
+                "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 desserts 類別品項，若晚餐後還想吃甜點，可選一份多人分食。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Sher Singh Docklands menu",
+                "url": "https://shersingh.com.au/dockland-menu/"
+              },
+              {
+                "label": "Sher Singh contact / Docklands",
+                "url": "https://shersingh.com.au/contact-us/"
+              },
+              {
+                "label": "Google Maps: Sher Singh",
+                "url": "https://maps.app.goo.gl/noQambW34JBFtY6o"
+              },
+              {
+                "label": "What's On Melbourne: Sher Singh",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/sher-singh"
+              }
+            ]
+          }
         }
       ]
     },
@@ -2287,10 +2423,10 @@
           "time": "07:40",
           "title": "Higher Ground 早餐",
           "type": "food",
-          "location": "Higher Ground, Melbourne CBD",
-          "summary": "07:40 到 08:30。Higher Ground 位於 650 Little Bourke Street，適合作為前往 Belgrave 搭火車前的早午餐與咖啡停靠。",
+          "location": "Higher Ground, 650 Little Bourke Street, Melbourne",
+          "summary": "07:40 到 08:30。Higher Ground 位於 650 Little Bourke Street，靠近 Southern Cross Station，適合作為前往 Belgrave 搭火車前的咖啡與早午餐停靠；主打 elevated Australian cafe culture、季節性 all-day menu 與改造舊建築的高挑空間。",
           "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Higher+Ground+650+Little+Bourke+St+Melbourne",
+          "mapsUrl": "https://maps.app.goo.gl/SassrWnAaT18eYdp7",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80a095eae05f94350e5c",
           "tags": [
             "Recommandation",
@@ -2298,11 +2434,19 @@
             "brunch"
           ],
           "restaurantGuide": {
-            "intro": "Higher Ground 是 Little Bourke Street 的 Melbourne CBD 早午餐餐廳，官方定位從咖啡、早餐到午餐皆可；空間由歷史建築改造，適合排在早上出發前。",
+            "intro": "Higher Ground 是 Melbourne CBD 的代表性早午餐店，位在 650 Little Bourke Street，距離 Southern Cross Station 不遠。店內以挑高舊建築、大片窗景與多層座位聞名，菜單走 elevated Australian cafe culture，品項會依季節調整。Day 7 需要銜接 Belgrave 火車，建議優先選咖啡與出餐穩定的招牌早午餐，不要點太複雜導致壓縮轉乘時間。",
             "menuLinks": [
               {
-                "label": "Higher Ground menu",
+                "label": "Higher Ground official",
                 "url": "https://highergroundmelbourne.com.au/"
+              },
+              {
+                "label": "Higher Ground all-day menu",
+                "url": "https://highergroundmelbourne.com.au/menu/"
+              },
+              {
+                "label": "Google Maps: Higher Ground",
+                "url": "https://maps.app.goo.gl/SassrWnAaT18eYdp7"
               }
             ],
             "recommendations": [
@@ -2310,25 +2454,55 @@
                 "name": "Coffee",
                 "zhName": "咖啡",
                 "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80",
-                "note": "官方強調咖啡與早午餐服務，早上搭火車前適合先補咖啡。"
+                "note": "Higher Ground 的定位包含咖啡與 all-day dining，早上要接火車時建議先點咖啡，控制用餐節奏。"
               },
               {
-                "name": "Breakfast plates",
-                "zhName": "早午餐主餐",
+                "name": "Seasonal Ricotta Hotcake",
+                "zhName": "季節瑞可塔鬆餅",
+                "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 的招牌甜口早午餐，現行版本搭配 roasted pear、dark chocolate、burnt butter maple、cacao 與 cinnamon cream；What's On Melbourne 也特別提到 ricotta hotcakes 是熱門品項。"
+              },
+              {
+                "name": "Chilli Scrambled Eggs",
+                "zhName": "辣味炒蛋",
                 "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80",
-                "note": "建議選擇有蛋、麵包或熱食的早午餐盤，後續到 Belgrave 車程較長。"
+                "note": "官方 menu 品項，搭配 herb & garlic flatbread、smoked yoghurt、banana pepper、saltbush 與 house chilli；適合想吃鹹食又不想太重的人。"
               },
               {
-                "name": "Pastry or light bite",
-                "zhName": "甜點或輕食",
-                "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
-                "note": "若時間偏緊，可選擇輕食搭配咖啡，避免拖到 08:30 後的火車移動。"
+                "name": "Avocado Pretzel",
+                "zhName": "酪梨椒鹽卷早午餐",
+                "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 品項，以 whipped ricotta、lime dressing、seed cracker、poached egg 與 toasted pretzel 組成，是 avocado toast 的進階版。"
+              },
+              {
+                "name": "Prawn Toast Benedict",
+                "zhName": "蝦多士班尼迪克蛋",
+                "image": "https://images.unsplash.com/photo-1606851091851-e8c8c0fca5ba?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 品項，使用 Chinese donut、yuzu kosho、kimchi 與 hollandaise，口味較有特色；時間充裕時可選。"
+              },
+              {
+                "name": "Miso Ham & Cheese Toastie",
+                "zhName": "味噌火腿起司吐司",
+                "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 menu 品項，搭配 karashi mustard、mozzarella béchamel、toasted nori 與 crisps；如果想快速吃完去趕火車，這類 toastie 會比大型主餐更穩。"
               }
             ],
             "sources": [
               {
                 "label": "Higher Ground official",
                 "url": "https://highergroundmelbourne.com.au/"
+              },
+              {
+                "label": "Higher Ground all-day menu",
+                "url": "https://highergroundmelbourne.com.au/menu/"
+              },
+              {
+                "label": "Google Maps: Higher Ground",
+                "url": "https://maps.app.goo.gl/SassrWnAaT18eYdp7"
+              },
+              {
+                "label": "What's On Melbourne: Higher Ground",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/higher-ground"
               }
             ]
           }
@@ -2476,10 +2650,10 @@
           "time": "18:00",
           "title": "Max on Hardware 晚餐",
           "type": "food",
-          "location": "Max on Hardware, Hardware Lane",
-          "summary": "18:00 到 19:00。回到墨爾本市區後安排 Hardware Lane 的 Max on Hardware 晚餐。",
+          "location": "Max on Hardware, 54-58 Hardware Lane, Melbourne",
+          "summary": "18:00 到 19:00。回到墨爾本市區後安排 Hardware Lane 的 Max on Hardware 晚餐，主打 Australian-Italian cuisine、手工披薩、義大利麵、risotto、牛排與 Hardware Lane 戶外用餐氛圍。",
           "image": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Max+on+Hardware+54+58+Hardware+Lane+Melbourne",
+          "mapsUrl": "https://maps.app.goo.gl/Z22ueJJDVELPS7SF6",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b803d8d83f673aeb3fd36",
           "tags": [
             "Recommandation",
@@ -2487,37 +2661,75 @@
             "pizzeria"
           ],
           "restaurantGuide": {
-            "intro": "Max on Hardware 位於 Melbourne CBD 的 Hardware Lane，官方定位是 pizzeria bar restaurant，適合安排為火車回市區後的晚餐。",
+            "intro": "Max on Hardware 位於 Melbourne CBD 的 54-58 Hardware Lane，是從 1990 年開始營業的 Australian-Italian restaurant / bar。這天從 Puffing Billy 回到市區後，適合安排在這裡吃一餐不用再移動太遠的晚餐；用餐重點可以放在戶外 laneway 氛圍、手工披薩、義大利麵、risotto、牛排與幾道較有特色的主餐。",
             "menuLinks": [
               {
-                "label": "Max on Hardware menu",
+                "label": "Max on Hardware official",
                 "url": "https://www.maxonhardware.com.au/"
+              },
+              {
+                "label": "Max on Hardware dinner menu",
+                "url": "https://www.maxonhardware.com.au/menu-dinner"
+              },
+              {
+                "label": "Google Maps: Max on Hardware",
+                "url": "https://maps.app.goo.gl/Z22ueJJDVELPS7SF6"
               }
             ],
             "recommendations": [
               {
-                "name": "Pizza",
-                "zhName": "披薩",
+                "name": "Signature hand-crafted pizza",
+                "zhName": "招牌手工披薩",
                 "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80",
-                "note": "餐廳官方定位包含 pizzeria，披薩適合多人分食。"
+                "note": "官方介紹特別提到 signature hand-crafted pizzas，適合多人分食，也最符合 Hardware Lane 輕鬆晚餐的節奏。"
               },
               {
-                "name": "Pasta",
-                "zhName": "義大利麵",
+                "name": "Beef Brisket Lasagna",
+                "zhName": "牛胸肉千層麵",
                 "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=80",
-                "note": "若不想吃太重，可搭配披薩點義大利麵分食。"
+                "note": "官方 dinner menu 品項，使用慢煮牛胸肉、Napoli sauce、洋蔥、蒜、béchamel 與 parmesan，適合想吃熱量較完整的義式主餐。"
               },
               {
-                "name": "Grilled mains",
-                "zhName": "烤肉類主餐",
+                "name": "Chicken Max",
+                "zhName": "Max 招牌雞肉主餐",
+                "image": "https://images.unsplash.com/photo-1598514982848-24b8c4f1701f?auto=format&fit=crop&w=900&q=80",
+                "note": "官方與 Melbourne What's On 都提到的招牌方向；dinner menu 版本是雞胸填入 feta、烤甜椒、菠菜與香草，搭配 potato rosti 與 herb cream sauce。"
+              },
+              {
+                "name": "Seafood Paella",
+                "zhName": "海鮮西班牙燉飯",
+                "image": "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 dinner menu 品項，包含 seafood、chorizo、saffron rice、辣椒、蒜與甜椒；若想點較有特色、適合分食的主餐可優先考慮。"
+              },
+              {
+                "name": "Char Grilled Kangaroo",
+                "zhName": "炭烤袋鼠肉",
                 "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80",
-                "note": "火車日回市區後若想吃正式晚餐，可選擇肉類主餐。"
+                "note": "官方 dinner menu 與 Melbourne What's On 都列為 Max menu 的特色主餐，搭配 potato and garlic mash、broccolini、green beans 與 peppercorn sauce。"
+              },
+              {
+                "name": "Tiramisu / Sticky Date Pudding",
+                "zhName": "提拉米蘇 / 太妃椰棗布丁",
+                "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=80",
+                "note": "如果晚餐後還想收尾，可以從 dessert menu 選 tiramisu 或 sticky date pudding 多人分食。"
               }
             ],
             "sources": [
               {
                 "label": "Max on Hardware official",
                 "url": "https://www.maxonhardware.com.au/"
+              },
+              {
+                "label": "Max on Hardware dinner menu",
+                "url": "https://www.maxonhardware.com.au/menu-dinner"
+              },
+              {
+                "label": "Google Maps: Max on Hardware",
+                "url": "https://maps.app.goo.gl/Z22ueJJDVELPS7SF6"
+              },
+              {
+                "label": "What's On Melbourne: Max on Hardware",
+                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/max-on-hardware"
               }
             ]
           }
@@ -2570,10 +2782,10 @@
           "time": "08:40",
           "title": "Monforte Viennoiserie 可頌早餐",
           "type": "food",
-          "location": "Monforte Viennoiserie, Carlton North",
-          "summary": "08:40 到 09:00。Monforte 主打小批量 viennoiserie，這段以可頌和甜點作為 Day 8 的早餐。",
+          "location": "Monforte Viennoiserie, 585a Canning Street, Carlton North",
+          "summary": "08:40 到 09:00。Monforte Viennoiserie 是 Carlton North 的 small-batch pasticceria，主打歐式季節甜點與可頌系 viennoiserie；菜單會每月變動，但 Leatherwood Honey & Sea Salt Croissant 是固定招牌，店家也常在中午前售完。",
           "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Monforte+Viennoiserie+585a+Canning+St+Carlton+North",
+          "mapsUrl": "https://maps.app.goo.gl/hQjhSgwm8kKJvpNY8",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80868c90edb0a97ad4f9",
           "tags": [
             "Recommandation",
@@ -2581,11 +2793,19 @@
             "bakery"
           ],
           "restaurantGuide": {
-            "intro": "Monforte Viennoiserie 是 Carlton North 的可頌與法式麵包甜點店。這裡作為這裡作為早餐，建議以招牌可頌為主，不要排太長停留時間。",
+            "intro": "Monforte Viennoiserie 位在 585a Canning Street, Carlton North，是 tiny small-batch pasticceria。產品現場製作，菜單會依季節與當月供應調整；Visit Victoria 特別提到 inventive menu changes monthly，而 Leatherwood Honey & Sea Salt Croissant 是 permanent staple。Day 8 只排 20 分鐘，建議直接外帶 2-3 個重點品項，不要把它當成久坐早餐。",
             "menuLinks": [
               {
                 "label": "Monforte official",
                 "url": "https://monforte.com.au/"
+              },
+              {
+                "label": "Monforte order menu",
+                "url": "https://cookaborough.com/monforte-viennoiserie/menus"
+              },
+              {
+                "label": "Google Maps: Monforte Viennoiserie",
+                "url": "https://maps.app.goo.gl/hQjhSgwm8kKJvpNY8"
               }
             ],
             "recommendations": [
@@ -2593,25 +2813,49 @@
                 "name": "Leatherwood Honey & Sea Salt Croissant",
                 "zhName": "皮革木蜂蜜海鹽可頌",
                 "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80",
-                "note": "Monforte 的 signature item 之一，適合當作優先品項。"
+                "note": "官方訂購頁與 Visit Victoria 都提到的招牌品項，以 Tasmania Leatherwood honey 與 Tasman sea salt flakes 收尾；建議作為第一優先。"
               },
               {
                 "name": "Classic Croissant",
                 "zhName": "經典可頌",
                 "image": "https://images.unsplash.com/photo-1623334044303-241021148842?auto=format&fit=crop&w=900&q=80",
-                "note": "第一次去可先點基本款，確認奶油香氣與層次。"
+                "note": "官方訂購頁列出的基本款，使用 Bellarine Peninsula cultured butter、NSW organic flour 與 Victorian Rouge de Bordeaux malted grain；適合拿來判斷店家層次與奶油香。"
               },
               {
                 "name": "Seasonal Viennoiserie",
                 "zhName": "季節限定法式甜點",
                 "image": "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=900&q=80",
-                "note": "店家品項會變動，現場若有季節款可加點分食。"
+                "note": "店家菜單會依季節調整，現場可看當天甜點櫃或訂購頁，挑一款最特別的月度品項。"
+              },
+              {
+                "name": "Spent Coffee & Toasted Koji Bun",
+                "zhName": "咖啡渣與烤麴麵包",
+                "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
+                "note": "近期訂購頁出現的特色品項，使用 spent coffee grounds、honey、unrefined sugar、butter、organic sunflower oil 與 dark-roasted barley koji；若當天有供應，很適合嘗試。"
+              },
+              {
+                "name": "Chocolate and Buttered Toast Crisp",
+                "zhName": "巧克力奶油吐司脆片可頌",
+                "image": "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80",
+                "note": "近期訂購頁出現的巧克力系品項，以 croissant shell、fudgy chocolate、buttered toast wafers 與 caramelised yeast ganache 組成；適合想分食甜點的人。"
               }
             ],
             "sources": [
               {
                 "label": "Monforte official",
                 "url": "https://monforte.com.au/"
+              },
+              {
+                "label": "Monforte order menu",
+                "url": "https://cookaborough.com/monforte-viennoiserie/menus"
+              },
+              {
+                "label": "Google Maps: Monforte Viennoiserie",
+                "url": "https://maps.app.goo.gl/hQjhSgwm8kKJvpNY8"
+              },
+              {
+                "label": "Visit Victoria: Monforte Viennoiserie",
+                "url": "https://www.visitvictoria.com/regions/melbourne/eat-and-drink/cafes-and-bakeries/vv-monforte-viennoiserie"
               }
             ]
           }
@@ -2637,10 +2881,10 @@
           "time": "09:15",
           "title": "Good Measure 咖啡",
           "type": "food",
-          "location": "Good Measure, Carlton",
-          "summary": "09:15 到 09:30。Good Measure 位於 Lygon Street，適合作為可頌後的咖啡停靠，重點可放在 Mont Blanc coffee。",
+          "location": "Good Measure, 193 Lygon Street, Carlton",
+          "summary": "09:15 到 09:30。Good Measure 位於 193 Lygon Street，是 Carlton 的 cafe / bar，白天主打 Italian-style coffee、batch brew、cold filter、日式靈感三明治與甜點；這站重點可放在 Mont Blanc coffee。",
           "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Good+Measure+193+Lygon+St+Carlton",
+          "mapsUrl": "https://maps.app.goo.gl/6dZhjgvYeLkc4UF78",
           "notionUrl": "https://www.notion.so/2dc2f57cec1b80029a12e82711008009",
           "tags": [
             "Recommandation",
@@ -2648,11 +2892,15 @@
             "coffee"
           ],
           "restaurantGuide": {
-            "intro": "Good Measure 是 Carlton 的 cafe / bar，特色是帶日本風格的咖啡與輕食。官方與 Melbourne 城市介紹都提到它的 Mont Blanc coffee，是這站最值得點的品項。",
+            "intro": "Good Measure 是 Carlton 的 cafe / bar，位在 193 Lygon Street。What's On Melbourne 介紹它白天供應 traditional Italian-style coffee、batch brew、cold filter、Ramen Egg Salad 或 pastrami 這類原創三明治，以及甜點；晚上則轉成 cocktail、wine、beer 與 Mont Blanc 等飲品。Day 8 這站只排 15 分鐘，建議把它當成 Monforte 後的咖啡補給，不要點太多需要等的餐點。",
             "menuLinks": [
               {
                 "label": "Good Measure listing",
                 "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/good-measure"
+              },
+              {
+                "label": "Google Maps: Good Measure",
+                "url": "https://maps.app.goo.gl/6dZhjgvYeLkc4UF78"
               }
             ],
             "recommendations": [
@@ -2660,25 +2908,41 @@
                 "name": "Mont Blanc Coffee",
                 "zhName": "蒙布朗咖啡",
                 "image": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=900&q=80",
-                "note": "Good Measure 的代表性咖啡品項，適合當作這站主角。"
+                "note": "What's On Melbourne 特別提到的 house special，適合當作這站主角。"
               },
               {
                 "name": "Batch Brew or Cold Filter",
                 "zhName": "批次手沖或冷萃濾泡咖啡",
                 "image": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=900&q=80",
-                "note": "想要清爽一點可選濾泡類，後面還有博物館與步行行程。"
+                "note": "如果前一站已吃可頌，這裡可以只點清爽的濾泡咖啡，保留後面博物館與步行行程的節奏。"
               },
               {
                 "name": "Ramen Egg Salad Sandwich",
                 "zhName": "拉麵蛋沙拉三明治",
                 "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
                 "note": "What’s On Melbourne 提到的 original sandwich，可作為分食輕食。"
+              },
+              {
+                "name": "Pastrami Sandwich",
+                "zhName": "燻牛肉三明治",
+                "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+                "note": "同樣是官方城市介紹提到的原創三明治方向；如果 Monforte 沒買到足夠早餐，可補一份分食。"
+              },
+              {
+                "name": "Sweet Treats",
+                "zhName": "甜點小點",
+                "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
+                "note": "若只想短暫停留，可點咖啡搭配一份甜點，不影響後續 Carlton Gardens 與 Melbourne Museum。"
               }
             ],
             "sources": [
               {
                 "label": "What's On Melbourne Good Measure",
                 "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/good-measure"
+              },
+              {
+                "label": "Google Maps: Good Measure",
+                "url": "https://maps.app.goo.gl/6dZhjgvYeLkc4UF78"
               }
             ]
           }
@@ -2944,10 +3208,10 @@
           "time": "16:10",
           "title": "Bekù Gelato Carlton",
           "type": "food",
-          "location": "Bekù Gelato, Carlton",
-          "summary": "16:10 到 16:20。Bekù Gelato 主打東南亞風味與義式 gelato 技法，適合在博物館後補一個輕甜點。",
+          "location": "Bekù Gelato - Carlton, 150 Lygon Street, Carlton North",
+          "summary": "16:10 到 16:20。Bekù Gelato Carlton 位於 150 Lygon Street，主打東南亞風味與義式 gelato 技法，signature flavours 包含 Ube、Matcha、Durian、Teh Tarik、Cendol、Calamansi 等，適合在博物館後補一個輕甜點。",
           "image": "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Beku+Gelato+150+Lygon+St+Carlton",
+          "mapsUrl": "https://maps.app.goo.gl/Tndk3MKDxzpxqkdX9",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80d9b7e2de94c8b3bef3",
           "tags": [
             "Recommandation",
@@ -2955,11 +3219,19 @@
             "dessert"
           ],
           "restaurantGuide": {
-            "intro": "Bekù Gelato Carlton 把義式 gelato 技法和東南亞風味結合，官方列出的 signature flavours 包含 Ube、Matcha、Durian、Teh Tarik、Cendol、Calamansi 等。",
+            "intro": "Bekù Gelato Carlton 位在 150 Lygon Street，把義式 gelato 技法與東南亞風味結合。官方列出的 signature flavours 包含 Ube、Matcha、Durian、Teh Tarik、Cendol、Calamansi 等，也提供 classic、sorbet、vegan 與 gluten-free options。Day 8 這站只有 10 分鐘，建議一人一球或兩人分食，不要排太久影響後面步行回 CBD。",
             "menuLinks": [
               {
                 "label": "Bekù Gelato official",
                 "url": "https://www.beku.com.au/"
+              },
+              {
+                "label": "Bekù Gelato flavours",
+                "url": "https://www.beku.com.au/flavours"
+              },
+              {
+                "label": "Google Maps: Bekù Gelato Carlton",
+                "url": "https://maps.app.goo.gl/Tndk3MKDxzpxqkdX9"
               }
             ],
             "recommendations": [
@@ -2967,25 +3239,45 @@
                 "name": "Ube",
                 "zhName": "紫薯",
                 "image": "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=80",
-                "note": "官方 signature flavour，顏色與風味都明顯，適合第一次點。"
+                "note": "官方 signature flavour，顏色明顯、風味有記憶點，適合第一次到 Bekù 時優先點。"
+              },
+              {
+                "name": "Durian",
+                "zhName": "榴槤",
+                "image": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 signature flavour，口味存在感強；只有喜歡榴槤的人再點，建議先試吃或分食。"
               },
               {
                 "name": "Teh Tarik",
                 "zhName": "拉茶",
                 "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80",
-                "note": "東南亞奶茶風味，適合想點非水果類的人。"
+                "note": "東南亞奶茶風味，甜感與奶香比較直觀，適合想點非水果類的人。"
               },
               {
                 "name": "Cendol or Calamansi",
                 "zhName": "煎蕊或酸柑",
                 "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
-                "note": "想要更有東南亞特色可選 Cendol；想清爽可看 Calamansi。"
+                "note": "想要更有東南亞甜品特色可選 Cendol；想清爽解膩可選 Calamansi。"
+              },
+              {
+                "name": "Matcha",
+                "zhName": "抹茶",
+                "image": "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=900&q=80",
+                "note": "官方 signature flavour，適合想要比較穩定、不想冒險的人。"
               }
             ],
             "sources": [
               {
                 "label": "Bekù Gelato official",
                 "url": "https://www.beku.com.au/"
+              },
+              {
+                "label": "Bekù Gelato flavours",
+                "url": "https://www.beku.com.au/flavours"
+              },
+              {
+                "label": "Google Maps: Bekù Gelato Carlton",
+                "url": "https://maps.app.goo.gl/Tndk3MKDxzpxqkdX9"
               }
             ]
           }
@@ -3012,10 +3304,10 @@
           "time": "17:30",
           "title": "San Telmo 晚餐",
           "type": "food",
-          "location": "San Telmo, Melbourne CBD",
-          "summary": "17:30 到 19:30。San Telmo 是阿根廷風格餐廳，適合以共享菜、empanadas、parrilla 烤肉與牛排作為 Day 8 晚餐。",
+          "location": "San Telmo, 14 Meyers Place, Melbourne",
+          "summary": "17:30 到 19:30。San Telmo 位於 14 Meyers Place，是 Melbourne CBD 的 Argentine restaurant，菜單核心是 sharing plates、empanadas、charcoal parrilla、premium steak、chimichurri 與 dulce de leche 甜點，適合作為 Day 8 正式晚餐。",
           "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=San+Telmo+14+Meyers+Pl+Melbourne",
+          "mapsUrl": "https://maps.app.goo.gl/SQ7XqES3HyCaZKwv5",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80558afeff016a00d232",
           "tags": [
             "Recommandation",
@@ -3023,11 +3315,15 @@
             "steakhouse"
           ],
           "restaurantGuide": {
-            "intro": "San Telmo 是 Melbourne CBD 的 Argentine restaurant，菜單以 sharing style、empanadas、chorizo、morcilla、premium steak 與 parrilla charcoal grill 為核心。",
+            "intro": "San Telmo 是 Melbourne CBD 的 Argentine restaurant，位在 14 Meyers Place。官方菜單以 sharing style 為主，從 empanadas、provoleta、chorizo、morcilla 到 charcoal parrilla steak 都適合多人分食；如果 Day 8 前面已經走很多路，晚餐可以用小點加一份主牛排、再配 side 和甜點的方式安排。",
             "menuLinks": [
               {
                 "label": "San Telmo menu",
                 "url": "https://san-telmo-melbourne.squarespace.com/menu"
+              },
+              {
+                "label": "Google Maps: San Telmo",
+                "url": "https://maps.app.goo.gl/SQ7XqES3HyCaZKwv5"
               }
             ],
             "recommendations": [
@@ -3035,25 +3331,47 @@
                 "name": "Beef Empanada",
                 "zhName": "阿根廷牛肉餡餅",
                 "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80",
-                "note": "適合先點來分食，是阿根廷餐廳常見開場小點。"
+                "note": "官方菜單的 empanada 類品項，適合先點來分食，是阿根廷餐廳常見開場小點。"
               },
               {
-                "name": "Premium Steak from the Parrilla",
-                "zhName": "炭烤牛排",
+                "name": "Provoleta",
+                "zhName": "烤起司",
+                "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80",
+                "note": "阿根廷 parrilla 常見小點，適合和麵包、醬料一起分食，作為牛排前的熱前菜。"
+              },
+              {
+                "name": "Ojo de Bife / Rib Eye",
+                "zhName": "肋眼牛排",
                 "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=80",
-                "note": "官方菜單核心是 charcoal grill，想吃正式晚餐可把牛排作主菜。"
+                "note": "官方菜單的 parrilla 主軸之一，想吃正式牛排晚餐可把 rib eye 作為主菜，再搭配 chimichurri 或 salsa criolla。"
+              },
+              {
+                "name": "Tira de Asado / Asado de Tira",
+                "zhName": "阿根廷切法牛小排",
+                "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80",
+                "note": "阿根廷烤肉代表性品項，適合想吃較有地方特色的 charcoal grill。"
+              },
+              {
+                "name": "Chorizo or Morcilla",
+                "zhName": "阿根廷香腸或血腸",
+                "image": "https://images.unsplash.com/photo-1598511726623-d2e9996892f0?auto=format&fit=crop&w=900&q=80",
+                "note": "官方介紹與菜單核心都包含 chorizo、morcilla 這類 parrilla 小點，適合多人各點一份嘗試。"
               },
               {
                 "name": "Dulce de Leche Flan or Alfajores",
                 "zhName": "牛奶焦糖布丁或夾心餅",
                 "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80",
-                "note": "官方介紹提到 dulce de leche 甜點，是晚餐收尾選項。"
+                "note": "官方介紹提到 dulce de leche 甜點，是晚餐收尾選項；若大家已經很飽，可以點一份分食。"
               }
             ],
             "sources": [
               {
                 "label": "San Telmo menu",
                 "url": "https://san-telmo-melbourne.squarespace.com/menu"
+              },
+              {
+                "label": "Google Maps: San Telmo",
+                "url": "https://maps.app.goo.gl/SQ7XqES3HyCaZKwv5"
               }
             ]
           }
@@ -3163,12 +3481,12 @@
         {
           "id": "3712f57c-ec1b-8098-af4b-d27219ea6b59",
           "time": "09:00",
-          "title": "Seven Seeds 早餐",
+          "title": "Seven Seeds Coffee Roasters 早餐",
           "type": "food",
-          "location": "Seven Seeds Coffee Roasters, Carlton",
-          "summary": "09:00 到 10:00。以 Carlton 的 Seven Seeds 作為最後一天早餐與咖啡起點，再步行前往墨爾本大學。",
+          "location": "Seven Seeds Coffee Roasters, 114 Berkeley St, Carlton",
+          "summary": "09:00 到 10:00。以 Carlton 的 Seven Seeds Coffee Roasters 作為最後一天早餐與咖啡起點，店址靠近墨爾本大學，吃完後可直接步行銜接校園行程。",
           "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Seven+Seeds+Coffee+Roasters+114+Berkeley+St+Carlton",
+          "mapsUrl": "https://maps.app.goo.gl/YxqE8KJ7691qzNSz8",
           "notionUrl": "https://www.notion.so/3712f57cec1b8098af4bd27219ea6b59",
           "tags": [
             "Recommandation",
@@ -3176,39 +3494,65 @@
             "coffee"
           ],
           "restaurantGuide": {
-            "intro": "Seven Seeds Carlton 是墨爾本知名 specialty coffee roaster / cafe，本段重點放在早餐、咖啡與後續步行到墨爾本大學的節奏。",
+            "intro": "Seven Seeds Coffee Roasters Carlton 是 Seven Seeds 的代表性店點，位在 Melbourne University district、Queen Victoria Market 北側一帶的 Berkeley Street。這裡原本也是 roastery site，現在以大型倉庫感空間、咖啡烘焙、all-day dine-in menu 與可購買咖啡豆的 retail shelves 為主，適合作為 Day 9 退房後的早餐與咖啡起點。",
             "menuLinks": [
               {
                 "label": "Seven Seeds Carlton",
                 "url": "https://sevenseeds.com.au/pages/seven-seeds-carlton"
               },
               {
-                "label": "Seven Seeds menu",
+                "label": "Seven Seeds all-day dine-in menu",
                 "url": "https://cdn.shopify.com/s/files/1/0168/5442/files/MENU_TEMPLATE_Autumn_2026_1_-3_3.pdf?v=1772656312"
+              },
+              {
+                "label": "Google Maps: Seven Seeds Coffee Roasters",
+                "url": "https://maps.app.goo.gl/YxqE8KJ7691qzNSz8"
               }
             ],
             "recommendations": [
               {
-                "name": "House coffee",
-                "zhName": "店內咖啡",
+                "name": "House coffee / Seven Seeds coffee beans",
+                "zhName": "店內咖啡 / Seven Seeds 咖啡豆",
                 "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
-                "note": "以咖啡烘焙起家的店，早餐建議先點一杯咖啡作為主軸。"
+                "note": "Seven Seeds 以 specialty coffee 起家，店內可喝咖啡，也可購買 packaged coffee beans；早餐建議先以咖啡作為主軸。"
               },
               {
-                "name": "Seasonal breakfast plate",
-                "zhName": "季節早餐盤",
-                "note": "依到訪時段的官方菜單選熱食，適合支撐後面市區步行。"
+                "name": "Chilli Scramble",
+                "zhName": "辣味炒蛋",
+                "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 all-day dine-in menu 品項，以 roti、scrambled eggs、crispy peanut chilli oil、spring onions 與 coriander 組成；想吃鹹食早餐可選這道。"
               },
               {
-                "name": "Pastry or toast",
-                "zhName": "甜點或吐司類早餐",
-                "note": "若不想吃太飽，可選較輕量的麵包、吐司或甜點搭咖啡。"
+                "name": "Banana & Date French Toast",
+                "zhName": "香蕉椰棗法式吐司",
+                "image": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 menu 品項，包含 pain de mie、miso caramel glaze、date syrup、mascarpone、banana 與 pistachio；適合想吃甜口早餐的人。"
+              },
+              {
+                "name": "Waffle Benny",
+                "zhName": "帕瑪森鬆餅班尼迪克蛋",
+                "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80",
+                "note": "官方 menu 品項，以 parmesan waffle、poached eggs、tarragon hollandaise 與 ham 或 avocado 組合，適合想吃完整早午餐的人。"
+              },
+              {
+                "name": "Toast / Suburbia Fruit Toast",
+                "zhName": "吐司 / Suburbia 水果吐司",
+                "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80",
+                "note": "若想保留胃口給後面市區餐廳，可選較輕量的 toast 或 fruit toast 搭咖啡。"
               }
             ],
             "sources": [
               {
                 "label": "Seven Seeds Carlton",
                 "url": "https://sevenseeds.com.au/pages/seven-seeds-carlton"
+              },
+              {
+                "label": "Seven Seeds all-day dine-in menu",
+                "url": "https://cdn.shopify.com/s/files/1/0168/5442/files/MENU_TEMPLATE_Autumn_2026_1_-3_3.pdf?v=1772656312"
+              },
+              {
+                "label": "Google Maps: Seven Seeds Coffee Roasters",
+                "url": "https://maps.app.goo.gl/YxqE8KJ7691qzNSz8"
               },
               {
                 "label": "What's On Melbourne",
