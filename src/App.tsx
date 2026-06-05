@@ -2009,6 +2009,8 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
       <div className="timeline" style={accentStyle(day.accent)}>
         {day.items.map((item, index) => {
           const showInlineMoving = isMovingConnectorItem(item);
+          const hasGuide = !!(item.restaurantGuide || item.attractionGuide);
+          const hasCardActions = !!item.mapsUrl || hasGuide;
 
           return (
             <Fragment key={item.id}>
@@ -2034,7 +2036,7 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                 {showInlineMoving ? (
                   <MovingConnector day={day} items={day.items} item={item} index={index} />
                 ) : (
-                  <div className={`itinerary-card${item.mapsUrl ? " has-map-link" : ""}`}>
+                  <div className={`itinerary-card${hasCardActions ? " has-card-actions" : ""}`}>
                     <span
                       className="item-sequence"
                       aria-label={`第 ${cardSequenceById.get(item.id) ?? index + 1} 個行程`}
@@ -2042,7 +2044,7 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                       {String(cardSequenceById.get(item.id) ?? index + 1).padStart(2, "0")}
                     </span>
                     <TypeBadge item={item} />
-                    <ItemImage item={item} onOpenGuide={setActiveGuideItem} />
+                    <ItemImage item={item} />
                     <div className="item-body">
                       <div className="item-meta">
                         <span>{item.location ?? day.city}</span>
@@ -2051,17 +2053,24 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                       <p>{item.summary}</p>
                       <FlightDetails item={item} />
                     </div>
-                    {item.mapsUrl ? (
-                      <a
-                        className="item-map-link"
-                        href={item.mapsUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`在 Google Maps 開啟 ${item.title}`}
-                        title="Google Maps"
-                      >
-                        <GoogleMapsIcon />
-                      </a>
+                    {hasCardActions ? (
+                      <div className="item-card-actions">
+                        {hasGuide ? (
+                          <GuideButton item={item} onOpenGuide={setActiveGuideItem} />
+                        ) : null}
+                        {item.mapsUrl ? (
+                          <a
+                            className="item-map-link"
+                            href={item.mapsUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`在 Google Maps 開啟 ${item.title}`}
+                            title="Google Maps"
+                          >
+                            <GoogleMapsIcon />
+                          </a>
+                        ) : null}
+                      </div>
                     ) : null}
                   </div>
                 )}
@@ -2226,17 +2235,8 @@ function NowMarker({ minutes }: { minutes: number }) {
   );
 }
 
-function ItemImage({
-  item,
-  onOpenGuide,
-}: {
-  item: TravelItem;
-  onOpenGuide: (item: TravelItem) => void;
-}) {
+function ItemImage({ item }: { item: TravelItem }) {
   const Icon = itemIcons[item.type];
-  const guideType = item.restaurantGuide ? "restaurant" : item.attractionGuide ? "attraction" : "";
-  const guideLabel = guideType === "restaurant" ? "餐廳介紹" : "景點介紹";
-  const GuideIcon = guideType === "restaurant" ? BookOpenText : Landmark;
 
   return (
     <div className="item-image-wrap">
@@ -2244,18 +2244,34 @@ function ItemImage({
       <span className="item-type-icon" title={item.type}>
         <Icon size={18} />
       </span>
-      {guideType ? (
-        <button
-          className={`guide-trigger guide-trigger-${guideType}`}
-          type="button"
-          onClick={() => onOpenGuide(item)}
-          aria-label={`開啟 ${item.title} ${guideLabel}`}
-          data-tooltip={guideLabel}
-        >
-          <GuideIcon size={18} strokeWidth={2.5} />
-        </button>
-      ) : null}
     </div>
+  );
+}
+
+function GuideButton({
+  item,
+  onOpenGuide,
+}: {
+  item: TravelItem;
+  onOpenGuide: (item: TravelItem) => void;
+}) {
+  const guideType = item.restaurantGuide ? "restaurant" : item.attractionGuide ? "attraction" : "";
+  const guideLabel = guideType === "restaurant" ? "餐廳介紹" : "景點介紹";
+  const GuideIcon = guideType === "restaurant" ? BookOpenText : Landmark;
+
+  if (!guideType) return null;
+
+  return (
+    <button
+      className={`guide-trigger guide-trigger-${guideType}`}
+      type="button"
+      onClick={() => onOpenGuide(item)}
+      aria-label={`開啟 ${item.title} ${guideLabel}`}
+      data-tooltip={guideLabel}
+      title={guideLabel}
+    >
+      <GuideIcon size={18} strokeWidth={2.5} />
+    </button>
   );
 }
 
