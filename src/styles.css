@@ -1768,7 +1768,8 @@ h1 {
 }
 
 .moving-connector:hover .moving-connector-popover,
-.moving-connector:focus-within .moving-connector-popover {
+.moving-connector:focus-within .moving-connector-popover,
+.moving-connector.is-open .moving-connector-popover {
   opacity: 1;
   pointer-events: auto;
   transform: translate(0, -50%);
@@ -1856,6 +1857,10 @@ h1 {
   .moving-connector-vehicle {
     animation: none;
   }
+
+  .guide-trigger {
+    animation: none;
+  }
 }
 
 .itinerary-card {
@@ -1928,6 +1933,7 @@ h1 {
   border-radius: 50%;
   color: #fff;
   box-shadow: 0 14px 34px rgba(16, 32, 42, 0.24);
+  animation: guideTriggerPulse 2.4s ease-in-out infinite;
 }
 
 .guide-trigger-restaurant {
@@ -1965,6 +1971,7 @@ h1 {
 .guide-trigger:hover,
 .guide-trigger:focus-visible {
   background: #10202a;
+  animation-play-state: paused;
 }
 
 .guide-trigger:hover::after,
@@ -1976,6 +1983,11 @@ h1 {
 .item-body {
   min-width: 0;
   padding: 50px 22px 22px;
+}
+
+.itinerary-card.has-map-link .item-body {
+  padding-right: 74px;
+  padding-bottom: 62px;
 }
 
 .item-meta {
@@ -2093,15 +2105,7 @@ h1 {
   font-weight: 900;
 }
 
-.item-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-.type-badge,
-.item-actions a {
+.type-badge {
   display: inline-flex;
   min-height: 36px;
   align-items: center;
@@ -2158,11 +2162,44 @@ h1 {
   background: #475569;
 }
 
-.item-actions a {
-  color: #10202a;
-  background: rgba(16, 32, 42, 0.08);
-  text-decoration: none;
-  max-width: 100%;
+.item-map-link {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 4;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(16, 32, 42, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 34px rgba(16, 32, 42, 0.18);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.item-map-link:hover,
+.item-map-link:focus-visible {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 18px 42px rgba(16, 32, 42, 0.22);
+}
+
+.google-maps-icon {
+  width: 27px;
+  height: 27px;
+}
+
+@keyframes guideTriggerPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
 }
 
 .restaurant-modal-backdrop {
@@ -2847,16 +2884,16 @@ h1 {
 
   .date-line {
     margin-top: 16px;
-    font-size: 0.95rem;
+    font-size: 1.02rem;
   }
 
   .day-overview h2 {
-    font-size: 2.15rem;
+    font-size: 2.28rem;
     line-height: 1.08;
   }
 
   .day-summary {
-    font-size: 1rem;
+    font-size: 1.08rem;
     line-height: 1.7;
   }
 
@@ -2876,11 +2913,11 @@ h1 {
   }
 
   .overview-stat-grid span {
-    font-size: 0.66rem;
+    font-size: 0.74rem;
   }
 
   .overview-stat-grid strong {
-    font-size: 0.96rem;
+    font-size: 1.06rem;
     overflow-wrap: anywhere;
   }
 
@@ -2894,13 +2931,13 @@ h1 {
   }
 
   .overview-icon-chip {
-    min-height: 31px;
-    padding: 6px 8px;
-    font-size: 0.72rem;
+    min-height: 34px;
+    padding: 7px 9px;
+    font-size: 0.8rem;
   }
 
   .overview-icon-chip.is-transport {
-    width: 31px;
+    width: 34px;
     padding: 0;
   }
 
@@ -2909,8 +2946,8 @@ h1 {
   }
 
   .day-summary-copy p {
-    font-size: 0.92rem;
-    line-height: 1.62;
+    font-size: 1.04rem;
+    line-height: 1.68;
   }
 
   .reminder-window {
@@ -3034,20 +3071,51 @@ h1 {
     bottom: auto;
     z-index: 5;
     display: none;
-    width: min(300px, 100%);
+    width: min(320px, 100%);
     max-width: none;
     max-height: none;
     margin-top: 76px;
+    gap: 9px;
     overflow: visible;
+    padding: 15px;
     transform: none;
   }
 
   .moving-connector:hover .moving-connector-popover,
   .moving-connector:focus-within .moving-connector-popover {
+    display: none;
+  }
+
+  .moving-connector.is-open .moving-connector-popover {
     display: grid;
     opacity: 1;
     pointer-events: auto;
     transform: none;
+  }
+
+  .moving-connector-popover strong {
+    padding: 6px 10px;
+    font-size: 0.84rem;
+  }
+
+  .moving-connector-popover em {
+    font-size: 1.12rem;
+    line-height: 1.25;
+  }
+
+  .moving-connector-popover span {
+    font-size: 0.94rem;
+    line-height: 1.42;
+  }
+
+  .moving-connector-popover b {
+    padding: 6px 10px;
+    font-size: 0.92rem;
+  }
+
+  .moving-connector-popover small,
+  .moving-map-link {
+    font-size: 0.94rem;
   }
 
   .itinerary-card {
@@ -3096,6 +3164,23 @@ h1 {
 
   .item-body {
     padding: 18px;
+  }
+
+  .itinerary-card.has-map-link .item-body {
+    padding-right: 66px;
+    padding-bottom: 66px;
+  }
+
+  .item-map-link {
+    right: 12px;
+    bottom: 12px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .google-maps-icon {
+    width: 26px;
+    height: 26px;
   }
 
   .type-badge {

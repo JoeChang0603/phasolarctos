@@ -2034,7 +2034,7 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                 {showInlineMoving ? (
                   <MovingConnector day={day} items={day.items} item={item} index={index} />
                 ) : (
-                  <div className="itinerary-card">
+                  <div className={`itinerary-card${item.mapsUrl ? " has-map-link" : ""}`}>
                     <span
                       className="item-sequence"
                       aria-label={`第 ${cardSequenceById.get(item.id) ?? index + 1} 個行程`}
@@ -2050,15 +2050,19 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                       <h3>{item.title}</h3>
                       <p>{item.summary}</p>
                       <FlightDetails item={item} />
-                      <div className="item-actions">
-                        {item.mapsUrl ? (
-                          <a href={item.mapsUrl} target="_blank" rel="noreferrer">
-                            地圖
-                            <ExternalLink size={15} />
-                          </a>
-                        ) : null}
-                      </div>
                     </div>
+                    {item.mapsUrl ? (
+                      <a
+                        className="item-map-link"
+                        href={item.mapsUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`在 Google Maps 開啟 ${item.title}`}
+                        title="Google Maps"
+                      >
+                        <GoogleMapsIcon />
+                      </a>
+                    ) : null}
                   </div>
                 )}
               </motion.article>
@@ -2085,6 +2089,30 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
   );
 }
 
+function GoogleMapsIcon() {
+  return (
+    <svg className="google-maps-icon" viewBox="0 0 32 32" aria-hidden="true">
+      <path
+        d="M16 2.8c-5.1 0-9.2 4.1-9.2 9.2 0 6.9 9.2 17.2 9.2 17.2S25.2 18.9 25.2 12c0-5.1-4.1-9.2-9.2-9.2Z"
+        fill="#34a853"
+      />
+      <path
+        d="M16 2.8c-5.1 0-9.2 4.1-9.2 9.2 0 3.8 2.8 8.8 5.2 12.2l4-7.3A4.9 4.9 0 0 1 16 7.1V2.8Z"
+        fill="#4285f4"
+      />
+      <path
+        d="M20 16.9 16 29.2s9.2-10.3 9.2-17.2c0-2.3-.8-4.4-2.2-6l-6.4 6.4 3.4 4.5Z"
+        fill="#fbbc04"
+      />
+      <path
+        d="M9.5 5.5 13 9.1A4.9 4.9 0 0 1 20.9 13l3.1-3.1C23 5.8 19.8 2.8 16 2.8c-2.5 0-4.8 1-6.5 2.7Z"
+        fill="#ea4335"
+      />
+      <circle cx="16" cy="12" r="3.4" fill="#fff" />
+    </svg>
+  );
+}
+
 function MovingConnector({
   day,
   items,
@@ -2100,20 +2128,44 @@ function MovingConnector({
   const endpoints = movingEndpoints(day, items, index);
   const modeLabel = item.type === "walk" ? "步行移動" : "交通移動";
   const durationLabel = movingDurationLabel(item);
+  const [isOpen, setIsOpen] = useState(false);
+  const connectorRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handlePointerDown = (event: globalThis.PointerEvent) => {
+      if (!connectorRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    const handleKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    window.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="moving-connector">
+    <div className={`moving-connector${isOpen ? " is-open" : ""}`} ref={connectorRef}>
       <span className="moving-connector-line" aria-hidden="true" />
-      <div
+      <button
         className="moving-connector-hotspot"
-        tabIndex={0}
+        type="button"
+        aria-expanded={isOpen}
         aria-label={`查看 ${item.title} 交通資訊`}
+        onClick={() => setIsOpen((current) => !current)}
       >
         <span className="moving-connector-vehicle" aria-hidden="true">
           <Icon size={18} strokeWidth={2.5} />
         </span>
-      </div>
-      <div className="moving-connector-popover">
+      </button>
+      <div className="moving-connector-popover" onClick={() => setIsOpen(false)}>
         <strong>{modeLabel}</strong>
         <em>{item.title}</em>
         <span>{endpoints.from}</span>
