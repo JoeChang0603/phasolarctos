@@ -27,14 +27,14 @@ jobs:
       - name: Sync Notion expenses
         run: |
           if [ -n "$NOTION_TOKEN" ] && [ -n "$NOTION_DATABASE_ID" ]; then
-            npm run sync:notion-expenses
+            npm run sync:notion-expenses || echo "::warning::Notion expense sync failed; continuing with committed trip data."
           else
             echo "Skipping Notion expense sync because NOTION_TOKEN or NOTION_DATABASE_ID is not set."
           fi
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-          NOTION_PLAN_TAG: Recommendation
+          NOTION_PLAN_TAG: Recommendation,Recommandation
       - run: npm run build
         env:
           VITE_GOOGLE_MAPS_EMBED_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_EMBED_API_KEY }}

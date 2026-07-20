@@ -4,7 +4,11 @@ import { dirname, resolve } from "node:path";
 const NOTION_VERSION = "2022-06-28";
 const token = process.env.NOTION_TOKEN;
 const databaseId = process.env.NOTION_DATABASE_ID;
-const planTag = process.env.NOTION_PLAN_TAG ?? "Recommendation";
+const planTags = (process.env.NOTION_PLAN_TAG ?? "Recommendation,Recommandation")
+  .split(",")
+  .map((tag) => tag.trim())
+  .filter(Boolean);
+const planTag = planTags[0] ?? "Recommendation";
 const outputPath = resolve("src/data/trip.json");
 const menuOutputDir = resolve("public/notion-menus");
 const menuPublicPath = "/notion-menus";
@@ -215,9 +219,10 @@ function findProperty(properties, candidates) {
 function hasPlanTag(page) {
   const plan = findProperty(page.properties, ["plan", "Plan", "tag", "Tag", "tags", "Tags"]);
   if (!plan) return true;
-  if (plan.type === "select") return plan.select?.name === planTag;
-  if (plan.type === "multi_select") return plan.multi_select?.some((item) => item.name === planTag);
-  return propertyText(plan).includes(planTag);
+  if (plan.type === "select") return planTags.includes(plan.select?.name ?? "");
+  if (plan.type === "multi_select") return plan.multi_select?.some((item) => planTags.includes(item.name));
+  const text = propertyText(plan);
+  return planTags.some((tag) => text.includes(tag));
 }
 
 async function pageToItem(page) {
@@ -351,23 +356,7 @@ function pickAccent(index) {
   return ["#1f9fb6", "#ef7d57", "#7a6ff0", "#3f8f5f", "#c27a2c"][index % 5];
 }
 
-function buildPlanFilter(database) {
-  const propertyName = Object.keys(database.properties).find((name) => name.toLowerCase() === "plan");
-  if (!propertyName) return undefined;
-
-  const property = database.properties[propertyName];
-  if (property.type === "select") {
-    return { property: propertyName, select: { equals: planTag } };
-  }
-  if (property.type === "multi_select") {
-    return { property: propertyName, multi_select: { contains: planTag } };
-  }
-  return undefined;
-}
-
 async function main() {
-  const database = await notionFetch(`/databases/${databaseId}`);
-  const planFilter = buildPlanFilter(database);
   const pages = [];
   let cursor;
 
@@ -375,7 +364,6 @@ async function main() {
     const body = {
       page_size: 100,
       ...(cursor ? { start_cursor: cursor } : {}),
-      ...(planFilter ? { filter: planFilter } : {}),
     };
 
     const result = await notionFetch(`/databases/${databaseId}/query`, {
@@ -391,7 +379,7 @@ async function main() {
     title: "2026 Sydney x Melbourne",
     subtitle: "Joe Chang 家庭旅遊推薦行程",
     dateRange: "2026",
-    source: `Notion database ${databaseId}, plan = ${planTag}`,
+    source: `Notion database ${databaseId}, plan = ${planTags.join(", ")}`,
     generatedAt: new Date().toISOString(),
     days: groupDays(entries),
   };

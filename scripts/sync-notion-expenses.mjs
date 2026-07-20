@@ -4,7 +4,10 @@ import { dirname, resolve } from "node:path";
 const NOTION_VERSION = "2022-06-28";
 const token = process.env.NOTION_TOKEN;
 const databaseId = process.env.NOTION_DATABASE_ID;
-const planTag = process.env.NOTION_PLAN_TAG ?? "Recommendation";
+const planTags = (process.env.NOTION_PLAN_TAG ?? "Recommendation,Recommandation")
+  .split(",")
+  .map((tag) => tag.trim())
+  .filter(Boolean);
 const inputPath = resolve("src/data/trip.json");
 
 if (!token || !databaseId) {
@@ -90,28 +93,13 @@ function findProperty(properties, candidates) {
 function hasPlanTag(page) {
   const plan = findProperty(page.properties, ["plan", "Plan", "tag", "Tag", "tags", "Tags"]);
   if (!plan) return true;
-  if (plan.type === "select") return plan.select?.name === planTag;
-  if (plan.type === "multi_select") return plan.multi_select?.some((item) => item.name === planTag);
-  return propertyText(plan).includes(planTag);
-}
-
-function buildPlanFilter(database) {
-  const propertyName = Object.keys(database.properties).find((name) => name.toLowerCase() === "plan");
-  if (!propertyName) return undefined;
-
-  const property = database.properties[propertyName];
-  if (property.type === "select") {
-    return { property: propertyName, select: { equals: planTag } };
-  }
-  if (property.type === "multi_select") {
-    return { property: propertyName, multi_select: { contains: planTag } };
-  }
-  return undefined;
+  if (plan.type === "select") return planTags.includes(plan.select?.name ?? "");
+  if (plan.type === "multi_select") return plan.multi_select?.some((item) => planTags.includes(item.name));
+  const text = propertyText(plan);
+  return planTags.some((tag) => text.includes(tag));
 }
 
 async function queryPlanPages() {
-  const database = await notionFetch(`/databases/${databaseId}`);
-  const planFilter = buildPlanFilter(database);
   const pages = [];
   let cursor;
 
@@ -119,7 +107,6 @@ async function queryPlanPages() {
     const body = {
       page_size: 100,
       ...(cursor ? { start_cursor: cursor } : {}),
-      ...(planFilter ? { filter: planFilter } : {}),
     };
 
     const result = await notionFetch(`/databases/${databaseId}/query`, {
