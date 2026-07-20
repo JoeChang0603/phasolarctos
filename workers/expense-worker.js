@@ -9,6 +9,15 @@ const categoryMap = {
   other: "Others",
 };
 
+const categoryFilterMap = {
+  lodging: ["Living", "Hotel"],
+  attraction: ["Attraction"],
+  transport: ["Transportation", "Moving"],
+  food: ["Food"],
+  shopping: ["Shopping"],
+  other: ["Others"],
+};
+
 const statusMap = {
   paid: "Done",
   confirmed: "Done",
@@ -103,6 +112,20 @@ function isNotionPageId(value) {
   );
 }
 
+function categoryFilter(category) {
+  const notionCategories = categoryFilterMap[category] || [];
+  if (!notionCategories.length) return undefined;
+  if (notionCategories.length === 1) {
+    return { property: "Category", select: { equals: notionCategories[0] } };
+  }
+  return {
+    or: notionCategories.map((notionCategory) => ({
+      property: "Category",
+      select: { equals: notionCategory },
+    })),
+  };
+}
+
 function activityFromPage(page) {
   const title = propertyText(page.properties?.Task) || propertyText(page.properties?.Name) || "未命名活動";
   const category = propertyText(page.properties?.Category);
@@ -138,9 +161,10 @@ async function notionFetch(path, env, init = {}) {
   return body;
 }
 
-async function listActivities(env) {
+async function listActivities(env, category) {
   const pages = [];
   let cursor;
+  const filter = categoryFilter(category);
 
   do {
     const result = await notionFetch(`/data_sources/${env.NOTION_SCHEDULE_DATA_SOURCE_ID}/query`, env, {
@@ -148,6 +172,7 @@ async function listActivities(env) {
       body: JSON.stringify({
         page_size: 100,
         ...(cursor ? { start_cursor: cursor } : {}),
+        ...(filter ? { filter } : {}),
       }),
     });
 
@@ -158,6 +183,28 @@ async function listActivities(env) {
   return pages
     .map(activityFromPage)
     .sort((left, right) => left.title.localeCompare(right.title, "zh-Hant"));
+}
+
+async function cachedActivitiesResponse(request, env, category) {
+  const requestUrl = new URL(request.url);
+  const cacheUrl = new URL(requestUrl.origin);
+  cacheUrl.pathname = `/__activity-cache/${category || "all"}/${encodeURIComponent(request.headers.get("Origin") || "")}`;
+  const cacheKey = new Request(cacheUrl.toString(), request);
+  const cachedResponse = await caches.default.match(cacheKey);
+  if (cachedResponse) {
+    const body = await cachedResponse.json();
+    return jsonResponse(request, env, body, { headers: { "Cache-Control": "no-store" } });
+  }
+
+  const body = { activities: await listActivities(env, category) };
+  const cacheResponse = jsonResponse(
+    request,
+    env,
+    body,
+    { headers: { "Cache-Control": "public, max-age=600, s-maxage=600" } },
+  );
+  await caches.default.put(cacheKey, cacheResponse.clone());
+  return jsonResponse(request, env, body, { headers: { "Cache-Control": "no-store" } });
 }
 
 async function sha256(value) {
@@ -200,12 +247,7 @@ export default {
       }
 
       try {
-        return jsonResponse(
-          request,
-          env,
-          { activities: await listActivities(env) },
-          { headers: { "Cache-Control": "public, max-age=300" } },
-        );
+        return cachedActivitiesResponse(request, env, url.searchParams.get("category") || "");
       } catch (error) {
         return jsonResponse(
           request,

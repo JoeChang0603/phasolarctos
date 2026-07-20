@@ -1602,11 +1602,14 @@ function ExpenseSummaryModal({
     type: "idle" | "submitting" | "success" | "error";
     message: string;
   }>({ type: "idle", message: "" });
-  const [activityOptions, setActivityOptions] = useState<ExpenseActivityOption[]>([]);
+  const [activityOptionsByCategory, setActivityOptionsByCategory] = useState<
+    Partial<Record<ExpenseCategory, ExpenseActivityOption[]>>
+  >({});
   const [activityStatus, setActivityStatus] = useState<{
     type: "idle" | "loading" | "success" | "error";
     message: string;
   }>({ type: "idle", message: "" });
+  const activityOptions = activityOptionsByCategory[formState.category] ?? [];
   const activeRows = activeCategory
     ? rows.filter((row) => row.category === activeCategory)
     : [];
@@ -1632,12 +1635,19 @@ function ExpenseSummaryModal({
   }, [onClose]);
 
   useEffect(() => {
-    if (!isFormOpen || !expenseActivitiesUrl || activityOptions.length || activityStatus.type !== "idle") return;
+    if (
+      !isFormOpen ||
+      !expenseActivitiesUrl ||
+      activityOptionsByCategory[formState.category] ||
+      activityStatus.type !== "idle"
+    ) {
+      return;
+    }
 
     let isActive = true;
     setActivityStatus({ type: "loading", message: "載入 Notion 活動中..." });
 
-    fetch(expenseActivitiesUrl)
+    fetch(`${expenseActivitiesUrl}?category=${encodeURIComponent(formState.category)}&v=2`)
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(result?.message || "載入 Notion 活動失敗。");
@@ -1648,10 +1658,15 @@ function ExpenseSummaryModal({
       })
       .then((options) => {
         if (!isActive) return;
-        setActivityOptions(options);
+        setActivityOptionsByCategory((currentOptions) => ({
+          ...currentOptions,
+          [formState.category]: options,
+        }));
         setActivityStatus({
           type: "success",
-          message: options.length ? `已載入 ${options.length} 個 Notion 活動。` : "Notion 目前沒有可選活動。",
+          message: options.length
+            ? `已載入 ${expenseCategoryMeta[formState.category].label} ${options.length} 個 Notion 活動。`
+            : `Notion 目前沒有${expenseCategoryMeta[formState.category].label}活動。`,
         });
       })
       .catch((error) => {
@@ -1665,10 +1680,21 @@ function ExpenseSummaryModal({
     return () => {
       isActive = false;
     };
-  }, [activityOptions.length, activityStatus.type, isFormOpen]);
+  }, [activityOptionsByCategory, activityStatus.type, formState.category, isFormOpen]);
 
   const updateFormField = (field: keyof ManualExpenseFormState, value: string) => {
     setFormState((currentState) => ({ ...currentState, [field]: value }));
+    setFormStatus({ type: "idle", message: "" });
+  };
+
+  const handleCategorySelect = (category: ExpenseCategory) => {
+    setFormState((currentState) => ({
+      ...currentState,
+      category,
+      schedulePageId: "",
+      activity: "",
+    }));
+    setActivityStatus({ type: "idle", message: "" });
     setFormStatus({ type: "idle", message: "" });
   };
 
@@ -1840,6 +1866,19 @@ function ExpenseSummaryModal({
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
+              <label>
+                <span>分類</span>
+                <select
+                  value={formState.category}
+                  onChange={(event) => handleCategorySelect(event.target.value as ExpenseCategory)}
+                >
+                  {Object.entries(expenseCategoryMeta).map(([category, meta]) => (
+                    <option value={category} key={category}>
+                      {meta.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <label className="expense-form-wide">
                 <span>關聯活動</span>
                 <select
@@ -1848,7 +1887,9 @@ function ExpenseSummaryModal({
                   disabled={activityStatus.type === "loading"}
                 >
                   <option value="">
-                    {activityStatus.type === "loading" ? "載入 Notion 活動中..." : "不關聯活動"}
+                    {activityStatus.type === "loading"
+                      ? `載入${expenseCategoryMeta[formState.category].label}活動中...`
+                      : `不關聯活動 / 自行輸入`}
                   </option>
                   {activityOptions.map((activity) => (
                     <option value={activity.id} key={activity.id}>
@@ -1884,19 +1925,6 @@ function ExpenseSummaryModal({
                 >
                   <option value="TWD">TWD</option>
                   <option value="AUD">AUD</option>
-                </select>
-              </label>
-              <label>
-                <span>分類</span>
-                <select
-                  value={formState.category}
-                  onChange={(event) => updateFormField("category", event.target.value)}
-                >
-                  {Object.entries(expenseCategoryMeta).map(([category, meta]) => (
-                    <option value={category} key={category}>
-                      {meta.label}
-                    </option>
-                  ))}
                 </select>
               </label>
               <label>
