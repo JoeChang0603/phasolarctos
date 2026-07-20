@@ -1,0 +1,13 @@
+name = "phasolarctos-expense-api"
+main = "workers/expense-worker.js"
+compatibility_date = "2026-07-14"
+
+[vars]
+# Set this to the deployed GitHub Pages origin, for example:
+# ALLOWED_ORIGIN = "https://your-user.github.io"
+ALLOWED_ORIGIN = "https://joechang0603.github.io,http://127.0.0.1:5173"
+NOTION_EXPENSE_DATA_SOURCE_ID = "39d2f57c-ec1b-8062-a82c-000bc049c56c"
+
+# Secrets, not vars:
+# wrangler secret put NOTION_TOKEN
+# wrangler secret put EXPENSE_WRITE_PIN
