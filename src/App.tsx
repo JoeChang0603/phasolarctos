@@ -1,16 +1,18 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
-import type { CSSProperties, PointerEvent } from "react";
+import type { CSSProperties, FormEvent, PointerEvent } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import {
   Balloon,
   BellRing,
   Beef,
+  Banknote,
   BookOpenText,
   BottleWine,
   BusFront,
   CalendarDays,
   CarFront,
+  ChartNoAxesColumn,
   ChevronLeft,
   ChevronRight,
   Coffee,
@@ -21,6 +23,7 @@ import {
   ExternalLink,
   Fish,
   GraduationCap,
+  Hotel,
   IceCreamBowl,
   Landmark,
   Luggage,
@@ -31,10 +34,14 @@ import {
   PlaneTakeoff,
   PersonStanding,
   Plane,
+  Plus,
+  ReceiptText,
   Sandwich,
   ShoppingBag,
   Sparkles,
   Soup,
+  TicketCheck,
+  Tickets,
   TreePine,
   TrainFront,
   TrainFrontTunnel,
@@ -53,12 +60,13 @@ import sydneyFerriesImage from "./assets/sydney-ferries-network-map.png";
 import sydneyLightRailImage from "./assets/sydney-light-rail-network-map.png";
 import sydneyMetroRailImage from "./assets/sydney-metro-rail-network-map.png";
 import tripJson from "./data/trip.json";
-import type { TravelDay, TravelItem, TravelReminder, TripData } from "./types";
+import type { TravelDay, TravelExpense, TravelItem, TravelReminder, TripData } from "./types";
 
 const trip = tripJson as TripData;
 const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY;
 const googleMapsStaticApiKey =
   import.meta.env.VITE_GOOGLE_MAPS_STATIC_API_KEY || googleMapsEmbedApiKey;
+const expenseApiUrl = import.meta.env.VITE_EXPENSE_API_URL;
 
 type TransitMap = {
   id:
@@ -398,8 +406,10 @@ const dayRouteCoordinates: Record<string, RouteCoordinate[]> = {
   "day-7-melbourne-city": [
     { lat: -37.8210, lng: 144.9417, label: "Melbourne Lifestyle Apartments" },
     { lat: -37.8159, lng: 144.9531, label: "Higher Ground" },
-    { lat: -37.9077, lng: 145.3566, label: "Puffing Billy Belgrave" },
-    { lat: -37.9273, lng: 145.4389, label: "Lakeside Visitor Centre" },
+    { lat: -37.8312, lng: 144.9579, label: "South Melbourne Market" },
+    { lat: -37.8304, lng: 144.9733, label: "Shrine of Remembrance" },
+    { lat: -37.8304, lng: 144.9800, label: "Royal Botanic Gardens Melbourne" },
+    { lat: -37.8206, lng: 144.9585, label: "SEA LIFE Melbourne Aquarium" },
     { lat: -37.8138, lng: 144.9604, label: "Max on Hardware" },
   ],
   "day-8-melbourne-museum": [
@@ -1147,6 +1157,224 @@ function overviewIconGroupsForDay(day: TravelDay): OverviewIconGroup[] {
   return groups.filter((group) => group.icons.length > 0);
 }
 
+type Expense = NonNullable<TravelItem["expense"]>;
+type ExpenseCategory = TravelExpense["category"];
+
+type ExpenseRow = {
+  id: string;
+  day: string;
+  date: string;
+  title: string;
+  activity?: string;
+  location?: string;
+  amount: number;
+  currency: TravelExpense["currency"];
+  category: ExpenseCategory;
+  status?: TravelExpense["status"];
+  source?: string;
+  notionUrl?: string;
+};
+
+type ManualExpenseFormState = {
+  name: string;
+  amount: string;
+  currency: TravelExpense["currency"];
+  category: ExpenseCategory;
+  status: NonNullable<TravelExpense["status"]>;
+  day: string;
+  date: string;
+  activity: string;
+  location: string;
+  pin: string;
+};
+
+const expenseCategoryMeta: Record<
+  ExpenseCategory,
+  { label: string; icon: typeof Banknote; tone: string }
+> = {
+  lodging: { label: "住宿", icon: Hotel, tone: "#7c3aed" },
+  attraction: { label: "景點/票券", icon: Tickets, tone: "#15803d" },
+  transport: { label: "交通/租車", icon: CarFront, tone: "#2563eb" },
+  food: { label: "餐飲", icon: Utensils, tone: "#c2410c" },
+  shopping: { label: "購物", icon: ShoppingBag, tone: "#b45309" },
+  other: { label: "其他", icon: ReceiptText, tone: "#475569" },
+};
+
+const expenseStatusLabel: Record<NonNullable<TravelExpense["status"]>, string> = {
+  paid: "已付款",
+  confirmed: "已確認",
+  estimated: "預估",
+  pending: "待付款",
+};
+
+const expenseStatusToNotionStatus: Record<NonNullable<TravelExpense["status"]>, string> = {
+  paid: "Done",
+  confirmed: "Done",
+  estimated: "Pending",
+  pending: "Not yet",
+};
+
+const expenseCategoryToNotionCategory: Record<ExpenseCategory, string> = {
+  lodging: "Living",
+  attraction: "Attraction",
+  transport: "Transportation",
+  food: "Food",
+  shopping: "Shopping",
+  other: "Others",
+};
+
+const expenseFormDefault: ManualExpenseFormState = {
+  name: "",
+  amount: "",
+  currency: "TWD",
+  category: "food",
+  status: "confirmed",
+  day: "",
+  date: localDateKey(new Date()),
+  activity: "",
+  location: "",
+  pin: "",
+};
+
+const manualExpenseStorageKey = "phasolarctos.manual-expenses.v1";
+const expenseCategories = new Set<ExpenseCategory>(["lodging", "attraction", "transport", "food", "shopping", "other"]);
+const expenseStatuses = new Set<NonNullable<TravelExpense["status"]>>(["paid", "confirmed", "estimated", "pending"]);
+
+function isExpenseCurrency(value: unknown): value is TravelExpense["currency"] {
+  return value === "TWD" || value === "AUD";
+}
+
+function isExpenseCategory(value: unknown): value is ExpenseCategory {
+  return typeof value === "string" && expenseCategories.has(value as ExpenseCategory);
+}
+
+function isExpenseStatus(value: unknown): value is NonNullable<TravelExpense["status"]> {
+  return typeof value === "string" && expenseStatuses.has(value as NonNullable<TravelExpense["status"]>);
+}
+
+function expenseRowFromUnknown(value: unknown): ExpenseRow | null {
+  if (!value || typeof value !== "object") return null;
+  const row = value as Partial<ExpenseRow>;
+
+  if (
+    typeof row.id !== "string" ||
+    typeof row.title !== "string" ||
+    typeof row.amount !== "number" ||
+    !Number.isFinite(row.amount) ||
+    !isExpenseCurrency(row.currency) ||
+    !isExpenseCategory(row.category)
+  ) {
+    return null;
+  }
+
+  return {
+    id: row.id,
+    day: typeof row.day === "string" ? row.day : "",
+    date: typeof row.date === "string" ? row.date : "",
+    title: row.title,
+    activity: typeof row.activity === "string" ? row.activity : row.title,
+    location: typeof row.location === "string" ? row.location : undefined,
+    amount: row.amount,
+    currency: row.currency,
+    category: row.category,
+    status: isExpenseStatus(row.status) ? row.status : undefined,
+    source: typeof row.source === "string" ? row.source : "Manual",
+    notionUrl: typeof row.notionUrl === "string" ? row.notionUrl : undefined,
+  };
+}
+
+function mergeExpenseRows(rows: ExpenseRow[]) {
+  const rowsById = new Map<string, ExpenseRow>();
+  for (const row of rows) rowsById.set(row.id, row);
+  return [...rowsById.values()];
+}
+
+function loadStoredManualExpenseRows(): ExpenseRow[] {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const storedValue = window.localStorage.getItem(manualExpenseStorageKey);
+    const parsedValue = storedValue ? JSON.parse(storedValue) : [];
+    return Array.isArray(parsedValue)
+      ? parsedValue
+          .map(expenseRowFromUnknown)
+          .filter((row): row is ExpenseRow => row !== null)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function storeManualExpenseRows(rows: ExpenseRow[]) {
+  try {
+    window.localStorage.setItem(manualExpenseStorageKey, JSON.stringify(rows));
+  } catch {
+    // Local persistence is best-effort; Notion remains the source of truth.
+  }
+}
+
+function formatExpenseAmount(amount: number, currency: TravelExpense["currency"]) {
+  return new Intl.NumberFormat("zh-Hant", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+function expenseRowsForDays(days: TravelDay[]): ExpenseRow[] {
+  return days.flatMap((day, dayIndex) =>
+    day.items.flatMap((item) => {
+      if (!item.expense) return [];
+      return [
+        {
+          id: item.id,
+          day: dayLabel(day, dayIndex),
+          date: day.date,
+          title: item.title,
+          activity: item.title,
+          location: item.location,
+          amount: item.expense.amount,
+          currency: item.expense.currency,
+          category: item.expense.category,
+          status: item.expense.status,
+          source: item.expense.source,
+        },
+      ];
+    }),
+  );
+}
+
+function expenseRowsForTrip(tripData: TripData, days: TravelDay[]): ExpenseRow[] {
+  if (tripData.expenses?.length) {
+    return tripData.expenses.map((expense) => ({
+      id: expense.id,
+      day: expense.day ?? "",
+      date: expense.date ?? "",
+      title: expense.title,
+      activity: expense.title,
+      location: expense.location,
+      amount: expense.amount,
+      currency: expense.currency,
+      category: expense.category,
+      status: expense.status,
+      source: expense.source,
+      notionUrl: expense.notionUrl,
+    }));
+  }
+
+  return expenseRowsForDays(days);
+}
+
+function expenseTotalsByCategory(rows: ExpenseRow[]) {
+  const totals = new Map<ExpenseCategory, number>();
+  for (const row of rows) {
+    totals.set(row.category, (totals.get(row.category) ?? 0) + row.amount);
+  }
+  return [...totals.entries()]
+    .map(([category, total]) => ({ category, total }))
+    .sort((a, b) => b.total - a.total);
+}
+
 export default function App() {
   const days = useMemo(
     () => [...trip.days].sort((a, b) => a.date.localeCompare(b.date)),
@@ -1157,10 +1385,21 @@ export default function App() {
   const [activeTransitMap, setActiveTransitMap] = useState<TransitMap | null>(null);
   const [expandedTransitCity, setExpandedTransitCity] = useState<TransitCity["id"] | null>(null);
   const [isDayRailDocked, setIsDayRailDocked] = useState(false);
+  const [isExpenseSummaryOpen, setIsExpenseSummaryOpen] = useState(false);
   const [dayRailProgress, setDayRailProgress] = useState(0);
   const dayRailBandRef = useRef<HTMLElement | null>(null);
   const activeDay = days[activeIndex];
   const heroSlides = useMemo(() => heroSlidesForDay(activeDay), [activeDay]);
+  const syncedExpenseRows = useMemo(() => expenseRowsForTrip(trip, days), [days]);
+  const [manualExpenseRows, setManualExpenseRows] = useState<ExpenseRow[]>(loadStoredManualExpenseRows);
+  const expenseRows = useMemo(
+    () => mergeExpenseRows([...syncedExpenseRows, ...manualExpenseRows]),
+    [manualExpenseRows, syncedExpenseRows],
+  );
+
+  useEffect(() => {
+    storeManualExpenseRows(manualExpenseRows);
+  }, [manualExpenseRows]);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -1279,8 +1518,425 @@ export default function App() {
         {activeTransitMap ? (
           <TransitMapModal map={activeTransitMap} onClose={() => setActiveTransitMap(null)} />
         ) : null}
+        {isExpenseSummaryOpen ? (
+          <ExpenseSummaryModal
+            rows={expenseRows}
+            days={days}
+            onClose={() => setIsExpenseSummaryOpen(false)}
+            onCreateExpense={(expense) =>
+              setManualExpenseRows((currentRows) => mergeExpenseRows([...currentRows, expense]))
+            }
+          />
+        ) : null}
       </AnimatePresence>
+      <ExpenseSummaryLauncher rows={expenseRows} onOpen={() => setIsExpenseSummaryOpen(true)} />
     </main>
+  );
+}
+
+function ExpenseSummaryLauncher({ rows, onOpen }: { rows: ExpenseRow[]; onOpen: () => void }) {
+  const totalAmount = rows.reduce((sum, row) => sum + row.amount, 0);
+  const currency = rows[0]?.currency ?? "TWD";
+
+  return (
+    <button
+      className="expense-launcher"
+      type="button"
+      onClick={onOpen}
+      aria-label={`開啟花費統計，目前總額 ${formatExpenseAmount(totalAmount, currency)}`}
+      title="花費統計"
+    >
+      <Banknote size={22} strokeWidth={2.5} />
+    </button>
+  );
+}
+
+function ExpenseSummaryModal({
+  rows,
+  days,
+  onClose,
+  onCreateExpense,
+}: {
+  rows: ExpenseRow[];
+  days: TravelDay[];
+  onClose: () => void;
+  onCreateExpense: (expense: ExpenseRow) => void;
+}) {
+  const totals = expenseTotalsByCategory(rows);
+  const totalAmount = rows.reduce((sum, row) => sum + row.amount, 0);
+  const currency = rows[0]?.currency ?? "TWD";
+  const [activeCategory, setActiveCategory] = useState<ExpenseCategory | null>(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formState, setFormState] = useState<ManualExpenseFormState>(expenseFormDefault);
+  const [formStatus, setFormStatus] = useState<{
+    type: "idle" | "submitting" | "success" | "error";
+    message: string;
+  }>({ type: "idle", message: "" });
+  const activeRows = activeCategory
+    ? rows.filter((row) => row.category === activeCategory)
+    : [];
+  const activeMeta = activeCategory ? expenseCategoryMeta[activeCategory] : null;
+
+  useEffect(() => {
+    if (!activeCategory || totals.some((total) => total.category === activeCategory)) return;
+    setActiveCategory(null);
+  }, [activeCategory, totals]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  const updateFormField = (field: keyof ManualExpenseFormState, value: string) => {
+    setFormState((currentState) => ({ ...currentState, [field]: value }));
+    setFormStatus({ type: "idle", message: "" });
+  };
+
+  const handleSubmitExpense = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const amount = Number(formState.amount);
+    if (!formState.name.trim() || !Number.isFinite(amount) || amount <= 0 || !formState.date) {
+      setFormStatus({ type: "error", message: "請填寫名稱、日期與有效金額。" });
+      return;
+    }
+
+    if (!expenseApiUrl) {
+      setFormStatus({
+        type: "error",
+        message: "尚未設定 VITE_EXPENSE_API_URL，表單目前不會寫入 Notion。",
+      });
+      return;
+    }
+
+    const payload = {
+      name: formState.name.trim(),
+      amount,
+      currency: formState.currency,
+      category: formState.category,
+      notionCategory: expenseCategoryToNotionCategory[formState.category],
+      status: formState.status,
+      notionStatus: expenseStatusToNotionStatus[formState.status],
+      day: formState.day || undefined,
+      date: formState.date,
+      activity: formState.activity.trim() || formState.name.trim(),
+      location: formState.location.trim() || undefined,
+    };
+
+    setFormStatus({ type: "submitting", message: "新增到 Notion 中..." });
+
+    try {
+      const response = await fetch(expenseApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(formState.pin ? { "X-Expense-Pin": formState.pin } : {}),
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result?.message || "新增 Notion 消費失敗。");
+      }
+
+      const savedExpense = expenseRowFromUnknown({
+        ...result?.expense,
+        id: result?.expense?.id ?? result?.id,
+        activity: payload.activity,
+        notionUrl: result?.expense?.notionUrl ?? result?.url,
+      });
+
+      onCreateExpense(
+        savedExpense ?? {
+          id: result?.id ?? `manual-${Date.now()}`,
+          day: payload.day ?? "",
+          date: payload.date,
+          title: payload.name,
+          activity: payload.activity,
+          location: payload.location,
+          amount: payload.amount,
+          currency: payload.currency,
+          category: payload.category,
+          status: payload.status,
+          source: "Manual",
+          notionUrl: result?.url,
+        },
+      );
+      setFormState((currentState) => ({
+        ...expenseFormDefault,
+        date: currentState.date,
+        day: currentState.day,
+        pin: currentState.pin,
+      }));
+      setFormStatus({ type: "success", message: "已新增到 Notion，並更新目前畫面統計。" });
+      setIsFormOpen(false);
+    } catch (error) {
+      setFormStatus({
+        type: "error",
+        message: error instanceof Error ? error.message : "新增 Notion 消費失敗。",
+      });
+    }
+  };
+
+  return createPortal(
+    <motion.div
+      className="route-modal-backdrop expense-modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label="花費統計"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+    >
+      <motion.section
+        className="expense-modal"
+        id="expenses"
+        aria-label="花費統計"
+        onClick={(event) => event.stopPropagation()}
+        initial={{ opacity: 0, y: 18, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 10, scale: 0.98 }}
+        transition={{ duration: 0.22, ease: "easeOut" }}
+      >
+        <div className="expense-header">
+          <div>
+            <span className="expense-kicker">
+              <ChartNoAxesColumn size={17} strokeWidth={2.5} />
+              花費統計
+            </span>
+            <h2>目前已記錄花費</h2>
+            <p>依 Notion 的 Payment / Expect Payment 欄位同步，手動補入的金額也會一起加總。</p>
+          </div>
+          <div className="expense-total">
+            <span>目前總額</span>
+            <strong>{formatExpenseAmount(totalAmount, currency)}</strong>
+            <em>{rows.length} 筆紀錄</em>
+          </div>
+          <div className="expense-modal-actions">
+            <button
+              className="expense-add-button"
+              type="button"
+              onClick={() => setIsFormOpen((currentValue) => !currentValue)}
+              aria-expanded={isFormOpen}
+            >
+              <Plus size={17} strokeWidth={2.6} />
+              新增消費
+            </button>
+            <button className="expense-modal-close" type="button" onClick={onClose} aria-label="關閉花費統計">
+              <X size={19} strokeWidth={2.6} />
+            </button>
+          </div>
+        </div>
+        <AnimatePresence initial={false}>
+          {isFormOpen ? (
+            <motion.form
+              className="expense-form"
+              onSubmit={handleSubmitExpense}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+            >
+              <label>
+                <span>消費名稱</span>
+                <input
+                  value={formState.name}
+                  onChange={(event) => updateFormField("name", event.target.value)}
+                  placeholder="Opal / Dinner / Coffee"
+                  required
+                />
+              </label>
+              <label>
+                <span>金額</span>
+                <input
+                  value={formState.amount}
+                  onChange={(event) => updateFormField("amount", event.target.value)}
+                  inputMode="decimal"
+                  placeholder="0"
+                  required
+                />
+              </label>
+              <label>
+                <span>幣別</span>
+                <select
+                  value={formState.currency}
+                  onChange={(event) => updateFormField("currency", event.target.value)}
+                >
+                  <option value="TWD">TWD</option>
+                  <option value="AUD">AUD</option>
+                </select>
+              </label>
+              <label>
+                <span>分類</span>
+                <select
+                  value={formState.category}
+                  onChange={(event) => updateFormField("category", event.target.value)}
+                >
+                  {Object.entries(expenseCategoryMeta).map(([category, meta]) => (
+                    <option value={category} key={category}>
+                      {meta.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                <span>日期</span>
+                <input
+                  type="date"
+                  value={formState.date}
+                  onChange={(event) => updateFormField("date", event.target.value)}
+                  required
+                />
+              </label>
+              <label>
+                <span>Day</span>
+                <select
+                  value={formState.day}
+                  onChange={(event) => updateFormField("day", event.target.value)}
+                >
+                  <option value="">不指定</option>
+                  {days.map((day, index) => {
+                    const label = dayLabel(day, index);
+                    return (
+                      <option value={label} key={day.id}>
+                        {label}
+                      </option>
+                    );
+                  })}
+                </select>
+              </label>
+              <label>
+                <span>活動</span>
+                <input
+                  value={formState.activity}
+                  onChange={(event) => updateFormField("activity", event.target.value)}
+                  placeholder="例如 Day 2 Taronga Zoo"
+                />
+              </label>
+              <label>
+                <span>地點</span>
+                <input
+                  value={formState.location}
+                  onChange={(event) => updateFormField("location", event.target.value)}
+                  placeholder="店名或地點"
+                />
+              </label>
+              <label>
+                <span>PIN</span>
+                <input
+                  value={formState.pin}
+                  onChange={(event) => updateFormField("pin", event.target.value)}
+                  placeholder="Worker 有設定時才需要"
+                  type="password"
+                />
+              </label>
+              <div className="expense-form-footer">
+                <span className={`expense-form-status is-${formStatus.type}`}>
+                  {formStatus.message || (expenseApiUrl ? "送出後會寫入 Notion Expense database。" : "尚未設定 API endpoint。")}
+                </span>
+                <button type="submit" disabled={formStatus.type === "submitting"}>
+                  {formStatus.type === "submitting" ? "新增中" : "新增到 Notion"}
+                </button>
+              </div>
+            </motion.form>
+          ) : formStatus.message ? (
+            <motion.div
+              className={`expense-form-inline-status is-${formStatus.type}`}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 6 }}
+            >
+              {formStatus.message}
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+        {rows.length ? (
+          <>
+            <div className="expense-category-row" role="list" aria-label="花費分類">
+              {totals.map(({ category, total }) => {
+                const meta = expenseCategoryMeta[category];
+                const Icon = meta.icon;
+                const isActive = activeCategory === category;
+
+                return (
+                  <button
+                    type="button"
+                    className={isActive ? "expense-category-pill is-active" : "expense-category-pill"}
+                    style={{ "--expense-tone": meta.tone } as CSSProperties}
+                    key={category}
+                    onClick={() => setActiveCategory((current) => (current === category ? null : category))}
+                    aria-expanded={isActive}
+                  >
+                    <span>
+                      <Icon size={18} strokeWidth={2.5} />
+                      {meta.label}
+                    </span>
+                    <strong>{formatExpenseAmount(total, currency)}</strong>
+                  </button>
+                );
+              })}
+            </div>
+            <AnimatePresence mode="wait">
+              {activeCategory && activeMeta ? (
+                <motion.div
+                  className="expense-detail-panel"
+                  key={activeCategory}
+                  style={{ "--expense-tone": activeMeta.tone } as CSSProperties}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                >
+                  <div className="expense-detail-heading">
+                    <span className="expense-chip" style={{ "--expense-tone": activeMeta.tone } as CSSProperties}>
+                      {activeMeta.label}
+                    </span>
+                    <strong>{activeRows.length} 筆明細</strong>
+                  </div>
+                  <div className="expense-detail-list">
+                    {activeRows.map((row) => (
+                      <article className="expense-detail-row" key={row.id}>
+                        <div>
+                          <span>{row.day}</span>
+                          <em>{formatRailDate(row.date)}</em>
+                        </div>
+                        <div>
+                          <strong>{row.title}</strong>
+                          {row.activity && row.activity !== row.title ? <em>{row.activity}</em> : null}
+                          {row.location ? <em>{row.location}</em> : null}
+                        </div>
+                        <div>
+                          <span>{row.status ? expenseStatusLabel[row.status] : "未標註"}</span>
+                          <strong>{formatExpenseAmount(row.amount, row.currency)}</strong>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </>
+        ) : (
+          <div className="expense-empty">
+            <ReceiptText size={24} strokeWidth={2.3} />
+            <span>尚未同步任何花費資料</span>
+          </div>
+        )}
+      </motion.section>
+    </motion.div>,
+    document.body,
   );
 }
 
@@ -2010,7 +2666,7 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
         {day.items.map((item, index) => {
           const showInlineMoving = isMovingConnectorItem(item);
           const hasGuide = !!(item.restaurantGuide || item.attractionGuide);
-          const hasCardActions = !!item.mapsUrl || hasGuide;
+          const hasCardActions = !!item.mapsUrl || !!item.bookingInfoUrl || hasGuide;
 
           return (
             <Fragment key={item.id}>
@@ -2052,11 +2708,25 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                       <h3>{item.title}</h3>
                       <p>{item.summary}</p>
                       <FlightDetails item={item} />
+                      <RentalDetails item={item} />
                     </div>
                     {hasCardActions ? (
                       <div className="item-card-actions">
                         {hasGuide ? (
                           <GuideButton item={item} onOpenGuide={setActiveGuideItem} />
+                        ) : null}
+                        {item.bookingInfoUrl ? (
+                          <a
+                            className="item-booking-link"
+                            href={item.bookingInfoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`開啟 ${item.title} 預訂資訊`}
+                            data-tooltip="預訂資訊"
+                            title="預訂資訊"
+                          >
+                            <TicketCheck size={18} strokeWidth={2.5} />
+                          </a>
                         ) : null}
                         {item.mapsUrl ? (
                           <a
@@ -2222,6 +2892,52 @@ function FlightDetails({ item }: { item: TravelItem }) {
         {details.class ? <span>艙等 {details.class}</span> : null}
         {details.validUntil ? <span>效期至 {details.validUntil}</span> : null}
       </div>
+    </div>
+  );
+}
+
+function RentalDetails({ item }: { item: TravelItem }) {
+  if (!item.rentalDetails) return null;
+
+  const details = item.rentalDetails;
+
+  return (
+    <div className="rental-details" aria-label={`${item.title} 租車資訊`}>
+      <div className="rental-vehicle">
+        <span>車型級距</span>
+        <strong>{details.vehicleClass ?? "現場確認"}</strong>
+        {details.vehicleCode ? <em>{details.vehicleCode}</em> : null}
+      </div>
+      <div className="rental-stops">
+        <div>
+          <span>取車</span>
+          <strong>{details.pickup.time}</strong>
+          <em>{details.pickup.location}</em>
+          {details.pickup.hours ? <small>{details.pickup.hours}</small> : null}
+        </div>
+        <div>
+          <span>還車</span>
+          <strong>{details.dropoff.time}</strong>
+          <em>{details.dropoff.location}</em>
+          {details.dropoff.hours ? <small>{details.dropoff.hours}</small> : null}
+        </div>
+      </div>
+      <div className="rental-meta">
+        {details.confirmationNo ? <span>確認號 {details.confirmationNo}</span> : null}
+        {details.driverAge ? <span>駕駛年齡 {details.driverAge}</span> : null}
+        {details.payment ? <span>預估費用 {details.payment}</span> : null}
+        {details.rateCode ? <span>Rate {details.rateCode}</span> : null}
+        {details.protection?.map((protection) => (
+          <span key={protection}>{protection}</span>
+        ))}
+      </div>
+      {details.notes?.length ? (
+        <ul className="rental-notes">
+          {details.notes.map((note) => (
+            <li key={note}>{note}</li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 }
@@ -2431,31 +3147,51 @@ function RestaurantGuideModal({ item, onClose }: { item: TravelItem; onClose: ()
           <p>{guide.intro}</p>
         </div>
         <div className="restaurant-modal-grid">
-          <section>
-            <h4>推薦品項</h4>
-            <ul className="restaurant-recommendations">
-              {guide.recommendations.map((dish) => (
-                <li key={dish.name}>
-                  {dish.image ? <img src={dish.image} alt={dish.zhName ?? dish.name} /> : null}
-                  <div>
-                    <strong>{dish.name}</strong>
-                    {dish.zhName ? <em>{dish.zhName}</em> : null}
-                    {dish.note ? <span>{dish.note}</span> : null}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section>
+          {guide.recommendations.length ? (
+            <section>
+              <h4>推薦品項</h4>
+              <ul className="restaurant-recommendations">
+                {guide.recommendations.map((dish) => (
+                  <li key={dish.name}>
+                    {dish.image ? <img src={dish.image} alt={dish.zhName ?? dish.name} /> : null}
+                    <div>
+                      <strong>{dish.name}</strong>
+                      {dish.zhName ? <em>{dish.zhName}</em> : null}
+                      {dish.note ? <span>{dish.note}</span> : null}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          <section className={guide.recommendations.length ? undefined : "restaurant-menu-section-wide"}>
             <h4>菜單與來源</h4>
-            <div className="restaurant-links">
-              {guide.menuLinks.map((link) => (
-                <a href={link.url} target="_blank" rel="noreferrer" key={link.url}>
-                  {link.label}
-                  <ExternalLink size={14} />
-                </a>
-              ))}
-            </div>
+            {guide.menuLinks.length ? (
+              <div className="restaurant-links">
+                {guide.menuLinks.map((link) => (
+                  <a href={link.url} target="_blank" rel="noreferrer" key={link.url}>
+                    {link.label}
+                    <ExternalLink size={14} />
+                  </a>
+                ))}
+              </div>
+            ) : null}
+            {guide.menuEmbeds?.length ? (
+              <div className="restaurant-menu-embeds">
+                {guide.menuEmbeds.map((menu) => (
+                  <div className="restaurant-menu-embed" key={menu.url}>
+                    <div>
+                      <span>{menu.label}</span>
+                      <a href={menu.url} target="_blank" rel="noreferrer">
+                        開啟 PDF
+                        <ExternalLink size={13} />
+                      </a>
+                    </div>
+                    <iframe src={menu.url} title={`${item.title} ${menu.label}`} loading="lazy" />
+                  </div>
+                ))}
+              </div>
+            ) : null}
             {guide.sources?.length ? (
               <div className="restaurant-sources">
                 <span>參考來源</span>

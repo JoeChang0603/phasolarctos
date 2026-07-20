@@ -24,10 +24,22 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Sync Notion expenses
+        run: |
+          if [ -n "$NOTION_TOKEN" ] && [ -n "$NOTION_DATABASE_ID" ]; then
+            npm run sync:notion-expenses
+          else
+            echo "Skipping Notion expense sync because NOTION_TOKEN or NOTION_DATABASE_ID is not set."
+          fi
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          NOTION_PLAN_TAG: Recommendation
       - run: npm run build
         env:
           VITE_GOOGLE_MAPS_EMBED_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_EMBED_API_KEY }}
           VITE_GOOGLE_MAPS_STATIC_API_KEY: ${{ secrets.VITE_GOOGLE_MAPS_STATIC_API_KEY }}
+          VITE_EXPENSE_API_URL: https://phasolarctos-expense-api.ftravel.workers.dev
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
