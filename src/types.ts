@@ -1,3 +1,17 @@
+export type TravelExpense = {
+  id: string;
+  title: string;
+  amount: number;
+  currency: "TWD" | "AUD";
+  category: "lodging" | "attraction" | "transport" | "food" | "shopping" | "other";
+  status?: "paid" | "confirmed" | "estimated" | "pending";
+  day?: string;
+  date?: string;
+  location?: string;
+  source?: string;
+  notionUrl?: string;
+};
+
 export type TravelItem = {
   id: string;
   time?: string;
@@ -19,13 +33,45 @@ export type TravelItem = {
     class?: string;
     validUntil?: string;
   };
+  rentalDetails?: {
+    confirmationNo?: string;
+    vehicleClass?: string;
+    vehicleCode?: string;
+    pickup: {
+      location: string;
+      time: string;
+      hours?: string;
+    };
+    dropoff: {
+      location: string;
+      time: string;
+      hours?: string;
+    };
+    protection?: string[];
+    driverAge?: string;
+    payment?: string;
+    rateCode?: string;
+    notes?: string[];
+  };
+  expense?: {
+    amount: number;
+    currency: "TWD" | "AUD";
+    category: "lodging" | "attraction" | "transport" | "food" | "shopping" | "other";
+    status?: "paid" | "confirmed" | "estimated" | "pending";
+    source?: string;
+  };
   image?: string;
   mapsUrl?: string;
+  bookingInfoUrl?: string;
   notionUrl?: string;
   tags?: string[];
   restaurantGuide?: {
     intro: string;
     menuLinks: Array<{
+      label: string;
+      url: string;
+    }>;
+    menuEmbeds?: Array<{
       label: string;
       url: string;
     }>;
@@ -96,5 +142,6 @@ export type TripData = {
   dateRange: string;
   source: string;
   generatedAt: string;
+  expenses?: TravelExpense[];
   days: TravelDay[];
 };

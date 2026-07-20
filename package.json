@@ -7,16 +7,18 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "sync:notion": "node scripts/sync-notion.mjs"
+    "sync:notion": "node scripts/sync-notion.mjs",
+    "sync:notion-expenses": "node scripts/sync-notion-expenses.mjs",
+    "sync:notion-menus": "node scripts/sync-notion-menu-embeds.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.2",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
-    "vite": "^7.3.0",
-    "typescript": "^5.9.3",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.3",

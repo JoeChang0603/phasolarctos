@@ -6,6 +6,8 @@ const token = process.env.NOTION_TOKEN;
 const databaseId = process.env.NOTION_DATABASE_ID;
 const planTag = process.env.NOTION_PLAN_TAG ?? "Recommendation";
 const outputPath = resolve("src/data/trip.json");
+const menuOutputDir = resolve("public/notion-menus");
+const menuPublicPath = "/notion-menus";
 
 if (!token || !databaseId) {
   console.error("Missing NOTION_TOKEN or NOTION_DATABASE_ID.");
@@ -32,6 +34,33 @@ async function notionFetch(path, init = {}) {
   return response.json();
 }
 
+async function fetchBlockChildren(blockId) {
+  const children = [];
+  let cursor;
+
+  do {
+    const params = new URLSearchParams({ page_size: "100" });
+    if (cursor) params.set("start_cursor", cursor);
+    const result = await notionFetch(`/blocks/${blockId}/children?${params.toString()}`);
+    children.push(...result.results);
+    cursor = result.has_more ? result.next_cursor : undefined;
+  } while (cursor);
+
+  return children;
+}
+
+async function fetchBlockTree(blockId) {
+  const children = await fetchBlockChildren(blockId);
+  const descendants = [];
+
+  for (const child of children) {
+    descendants.push(child);
+    if (child.has_children) descendants.push(...(await fetchBlockTree(child.id)));
+  }
+
+  return descendants;
+}
+
 function textFromRichText(value) {
   return Array.isArray(value) ? value.map((part) => part.plain_text ?? "").join("") : "";
 }
@@ -48,6 +77,130 @@ function propertyText(property) {
   if (property.type === "phone_number") return property.phone_number ?? "";
   if (property.type === "number") return property.number?.toString() ?? "";
   return "";
+}
+
+function propertyUrl(property) {
+  if (!property) return "";
+  if (property.type === "url") return property.url ?? "";
+  if (property.type === "files") {
+    const file = property.files?.[0];
+    if (!file) return "";
+    if (file.type === "external") return file.external?.url ?? "";
+    if (file.type === "file") return file.file?.url ?? "";
+    return "";
+  }
+  if (property.type === "rich_text") {
+    const linkedPart = property.rich_text?.find((part) => part.href);
+    return linkedPart?.href ?? propertyText(property);
+  }
+  return propertyText(property);
+}
+
+function relationPageIds(property) {
+  if (!property || property.type !== "relation") return [];
+  return property.relation?.map((page) => page.id).filter(Boolean) ?? [];
+}
+
+function sanitizeFilePart(value) {
+  return (value || "menu")
+    .normalize("NFKD")
+    .replace(/[^\w.-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80)
+    .toLowerCase() || "menu";
+}
+
+function fileExtensionFromUrl(url, fallback = "pdf") {
+  try {
+    const pathname = new URL(url).pathname;
+    const extension = pathname.split(".").pop()?.toLowerCase();
+    if (extension && extension.length <= 6) return extension;
+  } catch {
+    // Keep the fallback for Notion signed URLs that are not valid URL strings.
+  }
+  return fallback;
+}
+
+function blockCaption(block) {
+  const value = block[block.type];
+  return textFromRichText(value?.caption).trim();
+}
+
+function pdfSourceFromBlock(block) {
+  const value = block[block.type];
+  if (!value) return null;
+
+  if (block.type === "pdf" || block.type === "file") {
+    const url = value.type === "external" ? value.external?.url : value.file?.url;
+    if (!url) return null;
+
+    const label = blockCaption(block) || value.name || "Menu PDF";
+    return {
+      label,
+      url,
+      shouldDownload: value.type === "file",
+      skipOnDownloadFailure: value.type === "file",
+      extension: fileExtensionFromUrl(value.name || url, "pdf"),
+    };
+  }
+
+  if ((block.type === "embed" || block.type === "bookmark") && /\.pdf($|[?#])/i.test(value.url ?? "")) {
+    return {
+      label: blockCaption(block) || "Menu PDF",
+      url: value.url,
+      shouldDownload: true,
+      skipOnDownloadFailure: false,
+      extension: "pdf",
+    };
+  }
+
+  return null;
+}
+
+async function downloadMenuFile(source, pageTitle, blockId) {
+  await mkdir(menuOutputDir, { recursive: true });
+
+  const extension = source.extension || "pdf";
+  const filename = `${sanitizeFilePart(pageTitle)}-${blockId.replaceAll("-", "").slice(0, 10)}.${extension}`;
+  const outputFile = resolve(menuOutputDir, filename);
+  const response = await fetch(source.url);
+
+  if (!response.ok) {
+    throw new Error(`Menu PDF download failed ${response.status}: ${source.url}`);
+  }
+
+  const buffer = Buffer.from(await response.arrayBuffer());
+  await writeFile(outputFile, buffer);
+  return `${menuPublicPath}/${filename}`;
+}
+
+async function collectMenuEmbeds(page, pageTitle) {
+  const blocks = await fetchBlockTree(page.id);
+  const embeds = [];
+  const seenUrls = new Set();
+
+  for (const block of blocks) {
+    const source = pdfSourceFromBlock(block);
+    if (!source || seenUrls.has(source.url)) continue;
+
+    let url = source.url;
+    if (source.shouldDownload) {
+      try {
+        url = await downloadMenuFile(source, pageTitle, block.id);
+      } catch (error) {
+        console.warn(error.message);
+        if (source.skipOnDownloadFailure) continue;
+      }
+    }
+
+    embeds.push({
+      label: source.label,
+      url,
+    });
+    seenUrls.add(source.url);
+  }
+
+  return embeds;
 }
 
 function findProperty(properties, candidates) {
@@ -67,7 +220,7 @@ function hasPlanTag(page) {
   return propertyText(plan).includes(planTag);
 }
 
-function pageToItem(page) {
+async function pageToItem(page) {
   const props = page.properties;
   const title = propertyText(findProperty(props, ["Name", "Title", "Place", "Activity"])) || "未命名行程";
   const date = propertyText(findProperty(props, ["Date", "Day", "日期"]));
@@ -76,24 +229,82 @@ function pageToItem(page) {
   const location = propertyText(findProperty(props, ["Location", "地點", "Address", "地址"]));
   const summary = propertyText(findProperty(props, ["Summary", "Notes", "Note", "Description", "備註"])) || title;
   const mapsUrl = propertyText(findProperty(props, ["Google Maps", "Maps", "Map", "地圖"]));
+  const schedulePageIds = relationPageIds(findProperty(props, ["Schedule", "Activity", "Spot"]));
+  const relatedPages = [];
+  let bookingInfoUrl = propertyUrl(
+    findProperty(props, [
+      "Booking Info",
+      "Booking",
+      "Booking Link",
+      "Booking URL",
+      "Reservation",
+      "Reservation Info",
+      "訂票資訊",
+      "訂房資訊",
+      "訂位資訊",
+      "訂票連結",
+      "訂房連結",
+      "證明連結",
+    ]),
+  );
+  for (const schedulePageId of schedulePageIds) {
+    const schedulePage = await notionFetch(`/pages/${schedulePageId}`);
+    relatedPages.push(schedulePage);
+    if (!bookingInfoUrl) {
+      bookingInfoUrl = propertyUrl(findProperty(schedulePage.properties, ["Booking Info"]));
+    }
+  }
   const image = propertyText(findProperty(props, ["Image", "Cover", "Photo", "圖片"]));
-  const type = propertyText(findProperty(props, ["Type", "類型"])).toLowerCase();
+  const type = [
+    propertyText(findProperty(props, ["Type", "類型", "Category"])),
+    ...relatedPages.map((relatedPage) =>
+      propertyText(findProperty(relatedPage.properties, ["Type", "類型", "Category"])),
+    ),
+  ]
+    .join(" ")
+    .toLowerCase();
+  const normalizedType = normalizeType(type);
+  const menuEmbeds = [];
+
+  if (normalizedType === "food") {
+    const seenMenuUrls = new Set();
+    for (const menuPage of [page, ...relatedPages]) {
+      const embeds = await collectMenuEmbeds(menuPage, title);
+      for (const embed of embeds) {
+        if (seenMenuUrls.has(embed.url)) continue;
+        menuEmbeds.push(embed);
+        seenMenuUrls.add(embed.url);
+      }
+    }
+  }
+
+  const item = {
+    id: page.id,
+    time,
+    title,
+    type: normalizedType,
+    location,
+    summary,
+    image,
+    mapsUrl,
+    bookingInfoUrl,
+    notionUrl: page.url,
+    tags: [planTag],
+  };
+
+  if (menuEmbeds.length) {
+    item.restaurantGuide = {
+      intro: summary,
+      menuLinks: [],
+      menuEmbeds,
+      recommendations: [],
+    };
+  }
 
   return {
     date: date || new Date().toISOString().slice(0, 10),
     city,
-    item: {
-      id: page.id,
-      time,
-      title,
-      type: normalizeType(type),
-      location,
-      summary,
-      image,
-      mapsUrl,
-      notionUrl: page.url,
-      tags: [planTag],
-    },
+    item,
   };
 }
 
@@ -175,7 +386,7 @@ async function main() {
     cursor = result.has_more ? result.next_cursor : undefined;
   } while (cursor);
 
-  const entries = pages.filter(hasPlanTag).map(pageToItem);
+  const entries = await Promise.all(pages.filter(hasPlanTag).map(pageToItem));
   const trip = {
     title: "2026 Sydney x Melbourne",
     subtitle: "Joe Chang 家庭旅遊推薦行程",
