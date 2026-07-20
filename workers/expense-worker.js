@@ -16,6 +16,17 @@ const statusMap = {
   pending: "Not yet",
 };
 
+const categoryFromNotion = {
+  Living: "lodging",
+  Hotel: "lodging",
+  Attraction: "attraction",
+  Transportation: "transport",
+  Moving: "transport",
+  Food: "food",
+  Shopping: "shopping",
+  Others: "other",
+};
+
 function corsHeaders(request, env) {
   const requestOrigin = request.headers.get("Origin") || "";
   const configuredOrigins = (env.ALLOWED_ORIGIN || "*")
@@ -32,7 +43,7 @@ function corsHeaders(request, env) {
 
   return {
     ...(origin ? { "Access-Control-Allow-Origin": origin } : {}),
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, X-Expense-Pin",
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin",
@@ -66,6 +77,89 @@ function compactProperties(properties) {
   );
 }
 
+function textFromRichText(value) {
+  return Array.isArray(value) ? value.map((part) => part.plain_text ?? "").join("") : "";
+}
+
+function propertyText(property) {
+  if (!property) return "";
+  if (property.type === "title") return textFromRichText(property.title);
+  if (property.type === "rich_text") return textFromRichText(property.rich_text);
+  if (property.type === "select") return property.select?.name ?? "";
+  if (property.type === "status") return property.status?.name ?? "";
+  if (property.type === "number") return property.number?.toString() ?? "";
+  if (property.type === "url") return property.url ?? "";
+  return "";
+}
+
+function relation(pageId) {
+  return pageId ? { relation: [{ id: pageId }] } : undefined;
+}
+
+function isNotionPageId(value) {
+  return (
+    typeof value === "string" &&
+    /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i.test(value)
+  );
+}
+
+function activityFromPage(page) {
+  const title = propertyText(page.properties?.Task) || propertyText(page.properties?.Name) || "未命名活動";
+  const category = propertyText(page.properties?.Category);
+  const city = propertyText(page.properties?.City);
+  const address = propertyText(page.properties?.Address);
+  const location = [city, address].filter(Boolean).join(" - ");
+
+  return {
+    id: page.id,
+    title,
+    location,
+    category: categoryFromNotion[category] || "other",
+    notionCategory: category,
+  };
+}
+
+async function notionFetch(path, env, init = {}) {
+  const response = await fetch(`https://api.notion.com/v1${path}`, {
+    ...init,
+    headers: {
+      Authorization: `Bearer ${env.NOTION_TOKEN}`,
+      "Content-Type": "application/json",
+      "Notion-Version": NOTION_VERSION,
+      ...(init.headers || {}),
+    },
+  });
+
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(body?.message || "Notion API request failed.");
+  }
+
+  return body;
+}
+
+async function listActivities(env) {
+  const pages = [];
+  let cursor;
+
+  do {
+    const result = await notionFetch(`/data_sources/${env.NOTION_SCHEDULE_DATA_SOURCE_ID}/query`, env, {
+      method: "POST",
+      body: JSON.stringify({
+        page_size: 100,
+        ...(cursor ? { start_cursor: cursor } : {}),
+      }),
+    });
+
+    pages.push(...result.results.filter((item) => item.object === "page"));
+    cursor = result.has_more ? result.next_cursor : undefined;
+  } while (cursor);
+
+  return pages
+    .map(activityFromPage)
+    .sort((left, right) => left.title.localeCompare(right.title, "zh-Hant"));
+}
+
 async function sha256(value) {
   return new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
 }
@@ -89,6 +183,37 @@ export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders(request, env) });
+    }
+
+    const url = new URL(request.url);
+
+    const normalizedPath = url.pathname.replace(/\/$/, "");
+
+    if (request.method === "GET" && normalizedPath.endsWith("/activities")) {
+      if (!env.NOTION_TOKEN || !env.NOTION_SCHEDULE_DATA_SOURCE_ID) {
+        return jsonResponse(
+          request,
+          env,
+          { message: "Worker is missing Notion activity configuration." },
+          { status: 500 },
+        );
+      }
+
+      try {
+        return jsonResponse(
+          request,
+          env,
+          { activities: await listActivities(env) },
+          { headers: { "Cache-Control": "public, max-age=300" } },
+        );
+      } catch (error) {
+        return jsonResponse(
+          request,
+          env,
+          { message: error instanceof Error ? error.message : "Notion activity request failed." },
+          { status: 502 },
+        );
+      }
     }
 
     if (request.method !== "POST") {
@@ -124,6 +249,7 @@ export default {
     const currency = body.currency === "AUD" ? "AUD" : "TWD";
     const category = body.notionCategory || categoryMap[body.category] || "Others";
     const status = body.notionStatus || statusMap[body.status] || "Done";
+    const schedulePageId = isNotionPageId(body.schedulePageId) ? body.schedulePageId : "";
 
     if (!name || !Number.isFinite(amount) || amount <= 0 || !date) {
       return jsonResponse(
@@ -147,28 +273,24 @@ export default {
       Location: richText(String(body.location || "").trim()),
       Source: select("Manual"),
       Travel: select("2026 Sydney x Melbourne"),
+      Schedule: relation(schedulePageId),
     });
 
-    const notionResponse = await fetch("https://api.notion.com/v1/pages", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.NOTION_TOKEN}`,
-        "Content-Type": "application/json",
-        "Notion-Version": NOTION_VERSION,
-      },
-      body: JSON.stringify({
-        parent: { data_source_id: env.NOTION_EXPENSE_DATA_SOURCE_ID },
-        properties,
-      }),
-    });
-
-    const notionBody = await notionResponse.json().catch(() => ({}));
-    if (!notionResponse.ok) {
+    let notionBody;
+    try {
+      notionBody = await notionFetch("/pages", env, {
+        method: "POST",
+        body: JSON.stringify({
+          parent: { data_source_id: env.NOTION_EXPENSE_DATA_SOURCE_ID },
+          properties,
+        }),
+      });
+    } catch (error) {
       return jsonResponse(
         request,
         env,
-        { message: notionBody?.message || "Notion API request failed." },
-        { status: notionResponse.status },
+        { message: error instanceof Error ? error.message : "Notion API request failed." },
+        { status: 502 },
       );
     }
 

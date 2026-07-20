@@ -7,6 +7,7 @@ compatibility_date = "2026-07-14"
 # ALLOWED_ORIGIN = "https://your-user.github.io"
 ALLOWED_ORIGIN = "https://joechang0603.github.io,http://127.0.0.1:5173"
 NOTION_EXPENSE_DATA_SOURCE_ID = "39d2f57c-ec1b-8062-a82c-000bc049c56c"
+NOTION_SCHEDULE_DATA_SOURCE_ID = "2d62f57c-ec1b-8034-8216-000b536f118e"
 
 # Secrets, not vars:
 # wrangler secret put NOTION_TOKEN

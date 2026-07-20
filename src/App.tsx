@@ -67,6 +67,7 @@ const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY;
 const googleMapsStaticApiKey =
   import.meta.env.VITE_GOOGLE_MAPS_STATIC_API_KEY || googleMapsEmbedApiKey;
 const expenseApiUrl = import.meta.env.VITE_EXPENSE_API_URL;
+const expenseActivitiesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/activities` : "";
 
 type TransitMap = {
   id:
@@ -1175,6 +1176,13 @@ type ExpenseRow = {
   notionUrl?: string;
 };
 
+type ExpenseActivityOption = {
+  id: string;
+  title: string;
+  location: string;
+  category: ExpenseCategory;
+};
+
 type ManualExpenseFormState = {
   name: string;
   amount: string;
@@ -1183,6 +1191,7 @@ type ManualExpenseFormState = {
   status: NonNullable<TravelExpense["status"]>;
   day: string;
   date: string;
+  schedulePageId: string;
   activity: string;
   location: string;
   pin: string;
@@ -1231,6 +1240,7 @@ const expenseFormDefault: ManualExpenseFormState = {
   status: "confirmed",
   day: "",
   date: localDateKey(new Date()),
+  schedulePageId: "",
   activity: "",
   location: "",
   pin: "",
@@ -1280,6 +1290,26 @@ function expenseRowFromUnknown(value: unknown): ExpenseRow | null {
     status: isExpenseStatus(row.status) ? row.status : undefined,
     source: typeof row.source === "string" ? row.source : "Manual",
     notionUrl: typeof row.notionUrl === "string" ? row.notionUrl : undefined,
+  };
+}
+
+function expenseActivityOptionFromUnknown(value: unknown): ExpenseActivityOption | null {
+  if (!value || typeof value !== "object") return null;
+  const option = value as Partial<ExpenseActivityOption>;
+
+  if (
+    typeof option.id !== "string" ||
+    typeof option.title !== "string" ||
+    !isExpenseCategory(option.category)
+  ) {
+    return null;
+  }
+
+  return {
+    id: option.id,
+    title: option.title,
+    location: typeof option.location === "string" ? option.location : "",
+    category: option.category,
   };
 }
 
@@ -1572,6 +1602,11 @@ function ExpenseSummaryModal({
     type: "idle" | "submitting" | "success" | "error";
     message: string;
   }>({ type: "idle", message: "" });
+  const [activityOptions, setActivityOptions] = useState<ExpenseActivityOption[]>([]);
+  const [activityStatus, setActivityStatus] = useState<{
+    type: "idle" | "loading" | "success" | "error";
+    message: string;
+  }>({ type: "idle", message: "" });
   const activeRows = activeCategory
     ? rows.filter((row) => row.category === activeCategory)
     : [];
@@ -1596,8 +1631,63 @@ function ExpenseSummaryModal({
     };
   }, [onClose]);
 
+  useEffect(() => {
+    if (!isFormOpen || !expenseActivitiesUrl || activityOptions.length || activityStatus.type !== "idle") return;
+
+    let isActive = true;
+    setActivityStatus({ type: "loading", message: "載入 Notion 活動中..." });
+
+    fetch(expenseActivitiesUrl)
+      .then(async (response) => {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result?.message || "載入 Notion 活動失敗。");
+        const activities: unknown[] = Array.isArray(result?.activities) ? result.activities : [];
+        return activities
+              .map(expenseActivityOptionFromUnknown)
+              .filter((option): option is ExpenseActivityOption => option !== null);
+      })
+      .then((options) => {
+        if (!isActive) return;
+        setActivityOptions(options);
+        setActivityStatus({
+          type: "success",
+          message: options.length ? `已載入 ${options.length} 個 Notion 活動。` : "Notion 目前沒有可選活動。",
+        });
+      })
+      .catch((error) => {
+        if (!isActive) return;
+        setActivityStatus({
+          type: "error",
+          message: error instanceof Error ? error.message : "載入 Notion 活動失敗。",
+        });
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, [activityOptions.length, activityStatus.type, isFormOpen]);
+
   const updateFormField = (field: keyof ManualExpenseFormState, value: string) => {
     setFormState((currentState) => ({ ...currentState, [field]: value }));
+    setFormStatus({ type: "idle", message: "" });
+  };
+
+  const handleActivitySelect = (activityId: string) => {
+    const selectedActivity = activityOptions.find((option) => option.id === activityId);
+    setFormState((currentState) => ({
+      ...currentState,
+      schedulePageId: activityId,
+      ...(selectedActivity
+        ? {
+            name: currentState.name || selectedActivity.title,
+            activity: selectedActivity.title,
+            location: selectedActivity.location || currentState.location,
+            category: selectedActivity.category,
+          }
+        : {
+            activity: "",
+          }),
+    }));
     setFormStatus({ type: "idle", message: "" });
   };
 
@@ -1628,6 +1718,7 @@ function ExpenseSummaryModal({
       notionStatus: expenseStatusToNotionStatus[formState.status],
       day: formState.day || undefined,
       date: formState.date,
+      schedulePageId: formState.schedulePageId || undefined,
       activity: formState.activity.trim() || formState.name.trim(),
       location: formState.location.trim() || undefined,
     };
@@ -1749,6 +1840,23 @@ function ExpenseSummaryModal({
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
+              <label className="expense-form-wide">
+                <span>關聯活動</span>
+                <select
+                  value={formState.schedulePageId}
+                  onChange={(event) => handleActivitySelect(event.target.value)}
+                  disabled={activityStatus.type === "loading"}
+                >
+                  <option value="">
+                    {activityStatus.type === "loading" ? "載入 Notion 活動中..." : "不關聯活動"}
+                  </option>
+                  {activityOptions.map((activity) => (
+                    <option value={activity.id} key={activity.id}>
+                      {[activity.title, activity.location].filter(Boolean).join(" - ")}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <label>
                 <span>消費名稱</span>
                 <input
@@ -1822,7 +1930,7 @@ function ExpenseSummaryModal({
                 <input
                   value={formState.activity}
                   onChange={(event) => updateFormField("activity", event.target.value)}
-                  placeholder="例如 Day 2 Taronga Zoo"
+                  placeholder="可由關聯活動自動帶入"
                 />
               </label>
               <label>
@@ -1844,7 +1952,9 @@ function ExpenseSummaryModal({
               </label>
               <div className="expense-form-footer">
                 <span className={`expense-form-status is-${formStatus.type}`}>
-                  {formStatus.message || (expenseApiUrl ? "送出後會寫入 Notion Expense database。" : "尚未設定 API endpoint。")}
+                  {formStatus.message ||
+                    activityStatus.message ||
+                    (expenseApiUrl ? "送出後會寫入 Notion Expense database。" : "尚未設定 API endpoint。")}
                 </span>
                 <button type="submit" disabled={formStatus.type === "submitting"}>
                   {formStatus.type === "submitting" ? "新增中" : "新增到 Notion"}

@@ -960,6 +960,10 @@ h1 {
   min-width: 0;
 }
 
+.expense-form label.expense-form-wide {
+  grid-column: span 2;
+}
+
 .expense-form label span {
   color: #687783;
   font-size: 0.76rem;
@@ -3254,6 +3258,10 @@ h1 {
 
   .expense-form {
     grid-template-columns: 1fr;
+  }
+
+  .expense-form label.expense-form-wide {
+    grid-column: 1;
   }
 
   .expense-form-footer {
