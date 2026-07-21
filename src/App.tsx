@@ -1192,6 +1192,7 @@ type ManualExpenseFormState = {
   day: string;
   date: string;
   schedulePageId: string;
+  activitySearch: string;
   activity: string;
   location: string;
   pin: string;
@@ -1241,6 +1242,7 @@ const expenseFormDefault: ManualExpenseFormState = {
   day: "",
   date: localDateKey(new Date()),
   schedulePageId: "",
+  activitySearch: "",
   activity: "",
   location: "",
   pin: "",
@@ -1311,6 +1313,10 @@ function expenseActivityOptionFromUnknown(value: unknown): ExpenseActivityOption
     location: typeof option.location === "string" ? option.location : "",
     category: option.category,
   };
+}
+
+function normalizedActivityText(value: string) {
+  return value.trim().toLowerCase();
 }
 
 function mergeExpenseRows(rows: ExpenseRow[]) {
@@ -1609,7 +1615,17 @@ function ExpenseSummaryModal({
     type: "idle" | "loading" | "success" | "error";
     message: string;
   }>({ type: "idle", message: "" });
+  const [isActivityPickerOpen, setIsActivityPickerOpen] = useState(false);
   const activityOptions = activityOptionsByCategory[formState.category] ?? [];
+  const filteredActivityOptions = useMemo(() => {
+    const query = normalizedActivityText(formState.activitySearch);
+    const matches = query
+      ? activityOptions.filter((activity) =>
+          normalizedActivityText(`${activity.title} ${activity.location}`).includes(query),
+        )
+      : activityOptions;
+    return matches.slice(0, 10);
+  }, [activityOptions, formState.activitySearch]);
   const activeRows = activeCategory
     ? rows.filter((row) => row.category === activeCategory)
     : [];
@@ -1697,8 +1713,10 @@ function ExpenseSummaryModal({
       ...currentState,
       category,
       schedulePageId: "",
+      activitySearch: "",
       activity: "",
     }));
+    setIsActivityPickerOpen(false);
     setActivityStatus({ type: "idle", message: "" });
     setFormStatus({ type: "idle", message: "" });
   };
@@ -1711,14 +1729,28 @@ function ExpenseSummaryModal({
       ...(selectedActivity
         ? {
             name: currentState.name || selectedActivity.title,
+            activitySearch: selectedActivity.title,
             activity: selectedActivity.title,
             location: selectedActivity.location || currentState.location,
             category: selectedActivity.category,
           }
         : {
+            activitySearch: "",
             activity: "",
           }),
     }));
+    setIsActivityPickerOpen(false);
+    setFormStatus({ type: "idle", message: "" });
+  };
+
+  const handleActivitySearch = (value: string) => {
+    setFormState((currentState) => ({
+      ...currentState,
+      schedulePageId: "",
+      activitySearch: value,
+      activity: value,
+    }));
+    setIsActivityPickerOpen(true);
     setFormStatus({ type: "idle", message: "" });
   };
 
@@ -1894,25 +1926,45 @@ function ExpenseSummaryModal({
                   ))}
                 </select>
               </label>
-              <label className="expense-form-wide">
+              <div className="expense-form-field expense-form-wide">
                 <span>關聯活動</span>
-                <select
-                  value={formState.schedulePageId}
-                  onChange={(event) => handleActivitySelect(event.target.value)}
-                  disabled={activityStatus.type === "loading"}
-                >
-                  <option value="">
-                    {activityStatus.type === "loading"
-                      ? `載入${expenseCategoryMeta[formState.category].label}活動中...`
-                      : `不關聯活動 / 自行輸入`}
-                  </option>
-                  {activityOptions.map((activity) => (
-                    <option value={activity.id} key={activity.id}>
-                      {[activity.title, activity.location].filter(Boolean).join(" - ")}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                <div className="expense-activity-picker">
+                  <input
+                    value={formState.activitySearch}
+                    onChange={(event) => handleActivitySearch(event.target.value)}
+                    onFocus={() => setIsActivityPickerOpen(true)}
+                    onBlur={() => window.setTimeout(() => setIsActivityPickerOpen(false), 120)}
+                    placeholder={
+                      activityStatus.type === "loading"
+                        ? `載入${expenseCategoryMeta[formState.category].label}活動中...`
+                        : `輸入活動或地點搜尋`
+                    }
+                    autoComplete="off"
+                  />
+                  {isActivityPickerOpen && activityStatus.type !== "loading" ? (
+                    <div className="expense-activity-menu" role="listbox">
+                      {filteredActivityOptions.length ? (
+                        filteredActivityOptions.map((activity) => (
+                          <button
+                            type="button"
+                            key={activity.id}
+                            onMouseDown={(event) => event.preventDefault()}
+                            onClick={() => handleActivitySelect(activity.id)}
+                            role="option"
+                          >
+                            <strong>{activity.title}</strong>
+                            {activity.location ? <span>{activity.location}</span> : null}
+                          </button>
+                        ))
+                      ) : (
+                        <div className="expense-activity-empty">
+                          {activityStatus.type === "error" ? "活動載入失敗" : "沒有符合的活動"}
+                        </div>
+                      )}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
               <label>
                 <span>消費名稱</span>
                 <input
