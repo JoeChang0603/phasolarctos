@@ -1389,9 +1389,15 @@ function formatExpenseAmount(amount: number, currency: TravelExpense["currency"]
   }).format(amount);
 }
 
-function expenseAmountInAud(row: ExpenseRow, exchangeRate?: ExpenseExchangeRate) {
-  if (row.currency === "AUD") return row.amount;
-  if (row.currency === "TWD" && exchangeRate) return row.amount / exchangeRate.rate;
+function expenseAmountInCurrency(
+  row: ExpenseRow,
+  targetCurrency: TravelExpense["currency"],
+  exchangeRate?: ExpenseExchangeRate,
+) {
+  if (row.currency === targetCurrency) return row.amount;
+  if (!exchangeRate) return undefined;
+  if (row.currency === "AUD" && targetCurrency === "TWD") return row.amount * exchangeRate.rate;
+  if (row.currency === "TWD" && targetCurrency === "AUD") return row.amount / exchangeRate.rate;
   return undefined;
 }
 
@@ -1439,11 +1445,15 @@ function expenseRowsForTrip(tripData: TripData, days: TravelDay[]): ExpenseRow[]
   return expenseRowsForDays(days);
 }
 
-function expenseTotalsByCategory(rows: ExpenseRow[], exchangeRate?: ExpenseExchangeRate) {
+function expenseTotalsByCategory(
+  rows: ExpenseRow[],
+  targetCurrency: TravelExpense["currency"],
+  exchangeRate?: ExpenseExchangeRate,
+) {
   const totals = new Map<ExpenseCategory, number>();
   let hasUnconvertedRows = false;
   for (const row of rows) {
-    const amount = expenseAmountInAud(row, exchangeRate);
+    const amount = expenseAmountInCurrency(row, targetCurrency, exchangeRate);
     if (typeof amount !== "number") {
       hasUnconvertedRows = true;
       continue;
@@ -1458,12 +1468,16 @@ function expenseTotalsByCategory(rows: ExpenseRow[], exchangeRate?: ExpenseExcha
   };
 }
 
-function expenseTotalInAud(rows: ExpenseRow[], exchangeRate?: ExpenseExchangeRate) {
+function expenseTotalInCurrency(
+  rows: ExpenseRow[],
+  targetCurrency: TravelExpense["currency"],
+  exchangeRate?: ExpenseExchangeRate,
+) {
   let total = 0;
   let hasUnconvertedRows = false;
 
   for (const row of rows) {
-    const amount = expenseAmountInAud(row, exchangeRate);
+    const amount = expenseAmountInCurrency(row, targetCurrency, exchangeRate);
     if (typeof amount !== "number") {
       hasUnconvertedRows = true;
       continue;
@@ -1689,18 +1703,18 @@ function ExpenseSummaryLauncher({
   exchangeRate: ExpenseExchangeRateState;
   onOpen: () => void;
 }) {
-  const { total, hasUnconvertedRows } = expenseTotalInAud(rows, exchangeRate.rate);
+  const { total, hasUnconvertedRows } = expenseTotalInCurrency(rows, "TWD", exchangeRate.rate);
   const totalLabel =
     hasUnconvertedRows && exchangeRate.type !== "success"
       ? "匯率載入中"
-      : formatExpenseAmount(total, "AUD");
+      : formatExpenseAmount(total, "TWD");
 
   return (
     <button
       className="expense-launcher"
       type="button"
       onClick={onOpen}
-      aria-label={`開啟花費統計，目前澳幣總額 ${totalLabel}`}
+      aria-label={`開啟花費統計，目前台幣總額 ${totalLabel}`}
       title="花費統計"
     >
       <Banknote size={22} strokeWidth={2.5} />
@@ -1721,15 +1735,22 @@ function ExpenseSummaryModal({
   onClose: () => void;
   onCreateExpense: (expense: ExpenseRow) => void;
 }) {
+  const [displayCurrency, setDisplayCurrency] = useState<TravelExpense["currency"]>("TWD");
   const { totals, hasUnconvertedRows: hasUnconvertedCategoryRows } = expenseTotalsByCategory(
     rows,
+    displayCurrency,
     exchangeRate.rate,
   );
-  const { total: totalAmount, hasUnconvertedRows } = expenseTotalInAud(rows, exchangeRate.rate);
+  const { total: totalAmount, hasUnconvertedRows } = expenseTotalInCurrency(
+    rows,
+    displayCurrency,
+    exchangeRate.rate,
+  );
   const totalLabel =
     hasUnconvertedRows && exchangeRate.type !== "success"
       ? "匯率載入中"
-      : formatExpenseAmount(totalAmount, "AUD");
+      : formatExpenseAmount(totalAmount, displayCurrency);
+  const displayCurrencyLabel = displayCurrency === "TWD" ? "台幣總額" : "澳幣總額";
   const [activeCategory, setActiveCategory] = useState<ExpenseCategory | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formState, setFormState] = useState<ManualExpenseFormState>(expenseFormDefault);
@@ -2010,16 +2031,28 @@ function ExpenseSummaryModal({
               花費統計
             </span>
             <h2>目前已記錄花費</h2>
-            <p>依 Notion 與手動補入紀錄統計，TWD 會依最新 AUD/TWD 匯率換算成澳幣加總。</p>
+            <p>依 Notion 與手動補入紀錄統計，AUD 會依最新 AUD/TWD 匯率換算成台幣加總。</p>
           </div>
           <div className="expense-total">
-            <span>澳幣總額</span>
+            <span>{displayCurrencyLabel}</span>
             <strong>{totalLabel}</strong>
             <em>
               {exchangeRate.rate
                 ? `${rows.length} 筆 · 1 AUD = ${exchangeRate.rate.rate.toFixed(3)} TWD${exchangeRate.rate.date ? ` · ${exchangeRate.rate.date}` : ""}`
                 : `${rows.length} 筆 · ${exchangeRate.message || "匯率載入中"}`}
             </em>
+            <div className="expense-currency-toggle" aria-label="切換總額幣別">
+              {(["TWD", "AUD"] as const).map((currency) => (
+                <button
+                  type="button"
+                  className={displayCurrency === currency ? "is-active" : ""}
+                  onClick={() => setDisplayCurrency(currency)}
+                  key={currency}
+                >
+                  {currency}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="expense-modal-actions">
             <button
@@ -2229,7 +2262,7 @@ function ExpenseSummaryModal({
                     <strong>
                       {hasUnconvertedCategoryRows && exchangeRate.type !== "success"
                         ? "等待匯率"
-                        : formatExpenseAmount(total, "AUD")}
+                        : formatExpenseAmount(total, displayCurrency)}
                     </strong>
                   </button>
                 );
