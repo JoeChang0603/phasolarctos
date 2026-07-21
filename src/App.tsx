@@ -1635,11 +1635,11 @@ function ExpenseSummaryModal({
   }, [onClose]);
 
   useEffect(() => {
+    const category = formState.category;
     if (
       !isFormOpen ||
       !expenseActivitiesUrl ||
-      activityOptionsByCategory[formState.category] ||
-      activityStatus.type !== "idle"
+      activityOptionsByCategory[category]
     ) {
       return;
     }
@@ -1647,7 +1647,7 @@ function ExpenseSummaryModal({
     let isActive = true;
     setActivityStatus({ type: "loading", message: "載入 Notion 活動中..." });
 
-    fetch(`${expenseActivitiesUrl}?category=${encodeURIComponent(formState.category)}&v=2`)
+    fetch(`${expenseActivitiesUrl}?category=${encodeURIComponent(category)}&v=2`)
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(result?.message || "載入 Notion 活動失敗。");
@@ -1660,13 +1660,13 @@ function ExpenseSummaryModal({
         if (!isActive) return;
         setActivityOptionsByCategory((currentOptions) => ({
           ...currentOptions,
-          [formState.category]: options,
+          [category]: options,
         }));
         setActivityStatus({
           type: "success",
           message: options.length
-            ? `已載入 ${expenseCategoryMeta[formState.category].label} ${options.length} 個 Notion 活動。`
-            : `Notion 目前沒有${expenseCategoryMeta[formState.category].label}活動。`,
+            ? `已載入 ${expenseCategoryMeta[category].label} ${options.length} 個 Notion 活動。`
+            : `Notion 目前沒有${expenseCategoryMeta[category].label}活動。`,
         });
       })
       .catch((error) => {
@@ -1680,7 +1680,7 @@ function ExpenseSummaryModal({
     return () => {
       isActive = false;
     };
-  }, [activityOptionsByCategory, activityStatus.type, formState.category, isFormOpen]);
+  }, [activityOptionsByCategory, formState.category, isFormOpen]);
 
   useEffect(() => {
     if (!isFormOpen || activityStatus.type !== "error") return;
