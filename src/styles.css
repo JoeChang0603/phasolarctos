@@ -1015,6 +1015,11 @@ h1 {
   white-space: nowrap;
 }
 
+.expense-form-footer button.expense-form-secondary {
+  border: 1px solid rgba(16, 32, 42, 0.14);
+  background: #fff;
+}
+
 .expense-form-footer button:disabled {
   cursor: wait;
   opacity: 0.64;

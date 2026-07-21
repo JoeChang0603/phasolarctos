@@ -1682,6 +1682,11 @@ function ExpenseSummaryModal({
     };
   }, [activityOptionsByCategory, activityStatus.type, formState.category, isFormOpen]);
 
+  useEffect(() => {
+    if (!isFormOpen || activityStatus.type !== "error") return;
+    setActivityStatus({ type: "idle", message: "" });
+  }, [isFormOpen]);
+
   const updateFormField = (field: keyof ManualExpenseFormState, value: string) => {
     setFormState((currentState) => ({ ...currentState, [field]: value }));
     setFormStatus({ type: "idle", message: "" });
@@ -1714,6 +1719,16 @@ function ExpenseSummaryModal({
             activity: "",
           }),
     }));
+    setFormStatus({ type: "idle", message: "" });
+  };
+
+  const handleReloadActivities = () => {
+    setActivityOptionsByCategory((currentOptions) => {
+      const nextOptions = { ...currentOptions };
+      delete nextOptions[formState.category];
+      return nextOptions;
+    });
+    setActivityStatus({ type: "idle", message: "" });
     setFormStatus({ type: "idle", message: "" });
   };
 
@@ -1984,6 +1999,11 @@ function ExpenseSummaryModal({
                     activityStatus.message ||
                     (expenseApiUrl ? "送出後會寫入 Notion Expense database。" : "尚未設定 API endpoint。")}
                 </span>
+                {activityStatus.type === "error" ? (
+                  <button className="expense-form-secondary" type="button" onClick={handleReloadActivities}>
+                    重新載入活動
+                  </button>
+                ) : null}
                 <button type="submit" disabled={formStatus.type === "submitting"}>
                   {formStatus.type === "submitting" ? "新增中" : "新增到 Notion"}
                 </button>
