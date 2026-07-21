@@ -25,6 +25,8 @@ const statusMap = {
   pending: "Not yet",
 };
 
+const exchangeRateUrl = "https://api.frankfurter.dev/v2/rate/AUD/TWD";
+
 const categoryFromNotion = {
   Living: "lodging",
   Hotel: "lodging",
@@ -207,6 +209,43 @@ async function cachedActivitiesResponse(request, env, category) {
   return jsonResponse(request, env, body, { headers: { "Cache-Control": "no-store" } });
 }
 
+async function cachedRateResponse(request, env) {
+  const requestUrl = new URL(request.url);
+  const cacheUrl = new URL(requestUrl.origin);
+  cacheUrl.pathname = `/__rate-cache/aud-twd/${encodeURIComponent(request.headers.get("Origin") || "")}`;
+  const cacheKey = new Request(cacheUrl.toString(), request);
+  const cachedResponse = await caches.default.match(cacheKey);
+  if (cachedResponse) {
+    const body = await cachedResponse.json();
+    return jsonResponse(request, env, body, { headers: { "Cache-Control": "no-store" } });
+  }
+
+  const rateResponse = await fetch(exchangeRateUrl, {
+    headers: { Accept: "application/json" },
+  });
+  const rateBody = await rateResponse.json().catch(() => ({}));
+  if (!rateResponse.ok || typeof rateBody.rate !== "number") {
+    throw new Error(rateBody?.message || "Exchange rate request failed.");
+  }
+
+  const body = {
+    base: "AUD",
+    quote: "TWD",
+    rate: rateBody.rate,
+    date: rateBody.date,
+    fetchedAt: new Date().toISOString(),
+    source: "Frankfurter",
+  };
+  const cacheResponse = jsonResponse(
+    request,
+    env,
+    body,
+    { headers: { "Cache-Control": "public, max-age=900, s-maxage=900" } },
+  );
+  await caches.default.put(cacheKey, cacheResponse.clone());
+  return jsonResponse(request, env, body, { headers: { "Cache-Control": "no-store" } });
+}
+
 async function sha256(value) {
   return new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
 }
@@ -235,6 +274,19 @@ export default {
     const url = new URL(request.url);
 
     const normalizedPath = url.pathname.replace(/\/$/, "");
+
+    if (request.method === "GET" && normalizedPath.endsWith("/rates")) {
+      try {
+        return cachedRateResponse(request, env);
+      } catch (error) {
+        return jsonResponse(
+          request,
+          env,
+          { message: error instanceof Error ? error.message : "Exchange rate request failed." },
+          { status: 502 },
+        );
+      }
+    }
 
     if (request.method === "GET" && normalizedPath.endsWith("/activities")) {
       if (!env.NOTION_TOKEN || !env.NOTION_SCHEDULE_DATA_SOURCE_ID) {

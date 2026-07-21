@@ -68,6 +68,7 @@ const googleMapsStaticApiKey =
   import.meta.env.VITE_GOOGLE_MAPS_STATIC_API_KEY || googleMapsEmbedApiKey;
 const expenseApiUrl = import.meta.env.VITE_EXPENSE_API_URL;
 const expenseActivitiesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/activities` : "";
+const expenseRatesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/rates` : "";
 
 type TransitMap = {
   id:
@@ -1183,6 +1184,20 @@ type ExpenseActivityOption = {
   category: ExpenseCategory;
 };
 
+type ExpenseExchangeRate = {
+  base: "AUD";
+  quote: "TWD";
+  rate: number;
+  date: string;
+  source?: string;
+};
+
+type ExpenseExchangeRateState = {
+  type: "idle" | "loading" | "success" | "error";
+  message: string;
+  rate?: ExpenseExchangeRate;
+};
+
 type ManualExpenseFormState = {
   name: string;
   amount: string;
@@ -1315,6 +1330,22 @@ function expenseActivityOptionFromUnknown(value: unknown): ExpenseActivityOption
   };
 }
 
+function expenseExchangeRateFromUnknown(value: unknown): ExpenseExchangeRate | null {
+  if (!value || typeof value !== "object") return null;
+  const rate = value as Partial<ExpenseExchangeRate>;
+  if (rate.base !== "AUD" || rate.quote !== "TWD" || typeof rate.rate !== "number" || !Number.isFinite(rate.rate) || rate.rate <= 0) {
+    return null;
+  }
+
+  return {
+    base: "AUD",
+    quote: "TWD",
+    rate: rate.rate,
+    date: typeof rate.date === "string" ? rate.date : "",
+    source: typeof rate.source === "string" ? rate.source : undefined,
+  };
+}
+
 function normalizedActivityText(value: string) {
   return value.trim().toLowerCase();
 }
@@ -1353,8 +1384,15 @@ function formatExpenseAmount(amount: number, currency: TravelExpense["currency"]
   return new Intl.NumberFormat("zh-Hant", {
     style: "currency",
     currency,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: currency === "AUD" ? 2 : 0,
+    maximumFractionDigits: currency === "AUD" ? 2 : 0,
   }).format(amount);
+}
+
+function expenseAmountInAud(row: ExpenseRow, exchangeRate?: ExpenseExchangeRate) {
+  if (row.currency === "AUD") return row.amount;
+  if (row.currency === "TWD" && exchangeRate) return row.amount / exchangeRate.rate;
+  return undefined;
 }
 
 function expenseRowsForDays(days: TravelDay[]): ExpenseRow[] {
@@ -1401,14 +1439,39 @@ function expenseRowsForTrip(tripData: TripData, days: TravelDay[]): ExpenseRow[]
   return expenseRowsForDays(days);
 }
 
-function expenseTotalsByCategory(rows: ExpenseRow[]) {
+function expenseTotalsByCategory(rows: ExpenseRow[], exchangeRate?: ExpenseExchangeRate) {
   const totals = new Map<ExpenseCategory, number>();
+  let hasUnconvertedRows = false;
   for (const row of rows) {
-    totals.set(row.category, (totals.get(row.category) ?? 0) + row.amount);
+    const amount = expenseAmountInAud(row, exchangeRate);
+    if (typeof amount !== "number") {
+      hasUnconvertedRows = true;
+      continue;
+    }
+    totals.set(row.category, (totals.get(row.category) ?? 0) + amount);
   }
-  return [...totals.entries()]
-    .map(([category, total]) => ({ category, total }))
-    .sort((a, b) => b.total - a.total);
+  return {
+    hasUnconvertedRows,
+    totals: [...totals.entries()]
+      .map(([category, total]) => ({ category, total }))
+      .sort((a, b) => b.total - a.total),
+  };
+}
+
+function expenseTotalInAud(rows: ExpenseRow[], exchangeRate?: ExpenseExchangeRate) {
+  let total = 0;
+  let hasUnconvertedRows = false;
+
+  for (const row of rows) {
+    const amount = expenseAmountInAud(row, exchangeRate);
+    if (typeof amount !== "number") {
+      hasUnconvertedRows = true;
+      continue;
+    }
+    total += amount;
+  }
+
+  return { total, hasUnconvertedRows };
 }
 
 export default function App() {
@@ -1428,10 +1491,52 @@ export default function App() {
   const heroSlides = useMemo(() => heroSlidesForDay(activeDay), [activeDay]);
   const syncedExpenseRows = useMemo(() => expenseRowsForTrip(trip, days), [days]);
   const [manualExpenseRows, setManualExpenseRows] = useState<ExpenseRow[]>(loadStoredManualExpenseRows);
+  const [expenseExchangeRate, setExpenseExchangeRate] = useState<ExpenseExchangeRateState>({
+    type: "idle",
+    message: "",
+  });
   const expenseRows = useMemo(
     () => mergeExpenseRows([...syncedExpenseRows, ...manualExpenseRows]),
     [manualExpenseRows, syncedExpenseRows],
   );
+
+  useEffect(() => {
+    if (!expenseRatesUrl) {
+      setExpenseExchangeRate({ type: "error", message: "尚未設定匯率 API endpoint。" });
+      return;
+    }
+
+    let isActive = true;
+    setExpenseExchangeRate({ type: "loading", message: "載入 AUD/TWD 匯率中..." });
+
+    fetch(`${expenseRatesUrl}?v=1`)
+      .then(async (response) => {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result?.message || "載入 AUD/TWD 匯率失敗。");
+        const rate = expenseExchangeRateFromUnknown(result);
+        if (!rate) throw new Error("AUD/TWD 匯率格式不正確。");
+        return rate;
+      })
+      .then((rate) => {
+        if (!isActive) return;
+        setExpenseExchangeRate({
+          type: "success",
+          message: `1 AUD = ${rate.rate.toFixed(3)} TWD`,
+          rate,
+        });
+      })
+      .catch((error) => {
+        if (!isActive) return;
+        setExpenseExchangeRate({
+          type: "error",
+          message: error instanceof Error ? error.message : "載入 AUD/TWD 匯率失敗。",
+        });
+      });
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   useEffect(() => {
     storeManualExpenseRows(manualExpenseRows);
@@ -1558,6 +1663,7 @@ export default function App() {
           <ExpenseSummaryModal
             rows={expenseRows}
             days={days}
+            exchangeRate={expenseExchangeRate}
             onClose={() => setIsExpenseSummaryOpen(false)}
             onCreateExpense={(expense) =>
               setManualExpenseRows((currentRows) => mergeExpenseRows([...currentRows, expense]))
@@ -1565,21 +1671,36 @@ export default function App() {
           />
         ) : null}
       </AnimatePresence>
-      <ExpenseSummaryLauncher rows={expenseRows} onOpen={() => setIsExpenseSummaryOpen(true)} />
+      <ExpenseSummaryLauncher
+        rows={expenseRows}
+        exchangeRate={expenseExchangeRate}
+        onOpen={() => setIsExpenseSummaryOpen(true)}
+      />
     </main>
   );
 }
 
-function ExpenseSummaryLauncher({ rows, onOpen }: { rows: ExpenseRow[]; onOpen: () => void }) {
-  const totalAmount = rows.reduce((sum, row) => sum + row.amount, 0);
-  const currency = rows[0]?.currency ?? "TWD";
+function ExpenseSummaryLauncher({
+  rows,
+  exchangeRate,
+  onOpen,
+}: {
+  rows: ExpenseRow[];
+  exchangeRate: ExpenseExchangeRateState;
+  onOpen: () => void;
+}) {
+  const { total, hasUnconvertedRows } = expenseTotalInAud(rows, exchangeRate.rate);
+  const totalLabel =
+    hasUnconvertedRows && exchangeRate.type !== "success"
+      ? "匯率載入中"
+      : formatExpenseAmount(total, "AUD");
 
   return (
     <button
       className="expense-launcher"
       type="button"
       onClick={onOpen}
-      aria-label={`開啟花費統計，目前總額 ${formatExpenseAmount(totalAmount, currency)}`}
+      aria-label={`開啟花費統計，目前澳幣總額 ${totalLabel}`}
       title="花費統計"
     >
       <Banknote size={22} strokeWidth={2.5} />
@@ -1590,17 +1711,25 @@ function ExpenseSummaryLauncher({ rows, onOpen }: { rows: ExpenseRow[]; onOpen: 
 function ExpenseSummaryModal({
   rows,
   days,
+  exchangeRate,
   onClose,
   onCreateExpense,
 }: {
   rows: ExpenseRow[];
   days: TravelDay[];
+  exchangeRate: ExpenseExchangeRateState;
   onClose: () => void;
   onCreateExpense: (expense: ExpenseRow) => void;
 }) {
-  const totals = expenseTotalsByCategory(rows);
-  const totalAmount = rows.reduce((sum, row) => sum + row.amount, 0);
-  const currency = rows[0]?.currency ?? "TWD";
+  const { totals, hasUnconvertedRows: hasUnconvertedCategoryRows } = expenseTotalsByCategory(
+    rows,
+    exchangeRate.rate,
+  );
+  const { total: totalAmount, hasUnconvertedRows } = expenseTotalInAud(rows, exchangeRate.rate);
+  const totalLabel =
+    hasUnconvertedRows && exchangeRate.type !== "success"
+      ? "匯率載入中"
+      : formatExpenseAmount(totalAmount, "AUD");
   const [activeCategory, setActiveCategory] = useState<ExpenseCategory | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formState, setFormState] = useState<ManualExpenseFormState>(expenseFormDefault);
@@ -1881,12 +2010,16 @@ function ExpenseSummaryModal({
               花費統計
             </span>
             <h2>目前已記錄花費</h2>
-            <p>依 Notion 的 Payment / Expect Payment 欄位同步，手動補入的金額也會一起加總。</p>
+            <p>依 Notion 與手動補入紀錄統計，TWD 會依最新 AUD/TWD 匯率換算成澳幣加總。</p>
           </div>
           <div className="expense-total">
-            <span>目前總額</span>
-            <strong>{formatExpenseAmount(totalAmount, currency)}</strong>
-            <em>{rows.length} 筆紀錄</em>
+            <span>澳幣總額</span>
+            <strong>{totalLabel}</strong>
+            <em>
+              {exchangeRate.rate
+                ? `${rows.length} 筆 · 1 AUD = ${exchangeRate.rate.rate.toFixed(3)} TWD${exchangeRate.rate.date ? ` · ${exchangeRate.rate.date}` : ""}`
+                : `${rows.length} 筆 · ${exchangeRate.message || "匯率載入中"}`}
+            </em>
           </div>
           <div className="expense-modal-actions">
             <button
@@ -2093,7 +2226,11 @@ function ExpenseSummaryModal({
                       <Icon size={18} strokeWidth={2.5} />
                       {meta.label}
                     </span>
-                    <strong>{formatExpenseAmount(total, currency)}</strong>
+                    <strong>
+                      {hasUnconvertedCategoryRows && exchangeRate.type !== "success"
+                        ? "等待匯率"
+                        : formatExpenseAmount(total, "AUD")}
+                    </strong>
                   </button>
                 );
               })}
