@@ -2133,9 +2133,10 @@ function ExpenseSummaryModal({
             <strong>{totalLabel}</strong>
             <em>
               {exchangeRate.rate
-                ? `${rows.length} 筆 · 1 AUD = ${exchangeRate.rate.rate.toFixed(3)} TWD${exchangeRate.rate.date ? ` · ${exchangeRate.rate.date}` : ""}`
+                ? `${rows.length} 筆 · 1 AUD = ${exchangeRate.rate.rate.toFixed(3)} TWD`
                 : `${rows.length} 筆 · ${exchangeRate.message || "匯率載入中"}`}
             </em>
+            {exchangeRate.rate?.date ? <em>匯率日期：{exchangeRate.rate.date}</em> : null}
             <div className="expense-currency-toggle" aria-label="切換總額幣別">
               {(["TWD", "AUD"] as const).map((currency) => (
                 <button
