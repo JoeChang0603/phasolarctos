@@ -276,11 +276,11 @@ h1 {
 
 .map-quick-actions {
   position: fixed;
-  top: calc(env(safe-area-inset-top, 0px) + 24px);
   right: calc(env(safe-area-inset-right, 0px) + 24px);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
   z-index: 116;
   display: grid;
-  gap: 10px;
+  gap: 44px;
   justify-items: end;
   isolation: isolate;
   pointer-events: none;
@@ -345,8 +345,8 @@ h1 {
 .map-city-toggle::after {
   content: attr(data-tooltip);
   position: absolute;
-  right: calc(100% + 12px);
-  top: 50%;
+  right: 0;
+  bottom: calc(100% + 10px);
   min-height: 32px;
   display: inline-flex;
   align-items: center;
@@ -361,7 +361,7 @@ h1 {
   line-height: 1;
   opacity: 0;
   pointer-events: none;
-  transform: translate(6px, -50%);
+  transform: translateY(6px);
   transition:
     opacity 160ms ease,
     transform 160ms ease;
@@ -372,7 +372,7 @@ h1 {
 .map-city-toggle:focus-visible::after,
 .map-city-toggle:active::after {
   opacity: 1;
-  transform: translate(0, -50%);
+  transform: translateY(0);
 }
 
 .map-city-actions {
@@ -3435,10 +3435,9 @@ h1 {
   }
 
   .map-quick-actions {
-    top: calc(env(safe-area-inset-top, 0px) + 12px);
     right: calc(env(safe-area-inset-right, 0px) + 12px);
-    bottom: auto;
-    gap: 8px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+    gap: 44px;
   }
 
   .map-city-toggle {
@@ -3447,31 +3446,30 @@ h1 {
   }
 
   .map-city-actions {
-    display: grid;
-    top: calc(100% + 8px);
-    right: 0;
-    grid-template-columns: repeat(3, 50px);
+    display: flex;
+    top: 50%;
+    right: calc(100% + 8px);
     gap: 7px;
-    transform: translateY(-6px);
+    transform: translate(8px, -50%);
   }
 
   .map-city-group:hover .map-city-actions,
   .map-city-group:focus-within .map-city-actions,
   .map-city-group.is-expanded .map-city-actions {
-    transform: translateY(0);
+    transform: translate(0, -50%);
   }
 
   .map-city-toggle::after {
-    right: calc(100% + 8px);
-    top: 50%;
-    bottom: auto;
-    transform: translate(6px, -50%);
+    right: 0;
+    top: auto;
+    bottom: calc(100% + 10px);
+    transform: translateY(6px);
   }
 
   .map-city-toggle:hover::after,
   .map-city-toggle:focus-visible::after,
   .map-city-toggle:active::after {
-    transform: translate(0, -50%);
+    transform: translateY(0);
   }
 
   .transit-map-button::after {
