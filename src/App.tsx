@@ -27,6 +27,7 @@ import {
   IceCreamBowl,
   Landmark,
   Luggage,
+  LogOut,
   MapPin,
   Maximize2,
   Navigation,
@@ -116,6 +117,72 @@ type HeroSlide = {
   src: string;
   label: string;
 };
+
+type TripMember = {
+  id: "joe" | "girlfriend" | "mom" | "brother" | "guest";
+  label: string;
+  role: string;
+  description: string;
+  accent: string;
+  hair: string;
+  outfit: string;
+  accessory: "cap" | "ribbon" | "glasses" | "hoodie";
+};
+
+const activeMemberStorageKey = "phasolarctos-active-member";
+
+const tripMembers: TripMember[] = [
+  {
+    id: "joe",
+    label: "昀",
+    role: "行程控",
+    description: "負責地圖、花費與每日節奏。",
+    accent: "#1f9fb6",
+    hair: "#25201c",
+    outfit: "#0f766e",
+    accessory: "cap",
+  },
+  {
+    id: "girlfriend",
+    label: "宇軒",
+    role: "美食雷達",
+    description: "把咖啡、甜點和照片點都收好。",
+    accent: "#e56f8f",
+    hair: "#3a2418",
+    outfit: "#c026d3",
+    accessory: "ribbon",
+  },
+  {
+    id: "mom",
+    label: "靜慧",
+    role: "安心管家",
+    description: "確認時間、交通和每段銜接。",
+    accent: "#f59e0b",
+    hair: "#5f5147",
+    outfit: "#b45309",
+    accessory: "glasses",
+  },
+  {
+    id: "brother",
+    label: "堯",
+    role: "衝刺支援",
+    description: "快速查點、補位和看顧突發狀況。",
+    accent: "#4f46e5",
+    hair: "#1f2937",
+    outfit: "#2563eb",
+    accessory: "hoodie",
+  },
+  {
+    id: "guest",
+    label: "訪客",
+    role: "訪客入口",
+    description: "只看行程與花費統計。",
+    accent: "#64748b",
+    hair: "#3f3f46",
+    outfit: "#475569",
+    accessory: "cap",
+  },
+];
 
 const heroFallbackSlidesByDayId: Record<string, HeroSlide[]> = {
   "day-0-departure": [
@@ -1518,6 +1585,111 @@ function expenseTotalInCurrency(
 }
 
 export default function App() {
+  const [activeMember, setActiveMember] = useState<TripMember | null>(() => loadStoredActiveMember());
+
+  const handleSelectMember = (member: TripMember) => {
+    setActiveMember(member);
+    storeActiveMember(member);
+  };
+
+  const handleSwitchMember = () => {
+    setActiveMember(null);
+    clearStoredActiveMember();
+  };
+
+  if (!activeMember) {
+    return <MemberLoginScreen members={tripMembers} onSelect={handleSelectMember} />;
+  }
+
+  return <TripExperience activeMember={activeMember} onSwitchMember={handleSwitchMember} />;
+}
+
+function loadStoredActiveMember() {
+  if (typeof window === "undefined") return null;
+  const storedMemberId = window.localStorage.getItem(activeMemberStorageKey);
+  return tripMembers.find((member) => member.id === storedMemberId) ?? null;
+}
+
+function storeActiveMember(member: TripMember) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(activeMemberStorageKey, member.id);
+}
+
+function clearStoredActiveMember() {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(activeMemberStorageKey);
+}
+
+function MemberLoginScreen({
+  members,
+  onSelect,
+}: {
+  members: TripMember[];
+  onSelect: (member: TripMember) => void;
+}) {
+  return (
+    <main className="member-login-shell" aria-label="旅程成員登入">
+      <section className="member-login-panel">
+        <div className="member-login-copy">
+          <span>Australia Trip</span>
+          <h1>選擇你的旅程角色</h1>
+          <p>點擊人物後進入行程頁，花費與行程功能會先記住目前使用的成員。</p>
+        </div>
+        <div className="member-card-grid" aria-label="選擇登入成員">
+          {members.map((member) => (
+            <button
+              className={member.id === "guest" ? "member-card member-card-guest" : "member-card"}
+              type="button"
+              key={member.id}
+              onClick={() => onSelect(member)}
+              style={{ "--member-accent": member.accent } as CSSProperties}
+            >
+              <MemberAvatar member={member} />
+              <span className="member-card-role">{member.role}</span>
+              <strong>{member.label}</strong>
+              <em>{member.description}</em>
+            </button>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function MemberAvatar({ member }: { member: TripMember }) {
+  return (
+    <span
+      className={`member-avatar member-avatar-${member.accessory}`}
+      style={
+        {
+          "--member-accent": member.accent,
+          "--member-hair": member.hair,
+          "--member-outfit": member.outfit,
+        } as CSSProperties
+      }
+      aria-hidden="true"
+    >
+      <span className="member-avatar-head">
+        <span className="member-avatar-hair" />
+        <span className="member-avatar-face">
+          <span className="member-avatar-eye member-avatar-eye-left" />
+          <span className="member-avatar-eye member-avatar-eye-right" />
+          <span className="member-avatar-smile" />
+        </span>
+      </span>
+      <span className="member-avatar-body" />
+      <span className="member-avatar-accessory" />
+    </span>
+  );
+}
+
+function TripExperience({
+  activeMember,
+  onSwitchMember,
+}: {
+  activeMember: TripMember;
+  onSwitchMember: () => void;
+}) {
   const days = useMemo(
     () => [...trip.days].sort((a, b) => a.date.localeCompare(b.date)),
     [],
@@ -1693,6 +1865,8 @@ export default function App() {
         />
       </section>
 
+      <MemberSessionButton member={activeMember} onSwitchMember={onSwitchMember} />
+
       <section className="journey" id="journey" aria-label="每日旅行資訊">
         <AnimatePresence mode="wait">
           <motion.div
@@ -1717,6 +1891,7 @@ export default function App() {
             rows={expenseRows}
             days={days}
             exchangeRate={expenseExchangeRate}
+            canManageExpenses={activeMember.id !== "guest"}
             onClose={() => setIsExpenseSummaryOpen(false)}
             onCreateExpense={(expense) =>
               setManualExpenseRows((currentRows) => mergeExpenseRows([...currentRows, expense]))
@@ -1736,6 +1911,28 @@ export default function App() {
         onOpen={() => setIsExpenseSummaryOpen(true)}
       />
     </main>
+  );
+}
+
+function MemberSessionButton({
+  member,
+  onSwitchMember,
+}: {
+  member: TripMember;
+  onSwitchMember: () => void;
+}) {
+  return (
+    <button
+      className="member-session-button"
+      type="button"
+      onClick={onSwitchMember}
+      aria-label={`目前登入成員 ${member.label}，點擊切換成員`}
+      style={{ "--member-accent": member.accent } as CSSProperties}
+      title="切換成員"
+    >
+      <span>{member.label}</span>
+      <LogOut size={16} strokeWidth={2.5} />
+    </button>
   );
 }
 
@@ -1771,6 +1968,7 @@ function ExpenseSummaryModal({
   rows,
   days,
   exchangeRate,
+  canManageExpenses,
   onClose,
   onCreateExpense,
   onDeleteExpense,
@@ -1778,6 +1976,7 @@ function ExpenseSummaryModal({
   rows: ExpenseRow[];
   days: TravelDay[];
   exchangeRate: ExpenseExchangeRateState;
+  canManageExpenses: boolean;
   onClose: () => void;
   onCreateExpense: (expense: ExpenseRow) => void;
   onDeleteExpense: (expenseId: string) => void;
@@ -1855,6 +2054,7 @@ function ExpenseSummaryModal({
   useEffect(() => {
     const category = formState.category;
     if (
+      !canManageExpenses ||
       !isFormOpen ||
       !expenseActivitiesUrl ||
       activityOptionsByCategory[category]
@@ -1898,7 +2098,7 @@ function ExpenseSummaryModal({
     return () => {
       isActive = false;
     };
-  }, [activityOptionsByCategory, formState.category, isFormOpen]);
+  }, [activityOptionsByCategory, canManageExpenses, formState.category, isFormOpen]);
 
   useEffect(() => {
     if (!isFormOpen || activityStatus.type !== "error") return;
@@ -1968,6 +2168,7 @@ function ExpenseSummaryModal({
 
   const handleSubmitExpense = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!canManageExpenses) return;
 
     const amount = Number(formState.amount);
     if (!formState.name.trim() || !Number.isFinite(amount) || amount <= 0 || !formState.date) {
@@ -2055,6 +2256,7 @@ function ExpenseSummaryModal({
   };
 
   const handleDeleteExpense = async (row: ExpenseRow) => {
+    if (!canManageExpenses) return;
     if (!window.confirm(`確定要刪除「${row.title}」這筆消費嗎？`)) return;
 
     if (!isNotionExpensePageId(row.id)) {
@@ -2151,22 +2353,24 @@ function ExpenseSummaryModal({
             </div>
           </div>
           <div className="expense-modal-actions">
-            <button
-              className="expense-add-button"
-              type="button"
-              onClick={() => setIsFormOpen((currentValue) => !currentValue)}
-              aria-expanded={isFormOpen}
-            >
-              <Plus size={17} strokeWidth={2.6} />
-              新增消費
-            </button>
+            {canManageExpenses ? (
+              <button
+                className="expense-add-button"
+                type="button"
+                onClick={() => setIsFormOpen((currentValue) => !currentValue)}
+                aria-expanded={isFormOpen}
+              >
+                <Plus size={17} strokeWidth={2.6} />
+                新增消費
+              </button>
+            ) : null}
             <button className="expense-modal-close" type="button" onClick={onClose} aria-label="關閉花費統計">
               <X size={19} strokeWidth={2.6} />
             </button>
           </div>
         </div>
         <AnimatePresence initial={false}>
-          {isFormOpen ? (
+          {canManageExpenses && isFormOpen ? (
             <motion.form
               className="expense-form"
               onSubmit={handleSubmitExpense}
@@ -2411,16 +2615,18 @@ function ExpenseSummaryModal({
                           <div>
                             <span>{row.status ? expenseStatusLabel[row.status] : "未標註"}</span>
                             <strong>{formatExpenseAmount(row.amount, row.currency)}</strong>
-                            <button
-                              className="expense-delete-button"
-                              type="button"
-                              onClick={() => handleDeleteExpense(row)}
-                              disabled={isDeleting}
-                              aria-label={`刪除 ${row.title}`}
-                            >
-                              <Trash2 size={15} strokeWidth={2.5} />
-                              {isDeleting ? "刪除中" : "刪除"}
-                            </button>
+                            {canManageExpenses ? (
+                              <button
+                                className="expense-delete-button"
+                                type="button"
+                                onClick={() => handleDeleteExpense(row)}
+                                disabled={isDeleting}
+                                aria-label={`刪除 ${row.title}`}
+                              >
+                                <Trash2 size={15} strokeWidth={2.5} />
+                                {isDeleting ? "刪除中" : "刪除"}
+                              </button>
+                            ) : null}
                           </div>
                         </article>
                       );
