@@ -54,7 +54,7 @@ function corsHeaders(request, env) {
 
   return {
     ...(origin ? { "Access-Control-Allow-Origin": origin } : {}),
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, X-Expense-Pin",
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin",
@@ -308,6 +308,46 @@ export default {
           { status: 502 },
         );
       }
+    }
+
+    if (request.method === "DELETE") {
+      if (!env.NOTION_TOKEN || !env.NOTION_EXPENSE_DATA_SOURCE_ID) {
+        return jsonResponse(
+          request,
+          env,
+          { message: "Worker is missing Notion configuration." },
+          { status: 500 },
+        );
+      }
+
+      if (env.EXPENSE_WRITE_PIN) {
+        const pin = request.headers.get("X-Expense-Pin");
+        if (!(await verifyPin(pin, env.EXPENSE_WRITE_PIN))) {
+          return jsonResponse(request, env, { message: "Invalid PIN." }, { status: 401 });
+        }
+      }
+
+      const pathParts = normalizedPath.split("/").filter(Boolean);
+      const pageId = pathParts[pathParts.length - 1] || url.searchParams.get("id") || "";
+      if (!isNotionPageId(pageId)) {
+        return jsonResponse(request, env, { message: "Valid expense page ID is required." }, { status: 400 });
+      }
+
+      try {
+        await notionFetch(`/pages/${pageId}`, env, {
+          method: "PATCH",
+          body: JSON.stringify({ archived: true }),
+        });
+      } catch (error) {
+        return jsonResponse(
+          request,
+          env,
+          { message: error instanceof Error ? error.message : "Notion delete request failed." },
+          { status: 502 },
+        );
+      }
+
+      return jsonResponse(request, env, { id: pageId, deleted: true });
     }
 
     if (request.method !== "POST") {

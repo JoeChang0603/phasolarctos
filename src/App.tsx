@@ -42,6 +42,7 @@ import {
   Soup,
   TicketCheck,
   Tickets,
+  Trash2,
   TreePine,
   TrainFront,
   TrainFrontTunnel,
@@ -1264,8 +1265,10 @@ const expenseFormDefault: ManualExpenseFormState = {
 };
 
 const manualExpenseStorageKey = "phasolarctos.manual-expenses.v1";
+const deletedExpenseStorageKey = "phasolarctos.deleted-expenses.v1";
 const expenseCategories = new Set<ExpenseCategory>(["lodging", "attraction", "transport", "food", "shopping", "other"]);
 const expenseStatuses = new Set<NonNullable<TravelExpense["status"]>>(["paid", "confirmed", "estimated", "pending"]);
+const notionPageIdPattern = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i;
 
 function isExpenseCurrency(value: unknown): value is TravelExpense["currency"] {
   return value === "TWD" || value === "AUD";
@@ -1277,6 +1280,10 @@ function isExpenseCategory(value: unknown): value is ExpenseCategory {
 
 function isExpenseStatus(value: unknown): value is NonNullable<TravelExpense["status"]> {
   return typeof value === "string" && expenseStatuses.has(value as NonNullable<TravelExpense["status"]>);
+}
+
+function isNotionExpensePageId(value: string) {
+  return notionPageIdPattern.test(value);
 }
 
 function expenseRowFromUnknown(value: unknown): ExpenseRow | null {
@@ -1375,6 +1382,28 @@ function loadStoredManualExpenseRows(): ExpenseRow[] {
 function storeManualExpenseRows(rows: ExpenseRow[]) {
   try {
     window.localStorage.setItem(manualExpenseStorageKey, JSON.stringify(rows));
+  } catch {
+    // Local persistence is best-effort; Notion remains the source of truth.
+  }
+}
+
+function loadStoredDeletedExpenseIds(): string[] {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const storedValue = window.localStorage.getItem(deletedExpenseStorageKey);
+    const parsedValue = storedValue ? JSON.parse(storedValue) : [];
+    return Array.isArray(parsedValue)
+      ? parsedValue.filter((id): id is string => typeof id === "string" && id.length > 0)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function storeDeletedExpenseIds(ids: string[]) {
+  try {
+    window.localStorage.setItem(deletedExpenseStorageKey, JSON.stringify(ids));
   } catch {
     // Local persistence is best-effort; Notion remains the source of truth.
   }
@@ -1505,13 +1534,19 @@ export default function App() {
   const heroSlides = useMemo(() => heroSlidesForDay(activeDay), [activeDay]);
   const syncedExpenseRows = useMemo(() => expenseRowsForTrip(trip, days), [days]);
   const [manualExpenseRows, setManualExpenseRows] = useState<ExpenseRow[]>(loadStoredManualExpenseRows);
+  const [deletedExpenseIds, setDeletedExpenseIds] = useState<string[]>(loadStoredDeletedExpenseIds);
   const [expenseExchangeRate, setExpenseExchangeRate] = useState<ExpenseExchangeRateState>({
     type: "idle",
     message: "",
   });
   const expenseRows = useMemo(
-    () => mergeExpenseRows([...syncedExpenseRows, ...manualExpenseRows]),
-    [manualExpenseRows, syncedExpenseRows],
+    () => {
+      const deletedIds = new Set(deletedExpenseIds);
+      return mergeExpenseRows([...syncedExpenseRows, ...manualExpenseRows]).filter(
+        (row) => !deletedIds.has(row.id),
+      );
+    },
+    [deletedExpenseIds, manualExpenseRows, syncedExpenseRows],
   );
 
   useEffect(() => {
@@ -1555,6 +1590,10 @@ export default function App() {
   useEffect(() => {
     storeManualExpenseRows(manualExpenseRows);
   }, [manualExpenseRows]);
+
+  useEffect(() => {
+    storeDeletedExpenseIds(deletedExpenseIds);
+  }, [deletedExpenseIds]);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -1682,6 +1721,12 @@ export default function App() {
             onCreateExpense={(expense) =>
               setManualExpenseRows((currentRows) => mergeExpenseRows([...currentRows, expense]))
             }
+            onDeleteExpense={(expenseId) => {
+              setManualExpenseRows((currentRows) => currentRows.filter((row) => row.id !== expenseId));
+              setDeletedExpenseIds((currentIds) =>
+                currentIds.includes(expenseId) ? currentIds : [...currentIds, expenseId],
+              );
+            }}
           />
         ) : null}
       </AnimatePresence>
@@ -1728,12 +1773,14 @@ function ExpenseSummaryModal({
   exchangeRate,
   onClose,
   onCreateExpense,
+  onDeleteExpense,
 }: {
   rows: ExpenseRow[];
   days: TravelDay[];
   exchangeRate: ExpenseExchangeRateState;
   onClose: () => void;
   onCreateExpense: (expense: ExpenseRow) => void;
+  onDeleteExpense: (expenseId: string) => void;
 }) {
   const [displayCurrency, setDisplayCurrency] = useState<TravelExpense["currency"]>("TWD");
   const { totals, hasUnconvertedRows: hasUnconvertedCategoryRows } = expenseTotalsByCategory(
@@ -1757,6 +1804,11 @@ function ExpenseSummaryModal({
   const [formStatus, setFormStatus] = useState<{
     type: "idle" | "submitting" | "success" | "error";
     message: string;
+  }>({ type: "idle", message: "" });
+  const [deleteStatus, setDeleteStatus] = useState<{
+    type: "idle" | "deleting" | "success" | "error";
+    message: string;
+    expenseId?: string;
   }>({ type: "idle", message: "" });
   const [activityOptionsByCategory, setActivityOptionsByCategory] = useState<
     Partial<Record<ExpenseCategory, ExpenseActivityOption[]>>
@@ -2002,6 +2054,49 @@ function ExpenseSummaryModal({
     }
   };
 
+  const handleDeleteExpense = async (row: ExpenseRow) => {
+    if (!window.confirm(`確定要刪除「${row.title}」這筆消費嗎？`)) return;
+
+    if (!isNotionExpensePageId(row.id)) {
+      onDeleteExpense(row.id);
+      setDeleteStatus({ type: "success", message: "已從目前畫面移除本地消費紀錄。" });
+      return;
+    }
+
+    if (!expenseApiUrl) {
+      setDeleteStatus({
+        type: "error",
+        message: "尚未設定 VITE_EXPENSE_API_URL，無法刪除 Notion 消費。",
+      });
+      return;
+    }
+
+    const promptedPin = formState.pin || window.prompt("請輸入刪除 PIN（若 Worker 未設定可留空）");
+    if (promptedPin === null) return;
+
+    setDeleteStatus({ type: "deleting", message: "刪除 Notion 消費中...", expenseId: row.id });
+
+    try {
+      const response = await fetch(`${expenseApiUrl.replace(/\/$/, "")}/${encodeURIComponent(row.id)}`, {
+        method: "DELETE",
+        headers: promptedPin ? { "X-Expense-Pin": promptedPin } : undefined,
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result?.message || "刪除 Notion 消費失敗。");
+      }
+
+      onDeleteExpense(row.id);
+      setDeleteStatus({ type: "success", message: "已從 Notion 刪除，並更新目前畫面統計。" });
+    } catch (error) {
+      setDeleteStatus({
+        type: "error",
+        message: error instanceof Error ? error.message : "刪除 Notion 消費失敗。",
+        expenseId: row.id,
+      });
+    }
+  };
+
   return createPortal(
     <motion.div
       className="route-modal-backdrop expense-modal-backdrop"
@@ -2238,6 +2333,18 @@ function ExpenseSummaryModal({
             </motion.div>
           ) : null}
         </AnimatePresence>
+        <AnimatePresence initial={false}>
+          {deleteStatus.message ? (
+            <motion.div
+              className={`expense-form-inline-status is-${deleteStatus.type === "deleting" ? "submitting" : deleteStatus.type}`}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 6 }}
+            >
+              {deleteStatus.message}
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
         {rows.length ? (
           <>
             <div className="expense-category-row" role="list" aria-label="花費分類">
@@ -2286,23 +2393,37 @@ function ExpenseSummaryModal({
                     <strong>{activeRows.length} 筆明細</strong>
                   </div>
                   <div className="expense-detail-list">
-                    {activeRows.map((row) => (
-                      <article className="expense-detail-row" key={row.id}>
-                        <div>
-                          <span>{row.day}</span>
-                          <em>{formatRailDate(row.date)}</em>
-                        </div>
-                        <div>
-                          <strong>{row.title}</strong>
-                          {row.activity && row.activity !== row.title ? <em>{row.activity}</em> : null}
-                          {row.location ? <em>{row.location}</em> : null}
-                        </div>
-                        <div>
-                          <span>{row.status ? expenseStatusLabel[row.status] : "未標註"}</span>
-                          <strong>{formatExpenseAmount(row.amount, row.currency)}</strong>
-                        </div>
-                      </article>
-                    ))}
+                    {activeRows.map((row) => {
+                      const isDeleting = deleteStatus.type === "deleting" && deleteStatus.expenseId === row.id;
+
+                      return (
+                        <article className="expense-detail-row" key={row.id}>
+                          <div>
+                            <span>{row.day}</span>
+                            <em>{formatRailDate(row.date)}</em>
+                          </div>
+                          <div>
+                            <strong>{row.title}</strong>
+                            {row.activity && row.activity !== row.title ? <em>{row.activity}</em> : null}
+                            {row.location ? <em>{row.location}</em> : null}
+                          </div>
+                          <div>
+                            <span>{row.status ? expenseStatusLabel[row.status] : "未標註"}</span>
+                            <strong>{formatExpenseAmount(row.amount, row.currency)}</strong>
+                            <button
+                              className="expense-delete-button"
+                              type="button"
+                              onClick={() => handleDeleteExpense(row)}
+                              disabled={isDeleting}
+                              aria-label={`刪除 ${row.title}`}
+                            >
+                              <Trash2 size={15} strokeWidth={2.5} />
+                              {isDeleting ? "刪除中" : "刪除"}
+                            </button>
+                          </div>
+                        </article>
+                      );
+                    })}
                   </div>
                 </motion.div>
               ) : null}
