@@ -278,7 +278,7 @@ h1 {
   position: fixed;
   right: 24px;
   bottom: 24px;
-  z-index: 20;
+  z-index: 98;
   display: grid;
   gap: 10px;
   justify-items: end;
@@ -288,6 +288,10 @@ h1 {
 .map-city-group {
   position: relative;
   pointer-events: auto;
+}
+
+.map-city-group.is-expanded {
+  z-index: 2;
 }
 
 .map-city-toggle {
@@ -349,6 +353,7 @@ h1 {
   position: absolute;
   right: calc(100% + 10px);
   top: 50%;
+  z-index: 2;
   display: flex;
   gap: 8px;
   opacity: 0;
@@ -423,7 +428,7 @@ h1 {
 .map-modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: 118;
   display: grid;
   place-items: center;
   padding: clamp(16px, 3vw, 42px);
