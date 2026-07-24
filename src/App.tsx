@@ -2430,7 +2430,11 @@ function TransitMapButtons({
   onToggleCity: (cityId: TransitCity["id"]) => void;
   onOpen: (map: TransitMap) => void;
 }) {
-  return (
+  if (typeof document === "undefined") {
+    return null;
+  }
+
+  return createPortal(
     <div className="map-quick-actions" aria-label="交通路線圖">
       {transitCities.map((city) => {
         const CityIcon = city.icon;
@@ -2438,7 +2442,9 @@ function TransitMapButtons({
         return (
           <div
             className={
-              expandedCity === city.id ? "map-city-group is-expanded" : "map-city-group"
+              expandedCity === city.id
+                ? `map-city-group map-city-${city.id} is-expanded`
+                : `map-city-group map-city-${city.id}`
             }
             key={city.id}
           >
@@ -2475,7 +2481,8 @@ function TransitMapButtons({
           </div>
         );
       })}
-    </div>
+    </div>,
+    document.body,
   );
 }
 
