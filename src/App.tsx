@@ -71,6 +71,7 @@ const googleMapsStaticApiKey =
 const expenseApiUrl = import.meta.env.VITE_EXPENSE_API_URL;
 const expenseActivitiesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/activities` : "";
 const expenseRatesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/rates` : "";
+const expenseAuthUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/auth` : "";
 
 type TransitMap = {
   id:
@@ -130,6 +131,13 @@ type TripMember = {
 };
 
 const activeMemberStorageKey = "phasolarctos-active-member";
+const activeMemberAuthStorageKey = "phasolarctos-active-member-auth";
+
+type ActiveMemberSession = {
+  member: TripMember;
+  authToken: string;
+  expiresAt: number | null;
+};
 
 const tripMembers: TripMember[] = [
   {
@@ -1278,7 +1286,6 @@ type ManualExpenseFormState = {
   activitySearch: string;
   activity: string;
   location: string;
-  pin: string;
 };
 
 const expenseCategoryMeta: Record<
@@ -1328,7 +1335,6 @@ const expenseFormDefault: ManualExpenseFormState = {
   activitySearch: "",
   activity: "",
   location: "",
-  pin: "",
 };
 
 const manualExpenseStorageKey = "phasolarctos.manual-expenses.v1";
@@ -1585,39 +1591,66 @@ function expenseTotalInCurrency(
 }
 
 export default function App() {
-  const [activeMember, setActiveMember] = useState<TripMember | null>(() => loadStoredActiveMember());
+  const [activeSession, setActiveSession] = useState<ActiveMemberSession | null>(() => loadStoredActiveMemberSession());
 
-  const handleSelectMember = (member: TripMember) => {
-    setActiveMember(member);
-    storeActiveMember(member);
+  const handleSelectMember = (session: ActiveMemberSession) => {
+    setActiveSession(session);
+    storeActiveMemberSession(session);
   };
 
   const handleSwitchMember = () => {
-    setActiveMember(null);
+    setActiveSession(null);
     clearStoredActiveMember();
   };
 
-  if (!activeMember) {
+  if (!activeSession) {
     return <MemberLoginScreen members={tripMembers} onSelect={handleSelectMember} />;
   }
 
-  return <TripExperience activeMember={activeMember} onSwitchMember={handleSwitchMember} />;
+  return <TripExperience activeSession={activeSession} onSwitchMember={handleSwitchMember} />;
 }
 
-function loadStoredActiveMember() {
+function loadStoredActiveMemberSession(): ActiveMemberSession | null {
   if (typeof window === "undefined") return null;
   const storedMemberId = window.localStorage.getItem(activeMemberStorageKey);
-  return tripMembers.find((member) => member.id === storedMemberId) ?? null;
+  const member = tripMembers.find((currentMember) => currentMember.id === storedMemberId);
+  if (!member) return null;
+  if (member.id === "guest") return { member, authToken: "", expiresAt: null };
+
+  try {
+    const storedAuth = JSON.parse(window.localStorage.getItem(activeMemberAuthStorageKey) || "{}");
+    if (
+      typeof storedAuth.token === "string" &&
+      typeof storedAuth.expiresAt === "number" &&
+      storedAuth.expiresAt * 1000 > Date.now()
+    ) {
+      return { member, authToken: storedAuth.token, expiresAt: storedAuth.expiresAt };
+    }
+  } catch {
+    // Ignore invalid stored sessions and require a fresh login.
+  }
+
+  clearStoredActiveMember();
+  return null;
 }
 
-function storeActiveMember(member: TripMember) {
+function storeActiveMemberSession(session: ActiveMemberSession) {
   if (typeof window === "undefined") return;
-  window.localStorage.setItem(activeMemberStorageKey, member.id);
+  window.localStorage.setItem(activeMemberStorageKey, session.member.id);
+  if (session.authToken && session.expiresAt) {
+    window.localStorage.setItem(
+      activeMemberAuthStorageKey,
+      JSON.stringify({ token: session.authToken, expiresAt: session.expiresAt }),
+    );
+    return;
+  }
+  window.localStorage.removeItem(activeMemberAuthStorageKey);
 }
 
 function clearStoredActiveMember() {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(activeMemberStorageKey);
+  window.localStorage.removeItem(activeMemberAuthStorageKey);
 }
 
 function MemberLoginScreen({
@@ -1625,8 +1658,49 @@ function MemberLoginScreen({
   onSelect,
 }: {
   members: TripMember[];
-  onSelect: (member: TripMember) => void;
+  onSelect: (session: ActiveMemberSession) => void;
 }) {
+  const [pendingMember, setPendingMember] = useState<TripMember | null>(null);
+  const [pinInput, setPinInput] = useState("");
+  const [pinError, setPinError] = useState("");
+
+  const handleMemberClick = (member: TripMember) => {
+    if (member.id === "guest") {
+      onSelect({ member, authToken: "", expiresAt: null });
+      return;
+    }
+
+    setPendingMember(member);
+    setPinInput("");
+    setPinError("");
+  };
+
+  const handlePinSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!pendingMember) return;
+    if (!expenseAuthUrl) {
+      setPinError("尚未設定登入 API endpoint。");
+      return;
+    }
+
+    setPinError("");
+    try {
+      const response = await fetch(expenseAuthUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ memberId: pendingMember.id, pin: pinInput }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || typeof result?.token !== "string" || typeof result?.expiresAt !== "number") {
+        throw new Error(result?.message || "PIN 驗證失敗。");
+      }
+      onSelect({ member: pendingMember, authToken: result.token, expiresAt: result.expiresAt });
+    } catch (error) {
+      setPinInput("");
+      setPinError(error instanceof Error ? error.message : "PIN 驗證失敗。");
+    }
+  };
+
   return (
     <main className="member-login-shell" aria-label="旅程成員登入">
       <section className="member-login-panel">
@@ -1638,10 +1712,17 @@ function MemberLoginScreen({
         <div className="member-card-grid" aria-label="選擇登入成員">
           {members.map((member) => (
             <button
-              className={member.id === "guest" ? "member-card member-card-guest" : "member-card"}
+              className={[
+                "member-card",
+                member.id === "guest" ? "member-card-guest" : "",
+                pendingMember?.id === member.id ? "is-selected" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
               type="button"
               key={member.id}
-              onClick={() => onSelect(member)}
+              onClick={() => handleMemberClick(member)}
+              aria-pressed={pendingMember?.id === member.id}
               style={{ "--member-accent": member.accent } as CSSProperties}
             >
               <MemberAvatar member={member} />
@@ -1650,6 +1731,40 @@ function MemberLoginScreen({
               <em>{member.description}</em>
             </button>
           ))}
+          <AnimatePresence initial={false}>
+            {pendingMember ? (
+              <motion.form
+                className="member-pin-panel"
+                onSubmit={handlePinSubmit}
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+              >
+                <div>
+                  <span>PIN 登入</span>
+                  <strong>{pendingMember.label}</strong>
+                </div>
+                <label>
+                  <span>PIN</span>
+                  <input
+                    type="password"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    autoFocus
+                    required
+                    value={pinInput}
+                    onChange={(event) => {
+                      setPinInput(event.target.value);
+                      setPinError("");
+                    }}
+                  />
+                </label>
+                <button type="submit">進入</button>
+                {pinError ? <em className="member-pin-status">{pinError}</em> : null}
+              </motion.form>
+            ) : null}
+          </AnimatePresence>
         </div>
       </section>
     </main>
@@ -1684,12 +1799,13 @@ function MemberAvatar({ member }: { member: TripMember }) {
 }
 
 function TripExperience({
-  activeMember,
+  activeSession,
   onSwitchMember,
 }: {
-  activeMember: TripMember;
+  activeSession: ActiveMemberSession;
   onSwitchMember: () => void;
 }) {
+  const { member: activeMember, authToken } = activeSession;
   const days = useMemo(
     () => [...trip.days].sort((a, b) => a.date.localeCompare(b.date)),
     [],
@@ -1891,7 +2007,8 @@ function TripExperience({
             rows={expenseRows}
             days={days}
             exchangeRate={expenseExchangeRate}
-            canManageExpenses={activeMember.id !== "guest"}
+            canManageExpenses={activeMember.id !== "guest" && Boolean(authToken)}
+            authToken={authToken}
             onClose={() => setIsExpenseSummaryOpen(false)}
             onCreateExpense={(expense) =>
               setManualExpenseRows((currentRows) => mergeExpenseRows([...currentRows, expense]))
@@ -1972,6 +2089,7 @@ function ExpenseSummaryModal({
   days,
   exchangeRate,
   canManageExpenses,
+  authToken,
   onClose,
   onCreateExpense,
   onDeleteExpense,
@@ -1980,6 +2098,7 @@ function ExpenseSummaryModal({
   days: TravelDay[];
   exchangeRate: ExpenseExchangeRateState;
   canManageExpenses: boolean;
+  authToken: string;
   onClose: () => void;
   onCreateExpense: (expense: ExpenseRow) => void;
   onDeleteExpense: (expenseId: string) => void;
@@ -2208,8 +2327,8 @@ function ExpenseSummaryModal({
       const response = await fetch(expenseApiUrl, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json",
-          ...(formState.pin ? { "X-Expense-Pin": formState.pin } : {}),
         },
         body: JSON.stringify(payload),
       });
@@ -2246,7 +2365,6 @@ function ExpenseSummaryModal({
         ...expenseFormDefault,
         date: currentState.date,
         day: currentState.day,
-        pin: currentState.pin,
       }));
       setFormStatus({ type: "success", message: "已新增到 Notion，並更新目前畫面統計。" });
       setIsFormOpen(false);
@@ -2276,15 +2394,12 @@ function ExpenseSummaryModal({
       return;
     }
 
-    const promptedPin = formState.pin || window.prompt("請輸入刪除 PIN（若 Worker 未設定可留空）");
-    if (promptedPin === null) return;
-
     setDeleteStatus({ type: "deleting", message: "刪除 Notion 消費中...", expenseId: row.id });
 
     try {
       const response = await fetch(`${expenseApiUrl.replace(/\/$/, "")}/${encodeURIComponent(row.id)}`, {
         method: "DELETE",
-        headers: promptedPin ? { "X-Expense-Pin": promptedPin } : undefined,
+        headers: { Authorization: `Bearer ${authToken}` },
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) {
@@ -2503,15 +2618,6 @@ function ExpenseSummaryModal({
                   value={formState.location}
                   onChange={(event) => updateFormField("location", event.target.value)}
                   placeholder="店名或地點"
-                />
-              </label>
-              <label>
-                <span>PIN</span>
-                <input
-                  value={formState.pin}
-                  onChange={(event) => updateFormField("pin", event.target.value)}
-                  placeholder="Worker 有設定時才需要"
-                  type="password"
                 />
               </label>
               <div className="expense-form-footer">

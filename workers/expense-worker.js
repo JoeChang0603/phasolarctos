@@ -26,6 +26,14 @@ const statusMap = {
 };
 
 const exchangeRateUrl = "https://api.frankfurter.dev/v2/rate/AUD/TWD";
+const authTokenTtlSeconds = 12 * 60 * 60;
+
+const memberPinSecretById = {
+  joe: "MEMBER_PIN_JOE",
+  girlfriend: "MEMBER_PIN_GIRLFRIEND",
+  mom: "MEMBER_PIN_MOM",
+  brother: "MEMBER_PIN_BROTHER",
+};
 
 const categoryFromNotion = {
   Living: "lodging",
@@ -48,6 +56,8 @@ function corsHeaders(request, env) {
     ...configuredOrigins,
     "https://joechang0603.github.io",
     "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+    "http://127.0.0.1:5175",
   ]);
   const origin =
     allowedOrigins.has("*") || allowedOrigins.has(requestOrigin) ? requestOrigin : "";
@@ -55,7 +65,7 @@ function corsHeaders(request, env) {
   return {
     ...(origin ? { "Access-Control-Allow-Origin": origin } : {}),
     "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, X-Expense-Pin",
+    "Access-Control-Allow-Headers": "Authorization, Content-Type",
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin",
   };
@@ -250,6 +260,36 @@ async function sha256(value) {
   return new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
 }
 
+function base64UrlEncode(bytes) {
+  let binary = "";
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+function base64UrlDecode(value) {
+  const padded = value.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(value.length / 4) * 4, "=");
+  const binary = atob(padded);
+  const bytes = new Uint8Array(binary.length);
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+  return bytes;
+}
+
+async function hmacSha256(value, secret) {
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  return new Uint8Array(await crypto.subtle.sign("HMAC", key, encoder.encode(value)));
+}
+
 function constantTimeEqual(left, right) {
   if (left.length !== right.length) return false;
 
@@ -265,6 +305,72 @@ async function verifyPin(input, expected) {
   return constantTimeEqual(inputHash, expectedHash);
 }
 
+async function createAuthToken(memberId, env) {
+  const issuedAt = Math.floor(Date.now() / 1000);
+  const expiresAt = issuedAt + authTokenTtlSeconds;
+  const payload = base64UrlEncode(
+    new TextEncoder().encode(JSON.stringify({ memberId, iat: issuedAt, exp: expiresAt })),
+  );
+  const signature = base64UrlEncode(await hmacSha256(payload, env.AUTH_TOKEN_SECRET));
+  return { token: `${payload}.${signature}`, expiresAt };
+}
+
+async function verifyAuthToken(request, env) {
+  const header = request.headers.get("Authorization") || "";
+  const match = header.match(/^Bearer\s+(.+)$/i);
+  if (!match || !env.AUTH_TOKEN_SECRET) return false;
+
+  const [payload, signature] = match[1].split(".");
+  if (!payload || !signature) return false;
+
+  const expectedSignature = await hmacSha256(payload, env.AUTH_TOKEN_SECRET);
+  let receivedSignature;
+  let body;
+  try {
+    receivedSignature = base64UrlDecode(signature);
+    body = JSON.parse(new TextDecoder().decode(base64UrlDecode(payload)));
+  } catch {
+    return false;
+  }
+
+  if (!constantTimeEqual(receivedSignature, expectedSignature)) return false;
+  if (!memberPinSecretById[body.memberId]) return false;
+  if (typeof body.exp !== "number" || body.exp <= Math.floor(Date.now() / 1000)) return false;
+  return true;
+}
+
+async function handleAuthRequest(request, env) {
+  if (!env.AUTH_TOKEN_SECRET) {
+    return jsonResponse(request, env, { message: "Worker is missing auth configuration." }, { status: 500 });
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return jsonResponse(request, env, { message: "Invalid JSON body." }, { status: 400 });
+  }
+
+  const memberId = String(body.memberId || "");
+  const pinSecretName = memberPinSecretById[memberId];
+  const expectedPin = pinSecretName ? env[pinSecretName] : "";
+  if (!expectedPin) {
+    return jsonResponse(request, env, { message: "Unknown member." }, { status: 401 });
+  }
+
+  if (!(await verifyPin(String(body.pin || ""), expectedPin))) {
+    return jsonResponse(request, env, { message: "Invalid PIN." }, { status: 401 });
+  }
+
+  const auth = await createAuthToken(memberId, env);
+  return jsonResponse(request, env, { memberId, ...auth });
+}
+
+async function requireAuthToken(request, env) {
+  if (await verifyAuthToken(request, env)) return null;
+  return jsonResponse(request, env, { message: "Invalid or expired login token." }, { status: 401 });
+}
+
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
@@ -274,6 +380,10 @@ export default {
     const url = new URL(request.url);
 
     const normalizedPath = url.pathname.replace(/\/$/, "");
+
+    if (request.method === "POST" && normalizedPath.endsWith("/auth")) {
+      return handleAuthRequest(request, env);
+    }
 
     if (request.method === "GET" && normalizedPath.endsWith("/rates")) {
       try {
@@ -320,12 +430,8 @@ export default {
         );
       }
 
-      if (env.EXPENSE_WRITE_PIN) {
-        const pin = request.headers.get("X-Expense-Pin");
-        if (!(await verifyPin(pin, env.EXPENSE_WRITE_PIN))) {
-          return jsonResponse(request, env, { message: "Invalid PIN." }, { status: 401 });
-        }
-      }
+      const authError = await requireAuthToken(request, env);
+      if (authError) return authError;
 
       const pathParts = normalizedPath.split("/").filter(Boolean);
       const pageId = pathParts[pathParts.length - 1] || url.searchParams.get("id") || "";
@@ -363,12 +469,8 @@ export default {
       );
     }
 
-    if (env.EXPENSE_WRITE_PIN) {
-      const pin = request.headers.get("X-Expense-Pin");
-      if (!(await verifyPin(pin, env.EXPENSE_WRITE_PIN))) {
-        return jsonResponse(request, env, { message: "Invalid PIN." }, { status: 401 });
-      }
-    }
+    const authError = await requireAuthToken(request, env);
+    if (authError) return authError;
 
     let body;
     try {

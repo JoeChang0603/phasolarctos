@@ -124,6 +124,13 @@ button {
   transform: translateY(-3px);
 }
 
+.member-card.is-selected {
+  border-color: color-mix(in srgb, var(--member-accent) 70%, rgba(16, 32, 42, 0.12));
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--member-accent) 38%, transparent),
+    0 22px 54px color-mix(in srgb, var(--member-accent) 20%, rgba(16, 32, 42, 0.18));
+}
+
 .member-card:active {
   transform: translateY(-1px) scale(0.99);
 }
@@ -163,12 +170,9 @@ button {
 }
 
 .member-card-guest .member-avatar {
-  width: 72px;
-  height: 84px;
+  --member-avatar-size: 10.25px;
   justify-self: center;
   margin: 0;
-  transform: scale(0.66);
-  transform-origin: center;
 }
 
 .member-card-guest .member-card-role,
@@ -197,69 +201,142 @@ button {
   align-self: center;
 }
 
+.member-pin-panel {
+  grid-column: 1 / -1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.55fr) auto;
+  gap: 12px;
+  align-items: end;
+  border: 1px solid rgba(16, 32, 42, 0.12);
+  border-radius: 8px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 14px 36px rgba(16, 32, 42, 0.12);
+}
+
+.member-pin-panel > div,
+.member-pin-panel label {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.member-pin-panel > div span,
+.member-pin-panel label span {
+  color: #6c7a86;
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.member-pin-panel > div strong {
+  color: #10202a;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+.member-pin-panel input {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(16, 32, 42, 0.16);
+  border-radius: 8px;
+  padding: 11px 12px;
+  color: #10202a;
+  font: inherit;
+  font-weight: 850;
+  background: #fff;
+}
+
+.member-pin-panel input:focus {
+  border-color: #1f9fb6;
+  outline: 3px solid rgba(31, 159, 182, 0.16);
+}
+
+.member-pin-panel button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: #fff;
+  font: inherit;
+  font-weight: 950;
+  background: #10202a;
+  cursor: pointer;
+}
+
+.member-pin-status {
+  grid-column: 1 / -1;
+  color: #b42318;
+  font-size: 0.86rem;
+  font-style: normal;
+  font-weight: 850;
+}
+
 .member-avatar {
   --member-accent: #1f9fb6;
   --member-hair: #25201c;
   --member-outfit: #0f766e;
+  --member-avatar-size: 16px;
   position: relative;
-  width: 112px;
-  height: 132px;
+  width: 7em;
+  height: 8.25em;
   display: block;
   justify-self: end;
+  font-size: var(--member-avatar-size);
   margin-bottom: 4px;
 }
 
 .member-avatar-head {
   position: absolute;
   left: 50%;
-  top: 9px;
-  width: 78px;
-  height: 78px;
+  top: 0.5625em;
+  width: 4.875em;
+  height: 4.875em;
   border-radius: 50%;
   background: #f3c7a2;
   box-shadow:
-    inset 0 -8px 0 rgba(167, 99, 70, 0.12),
-    0 14px 28px rgba(16, 32, 42, 0.14);
+    inset 0 -0.5em 0 rgba(167, 99, 70, 0.12),
+    0 0.875em 1.75em rgba(16, 32, 42, 0.14);
   transform: translateX(-50%);
 }
 
 .member-avatar-hair {
   position: absolute;
-  inset: -5px 5px 45px;
-  border-radius: 34px 34px 16px 16px;
+  inset: -0.3125em 0.3125em 2.8125em;
+  border-radius: 2.125em 2.125em 1em 1em;
   background: var(--member-hair);
 }
 
 .member-avatar-face {
   position: absolute;
-  inset: 22px 12px 10px;
+  inset: 1.375em 0.75em 0.625em;
   border-radius: 50%;
 }
 
 .member-avatar-eye {
   position: absolute;
-  top: 18px;
-  width: 7px;
-  height: 7px;
+  top: 1.125em;
+  width: 0.4375em;
+  height: 0.4375em;
   border-radius: 50%;
   background: #10202a;
 }
 
 .member-avatar-eye-left {
-  left: 14px;
+  left: 0.875em;
 }
 
 .member-avatar-eye-right {
-  right: 14px;
+  right: 0.875em;
 }
 
 .member-avatar-smile {
   position: absolute;
   left: 50%;
-  bottom: 12px;
-  width: 24px;
-  height: 12px;
-  border-bottom: 3px solid rgba(16, 32, 42, 0.74);
+  bottom: 0.75em;
+  width: 1.5em;
+  height: 0.75em;
+  border-bottom: 0.1875em solid rgba(16, 32, 42, 0.74);
   border-radius: 0 0 999px 999px;
   transform: translateX(-50%);
 }
@@ -268,14 +345,14 @@ button {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 92px;
-  height: 58px;
-  border-radius: 38px 38px 18px 18px;
+  width: 5.75em;
+  height: 3.625em;
+  border-radius: 2.375em 2.375em 1.125em 1.125em;
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--member-outfit) 90%, white), var(--member-outfit));
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 16px 32px rgba(16, 32, 42, 0.14);
+    0 1em 2em rgba(16, 32, 42, 0.14);
   transform: translateX(-50%);
 }
 
@@ -284,9 +361,9 @@ button {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 28px;
-  height: 30px;
-  border-radius: 0 0 16px 16px;
+  width: 1.75em;
+  height: 1.875em;
+  border-radius: 0 0 1em 1em;
   background: rgba(255, 255, 255, 0.22);
   transform: translateX(-50%);
 }
@@ -297,41 +374,41 @@ button {
 }
 
 .member-avatar-cap .member-avatar-accessory {
-  left: 23px;
-  top: 3px;
-  width: 66px;
-  height: 24px;
-  border-radius: 24px 24px 9px 9px;
+  left: 1.4375em;
+  top: 0.1875em;
+  width: 4.125em;
+  height: 1.5em;
+  border-radius: 1.5em 1.5em 0.5625em 0.5625em;
   background: var(--member-accent);
 }
 
 .member-avatar-cap .member-avatar-accessory::after {
   content: "";
   position: absolute;
-  right: -16px;
+  right: -1em;
   bottom: 0;
-  width: 28px;
-  height: 9px;
+  width: 1.75em;
+  height: 0.5625em;
   border-radius: 999px;
   background: color-mix(in srgb, var(--member-accent) 72%, #10202a);
 }
 
 .member-avatar-ribbon .member-avatar-accessory {
-  right: 22px;
-  top: 18px;
-  width: 24px;
-  height: 24px;
+  right: 1.375em;
+  top: 1.125em;
+  width: 1.5em;
+  height: 1.5em;
   background: var(--member-accent);
   clip-path: polygon(50% 0, 100% 36%, 70% 100%, 50% 74%, 30% 100%, 0 36%);
 }
 
 .member-avatar-glasses .member-avatar-accessory {
-  left: 30px;
-  top: 43px;
-  width: 52px;
-  height: 18px;
-  border-left: 3px solid #10202a;
-  border-right: 3px solid #10202a;
+  left: 1.875em;
+  top: 2.6875em;
+  width: 3.25em;
+  height: 1.125em;
+  border-left: 0.1875em solid #10202a;
+  border-right: 0.1875em solid #10202a;
 }
 
 .member-avatar-glasses .member-avatar-accessory::before,
@@ -339,32 +416,32 @@ button {
   content: "";
   position: absolute;
   top: 0;
-  width: 19px;
-  height: 14px;
-  border: 3px solid #10202a;
+  width: 1.1875em;
+  height: 0.875em;
+  border: 0.1875em solid #10202a;
   border-radius: 50%;
 }
 
 .member-avatar-glasses .member-avatar-accessory::before {
-  left: -4px;
+  left: -0.25em;
 }
 
 .member-avatar-glasses .member-avatar-accessory::after {
-  right: -4px;
+  right: -0.25em;
 }
 
 .member-avatar-hoodie .member-avatar-body {
-  border-radius: 44px 44px 18px 18px;
+  border-radius: 2.75em 2.75em 1.125em 1.125em;
 }
 
 .member-avatar-hoodie .member-avatar-accessory {
   left: 50%;
-  bottom: 39px;
-  width: 78px;
-  height: 44px;
-  border: 8px solid color-mix(in srgb, var(--member-outfit) 82%, #ffffff);
+  bottom: 2.4375em;
+  width: 4.875em;
+  height: 2.75em;
+  border: 0.5em solid color-mix(in srgb, var(--member-outfit) 82%, #ffffff);
   border-bottom: 0;
-  border-radius: 44px 44px 0 0;
+  border-radius: 2.75em 2.75em 0 0;
   transform: translateX(-50%);
 }
 
@@ -408,15 +485,13 @@ button {
 }
 
 .member-session-avatar .member-avatar {
+  --member-avatar-size: 5.45px;
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 112px;
-  height: 132px;
   margin: 0;
   justify-self: center;
-  transform: translate(-50%, -45%) scale(0.38);
-  transform-origin: center;
+  transform: translate(-50%, -45%);
 }
 
 .member-session-label {
@@ -3784,12 +3859,9 @@ h1 {
 
   .member-avatar {
     grid-area: avatar;
-    width: 78px;
-    height: 96px;
+    --member-avatar-size: 11.5px;
     justify-self: center;
     margin: 0;
-    transform: scale(0.74);
-    transform-origin: center;
   }
 
   .member-card-role {
@@ -3819,9 +3891,7 @@ h1 {
   }
 
   .member-card-guest .member-avatar {
-    width: 72px;
-    height: 88px;
-    transform: scale(0.66);
+    --member-avatar-size: 9.75px;
   }
 
   .member-card-guest .member-card-role {
@@ -3840,6 +3910,16 @@ h1 {
     align-self: center;
   }
 
+  .member-pin-panel {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    padding: 14px;
+  }
+
+  .member-pin-panel button {
+    width: 100%;
+  }
+
   .member-session-button {
     top: calc(env(safe-area-inset-top, 0px) + 10px);
     right: calc(env(safe-area-inset-right, 0px) + 10px);
@@ -3854,7 +3934,8 @@ h1 {
   }
 
   .member-session-avatar .member-avatar {
-    transform: translate(-50%, -45%) scale(0.34);
+    --member-avatar-size: 5px;
+    transform: translate(-50%, -45%);
   }
 
   .member-session-label {

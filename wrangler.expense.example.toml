@@ -11,4 +11,8 @@ NOTION_SCHEDULE_DATA_SOURCE_ID = "2d62f57c-ec1b-8034-8216-000b536f118e"
 
 # Secrets, not vars:
 # wrangler secret put NOTION_TOKEN
-# wrangler secret put EXPENSE_WRITE_PIN
+# wrangler secret put AUTH_TOKEN_SECRET
+# wrangler secret put MEMBER_PIN_JOE
+# wrangler secret put MEMBER_PIN_GIRLFRIEND
+# wrangler secret put MEMBER_PIN_MOM
+# wrangler secret put MEMBER_PIN_BROTHER
