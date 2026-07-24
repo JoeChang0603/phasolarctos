@@ -336,7 +336,7 @@ export default {
       try {
         await notionFetch(`/pages/${pageId}`, env, {
           method: "PATCH",
-          body: JSON.stringify({ archived: true }),
+          body: JSON.stringify({ in_trash: true }),
         });
       } catch (error) {
         return jsonResponse(
