@@ -1926,11 +1926,14 @@ function MemberSessionButton({
       className="member-session-button"
       type="button"
       onClick={onSwitchMember}
-      aria-label={`目前登入成員 ${member.label}，點擊切換成員`}
+      aria-label={`目前登入成員 ${member.label}，點擊離開目前頁面`}
       style={{ "--member-accent": member.accent } as CSSProperties}
-      title="切換成員"
+      title="離開頁面"
     >
-      <span>{member.label}</span>
+      <span className="member-session-avatar">
+        <MemberAvatar member={member} />
+      </span>
+      <span className="member-session-label">{member.label}</span>
       <LogOut size={16} strokeWidth={2.5} />
     </button>
   );
