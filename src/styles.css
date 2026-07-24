@@ -939,10 +939,13 @@ h1 {
 .expense-total {
   display: grid;
   gap: 5px;
-  justify-items: start;
+  min-width: 0;
+  max-width: 100%;
+  justify-items: end;
   border: 1px solid rgba(16, 32, 42, 0.1);
   border-radius: 8px;
   padding: 16px;
+  text-align: right;
   background: rgba(255, 255, 255, 0.72);
 }
 
@@ -1188,17 +1191,22 @@ h1 {
 
 .expense-total span,
 .expense-total em {
+  max-width: 100%;
   color: #687783;
   font-size: 0.8rem;
   font-style: normal;
   font-weight: 900;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .expense-total strong {
+  max-width: 100%;
   margin: 4px 0;
   color: #10202a;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1;
+  font-size: clamp(1.55rem, 2.8vw, 2.6rem);
+  line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 
 .expense-category-row {
@@ -3409,6 +3417,16 @@ h1 {
     font-size: 2rem;
   }
 
+  .expense-total {
+    justify-items: start;
+    padding: 14px;
+    text-align: left;
+  }
+
+  .expense-currency-toggle {
+    width: min(100%, 190px);
+  }
+
   .expense-modal-close {
     position: absolute;
     top: 12px;
@@ -3439,7 +3457,7 @@ h1 {
   }
 
   .expense-total strong {
-    font-size: 1.8rem;
+    font-size: clamp(1.45rem, 8vw, 1.95rem);
   }
 
   .expense-category-pill {
