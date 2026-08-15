@@ -15,9 +15,15 @@ import {
   ChartNoAxesColumn,
   ChevronLeft,
   ChevronRight,
+  Cloud,
+  CloudFog,
+  CloudLightning,
+  CloudRain,
+  CloudSun,
   Coffee,
   Croissant,
   Dessert,
+  Droplets,
   Drumstick,
   EggFried,
   ExternalLink,
@@ -39,8 +45,11 @@ import {
   ReceiptText,
   Sandwich,
   ShoppingBag,
+  Snowflake,
   Sparkles,
   Soup,
+  Sun,
+  Thermometer,
   TicketCheck,
   Tickets,
   Trash2,
@@ -50,6 +59,7 @@ import {
   TrainTrack,
   Utensils,
   Waves,
+  Wind,
   X,
 } from "lucide-react";
 import melbourneSkybusAirportImage from "./assets/melbourne-skybus-airport.png";
@@ -114,6 +124,30 @@ type OverviewIconGroup = {
   icons: OverviewIcon[];
 };
 
+type WeatherLocation = {
+  id: string;
+  label: string;
+  detail: string;
+  latitude: number;
+  longitude: number;
+};
+
+type WeatherReading = WeatherLocation & {
+  temperature: number;
+  apparentTemperature: number;
+  humidity: number;
+  precipitation: number;
+  windSpeed: number;
+  weatherCode: number;
+  observedAt: string;
+};
+
+type WeatherStatus = {
+  type: "idle" | "loading" | "success" | "error";
+  message: string;
+  readings: WeatherReading[];
+};
+
 type HeroSlide = {
   src: string;
   label: string;
@@ -132,6 +166,53 @@ type TripMember = {
 
 const activeMemberStorageKey = "phasolarctos-active-member";
 const activeMemberAuthStorageKey = "phasolarctos-active-member-auth";
+
+const weatherLocationsByDayId: Record<string, WeatherLocation[]> = {
+  "day-0-departure": [
+    { id: "taipei", label: "Taipei", detail: "桃園出發", latitude: 25.033, longitude: 121.5654 },
+    { id: "sydney", label: "Sydney", detail: "抵達城市", latitude: -33.8688, longitude: 151.2093 },
+  ],
+  "day-1-sydney-arrival": [
+    { id: "sydney-cbd", label: "Sydney CBD", detail: "市區與 Darling Harbour", latitude: -33.8688, longitude: 151.2093 },
+    { id: "camperdown", label: "Camperdown", detail: "University of Sydney", latitude: -33.8896, longitude: 151.1873 },
+  ],
+  "day-2-sydney-harbour-zoo": [
+    { id: "circular-quay", label: "Circular Quay", detail: "港灣與渡輪", latitude: -33.861, longitude: 151.2128 },
+    { id: "taronga", label: "Taronga Zoo", detail: "Mosman", latitude: -33.8431, longitude: 151.2411 },
+  ],
+  "day-3-sydney-to-melbourne": [
+    { id: "sydney-cbd", label: "Sydney CBD", detail: "Darling Harbour", latitude: -33.8688, longitude: 151.2093 },
+    { id: "melbourne-airport", label: "Melbourne Airport", detail: "抵達 Melbourne", latitude: -37.669, longitude: 144.841 },
+  ],
+  "day-4-yarra-valley": [
+    { id: "melbourne-airport", label: "Melbourne Airport", detail: "取車", latitude: -37.669, longitude: 144.841 },
+    { id: "ballarat", label: "Ballarat", detail: "Sovereign Hill", latitude: -37.5622, longitude: 143.8503 },
+    { id: "yarra-valley", label: "Yarra Valley", detail: "Balgownie Estate", latitude: -37.6564, longitude: 145.3745 },
+  ],
+  "day-5-balloon-phillip-island": [
+    { id: "yarra-valley", label: "Yarra Valley", detail: "熱氣球", latitude: -37.6564, longitude: 145.3745 },
+    { id: "phillip-island", label: "Phillip Island", detail: "Penguin Parade", latitude: -38.4835, longitude: 145.2326 },
+  ],
+  "day-6-dandenong": [
+    { id: "phillip-island", label: "Phillip Island", detail: "早上出發", latitude: -38.4835, longitude: 145.2326 },
+    { id: "pearcedale", label: "Pearcedale", detail: "Moonlit Sanctuary", latitude: -38.2037, longitude: 145.2342 },
+    { id: "melbourne-cbd", label: "Melbourne CBD", detail: "還車與住宿", latitude: -37.8136, longitude: 144.9631 },
+  ],
+  "day-7-melbourne-city": [
+    { id: "melbourne-cbd", label: "Melbourne CBD", detail: "Higher Ground / SEA LIFE", latitude: -37.8136, longitude: 144.9631 },
+    { id: "belgrave", label: "Belgrave", detail: "Puffing Billy", latitude: -37.9084, longitude: 145.3552 },
+  ],
+  "day-8-melbourne-museum": [
+    { id: "carlton", label: "Carlton", detail: "Carlton Gardens / Museum", latitude: -37.8003, longitude: 144.9671 },
+    { id: "fitzroy", label: "Fitzroy", detail: "Mile End Bagels", latitude: -37.7984, longitude: 144.9789 },
+    { id: "melbourne-cbd", label: "Melbourne CBD", detail: "San Telmo", latitude: -37.8136, longitude: 144.9631 },
+  ],
+  "day-9-melbourne-return": [
+    { id: "melbourne-cbd", label: "Melbourne CBD", detail: "最後採買", latitude: -37.8136, longitude: 144.9631 },
+    { id: "melbourne-airport", label: "Melbourne Airport", detail: "返程航班", latitude: -37.669, longitude: 144.841 },
+    { id: "taipei", label: "Taipei", detail: "返抵城市", latitude: 25.033, longitude: 121.5654 },
+  ],
+};
 
 type ActiveMemberSession = {
   member: TripMember;
@@ -759,6 +840,104 @@ function localDateKey(date: Date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
+}
+
+function weatherLocationsForDay(day: TravelDay) {
+  return weatherLocationsByDayId[day.id] ?? [
+    {
+      id: day.id,
+      label: day.city,
+      detail: "當日主要地點",
+      latitude: -37.8136,
+      longitude: 144.9631,
+    },
+  ];
+}
+
+function weatherConditionForCode(code: number): { label: string; icon: typeof Sun; tone: string } {
+  if (code === 0) return { label: "晴朗", icon: Sun, tone: "#f59e0b" };
+  if ([1, 2].includes(code)) return { label: "多雲時晴", icon: CloudSun, tone: "#0ea5e9" };
+  if (code === 3) return { label: "陰天", icon: Cloud, tone: "#64748b" };
+  if ([45, 48].includes(code)) return { label: "霧", icon: CloudFog, tone: "#64748b" };
+  if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {
+    return { label: "降雨", icon: CloudRain, tone: "#2563eb" };
+  }
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return { label: "降雪", icon: Snowflake, tone: "#38bdf8" };
+  if ([95, 96, 99].includes(code)) return { label: "雷雨", icon: CloudLightning, tone: "#7c3aed" };
+  return { label: "天氣更新中", icon: CloudSun, tone: "#0ea5e9" };
+}
+
+function formatObservedTime(value: string) {
+  const observedAt = new Date(value);
+  if (Number.isNaN(observedAt.getTime())) return "剛剛更新";
+  return new Intl.DateTimeFormat("zh-Hant", {
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(observedAt);
+}
+
+function clothingAdviceForWeather(reading: WeatherReading) {
+  const apparentTemperature = reading.apparentTemperature;
+  const advice: string[] = [];
+
+  if (apparentTemperature <= 8) {
+    advice.push("發熱衣或厚長袖 + 毛衣/刷毛上衣 + 厚外套，搭長褲與保暖襪");
+  } else if (apparentTemperature <= 14) {
+    advice.push("長袖上衣 + 薄毛衣或帽T + 防風外套，搭長褲");
+  } else if (apparentTemperature <= 20) {
+    advice.push("短袖或薄長袖 + 可收納薄外套，搭長褲或寬鬆長裙");
+  } else if (apparentTemperature <= 26) {
+    advice.push("透氣短袖 + 薄襯衫/薄外套備用，搭短褲、七分褲或輕薄長褲");
+  } else {
+    advice.push("排汗短袖或背心 + 短褲/輕薄長褲，搭帽子、太陽眼鏡與防曬");
+  }
+
+  if (reading.precipitation > 0 || [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(reading.weatherCode)) {
+    advice.push("外層改防水外套，鞋子選防滑防水款，帶折傘或輕便雨衣");
+  }
+
+  if (reading.windSpeed >= 24) {
+    advice.push("風大時避免太寬鬆的帽子/裙襬，外層加防風外套");
+  }
+
+  if (reading.humidity >= 85 && apparentTemperature >= 20) {
+    advice.push("濕度高建議選快乾排汗材質，包包放一件替換上衣");
+  }
+
+  return advice.join("；");
+}
+
+async function fetchWeatherReading(location: WeatherLocation, signal: AbortSignal): Promise<WeatherReading> {
+  const url = new URL("https://api.open-meteo.com/v1/forecast");
+  url.searchParams.set("latitude", String(location.latitude));
+  url.searchParams.set("longitude", String(location.longitude));
+  url.searchParams.set(
+    "current",
+    "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m",
+  );
+  url.searchParams.set("timezone", "auto");
+  url.searchParams.set("forecast_days", "1");
+
+  const response = await fetch(url, { signal });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(result?.reason || "天氣資料載入失敗。");
+
+  const current = result?.current;
+  if (!current || typeof current.temperature_2m !== "number") {
+    throw new Error("天氣資料格式不正確。");
+  }
+
+  return {
+    ...location,
+    temperature: current.temperature_2m,
+    apparentTemperature:
+      typeof current.apparent_temperature === "number" ? current.apparent_temperature : current.temperature_2m,
+    humidity: typeof current.relative_humidity_2m === "number" ? current.relative_humidity_2m : 0,
+    precipitation: typeof current.precipitation === "number" ? current.precipitation : 0,
+    windSpeed: typeof current.wind_speed_10m === "number" ? current.wind_speed_10m : 0,
+    weatherCode: typeof current.weather_code === "number" ? current.weather_code : -1,
+    observedAt: typeof current.time === "string" ? current.time : new Date().toISOString(),
+  };
 }
 
 function useCurrentTime() {
@@ -3102,6 +3281,7 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
           ))}
         </div>
       </div>
+      <DayWeatherPanel day={day} />
       <ReminderWindow reminders={day.reminders} />
       <div className="map-frame">
         {flightRoute ? (
@@ -3121,6 +3301,127 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
         )}
       </div>
     </aside>
+  );
+}
+
+function DayWeatherPanel({ day }: { day: TravelDay }) {
+  const locations = useMemo(() => weatherLocationsForDay(day), [day]);
+  const [weatherStatus, setWeatherStatus] = useState<WeatherStatus>({
+    type: "idle",
+    message: "",
+    readings: [],
+  });
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setWeatherStatus({ type: "loading", message: "載入即時天氣中...", readings: [] });
+
+    Promise.all(locations.map((location) => fetchWeatherReading(location, controller.signal)))
+      .then((readings) => {
+        setWeatherStatus({
+          type: "success",
+          message: "Open-Meteo 即時資料",
+          readings,
+        });
+      })
+      .catch((error) => {
+        if (controller.signal.aborted) return;
+        setWeatherStatus({
+          type: "error",
+          message: error instanceof Error ? error.message : "天氣資料載入失敗。",
+          readings: [],
+        });
+      });
+
+    return () => controller.abort();
+  }, [locations]);
+
+  return (
+    <section className="weather-panel" aria-label={`${day.title} 即時天氣`}>
+      <div className="weather-panel-header">
+        <span className="weather-panel-icon" aria-hidden="true">
+          <CloudSun size={19} strokeWidth={2.5} />
+        </span>
+        <div>
+          <strong>當日地點即時天氣</strong>
+          <span>
+            {weatherStatus.type === "success"
+              ? `${weatherStatus.message} / ${weatherStatus.readings.length} 地點`
+              : weatherStatus.message || "依每日主要地點讀取"}
+          </span>
+        </div>
+      </div>
+      {weatherStatus.type === "success" ? (
+        <div className="weather-grid">
+          {weatherStatus.readings.map((reading) => {
+            const condition = weatherConditionForCode(reading.weatherCode);
+            const ConditionIcon = condition.icon;
+
+            return (
+              <article
+                className="weather-card"
+                key={reading.id}
+                style={{ "--weather-tone": condition.tone } as CSSProperties}
+              >
+                <div className="weather-card-main">
+                  <span className="weather-condition-icon" aria-hidden="true">
+                    <ConditionIcon size={18} strokeWidth={2.5} />
+                  </span>
+                  <div>
+                    <strong>{reading.label}</strong>
+                    <span>{reading.detail}</span>
+                  </div>
+                </div>
+                <div className="weather-temperature">
+                  <strong>{Math.round(reading.temperature)}°</strong>
+                  <span>{condition.label}</span>
+                </div>
+                <dl className="weather-metrics">
+                  <div>
+                    <dt>
+                      <Thermometer size={13} aria-hidden="true" />
+                      體感
+                    </dt>
+                    <dd>{Math.round(reading.apparentTemperature)}°C</dd>
+                  </div>
+                  <div>
+                    <dt>
+                      <Droplets size={13} aria-hidden="true" />
+                      濕度
+                    </dt>
+                    <dd>{Math.round(reading.humidity)}%</dd>
+                  </div>
+                  <div>
+                    <dt>
+                      <CloudRain size={13} aria-hidden="true" />
+                      雨量
+                    </dt>
+                    <dd>{reading.precipitation.toFixed(1)} mm</dd>
+                  </div>
+                  <div>
+                    <dt>
+                      <Wind size={13} aria-hidden="true" />
+                      風速
+                    </dt>
+                    <dd>{Math.round(reading.windSpeed)} km/h</dd>
+                  </div>
+                </dl>
+                <div className="weather-advice">
+                  <span>穿著建議</span>
+                  <strong>{clothingAdviceForWeather(reading)}</strong>
+                </div>
+                <span className="weather-updated">更新 {formatObservedTime(reading.observedAt)}</span>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div className={`weather-state is-${weatherStatus.type}`}>
+          <CloudSun size={18} strokeWidth={2.5} />
+          <span>{weatherStatus.message || "天氣資料準備中..."}</span>
+        </div>
+      )}
+    </section>
   );
 }
 

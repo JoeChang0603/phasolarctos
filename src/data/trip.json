@@ -3,7 +3,7 @@
   "subtitle": "Joe Chang 家庭旅遊推薦行程",
   "dateRange": "2026.09.23 - 2026.10.02",
   "source": "資料來源: Joe Chang / Traveling / 2026 Sydney x Melbourne, Tourism Plan = Recommandation",
-  "generatedAt": "2026-05-23T01:15:00.000Z",
+  "generatedAt": "2026-08-15T10:36:23.281Z",
   "days": [
     {
       "id": "day-0-departure",
@@ -2521,11 +2521,11 @@
     {
       "id": "day-7-melbourne-city",
       "date": "2026-09-30",
-      "city": "Melbourne / South Melbourne / Southbank",
-      "title": "Higher Ground、南墨爾本市場、Shrine、皇家植物園與 SEA LIFE",
-      "summary": "Day 7 更新為墨爾本市區電車行程：早上從 Docklands 前往 Higher Ground，接著到 South Melbourne Market 採買午餐，再安排 Shrine of Remembrance、Royal Botanic Gardens 野餐、SEA LIFE Melbourne Aquarium，晚上回 CBD 吃 Max on Hardware。",
-      "coverImage": "https://commons.wikimedia.org/wiki/Special:FilePath/Shops%20inside%20South%20Melbourne%20Market.jpg",
-      "mapsEmbedUrl": "https://www.google.com/maps?q=South%20Melbourne%20Market&output=embed",
+      "city": "Melbourne / Belgrave / Dandenong Ranges",
+      "title": "Higher Ground、SEA LIFE、Puffing Billy 與 Max on Hardware",
+      "summary": "Day 7 依 Notion 更新為墨爾本市區到 Dandenong Ranges 的電車與火車行程：早上從 Docklands 前往 Higher Ground 早餐，再到 SEA LIFE Melbourne Aquarium，接著搭電車/火車到 Belgrave，下午搭 Puffing Billy 森林小火車往返 Lakeside，晚上回 CBD 到 Max on Hardware 晚餐。",
+      "coverImage": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monbulk_Creek_Trestle_Bridge.JPG",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=Puffing%20Billy%20Railway%20Belgrave&output=embed",
       "accent": "#7a6ff0",
       "items": [
         {
@@ -2566,7 +2566,7 @@
           "title": "Higher Ground 早餐",
           "type": "food",
           "location": "Higher Ground, 650 Little Bourke Street, Melbourne",
-          "summary": "08:00 到 09:00。Higher Ground 位於 650 Little Bourke Street，靠近 Southern Cross Station，適合作為當天市區行程起點；用餐後搭電車前往 South Melbourne Market。",
+          "summary": "08:00 到 09:40。Higher Ground 位於 650 Little Bourke Street，靠近 Southern Cross Station；早餐後搭電車前往 SEA LIFE Melbourne Aquarium。",
           "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://maps.app.goo.gl/nBGuYyDfvSYTc1c7A",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b80a095eae05f94350e5c",
@@ -2576,7 +2576,7 @@
             "brunch"
           ],
           "restaurantGuide": {
-            "intro": "Higher Ground 是 Melbourne CBD 的代表性早午餐店，位在 650 Little Bourke Street，距離 Southern Cross Station 不遠。店內以挑高舊建築、大片窗景與多層座位聞名，菜單走 elevated Australian cafe culture，品項會依季節調整。Day 7 後續要搭電車前往 South Melbourne Market，建議優先選咖啡與出餐穩定的招牌早午餐，保留市場採買與中午野餐的節奏。",
+            "intro": "Higher Ground 是 Melbourne CBD 的代表性早午餐店，位在 650 Little Bourke Street，距離 Southern Cross Station 不遠。店內以挑高舊建築、大片窗景與多層座位聞名，菜單走 elevated Australian cafe culture，品項會依季節調整。Day 7 後續要搭電車前往 SEA LIFE Melbourne Aquarium，再接火車到 Belgrave，建議優先選咖啡與出餐穩定的招牌早午餐，保留上午移動節奏。",
             "menuLinks": [
               {
                 "label": "Higher Ground official",
@@ -2651,13 +2651,13 @@
         },
         {
           "id": "36f2f57c-ec1b-80aa-b0b5-e828532cb3ac",
-          "time": "09:00",
-          "title": "搭電車前往 South Melbourne Market",
+          "time": "09:40",
+          "title": "搭電車前往 SEA LIFE Melbourne Aquarium",
           "type": "transit",
-          "location": "Higher Ground -> South Melbourne Market",
-          "summary": "09:00 到 09:30。早餐後從 CBD 搭電車前往 South Melbourne Market，接續市場採買午餐。",
+          "location": "Higher Ground -> SEA LIFE Melbourne Aquarium",
+          "summary": "09:40 到 10:00。早餐後從 CBD 搭電車前往 SEA LIFE Melbourne Aquarium，銜接上午室內景點。",
           "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Higher+Ground+650+Little+Bourke+St+Melbourne&destination=South+Melbourne+Market&travelmode=transit",
+          "mapsUrl": "https://maps.app.goo.gl/ZTWdRToFk6MKR6sa7",
           "notionUrl": "https://www.notion.so/36f2f57cec1b80aab0b5e828532cb3ac",
           "tags": [
             "Recommandation",
@@ -2666,221 +2666,12 @@
           ]
         },
         {
-          "id": "3a22f57c-ec1b-809f-820e-c8e7660f815a",
-          "time": "09:30",
-          "title": "South Melbourne Market 採買午餐",
-          "type": "food",
-          "location": "South Melbourne Market",
-          "summary": "09:30 到 10:30。South Melbourne Market 週三 08:00 到 16:00 營業，這站安排採買午餐與市場小吃；Notion 備註重點放在 Agathe Patisserie。",
-          "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Shops%20inside%20South%20Melbourne%20Market.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=South+Melbourne+Market",
-          "notionUrl": "https://www.notion.so/3a22f57cec1b809f820ec8e7660f815a",
-          "tags": [
-            "Recommandation",
-            "food",
-            "market"
-          ],
-          "restaurantGuide": {
-            "intro": "South Melbourne Market 是 1867 年開始營運的社區市場，週三早上可順路採買野餐午餐。Notion 裡特別註記 Agathe Patisserie；市場官方頁面也列出 Agathe 位在 Aisle B / Stall 63，主打現烤法式甜點、可頌與 Kouign Amann。",
-            "menuLinks": [
-              {
-                "label": "South Melbourne Market official",
-                "url": "https://www.southmelbournemarket.com.au/"
-              },
-              {
-                "label": "Agathe Patisserie trader page",
-                "url": "https://www.southmelbournemarket.com.au/traders/agathe-patisserie/"
-              },
-              {
-                "label": "Google Maps: South Melbourne Market",
-                "url": "https://www.google.com/maps/search/?api=1&query=South+Melbourne+Market"
-              }
-            ],
-            "recommendations": [
-              {
-                "name": "Croissant / Pain au Chocolat",
-                "zhName": "可頌 / 巧克力可頌",
-                "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80",
-                "note": "Agathe 官方市場頁列出 croissant 與 pain au chocolat，適合早上直接外帶。"
-              },
-              {
-                "name": "Kouign Amann",
-                "zhName": "布列塔尼焦糖酥餅",
-                "image": "https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?auto=format&fit=crop&w=900&q=80",
-                "note": "官方市場頁列出的法式甜點之一，適合當作野餐甜點分食。"
-              },
-              {
-                "name": "Market picnic lunch",
-                "zhName": "市場野餐午餐",
-                "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80",
-                "note": "搭配熟食、麵包、果物或甜點外帶，後續可在 Royal Botanic Gardens 野餐。"
-              }
-            ],
-            "sources": [
-              {
-                "label": "South Melbourne Market official",
-                "url": "https://www.southmelbournemarket.com.au/"
-              },
-              {
-                "label": "Agathe Patisserie trader page",
-                "url": "https://www.southmelbournemarket.com.au/traders/agathe-patisserie/"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3a22f57c-ec1b-805a-9180-c51d29f8b8cd",
-          "time": "10:30",
-          "title": "搭電車前往 Shrine of Remembrance",
-          "type": "transit",
-          "location": "South Melbourne Market -> Shrine of Remembrance",
-          "summary": "10:30 到 11:00。從 South Melbourne Market 搭電車前往 Shrine of Remembrance，銜接 11:00 參觀。",
-          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=South+Melbourne+Market&destination=Shrine+of+Remembrance+Melbourne&travelmode=transit",
-          "notionUrl": "https://www.notion.so/3a22f57cec1b805a9180c51d29f8b8cd",
-          "tags": [
-            "Recommandation",
-            "moving",
-            "tram"
-          ]
-        },
-        {
-          "id": "3a22f57c-ec1b-800f-af35-f9263efedaae",
-          "time": "11:00",
-          "title": "Shrine of Remembrance",
-          "type": "museum",
-          "location": "Shrine of Remembrance, Birdwood Avenue, Melbourne",
-          "summary": "11:00 到 12:00。參觀 Victoria 的國家戰爭紀念館，重點放在 Galleries of Remembrance、Sanctuary、Balcony 城市視野與紀念花園。",
-          "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Melbourne%20Shrine%20of%20Remembrance%20%286459804845%29.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance+Melbourne",
-          "notionUrl": "https://www.notion.so/3a22f57cec1b800faf35f9263efedaae",
-          "tags": [
-            "Recommandation",
-            "museum",
-            "memorial"
-          ],
-          "attractionGuide": {
-            "intro": "Shrine of Remembrance 是 Victoria 的國家戰爭紀念館，官方資訊為每日 10:00 到 17:00 開放、最後入場 16:30，免費入場。Day 7 只安排 1 小時，建議直接抓主展廳、Sanctuary 與 Balcony 視野。",
-            "highlights": [
-              {
-                "name": "Galleries of Remembrance",
-                "zhName": "紀念展廳",
-                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/PXL%2020241006%20041223259.MP%20Shrine%20of%20Remembrance%20Artefacts%205X9F%2BQ9%20Melbourne%2C%20Victoria%2C%20Australia%2003.jpg",
-                "note": "展廳陳列戰時與維和相關故事及文物，是短時間參觀的主軸。"
-              },
-              {
-                "name": "Sanctuary",
-                "zhName": "聖殿主空間",
-                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sanctuary%2C%20Shrine%20of%20Remembrance.jpg",
-                "note": "適合安靜停留，若遇到 Ray of Light demonstration 可順路觀看。"
-              },
-              {
-                "name": "Balcony View",
-                "zhName": "陽台城市視野",
-                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20Melbourne%20from%20Shrine%20of%20Remembrance.jpg",
-                "note": "天氣好時可快速看 St Kilda Road、紀念花園與 Melbourne skyline。"
-              }
-            ],
-            "links": [
-              {
-                "label": "Shrine of Remembrance official",
-                "url": "https://www.shrine.org.au/"
-              },
-              {
-                "label": "Google Maps: Shrine of Remembrance",
-                "url": "https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance+Melbourne"
-              }
-            ],
-            "sources": [
-              {
-                "label": "Shrine of Remembrance official",
-                "url": "https://www.shrine.org.au/"
-              },
-              {
-                "label": "What's On Melbourne: Shrine of Remembrance",
-                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/shrine-of-remembrance"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3a22f57c-ec1b-80f2-b936-de8b5bb81f36",
-          "time": "12:00",
-          "title": "Royal Botanic Gardens 野餐",
-          "type": "landmark",
-          "location": "Royal Botanic Gardens Victoria - Melbourne Gardens",
-          "summary": "12:00 到 13:00。帶著 South Melbourne Market 採買的午餐到 Royal Botanic Gardens Melbourne 野餐，安排成 Shrine 與水族館之間的戶外休息。",
-          "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Botanical%20gardens.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Melbourne",
-          "notionUrl": "https://www.notion.so/3a22f57cec1b80f2b936de8b5bb81f36",
-          "tags": [
-            "Recommandation",
-            "picnic",
-            "garden"
-          ],
-          "attractionGuide": {
-            "intro": "Royal Botanic Gardens Melbourne 位在 CBD 邊緣、鄰近 Shrine of Remembrance，官方資料標示 Melbourne Gardens 佔地 38 公頃、免費入園，適合把市場午餐安排成低移動量野餐。",
-            "highlights": [
-              {
-                "name": "Ornamental Lake",
-                "zhName": "園內湖區",
-                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20Botanic%20Gardens%2C%20Melbourne%20-%20Ornamental%20Lake.jpg",
-                "note": "若想找開闊景觀與短暫休息，湖區周邊比一路趕景點更適合。"
-              },
-              {
-                "name": "Living Collections",
-                "zhName": "植物收藏區",
-                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Botanic%20Garden%2C.jpg",
-                "note": "園區收藏涵蓋多種植物群，時間有限時可挑近入口的路線慢走。"
-              },
-              {
-                "name": "Shrine-to-Gardens walk",
-                "zhName": "Shrine 到植物園步行段",
-                "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Royal%20Botanic%20Gardens%20%28Entrance%20Gate%29.jpg",
-                "note": "從 Shrine 銜接植物園動線短，午餐後再往水族館移動不會繞路太多。"
-              }
-            ],
-            "links": [
-              {
-                "label": "Royal Botanic Gardens Melbourne official",
-                "url": "https://www.rbg.vic.gov.au/melbourne-gardens/"
-              },
-              {
-                "label": "Google Maps: Royal Botanic Gardens Melbourne",
-                "url": "https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Melbourne"
-              }
-            ],
-            "sources": [
-              {
-                "label": "Royal Botanic Gardens Melbourne official",
-                "url": "https://www.rbg.vic.gov.au/melbourne-gardens/"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3a22f57c-ec1b-80f6-9a36-c499f528564d",
-          "time": "13:00",
-          "title": "搭電車前往 SEA LIFE Melbourne Aquarium",
-          "type": "transit",
-          "location": "Royal Botanic Gardens Melbourne -> SEA LIFE Melbourne Aquarium",
-          "summary": "13:00 到 14:00。午餐後從 Royal Botanic Gardens 搭電車前往 SEA LIFE Melbourne Aquarium。",
-          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Royal+Botanic+Gardens+Melbourne&destination=SEA+LIFE+Melbourne+Aquarium&travelmode=transit",
-          "notionUrl": "https://www.notion.so/3a22f57cec1b80f69a36c499f528564d",
-          "tags": [
-            "Recommandation",
-            "moving",
-            "tram"
-          ]
-        },
-        {
           "id": "3a22f57c-ec1b-8086-89d7-da224ce922d9",
-          "time": "14:00",
+          "time": "10:00",
           "title": "SEA LIFE Melbourne Aquarium",
           "type": "landmark",
           "location": "SEA LIFE Melbourne Aquarium, King Street, Melbourne",
-          "summary": "14:00 到 17:00。SEA LIFE Melbourne Aquarium 安排 3 小時室內行程，可看 Penguin Playground、Ocean Invaders、Rocky Shores、鯊魚與多個海洋展示；Notion Schedule 關聯為 Sealife Melbourne，訂票狀態為 Not yet。",
+          "summary": "10:00 到 11:30。上午安排 SEA LIFE Melbourne Aquarium；Notion Schedule 關聯為 Sealife Melbourne，訂票狀態為 Not yet。",
           "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Aquarium-melbourne.jpg",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SEA+LIFE+Melbourne+Aquarium",
           "bookingInfoUrl": "https://www.klook.com/zh-TW/activity/1792-sea-life-aquarium-melbourne/",
@@ -2891,7 +2682,7 @@
             "indoor"
           ],
           "attractionGuide": {
-            "intro": "SEA LIFE Melbourne Aquarium 是下午室內主行程。官方頁面建議線上訂票以確保入場，並標示一般參觀通常約 1.5 到 2 小時；Day 7 安排 14:00 到 17:00，可保留給親子停留、餵食或 talks 的彈性。",
+            "intro": "SEA LIFE Melbourne Aquarium 是 Day 7 上午室內主行程。官方頁面建議線上訂票以確保入場，並標示一般參觀通常約 1.5 到 2 小時；Notion 目前安排 10:00 到 11:30，參觀後直接銜接前往 Belgrave 的電車/火車。",
             "highlights": [
               {
                 "name": "Penguin Playground",
@@ -2939,28 +2730,147 @@
           }
         },
         {
-          "id": "3a22f57c-ec1b-8095-a9f9-e89b106ef713",
-          "time": "17:30",
-          "title": "搭電車前往 Max on Hardware",
+          "id": "3a22f57c-ec1b-805a-9180-c51d29f8b8cd",
+          "time": "11:40",
+          "title": "搭電車/火車前往 Belgrave",
           "type": "transit",
-          "location": "SEA LIFE Melbourne Aquarium -> Max on Hardware",
-          "summary": "17:30 到 18:00。水族館結束後搭電車或步行銜接 Hardware Lane 的 Max on Hardware 晚餐。",
+          "location": "SEA LIFE Melbourne Aquarium -> Belgrave",
+          "summary": "11:40 到 13:00。從水族館一帶搭電車/火車前往 Belgrave，抵達後保留午餐、取票與候車緩衝。",
           "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=SEA+LIFE+Melbourne+Aquarium&destination=Max+on+Hardware+Melbourne&travelmode=transit",
+          "mapsUrl": "https://maps.app.goo.gl/WjiEnjkrhUALJdqR9",
+          "notionUrl": "https://www.notion.so/3a22f57cec1b805a9180c51d29f8b8cd",
+          "tags": [
+            "Recommandation",
+            "moving",
+            "train"
+          ]
+        },
+        {
+          "id": "3a22f57c-ec1b-80f2-b936-de8b5bb81f36",
+          "time": "14:15",
+          "title": "Puffing Billy 森林小火車 - Belgrave 去程",
+          "type": "landmark",
+          "location": "Puffing Billy Railway, Belgrave",
+          "summary": "14:15 到 15:15。從 Belgrave 搭 Puffing Billy 森林小火車前往 Lakeside；Notion Schedule 關聯為 Puffing Billy，訂票狀態為 Not yet，預估總額 NT$6,035。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monbulk_Creek_Trestle_Bridge.JPG",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway+Belgrave",
+          "bookingInfoUrl": "https://puffingbillyrailway.org.au/visit-us/fares-timetables/",
+          "notionUrl": "https://www.notion.so/3a22f57cec1b80f2b936de8b5bb81f36",
+          "tags": [
+            "Recommandation",
+            "train",
+            "Dandenong Ranges"
+          ],
+          "expense": {
+            "amount": 6035,
+            "currency": "TWD",
+            "category": "attraction",
+            "status": "pending",
+            "source": "Notion"
+          },
+          "attractionGuide": {
+            "intro": "Puffing Billy 是 Dandenong Ranges 的經典蒸汽森林小火車。Day 7 Notion 已改為下午從 Belgrave 出發，搭到 Lakeside 後再回 Belgrave；官方票價/時刻頁也提醒旅客需事先預訂，且 Belgrave 到 Lakeside 單程約 1 小時。",
+            "highlights": [
+              {
+                "name": "Belgrave Station",
+                "zhName": "Belgrave 車站",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monbulk_Creek_Trestle_Bridge.JPG",
+                "note": "行程起點，建議抵達後先完成取票、洗手間與候車，避免壓縮上車時間。"
+              },
+              {
+                "name": "Monbulk Creek Trestle Bridge",
+                "zhName": "Monbulk Creek 木棧橋",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monbulk_Creek_Trestle_Bridge.JPG",
+                "note": "Puffing Billy 最代表性的橋段之一，去程剛離開 Belgrave 後適合準備拍照。"
+              },
+              {
+                "name": "Lakeside Station",
+                "zhName": "Lakeside 車站",
+                "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+                "note": "抵達後可短暫休息、走訪湖邊或補給，再銜接回程班次。"
+              }
+            ],
+            "links": [
+              {
+                "label": "Puffing Billy fares & timetables",
+                "url": "https://puffingbillyrailway.org.au/visit-us/fares-timetables/"
+              },
+              {
+                "label": "Belgrave to Lakeside official",
+                "url": "https://puffingbillyrailway.org.au/experiences/excursion/belgrave-lakeside/"
+              },
+              {
+                "label": "Google Maps: Puffing Billy Railway Belgrave",
+                "url": "https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway+Belgrave"
+              }
+            ],
+            "sources": [
+              {
+                "label": "Puffing Billy fares & timetables",
+                "url": "https://puffingbillyrailway.org.au/visit-us/fares-timetables/"
+              },
+              {
+                "label": "Puffing Billy Belgrave to Lakeside",
+                "url": "https://puffingbillyrailway.org.au/experiences/excursion/belgrave-lakeside/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3a22f57c-ec1b-800f-af35-f9263efedaae",
+          "time": "15:15",
+          "title": "Puffing Billy 森林小火車 - Lakeside",
+          "type": "landmark",
+          "location": "Lakeside Station, Emerald Lake Park",
+          "summary": "15:15 到 16:15。抵達 Lakeside 後安排約 1 小時停留，作為森林小火車去回程之間的休息與拍照時間。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monbulk_Creek_Trestle_Bridge.JPG",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Lakeside+Station+Puffing+Billy",
+          "notionUrl": "https://www.notion.so/3a22f57cec1b800faf35f9263efedaae",
+          "tags": [
+            "Recommandation",
+            "train",
+            "Lakeside"
+          ]
+        },
+        {
+          "id": "3bd2f57c-ec1b-809e-b709-e57f561e0852",
+          "time": "16:15",
+          "title": "Puffing Billy 森林小火車 - Belgrave 回程",
+          "type": "transit",
+          "location": "Lakeside Station -> Belgrave Station",
+          "summary": "16:15 到 17:15。從 Lakeside 搭 Puffing Billy 回 Belgrave，抵達後銜接返回 Melbourne CBD 的火車/電車。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/4/46/Monbulk_Creek_Trestle_Bridge.JPG",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Lakeside+Station+Puffing+Billy&destination=Belgrave+Station+Victoria&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3bd2f57cec1b809eb709e57f561e0852",
+          "tags": [
+            "Recommandation",
+            "moving",
+            "train"
+          ]
+        },
+        {
+          "id": "3a22f57c-ec1b-8095-a9f9-e89b106ef713",
+          "time": "17:20",
+          "title": "搭火車/電車前往 Max on Hardware",
+          "type": "transit",
+          "location": "Belgrave -> Max on Hardware",
+          "summary": "17:20 到 18:40。從 Belgrave 搭火車/電車返回 Melbourne CBD，前往 Hardware Lane 的 Max on Hardware 晚餐。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Belgrave+Station+Victoria&destination=Max+on+Hardware+Melbourne&travelmode=transit",
           "notionUrl": "https://www.notion.so/3a22f57cec1b8095a9f9e89b106ef713",
           "tags": [
             "Recommandation",
             "moving",
-            "tram"
+            "train"
           ]
         },
         {
           "id": "2dd2f57c-ec1b-803d-8d83-f673aeb3fd36",
-          "time": "18:00",
+          "time": "19:00",
           "title": "Max on Hardware 晚餐",
           "type": "food",
           "location": "Max on Hardware, 54-58 Hardware Lane, Melbourne",
-          "summary": "18:00 到 20:00。晚上安排 Hardware Lane 的 Max on Hardware；Notion Schedule 顯示訂位/預訂狀態為 Done，可作為當天收尾晚餐。",
+          "summary": "19:00 到 21:00。晚上安排 Hardware Lane 的 Max on Hardware；Notion Schedule 顯示訂位/預訂狀態為 Done，可作為當天收尾晚餐。",
           "image": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://maps.app.goo.gl/Z22ueJJDVELPS7SF6",
           "bookingInfoUrl": "https://mail.google.com/mail/u/0/#label/2026+Melbourne/FMfcgzQhVNWQTGCstgNdGszZkShPbbCM",
@@ -2971,7 +2881,7 @@
             "booked"
           ],
           "restaurantGuide": {
-            "intro": "Max on Hardware 位於 Melbourne CBD 的 54-58 Hardware Lane，是從 1990 年開始營業的 Australian-Italian restaurant / bar。Day 7 從 SEA LIFE Melbourne Aquarium 回到 CBD 後，適合安排在這裡吃一餐不用再移動太遠的晚餐；用餐重點可以放在戶外 laneway 氛圍、手工披薩、義大利麵、risotto、牛排與幾道較有特色的主餐。",
+            "intro": "Max on Hardware 位於 Melbourne CBD 的 54-58 Hardware Lane，是從 1990 年開始營業的 Australian-Italian restaurant / bar。Day 7 從 Belgrave 搭火車/電車回到 CBD 後，適合安排在這裡吃一餐不用再移動太遠的晚餐；用餐重點可以放在戶外 laneway 氛圍、手工披薩、義大利麵、risotto、牛排與幾道較有特色的主餐。",
             "menuLinks": [
               {
                 "label": "Max on Hardware official",
@@ -4711,6 +4621,19 @@
       "location": "Moonlit Sanctuary",
       "source": "Notion Schedule Payment",
       "notionUrl": "https://www.notion.so/2d92f57cec1b8012b219c2c41b96bffe"
+    },
+    {
+      "id": "2d92f57c-ec1b-8001-9eb9-e116e10fba2e",
+      "title": "Puffing Billy",
+      "amount": 6035,
+      "currency": "TWD",
+      "category": "attraction",
+      "status": "pending",
+      "day": "Day 7",
+      "date": "2026-09-30",
+      "location": "Puffing Billy Railway, Belgrave",
+      "source": "Notion Schedule Payment",
+      "notionUrl": "https://www.notion.so/2d92f57cec1b80019eb9e116e10fba2e"
     },
     {
       "id": "2d92f57c-ec1b-8034-84d4-ea9f1684715c",
