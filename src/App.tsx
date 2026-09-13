@@ -83,6 +83,15 @@ const expenseActivitiesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")
 const expenseRatesUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/rates` : "";
 const expenseAuthUrl = expenseApiUrl ? `${expenseApiUrl.replace(/\/$/, "")}/auth` : "";
 
+function assetUrl(url?: string) {
+  if (!url) return "";
+  if (/^(https?:)?\/\//.test(url) || url.startsWith("data:") || url.startsWith("blob:")) return url;
+  if (!url.startsWith("/")) return url;
+
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  return `${base}${url}`;
+}
+
 type TransitMap = {
   id:
     | "melbourne-skybus"
@@ -3068,7 +3077,7 @@ function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
           <motion.img
             key={activeSlide.src}
             className="hero-image"
-            src={activeSlide.src}
+            src={assetUrl(activeSlide.src)}
             alt=""
             initial={{ opacity: 0, scale: 1.06 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -3827,7 +3836,7 @@ function ReminderDetailModal({
                 <h4>{section.title}</h4>
                 {section.image ? (
                   <figure className="reminder-section-image">
-                    <img src={section.image.url} alt={section.image.alt} loading="lazy" />
+                    <img src={assetUrl(section.image.url)} alt={section.image.alt} loading="lazy" />
                     {section.image.caption ? <figcaption>{section.image.caption}</figcaption> : null}
                   </figure>
                 ) : null}
@@ -4274,7 +4283,7 @@ function ItemImage({ item }: { item: TravelItem }) {
 
   return (
     <div className="item-image-wrap">
-      {item.image ? <img src={item.image} alt={item.title} loading="lazy" /> : null}
+      {item.image ? <img src={assetUrl(item.image)} alt={item.title} loading="lazy" /> : null}
       <span className="item-type-icon" title={item.type}>
         <Icon size={18} />
       </span>
@@ -4357,7 +4366,7 @@ function BookingInfoModal({ item, onClose }: { item: TravelItem; onClose: () => 
           <X size={19} strokeWidth={2.6} />
         </button>
         <figure className="booking-modal-image">
-          <img src={bookingImage.url} alt={bookingImage.alt} />
+          <img src={assetUrl(bookingImage.url)} alt={bookingImage.alt} />
         </figure>
       </motion.article>
     </motion.div>,
@@ -4419,7 +4428,7 @@ function AttractionGuideModal({ item, onClose }: { item: TravelItem; onClose: ()
         </div>
         {item.image ? (
           <div className="attraction-modal-image">
-            <img src={item.image} alt={`${item.title} 景點照片`} />
+            <img src={assetUrl(item.image)} alt={`${item.title} 景點照片`} />
           </div>
         ) : null}
         <div className="restaurant-modal-grid">
@@ -4429,7 +4438,7 @@ function AttractionGuideModal({ item, onClose }: { item: TravelItem; onClose: ()
               {guide.highlights.map((highlight) => (
                 <li className={highlight.image ? undefined : "without-image"} key={highlight.name}>
                   {highlight.image ? (
-                    <img src={highlight.image} alt={highlight.zhName ?? highlight.name} />
+                    <img src={assetUrl(highlight.image)} alt={highlight.zhName ?? highlight.name} />
                   ) : null}
                   <div>
                     <strong>{highlight.name}</strong>
@@ -4527,7 +4536,7 @@ function RestaurantGuideModal({ item, onClose }: { item: TravelItem; onClose: ()
               <ul className="restaurant-recommendations">
                 {guide.recommendations.map((dish) => (
                   <li key={dish.name}>
-                    {dish.image ? <img src={dish.image} alt={dish.zhName ?? dish.name} /> : null}
+                    {dish.image ? <img src={assetUrl(dish.image)} alt={dish.zhName ?? dish.name} /> : null}
                     <div>
                       <strong>{dish.name}</strong>
                       {dish.zhName ? <em>{dish.zhName}</em> : null}
