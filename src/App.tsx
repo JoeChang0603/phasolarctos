@@ -142,7 +142,11 @@ type WeatherLocation = {
 };
 
 type WeatherReading = WeatherLocation & {
+  date: string;
+  source: "current" | "forecast" | "archive";
   temperature: number;
+  highTemperature?: number;
+  lowTemperature?: number;
   apparentTemperature: number;
   humidity: number;
   precipitation: number;
@@ -956,6 +960,42 @@ function formatObservedTime(value: string) {
   }).format(observedAt);
 }
 
+function weatherDateState(date: string) {
+  const todayKey = localDateKey(new Date());
+  if (date === todayKey) return "current";
+  if (date < todayKey) return "archive";
+  return "forecast";
+}
+
+function daysFromToday(date: string) {
+  const today = new Date(`${localDateKey(new Date())}T00:00:00`);
+  const target = new Date(`${date}T00:00:00`);
+  return Math.round((target.getTime() - today.getTime()) / 86_400_000);
+}
+
+function weatherSourceLabel(source: WeatherReading["source"]) {
+  if (source === "current") return "即時";
+  if (source === "archive") return "實況";
+  return "預報";
+}
+
+function weatherPanelMessage(date: string, readings: WeatherReading[]) {
+  const sourceLabels = Array.from(new Set(readings.map((reading) => weatherSourceLabel(reading.source))));
+  return `${date} ${sourceLabels.join(" / ")} / ${readings.length} 地點`;
+}
+
+function average(values: unknown[]) {
+  const numbers = values.filter(
+    (value): value is number => typeof value === "number" && Number.isFinite(value),
+  );
+  if (!numbers.length) return 0;
+  return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
+}
+
+function dailyValue<T>(daily: Record<string, T[] | undefined>, key: string, index: number) {
+  return daily[key]?.[index];
+}
+
 function clothingAdviceForWeather(reading: WeatherReading) {
   const apparentTemperature = reading.apparentTemperature;
   const advice: string[] = [];
@@ -987,36 +1027,96 @@ function clothingAdviceForWeather(reading: WeatherReading) {
   return advice.join("；");
 }
 
-async function fetchWeatherReading(location: WeatherLocation, signal: AbortSignal): Promise<WeatherReading> {
-  const url = new URL("https://api.open-meteo.com/v1/forecast");
+async function fetchWeatherReading(
+  location: WeatherLocation,
+  targetDate: string,
+  signal: AbortSignal,
+): Promise<WeatherReading> {
+  const source = weatherDateState(targetDate);
+  if (source === "forecast" && daysFromToday(targetDate) > 16) {
+    throw new Error(`${targetDate} 預報尚未開放，通常行程前 16 天內更新。`);
+  }
+
+  const url = new URL(
+    source === "archive"
+      ? "https://archive-api.open-meteo.com/v1/archive"
+      : "https://api.open-meteo.com/v1/forecast",
+  );
   url.searchParams.set("latitude", String(location.latitude));
   url.searchParams.set("longitude", String(location.longitude));
-  url.searchParams.set(
-    "current",
-    "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m",
-  );
   url.searchParams.set("timezone", "auto");
-  url.searchParams.set("forecast_days", "1");
+  url.searchParams.set("start_date", targetDate);
+  url.searchParams.set("end_date", targetDate);
+  url.searchParams.set(
+    "daily",
+    "weather_code,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,wind_speed_10m_max",
+  );
+  url.searchParams.set("hourly", "relative_humidity_2m");
+
+  if (source === "current") {
+    url.searchParams.set(
+      "current",
+      "temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m",
+    );
+  }
 
   const response = await fetch(url, { signal });
   const result = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(result?.reason || "天氣資料載入失敗。");
 
-  const current = result?.current;
-  if (!current || typeof current.temperature_2m !== "number") {
+  const daily = result?.daily ?? {};
+  const dailyIndex = Array.isArray(daily.time) ? daily.time.indexOf(targetDate) : -1;
+  if (dailyIndex < 0) {
     throw new Error("天氣資料格式不正確。");
   }
 
+  const highTemperature = dailyValue<number>(daily, "temperature_2m_max", dailyIndex);
+  const lowTemperature = dailyValue<number>(daily, "temperature_2m_min", dailyIndex);
+  const apparentHigh = dailyValue<number>(daily, "apparent_temperature_max", dailyIndex);
+  const apparentLow = dailyValue<number>(daily, "apparent_temperature_min", dailyIndex);
+  const dailyWeatherCode = dailyValue<number>(daily, "weather_code", dailyIndex);
+  const dailyPrecipitation = dailyValue<number>(daily, "precipitation_sum", dailyIndex);
+  const dailyWindSpeed = dailyValue<number>(daily, "wind_speed_10m_max", dailyIndex);
+  const hourlyHumidity = Array.isArray(result?.hourly?.relative_humidity_2m)
+    ? average(result.hourly.relative_humidity_2m)
+    : 0;
+  const current = result?.current ?? {};
+  const currentTemperature = typeof current.temperature_2m === "number" ? current.temperature_2m : null;
+  const currentApparentTemperature =
+    typeof current.apparent_temperature === "number" ? current.apparent_temperature : null;
+  const representativeTemperature =
+    currentTemperature ??
+    (typeof highTemperature === "number" && typeof lowTemperature === "number"
+      ? (highTemperature + lowTemperature) / 2
+      : highTemperature ?? lowTemperature ?? 0);
+  const representativeApparentTemperature =
+    currentApparentTemperature ??
+    (typeof apparentHigh === "number" && typeof apparentLow === "number"
+      ? (apparentHigh + apparentLow) / 2
+      : apparentHigh ?? apparentLow ?? representativeTemperature);
+
   return {
     ...location,
-    temperature: current.temperature_2m,
-    apparentTemperature:
-      typeof current.apparent_temperature === "number" ? current.apparent_temperature : current.temperature_2m,
-    humidity: typeof current.relative_humidity_2m === "number" ? current.relative_humidity_2m : 0,
-    precipitation: typeof current.precipitation === "number" ? current.precipitation : 0,
-    windSpeed: typeof current.wind_speed_10m === "number" ? current.wind_speed_10m : 0,
-    weatherCode: typeof current.weather_code === "number" ? current.weather_code : -1,
-    observedAt: typeof current.time === "string" ? current.time : new Date().toISOString(),
+    date: targetDate,
+    source,
+    temperature: representativeTemperature,
+    highTemperature,
+    lowTemperature,
+    apparentTemperature: representativeApparentTemperature,
+    humidity: typeof current.relative_humidity_2m === "number" ? current.relative_humidity_2m : hourlyHumidity,
+    precipitation:
+      source === "current" && typeof current.precipitation === "number"
+        ? current.precipitation
+        : dailyPrecipitation ?? 0,
+    windSpeed:
+      source === "current" && typeof current.wind_speed_10m === "number"
+        ? current.wind_speed_10m
+        : dailyWindSpeed ?? 0,
+    weatherCode:
+      source === "current" && typeof current.weather_code === "number"
+        ? current.weather_code
+        : dailyWeatherCode ?? -1,
+    observedAt: typeof current.time === "string" ? current.time : `${targetDate}T12:00:00`,
   };
 }
 
@@ -3386,6 +3486,7 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
 
 function DayWeatherPanel({ day }: { day: TravelDay }) {
   const locations = useMemo(() => weatherLocationsForDay(day), [day]);
+  const targetDate = day.date;
   const [weatherStatus, setWeatherStatus] = useState<WeatherStatus>({
     type: "idle",
     message: "",
@@ -3394,13 +3495,24 @@ function DayWeatherPanel({ day }: { day: TravelDay }) {
 
   useEffect(() => {
     const controller = new AbortController();
-    setWeatherStatus({ type: "loading", message: "載入即時天氣中...", readings: [] });
+    setWeatherStatus({ type: "loading", message: `載入 ${targetDate} 當日天氣中...`, readings: [] });
 
-    Promise.all(locations.map((location) => fetchWeatherReading(location, controller.signal)))
-      .then((readings) => {
+    Promise.allSettled(locations.map((location) => fetchWeatherReading(location, targetDate, controller.signal)))
+      .then((results) => {
+        const readings = results
+          .filter((result): result is PromiseFulfilledResult<WeatherReading> => result.status === "fulfilled")
+          .map((result) => result.value);
+
+        if (!readings.length) {
+          const rejected = results.find(
+            (result): result is PromiseRejectedResult => result.status === "rejected",
+          );
+          throw rejected?.reason ?? new Error("當日天氣資料目前無法取得。");
+        }
+
         setWeatherStatus({
           type: "success",
-          message: "Open-Meteo 即時資料",
+          message: weatherPanelMessage(targetDate, readings),
           readings,
         });
       })
@@ -3414,20 +3526,20 @@ function DayWeatherPanel({ day }: { day: TravelDay }) {
       });
 
     return () => controller.abort();
-  }, [locations]);
+  }, [locations, targetDate]);
 
   return (
-    <section className="weather-panel" aria-label={`${day.title} 即時天氣`}>
+    <section className="weather-panel" aria-label={`${day.title} 當日天氣`}>
       <div className="weather-panel-header">
         <span className="weather-panel-icon" aria-hidden="true">
           <CloudSun size={19} strokeWidth={2.5} />
         </span>
         <div>
-          <strong>當日地點即時天氣</strong>
+          <strong>行程當日天氣</strong>
           <span>
             {weatherStatus.type === "success"
-              ? `${weatherStatus.message} / ${weatherStatus.readings.length} 地點`
-              : weatherStatus.message || "依每日主要地點讀取"}
+              ? weatherStatus.message
+              : weatherStatus.message || "依行程日期與主要地點讀取"}
           </span>
         </div>
       </div>
@@ -3454,8 +3566,17 @@ function DayWeatherPanel({ day }: { day: TravelDay }) {
                 </div>
                 <div className="weather-temperature">
                   <strong>{Math.round(reading.temperature)}°</strong>
-                  <span>{condition.label}</span>
+                  <span>
+                    {condition.label}
+                    <small>{weatherSourceLabel(reading.source)}</small>
+                  </span>
                 </div>
+                {typeof reading.highTemperature === "number" && typeof reading.lowTemperature === "number" ? (
+                  <div className="weather-range">
+                    <span>高 {Math.round(reading.highTemperature)}°C</span>
+                    <span>低 {Math.round(reading.lowTemperature)}°C</span>
+                  </div>
+                ) : null}
                 <dl className="weather-metrics">
                   <div>
                     <dt>
@@ -3490,7 +3611,9 @@ function DayWeatherPanel({ day }: { day: TravelDay }) {
                   <span>穿著建議</span>
                   <strong>{clothingAdviceForWeather(reading)}</strong>
                 </div>
-                <span className="weather-updated">更新 {formatObservedTime(reading.observedAt)}</span>
+                <span className="weather-updated">
+                  {weatherSourceLabel(reading.source)} {reading.source === "current" ? formatObservedTime(reading.observedAt) : reading.date}
+                </span>
               </article>
             );
           })}

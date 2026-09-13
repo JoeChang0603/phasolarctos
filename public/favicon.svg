@@ -1,12 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="2026 Sydney Melbourne travel icon">
-  <rect width="64" height="64" rx="14" fill="#10202a" />
-  <path d="M14 33c0-11.4 7.7-19.6 18-19.6S50 21.6 50 33c0 10.4-7.2 17.6-18 17.6S14 43.4 14 33Z" fill="#f8fbff" />
-  <circle cx="19" cy="22" r="7.6" fill="#f8fbff" />
-  <circle cx="45" cy="22" r="7.6" fill="#f8fbff" />
-  <path d="M24 34c0-4.5 3.5-8 8-8s8 3.5 8 8c0 5.5-5.5 11-8 13.6C29.5 45 24 39.5 24 34Z" fill="#1f9fb6" />
-  <circle cx="32" cy="34" r="2.7" fill="#f8fbff" />
-  <circle cx="25.5" cy="28.7" r="2.8" fill="#10202a" />
-  <circle cx="38.5" cy="28.7" r="2.8" fill="#10202a" />
-  <path d="M26 41c3.2 2.4 8.8 2.4 12 0" fill="none" stroke="#10202a" stroke-width="2.6" stroke-linecap="round" />
-  <path d="M48 8.8 50.8 14.5 57 15.4 52.5 19.8 53.6 26 48 23 42.4 26 43.5 19.8 39 15.4 45.2 14.5 48 8.8Z" fill="#ef7d57" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Koala travel icon">
+  <rect width="64" height="64" rx="16" fill="#10202a" />
+  <circle cx="17" cy="26" r="11" fill="#8a9494" />
+  <circle cx="47" cy="26" r="11" fill="#8a9494" />
+  <circle cx="17" cy="26" r="6.3" fill="#d8dddc" />
+  <circle cx="47" cy="26" r="6.3" fill="#d8dddc" />
+  <path d="M13.5 36.4c0-13.2 8.1-23.3 18.5-23.3s18.5 10.1 18.5 23.3c0 10.3-7.2 16.8-18.5 16.8s-18.5-6.5-18.5-16.8Z" fill="#b9c1c0" />
+  <path d="M20.2 38.5c0-7.5 5-12.5 11.8-12.5s11.8 5 11.8 12.5c0 7-5 12-11.8 12s-11.8-5-11.8-12Z" fill="#edf1ef" />
+  <circle cx="25.4" cy="31.7" r="2.9" fill="#10202a" />
+  <circle cx="38.6" cy="31.7" r="2.9" fill="#10202a" />
+  <ellipse cx="32" cy="38.2" rx="5.5" ry="4.8" fill="#273236" />
+  <path d="M32 41.8v3.1" fill="none" stroke="#273236" stroke-width="2.4" stroke-linecap="round" />
+  <path d="M25.7 45.4c3.3 3 9.3 3 12.6 0" fill="none" stroke="#273236" stroke-width="2.4" stroke-linecap="round" />
+  <path d="M49.2 11.2 52.1 17l6.4.9-4.6 4.5 1.1 6.4-5.8-3-5.7 3 1.1-6.4-4.7-4.5 6.5-.9 2.8-5.8Z" fill="#ef7d57" />
 </svg>
