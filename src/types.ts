@@ -63,6 +63,12 @@ export type TravelItem = {
   image?: string;
   mapsUrl?: string;
   bookingInfoUrl?: string;
+  bookingNote?: string;
+  bookingImage?: {
+    url: string;
+    alt: string;
+    caption?: string;
+  };
   notionUrl?: string;
   tags?: string[];
   restaurantGuide?: {
@@ -113,6 +119,12 @@ export type TravelReminder = {
     summary: string;
     sections: Array<{
       title: string;
+      variant?: "list" | "flow" | "fareTable" | "ruleTable";
+      image?: {
+        url: string;
+        alt: string;
+        caption?: string;
+      };
       items: string[];
     }>;
     links?: Array<{

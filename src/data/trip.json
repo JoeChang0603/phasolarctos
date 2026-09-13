@@ -17,26 +17,68 @@
       "reminders": [
         {
           "id": "3672f57c-ec1b-80b9-bfc9-ef60d7de7e3f",
-          "title": "Opal / Contactless Setup",
-          "note": "出發前完成手機錢包與 Opal Travel app 設定，Sydney 段以 contactless payment 為主。",
+          "title": "Opal Card 現場購買與 App 加值",
+          "note": "抵達 Sydney T1 後到 International Airport Station 現場買 Opal card，後續用 Opal Travel app 加值。",
           "detail": {
-            "summary": "目前本趟不把 Digital Opal Card 當成可申辦方案；成人旅客使用 Apple Pay / Google Wallet / Samsung Pay 或實體 contactless card 感應 Opal reader 即可。",
+            "summary": "本趟改為抵達雪梨機場後購買實體 Opal card；CI51 抵達 Sydney International Terminal 1，完成入境與領行李後先到 T1 的 International Airport Station 購卡，再用 App 做後續加值。",
             "sections": [
               {
                 "title": "台灣出發前",
                 "items": [
-                  "每位旅客選定一張 Visa / Mastercard / American Express 作為主要付款卡。",
-                  "把主要付款卡加入 Apple Pay、Google Wallet 或 Samsung Pay，並在台灣先測試一次感應付款。",
-                  "下載 Opal Travel app，用來查 Sydney 交通路線、票價與即時狀態。",
-                  "可選擇建立 Transport Connect account 來查 contactless travel activity；一般成人旅客不需先申請帳號才能搭車。"
+                  "每位要使用 Opal card 的成員先下載 Opal Travel app，抵達後可輸入卡號管理餘額與加值。",
+                  "準備一張可海外刷卡的 Visa / Mastercard / American Express，用於 App 加值或現場付款。",
+                  "保留手機網路可用狀態，抵達後需要查路線、加值與確認餘額。"
+                ]
+              },
+              {
+                "title": "T1 到場購買流程",
+                "variant": "flow",
+                "image": {
+                  "url": "/sydney-airport-opal-counter.jpg",
+                  "alt": "Sydney Airport station counter with Get an Opal card or top up here signage",
+                  "caption": "參考畫面：Sydney Airport station 內標示「Get an Opal card or top up here」的 Opal card 購買 / 加值櫃檯。抵達 T1 後依 International Airport Station 指標前往車站。"
+                },
+                "items": [
+                  "🛬::抵達 T1::CI51 抵達 Sydney International Terminal 1，先完成入境、海關與領行李。",
+                  "🚶::前往車站::從 T1 Arrivals 的 Exit A 出口離開後右轉走到底，進入 International Airport Station；也可使用 Check-In desk A 附近的 lift / escalator。",
+                  "💳::現場買卡::在 International Airport Station 購買 Adult / Child Opal card；機場站購買或加值的最低加值金額為 AU$35。",
+                  "🚆::搭 Airport Link::用剛買好的 Opal card tap on，搭 Airport Link 前往 Central Station；機場站另收 station access fee。",
+                  "📱::App 加值::之後打開 Opal Travel app，輸入卡號與 security code，可做 one-off top up；若註冊卡片，也可設定 auto top up。",
+                  "💻::線上加值::也可以到 Opal 官網登入或輸入 Opal card number 與 security code 做 one-off top up；註冊卡片可綁定信用卡或 debit card。",
+                  "🏪::現場加值::可到 Opal retailers、部分車站 / stops / wharves 的 top-up machines、Transport Customer Service Centres 或 Service NSW Centres 加值；如果要立刻搭車，優先用現場加值。",
+                  "✅::確認生效::App / online top-up 通常需 15-60 分鐘才會寫入系統，之後要在 Opal reader tap on 才會啟用加值。"
+                ]
+              },
+              {
+                "title": "成人 Opal 費用評估",
+                "variant": "fareTable",
+                "items": [
+                  "Day 1 9/24 Wed::International Airport Station → Central（含 airport station access fee）::約 AU$21.63",
+                  "Day 1 9/24 Wed::Furama → 雪梨大學 Bus::約 AU$3.30-4.49",
+                  "Day 1 9/24 Wed::Newtown 晚餐後 → Furama 大眾運輸::約 AU$3.14-3.33",
+                  "Day 2 9/25 Thu::Darling Harbour / CBD → Circular Quay::約 AU$3.30-4.33",
+                  "Day 2 9/25 Thu::The Rocks / Circular Quay → Furama::約 AU$2.31",
+                  "Day 3 9/26 Fri::Furama → SEA LIFE（若不步行）::約 AU$2.31",
+                  "Day 3 9/26 Fri::Betty's Burgers → Furama（若不步行）::約 AU$2.31",
+                  "Day 3 9/26 Fri::Central → Domestic Airport（含 airport station access fee）::約 AU$21.63"
+                ]
+              },
+              {
+                "title": "每人儲值建議",
+                "items": [
+                  "4 位成員都以成人 Opal fare 估算；每人實際可能花費約 AU$58-62。",
+                  "每人建議準備 AU$65：抵達 T1 現場購卡先加 AU$35，Day 3 前再用 App、官網或現場機器加 AU$30。",
+                  "4 人合計建議準備 AU$260；估算實際總支出約 AU$232-248，剩餘餘額作為臨時改搭車或走路改交通的緩衝。",
+                  "Taronga Zoo 的 Fantasea 渡輪目前視為套票 / 私人船票，不列入 Opal；若改搭 public ferry，需另外重算。"
                 ]
               },
               {
                 "title": "Sydney 使用規則",
                 "items": [
-                  "同一人整段 Sydney 行程固定使用同一支手機、手錶或同一張實體卡。",
-                  "tap on 與 tap off 必須使用同一個付款媒介，fare cap 與轉乘優惠才會正確累計。",
-                  "不要同一天混用手機 wallet 與實體卡；系統可能視為不同 payment token。",
+                  "每位成員整段 Sydney 行程固定使用自己的同一張 Opal card。",
+                  "每趟車、電車、火車或渡輪都要使用同一張卡 tap on / tap off，票價與轉乘優惠才會正確累計。",
+                  "卡片餘額不足時可用 Opal Travel app、Opal 官網 one-off top up、auto top up、Opal retailer、top-up machine、Transport Customer Service Centre 或 Service NSW Centre 加值。",
+                  "如果餘額不足且馬上要搭車，優先使用 Opal retailer 或 top-up machine，線上與 App 加值通常需要等待寫入時間。",
                   "Day 1 International Airport Station 與 Day 3 Domestic Airport Station 都會收 airport station access fee。"
                 ]
               }
@@ -47,8 +89,12 @@
                 "url": "https://www.notion.so/3162f57cec1b808888bedd7745168fac"
               },
               {
-                "label": "Transport NSW Contactless",
-                "url": "https://transportnsw.info/tickets-fares/contactless-payments"
+                "label": "Transport NSW: Sydney Airport",
+                "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+              },
+              {
+                "label": "Transport NSW: Top up Opal",
+                "url": "https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card"
               }
             ]
           },
@@ -245,6 +291,83 @@
       "coverImage": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1800&q=85",
       "mapsEmbedUrl": "https://www.google.com/maps?q=Furama%20Darling%20Harbour%20Sydney&output=embed",
       "accent": "#ef7d57",
+      "reminders": [
+        {
+          "id": "day-1-opal-t1-purchase",
+          "title": "T1 Opal Card 現場購買",
+          "note": "CI51 抵達 Sydney T1 後，先到 International Airport Station 買實體 Opal card，再用 App 加值。",
+          "detail": {
+            "summary": "抵達雪梨當天不先用 Digital Opal；完成入境與領行李後，依 T1 Arrivals 動線到 International Airport Station 現場購買 Opal card，之後用 Opal Travel app 管理餘額與加值。",
+            "sections": [
+              {
+                "title": "T1 購卡與加值流程",
+                "variant": "flow",
+                "image": {
+                  "url": "/sydney-airport-opal-counter.jpg",
+                  "alt": "Sydney Airport station counter with Get an Opal card or top up here signage",
+                  "caption": "參考畫面：Sydney Airport station 內標示「Get an Opal card or top up here」的 Opal card 購買 / 加值櫃檯。抵達 T1 後依 International Airport Station 指標前往車站。"
+                },
+                "items": [
+                  "🛬::抵達 T1::CI51 抵達 Sydney International Terminal 1，先完成入境、海關與領行李。",
+                  "🚶::前往車站::從 T1 Arrivals 的 Exit A 出口離開後右轉走到底，進入 International Airport Station；也可使用 Check-In desk A 附近的 lift / escalator。",
+                  "💳::現場買卡::在 International Airport Station 購買 Adult / Child Opal card；機場站購買或加值的最低加值金額為 AU$35。",
+                  "🚆::搭 Airport Link::用剛買好的 Opal card tap on，搭 Airport Link 前往 Central Station；機場站另收 station access fee。",
+                  "📱::App 加值::後續打開 Opal Travel app，輸入卡號與 security code，可做 one-off top up；若註冊卡片，也可設定 auto top up。",
+                  "💻::線上加值::也可以到 Opal 官網登入或輸入 Opal card number 與 security code 做 one-off top up；註冊卡片可綁定信用卡或 debit card。",
+                  "🏪::現場加值::可到 Opal retailers、部分車站 / stops / wharves 的 top-up machines、Transport Customer Service Centres 或 Service NSW Centres 加值；如果要立刻搭車，優先用現場加值。",
+                  "✅::確認生效::App / online top-up 通常需 15-60 分鐘才會寫入系統，之後要在 Opal reader tap on 才會啟用加值。"
+                ]
+              },
+              {
+                "title": "成人 Opal 費用評估",
+                "variant": "fareTable",
+                "items": [
+                  "Day 1 9/24 Wed::International Airport Station → Central（含 airport station access fee）::約 AU$21.63",
+                  "Day 1 9/24 Wed::Furama → 雪梨大學 Bus::約 AU$3.30-4.49",
+                  "Day 1 9/24 Wed::Newtown 晚餐後 → Furama 大眾運輸::約 AU$3.14-3.33",
+                  "Day 2 9/25 Thu::Darling Harbour / CBD → Circular Quay::約 AU$3.30-4.33",
+                  "Day 2 9/25 Thu::The Rocks / Circular Quay → Furama::約 AU$2.31",
+                  "Day 3 9/26 Fri::Furama → SEA LIFE（若不步行）::約 AU$2.31",
+                  "Day 3 9/26 Fri::Betty's Burgers → Furama（若不步行）::約 AU$2.31",
+                  "Day 3 9/26 Fri::Central → Domestic Airport（含 airport station access fee）::約 AU$21.63"
+                ]
+              },
+              {
+                "title": "每人儲值建議",
+                "items": [
+                  "4 位成員都以成人 Opal fare 估算；每人實際可能花費約 AU$58-62。",
+                  "每人建議準備 AU$65：抵達 T1 現場購卡先加 AU$35，Day 3 前再用 App、官網或現場機器加 AU$30。",
+                  "4 人合計建議準備 AU$260；估算實際總支出約 AU$232-248，剩餘餘額作為臨時改搭車或走路改交通的緩衝。",
+                  "Taronga Zoo 的 Fantasea 渡輪目前視為套票 / 私人船票，不列入 Opal；若改搭 public ferry，需另外重算。"
+                ]
+              },
+              {
+                "title": "使用提醒",
+                "items": [
+                  "每位成員固定使用自己的同一張 Opal card，不要互相交換卡片使用。",
+                  "火車、電車、巴士與渡輪都要記得 tap on；需要 tap off 的交通工具也要用同一張卡 tap off。",
+                  "餘額不足時可用 Opal Travel app、Opal 官網 one-off top up、auto top up、Opal retailer、top-up machine、Transport Customer Service Centre 或 Service NSW Centre 加值。",
+                  "如果餘額不足且馬上要搭車，優先使用 Opal retailer 或 top-up machine，線上與 App 加值通常需要等待寫入時間。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Transport NSW: Sydney Airport",
+                "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+              },
+              {
+                "label": "Transport NSW: Get an Opal card",
+                "url": "https://transportnsw.info/tickets-fares/opal/get-opal-card"
+              },
+              {
+                "label": "Transport NSW: Top up Opal",
+                "url": "https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card"
+              }
+            ]
+          }
+        }
+      ],
       "items": [
         {
           "id": "2db2f57c-ec1b-8045-ab12-eaa876cf9fe2",
@@ -252,7 +375,7 @@
           "title": "抵達雪梨國際機場",
           "type": "transit",
           "location": "Sydney International Airport",
-          "summary": "抵達 Sydney 後完成入境與行李領取，準備轉搭機場快線進市區。",
+          "summary": "抵達 Sydney T1 後完成入境與行李領取，先到 International Airport Station 現場購買 Opal card，再準備轉搭機場快線進市區。",
           "image": "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+International+Airport",
           "notionUrl": "https://www.notion.so/2db2f57cec1b8045ab12eaa876cf9fe2",
@@ -262,12 +385,27 @@
           ]
         },
         {
+          "id": "day-1-opal-card-purchase",
+          "time": "11:20",
+          "title": "Opal Card 現場購買與加值",
+          "type": "transit",
+          "location": "Sydney International Airport Station",
+          "summary": "抵達 Sydney T1、完成入境與領行李後，到 International Airport Station 現場購買 Opal card；建議先加值 AU$35，之後再用 Opal Travel app 或現場機器補加值。",
+          "image": "/sydney-airport-opal-counter.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sydney+International+Airport+Station",
+          "tags": [
+            "Recommandation",
+            "transport",
+            "opal"
+          ]
+        },
+        {
           "id": "3682f57c-ec1b-8079-b536-f7d5e05e5fcf",
           "time": "11:30",
           "title": "Airport Link 前往 Central Station",
           "type": "transit",
           "location": "Sydney Airport Station to Central Station",
-          "summary": "從 Sydney Airport Station 搭 Airport Link 前往 Central Station，車程約 15 分鐘，抵達後銜接市區行程。",
+          "summary": "用現場購買的 Opal card 從 Sydney Airport Station tap on，搭 Airport Link 前往 Central Station，車程約 15 分鐘，抵達後銜接市區行程。",
           "image": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Sydney+Airport+Station&destination=Central+Station+Sydney&travelmode=transit",
           "notionUrl": "https://www.notion.so/3682f57cec1b8079b536f7d5e05e5fcf",
@@ -301,7 +439,7 @@
           "title": "Auvers Dining Darling Square 午餐",
           "type": "food",
           "location": "Auvers Dining Darling Square",
-          "summary": "抵達後第一餐安排在 Darling Square 的 Auvers Dining，位置靠近飯店，適合補充體力後回飯店 Check-in。",
+          "summary": "12:30 到 14:00。抵達後第一餐安排在 Darling Square 的 Auvers Dining，已完成 4 人 Brunch 訂位；位置靠近飯店，適合補充體力後回飯店 Check-in。",
           "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Auvers+Dining+Darling+Square",
           "notionUrl": "https://www.notion.so/2db2f57cec1b807e9521f37a16d60607",
@@ -310,7 +448,7 @@
             "food"
           ],
           "restaurantGuide": {
-            "intro": "Auvers Darling Square 是位在 Haymarket / Darling Square 的法式靈感藝術咖啡館，主打咖啡、早午餐與帶有 Asian fusion 的 modern Australian 餐點。適合 Day 1 抵達後安排一餐視覺感與口味都比較有記憶點的午餐。",
+            "intro": "Auvers Darling Square 是位在 Haymarket / Darling Square 的法式靈感藝術咖啡館，主打咖啡、早午餐與帶有 Asian fusion 的 modern Australian 餐點。Day 1 已完成 Brunch 訂位：IYun Chang，2026/9/24 Thu，12:30 PM - 2:00 PM，4 位，Booking Reference 76350249。",
             "menuLinks": [
               {
                 "label": "官方網站 / 菜單入口",
@@ -375,6 +513,12 @@
                 "url": "https://static1.squarespace.com/static/5815d6436a496367e356a7ba/t/65cec8b2e2ffda57b6f0a9ca/1708050633279/Auvers%2BDS%2BNight%2BMenu%2BV2.pdf"
               }
             ]
+          },
+          "bookingNote": "已訂位：IYun Chang，2026/9/24 Thu，Brunch 12:30 PM - 2:00 PM，4 guests，Booking Reference 76350249。",
+          "bookingImage": {
+            "url": "/auvers-booking-confirmation.png",
+            "alt": "Auvers Dining reservation confirmation for IYun Chang on September 24, 2026",
+            "caption": "Auvers Dining 訂位確認：Booking Reference 76350249"
           }
         },
         {
@@ -498,7 +642,7 @@
           "title": "Macelleria Newtown 牛排晚餐",
           "type": "food",
           "location": "Macelleria Newtown",
-          "summary": "晚餐安排在 Newtown 的 Macelleria，靠近雪梨大學一帶，第一天晚上以明確的牛排餐收尾。",
+          "summary": "19:00。晚餐安排在 Newtown 的 Macelleria，已完成 4 人 Dinner 訂位；靠近雪梨大學一帶，第一天晚上以明確的牛排餐收尾。",
           "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Macelleria+Newtown+73-75+Enmore+Road+Newtown+NSW",
           "notionUrl": "https://www.notion.so/2db2f57cec1b802c8139e320d511fcb5",
@@ -507,7 +651,7 @@
             "food"
           ],
           "restaurantGuide": {
-            "intro": "Macelleria Newtown 是 Newtown / Enmore Road 一帶的 casual steakhouse，菜單重點是牛排、羊排、漢堡與 butcher-style 肉類主餐。適合 Day 1 雪梨大學後直接在 Newtown 吃一餐明確的牛排晚餐。",
+            "intro": "Macelleria Newtown 是 Newtown / Enmore Road 一帶的 casual steakhouse，菜單重點是牛排、羊排、漢堡與 butcher-style 肉類主餐。Day 1 晚餐已完成訂位，2026/9/24 Thu 19:00，4 位，Booking Reference 75383001。",
             "menuLinks": [
               {
                 "label": "官方網站",
@@ -566,6 +710,12 @@
                 "url": "https://apac-cdn.menuweb.menu/storage/media/companies_menu_pdf/114508562/macelleria-newtown-menu.pdf"
               }
             ]
+          },
+          "bookingNote": "已訂位：IYun Chang，2026/9/24 Thu，Dinner 7:00 PM，4 guests，Booking Reference 75383001，Additional Information: 1st Time Visitor。",
+          "bookingImage": {
+            "url": "/macelleria-newtown-booking-confirmation.png",
+            "alt": "Macelleria Newtown reservation confirmation for IYun Chang on September 24, 2026",
+            "caption": "Macelleria Newtown 訂位確認：Booking Reference 75383001"
           }
         },
         {
@@ -1010,7 +1160,7 @@
           "title": "Munich Brauhaus Sydney 晚餐",
           "type": "food",
           "location": "Munich Brauhaus Sydney",
-          "summary": "晚餐安排在 The Rocks 的 Munich Brauhaus Sydney，從歌劇院或 Circular Quay 步行可到，適合以德式料理與啤酒館氣氛收尾。",
+          "summary": "18:00 到 20:00。晚餐安排在 The Rocks 的 Munich Brauhaus Sydney，已完成 4 人訂位；從歌劇院或 Circular Quay 步行可到，適合以德式料理與啤酒館氣氛收尾。",
           "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Munich+Brauhaus+Sydney",
           "notionUrl": "https://www.notion.so/2db2f57cec1b80ce847fc50d7827ed50",
@@ -1019,7 +1169,7 @@
             "food"
           ],
           "restaurantGuide": {
-            "intro": "Munich Brauhaus Sydney 位在 The Rocks，是巴伐利亞風格啤酒餐廳，主打德式豬腳、香腸、炸肉排、pretzel 與啤酒。Day 2 晚餐接在 Circular Quay / Opera House 後，步行動線順。",
+            "intro": "Munich Brauhaus Sydney 位在 The Rocks，是巴伐利亞風格啤酒餐廳，主打德式豬腳、香腸、炸肉排、pretzel 與啤酒。Day 2 晚餐已完成訂位，2026/9/25 Fri 18:00-20:00，4 位。",
             "menuLinks": [
               {
                 "label": "官方 Sydney Menu",
@@ -1086,6 +1236,12 @@
                 "url": "https://apac-cdn.speisekarte.menu/storage/media/companies_menu_pdf/89083897/munich-brauhaus-the-rocks-menu.pdf"
               }
             ]
+          },
+          "bookingNote": "已訂位：Joe Chang，2026/9/25 Fri，4 guests，18:00 - 20:00。",
+          "bookingImage": {
+            "url": "/munich-brauhaus-sydney-booking-confirmation.png",
+            "alt": "Munich Brauhaus Sydney reservation confirmation for Joe Chang on September 25, 2026",
+            "caption": "Munich Brauhaus Sydney 訂位確認"
           }
         },
         {
@@ -1149,6 +1305,99 @@
             ]
           },
           "notionUrl": "https://www.notion.so/3712f57cec1b80378654d22531599186"
+        },
+        {
+          "id": "day-3-melbourne-myki-setup",
+          "title": "Myki Money 實體卡購買與儲值",
+          "note": "4 個人都使用 iPhone，Melbourne 段改用實體 Full Fare myki card + Myki Money；建議 Day 3 在 Melbourne Airport 先嘗試買卡加值，每人準備 AU$41。",
+          "detail": {
+            "summary": "4 位成員都使用 iPhone，因此不使用 Mobile myki，統一購買實體 Full Fare myki card，並以 Myki Money 加值。Day 3 抵達 Melbourne Airport T4 後可先在機場 myki machines 嘗試處理買卡 / 加值，避免 Day 6 還車後臨時找點。SkyBus 不是 myki-ticketed service，需要另買 SkyBus 票，不列入 Myki 預算。",
+            "sections": [
+              {
+                "title": "實體卡購買流程",
+                "variant": "flow",
+                "items": [
+                  "🛬::抵達 Melbourne::Day 3 抵達 Melbourne Airport T4 後，在 T4 Baggage Reclaim 附近找 myki machines；如果機器可購買 Full Fare myki，就先把 4 張卡買好並加值。",
+                  "📱::iPhone 使用方式::iPhone 不能使用 Mobile myki；4 個人都買實體 Full Fare myki card。",
+                  "💳::購買實體卡::每張 Full Fare myki card 卡費 AU$6，卡費不含可搭乘餘額。",
+                  "💰::直接加值::買卡後每張加 Myki Money AU$35；每人現場準備 AU$41。",
+                  "🏪::備用購買地點::如果機場機器排隊、故障或只能加值 / 查餘額，改到 7-Eleven / myki retail outlets、staffed train stations、Southern Cross Station 的 PTV Hub 購買。",
+                  "🚫::不要等上車買::不能在 tram 或 bus 上購買或加值 myki；第一次搭車前要先買好並完成 top up。",
+                  "✅::最晚確認時間::如果 Day 3 沒處理，最晚 Day 6 還車後、準備從 Franklin Street 搭電車前往 Docklands 前，確認每個人都有一張已加值的 myki。"
+                ]
+              },
+              {
+                "title": "Myki Money 儲值方式",
+                "variant": "flow",
+                "items": [
+                  "💰::只加 Myki Money::本行程不買 myki Pass；每張卡加 Myki Money AU$35 即可。",
+                  "📲::PTV App 加值::使用 PTV App 掃描實體 myki，選擇 AU$35 top up 並付款，再把卡片貼回 iPhone 完成寫入。",
+                  "🏧::機器加值::myki machines 可加 Myki Money、查餘額，也可購買 Full Fare myki smartcard。",
+                  "⚡::Quick Top Up::Quick Top Up machines 可用 contactless Visa / Mastercard 加 AU$5-AU$50 到 myki Money。",
+                  "🏪::現場加值::也可在 myki retail outlets、staffed train stations、PTV Hub 等地點加值；如果馬上要搭車，優先用現場機器或 PTV App。"
+                ]
+              },
+              {
+                "title": "成人 Myki 費用評估",
+                "variant": "fareTable",
+                "items": [
+                  "Day 3 9/26 Sat::Melbourne Airport → Novotel Melbourne Airport::不需 Myki，步行 / 機場周邊移動",
+                  "Day 4-5 9/27-9/28::Melbourne Airport / Yarra Valley / Phillip Island::租車與自駕，不列入 Myki",
+                  "Day 6 9/29 Tue::Franklin Street 還車點 → Docklands 住宿::若全程在 Free Tram Zone 內，AU$0；若路線超出 Free Tram Zone，最多約 AU$5.70",
+                  "Day 7 9/30 Wed::Docklands / CBD → Belgrave → CBD::Zone 1+2 train / tram，日上限約 AU$11.40",
+                  "Day 8 10/1 Thu::Docklands → Carlton North / Carlton → CBD / Docklands::Zone 1+2 tram / bus，日上限約 AU$11.40",
+                  "Day 9 10/2 Fri::Docklands → Seven Seeds / Carlton / DFO South Wharf::約 AU$5.70-11.40，視當天是否超過 2-hour fare",
+                  "Day 9 10/2 Fri::Southern Cross → Melbourne Airport T2::SkyBus 需另買票，不可用 Myki"
+                ]
+              },
+              {
+                "title": "每人儲值建議",
+                "items": [
+                  "4 位成員都以成人 Full Fare + 實體 myki card 估算。",
+                  "每人買卡 AU$6，再加 Myki Money AU$35；每人現場準備 AU$41。",
+                  "4 人合計準備 AU$164：實體卡費 AU$24 + Myki Money 可用餘額 AU$140。",
+                  "Myki Money 實際可能花費約 AU$28.50-34.20 / 人，AU$35 會留一點緩衝。",
+                  "本行程 Myki 使用天數不多，不買 7-day myki Pass。"
+                ]
+              },
+              {
+                "title": "Melbourne 使用規則",
+                "variant": "ruleTable",
+                "items": [
+                  "Free Tram Zone 內搭 tram::不用 touch on / touch off::只要上下車都在 Free Tram Zone 內就免費；不要刷卡，避免被扣 2-hour fare。",
+                  "從 Free Tram Zone 外出發或到 Free Tram Zone 外::需要 touch on::例如 Docklands / CBD 去 Carlton、Carlton North、Belgrave，都要用 myki。",
+                  "搭 train::上車前 touch on，下車後 touch off::Belgrave 來回一定要照規則刷進刷出，系統才會算正確 fare cap。",
+                  "搭 bus::上車 touch on，通常下車 touch off::若不確定是否需要 touch off，就照讀卡機與現場規則操作。",
+                  "搭 tram 且不確定是否全程免費::先確認路線是否完全在 Free Tram Zone::只要有一段超出 Free Tram Zone，就應 touch on。",
+                  "餘額不足或卡片顯示無效::先加值再搭車::可用 PTV App、myki machine、Quick Top Up、retail outlet 或 PTV Hub 加值。",
+                  "Southern Cross → Melbourne Airport SkyBus::不能用 Myki::SkyBus 另買票；Myki 只用於一般 train / tram / bus。",
+                  "4 人同行::每人用自己的卡::不要交換卡片或多人共用同一張 myki。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Transport Victoria: Buy a myki",
+                "url": "https://transport.vic.gov.au/tickets-and-payments/myki/buy-a-myki"
+              },
+              {
+                "label": "Transport Victoria: myki Money and myki Pass",
+                "url": "https://transport.vic.gov.au/tickets-and-payments/myki/myki-money-and-myki-pass"
+              },
+              {
+                "label": "Transport Victoria: Metropolitan fares",
+                "url": "https://transport.vic.gov.au/tickets-and-payments/fares/metropolitan-train-tram-and-bus-fares"
+              },
+              {
+                "label": "Transport Victoria: Airport buses",
+                "url": "https://transport.vic.gov.au/plan-a-journey/travel-tips-and-resources/getting-to-and-from-melbourne-and-avalon-airports"
+              },
+              {
+                "label": "Melbourne Airport: myki machines",
+                "url": "https://www.melbourneairport.com.au/facilities-services"
+              }
+            ]
+          }
         }
       ],
       "items": [
@@ -1518,6 +1767,21 @@
           "tags": [
             "Recommandation",
             "flight"
+          ]
+        },
+        {
+          "id": "day-3-myki-card-purchase",
+          "time": "17:45",
+          "title": "Myki Card 現場購買與加值",
+          "type": "transit",
+          "location": "Melbourne Airport T4",
+          "summary": "抵達 Melbourne Airport T4 後，先在機場 myki machines 嘗試購買實體 Full Fare myki card 並加值 Myki Money；建議每人準備 AU$41（卡費 AU$6 + 加值 AU$35）。如果機場機器不方便，最晚 Day 6 還車後進市區搭車前完成。",
+          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+T4+myki+machine",
+          "tags": [
+            "Recommandation",
+            "transport",
+            "myki"
           ]
         },
         {
@@ -3620,10 +3884,10 @@
       "id": "day-9-melbourne-return",
       "date": "2026-10-02",
       "city": "Melbourne / Taipei",
-      "title": "墨爾本市區散步、最後採買與回國",
-      "summary": "最後一天退房寄放行李後，從 Carlton 的 Seven Seeds 開始，串起墨爾本大學、Queen Victoria Market、Flagstaff Gardens、Chin Chin、Kumo Desserts、State Library Victoria 與最後採買，晚上取行李後經 Southern Cross 搭 Bus 前往機場回國。",
+      "title": "墨爾本市場、圖書館、Outlet 與回國",
+      "summary": "最後一天退房寄放行李後，從 Carlton 的 Seven Seeds 開始，接 Queen Victoria Market、State Library Victoria、DFO South Wharf 午餐與 Outlet 採買，傍晚回住宿取行李後經 Southern Cross 搭 SkyBus 前往機場回國。",
       "coverImage": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
-      "mapsEmbedUrl": "https://www.google.com/maps?q=State%20Library%20Victoria%20Melbourne&output=embed",
+      "mapsEmbedUrl": "https://www.google.com/maps?q=DFO%20South%20Wharf%20Melbourne&output=embed",
       "accent": "#4b7f9f",
       "reminders": [
         {
@@ -3645,8 +3909,8 @@
                 "title": "退房與回飯店",
                 "items": [
                   "08:00 Check-Out 後先把行李寄放在 Melbourne Lifestyle Apartments。",
-                  "17:50 回飯店取行李時，不再重新整理大件行李，只做證件與隨身物確認。",
-                  "18:00 前往 Southern Cross，18:20 接 Bus 前往 Melbourne Airport T2。"
+                  "17:30 回飯店取行李時，不再重新整理大件行李，只做證件與隨身物確認。",
+                  "17:40 前往 Southern Cross，18:00 接 SkyBus 前往 Melbourne Airport T2。"
                 ]
               },
               {
@@ -3666,6 +3930,41 @@
             ]
           },
           "notionUrl": "https://www.notion.so/3722f57cec1b80ab9491eda49f800def"
+        },
+        {
+          "id": "3722f57c-ec1b-8026-85ab-f42191931446",
+          "title": "SkyBus 乘車資訊",
+          "note": "Southern Cross Stop A / Bay 75 搭 SkyBus 前往 Melbourne Airport T2；SkyBus 需另買票，不能用 myki。",
+          "detail": {
+            "summary": "Day 9 傍晚取完行李後，17:40 搭電車前往 Southern Cross，18:00 在 Stop A / Bay 75 搭 SkyBus 前往 Melbourne Airport T2。SkyBus 不屬於 myki-ticketed service，需要另外買票。",
+            "sections": [
+              {
+                "title": "搭乘流程",
+                "variant": "flow",
+                "items": [
+                  "17:30::飯店取行李::回 Melbourne Lifestyle Apartments 取寄放行李，確認護照、機票與隨身物。",
+                  "17:40::前往 Southern Cross::從 Docklands 搭電車到 Southern Cross Station，保留走到 SkyBus 乘車點的時間。",
+                  "18:00::Stop A / Bay 75 上車::在 Southern Cross Stop A / Bay 75 搭 SkyBus 前往 Melbourne Airport T2。",
+                  "18:40::抵達機場::抵達 Melbourne Airport T2 後，優先處理 CI58 報到與托運。"
+                ]
+              },
+              {
+                "title": "票券提醒",
+                "items": [
+                  "SkyBus 需另外買票，不可使用 myki。",
+                  "若當天 Outlet 採買較多，提早回住宿取行李，避免壓縮機場移動時間。",
+                  "保留電子票券或付款紀錄在手機離線可開啟的位置。"
+                ]
+              }
+            ],
+            "links": [
+              {
+                "label": "Schedule: SkyBus Info",
+                "url": "https://www.notion.so/3722f57cec1b80d5820cd5ef8147f37d"
+              }
+            ]
+          },
+          "notionUrl": "https://www.notion.so/3722f57cec1b802685abf42191931446"
         }
       ],
       "items": [
@@ -3675,7 +3974,7 @@
           "title": "Check-Out 並寄放行李",
           "type": "hotel",
           "location": "Melbourne Lifestyle Apartments",
-          "summary": "08:00 到 08:30。退房後先把行李寄放在住宿處，讓最後一天能輕裝走市區行程。",
+          "summary": "08:00 到 08:30。退房後先把行李寄放在住宿處，讓最後一天能輕裝走市場、圖書館與 Outlet 行程。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins",
           "notionUrl": "https://www.notion.so/3102f57cec1b80db8ff0fa796f83553f",
@@ -3706,7 +4005,7 @@
           "title": "Seven Seeds Coffee Roasters 早餐",
           "type": "food",
           "location": "Seven Seeds Coffee Roasters, 114 Berkeley St, Carlton",
-          "summary": "09:00 到 10:00。以 Carlton 的 Seven Seeds Coffee Roasters 作為最後一天早餐與咖啡起點，店址靠近墨爾本大學，吃完後可直接步行銜接校園行程。",
+          "summary": "09:00 到 10:00。以 Carlton 的 Seven Seeds Coffee Roasters 作為最後一天早餐與咖啡起點，吃完後直接步行前往 Queen Victoria Market。",
           "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6ImMzMzVmZjQxLTE1YTctNGYzMi1hZWJmLWM5ZTVkYmY4YjJmMCIsInB1ciI6ImJsb2JfaWQifX0=--a1584a1b6d21c39a12e2594ec40e3bc3b5520cac/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/seven-20seeds-201.jpg",
           "mapsUrl": "https://maps.app.goo.gl/YxqE8KJ7691qzNSz8",
           "notionUrl": "https://www.notion.so/3712f57cec1b8098af4bd27219ea6b59",
@@ -3790,79 +4089,14 @@
           }
         },
         {
-          "id": "3712f57c-ec1b-8099-a02f-d7b214cacf34",
-          "time": "10:00",
-          "title": "步行前往墨爾本大學",
-          "type": "walk",
-          "location": "Seven Seeds Coffee Roasters → University of Melbourne",
-          "summary": "10:00 到 10:10。從 Seven Seeds 步行到 University of Melbourne 校園。",
-          "image": "https://images.unsplash.com/photo-1475727946784-2890c8fdb9c8?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/Seven+Seeds+Coffee+Roasters,+114+Berkeley+St,+Carlton+VIC+3053%E6%BE%B3%E6%B4%B2/%E5%A2%A8%E7%88%BE%E6%9C%AC%E5%A4%A7%E5%AD%B8+3010%E6%BE%B3%E6%B4%B2+Victoria,+Parkville/@-37.8006585,144.9572041,17z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x6ad65d329277dcbd:0x5a84ac1c84d8781e!2m2!1d144.9590027!2d-37.8029711!1m5!1m1!1s0x6ad642d45c07254b:0xeacb63e2b725ff6d!2m2!1d144.960974!2d-37.7983459!2m3!6e0!7e2!8j1780302600!3e3",
-          "notionUrl": "https://www.notion.so/3712f57cec1b8099a02fd7b214cacf34",
-          "tags": [
-            "Recommandation",
-            "moving",
-            "walk"
-          ]
-        },
-        {
-          "id": "2dd2f57c-ec1b-80c6-8792-fe7a7afba2f4",
-          "time": "10:10",
-          "title": "墨爾本大學校園散步",
-          "type": "landmark",
-          "location": "University of Melbourne",
-          "summary": "10:10 到 10:30。短時間走 University of Melbourne 的校園重點，適合看 Old Quad、主要草坪與歷史建築氛圍。",
-          "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Old_Quad_lawn_University_of_Melbourne_2018.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=University+of+Melbourne+Parkville",
-          "notionUrl": "https://www.notion.so/2dd2f57cec1b80c68792fe7a7afba2f4",
-          "tags": [
-            "Recommandation",
-            "attraction",
-            "campus"
-          ],
-          "attractionGuide": {
-            "intro": "University of Melbourne Parkville campus 適合安排成 20 分鐘左右的校園散步。重點放在 Old Quad、Old Quad lawn 與校園歷史建築廊道。",
-            "highlights": [
-              {
-                "name": "Old Quad",
-                "zhName": "Old Quad 古典校園建築",
-                "note": "墨爾本大學最具代表性的歷史校園空間之一，適合快速拍照與感受校園氛圍。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Old_Quad_colonnade_University_of_Melbourne_2018.jpg"
-              },
-              {
-                "name": "Old Quad Lawn",
-                "zhName": "Old Quad 草坪",
-                "note": "短暫停留時最容易掌握的開闊視角，可接在建築廊道後看。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Old_Quad_lawn_University_of_Melbourne_2018.jpg"
-              },
-              {
-                "name": "Southern Colonnade",
-                "zhName": "南側拱廊",
-                "note": "保留校園古典建築感的走廊視角，適合拍建築線條。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Southern_colonnade_Old_Quad_University_of_Melbourne_2018.jpg"
-              }
-            ],
-            "links": [
-              {
-                "label": "University of Melbourne",
-                "url": "https://www.unimelb.edu.au/"
-              },
-              {
-                "label": "Wikimedia Commons Old Quad",
-                "url": "https://commons.wikimedia.org/wiki/File:Old_Quad_lawn_University_of_Melbourne_2018.jpg"
-              }
-            ]
-          }
-        },
-        {
           "id": "3712f57c-ec1b-803f-afa2-e6a01506b730",
-          "time": "10:30",
+          "time": "10:00",
           "title": "步行前往 Queen Victoria Market",
           "type": "walk",
-          "location": "University of Melbourne → Queen Victoria Market",
-          "summary": "10:30 到 10:40。從墨爾本大學步行到 Queen Victoria Market。",
-          "image": "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/%E5%A2%A8%E7%88%BE%E6%9C%AC%E5%A4%A7%E5%AD%B8+3010%E6%BE%B3%E6%B4%B2+Victoria,+Parkville/%E7%B6%AD%E5%A4%9A%E5%88%A9%E4%BA%9E%E5%B8%82%E5%A0%B4+3000%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne,+Queen+St/@-37.8029627,144.9534048,16z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x6ad642d45c07254b:0xeacb63e2b725ff6d!2m2!1d144.960974!2d-37.7983459!1m5!1m1!1s0x6ad65d34379057b1:0xf0456760532d450!2m2!1d144.956785!2d-37.8075798!2m3!6e0!7e2!8j1780302600!3e2",
+          "location": "Seven Seeds Coffee Roasters → Queen Victoria Market",
+          "summary": "10:00 到 10:10。從 Seven Seeds 步行前往 Queen Victoria Market，直接銜接最後一天的快速採買。",
+          "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Seven+Seeds+Coffee+Roasters+Carlton&destination=Queen+Victoria+Market+Melbourne&travelmode=walking",
           "notionUrl": "https://www.notion.so/3712f57cec1b803fafa2e6a01506b730",
           "tags": [
             "Recommandation",
@@ -3872,11 +4106,11 @@
         },
         {
           "id": "2dd2f57c-ec1b-8012-ac9b-e726eaebf123",
-          "time": "10:40",
-          "title": "Queen Victoria Market 採買",
+          "time": "10:10",
+          "title": "Queen Victoria Market 快速採買",
           "type": "shopping",
           "location": "Queen Victoria Market",
-          "summary": "10:40 到 11:30。把 Queen Victoria Market 作為最後一天市區採買點，可看熟食、伴手禮與市場建築。",
+          "summary": "10:10 到 10:30。把 Queen Victoria Market 作為最後一天快速採買點，可看熟食、伴手禮與市場建築；這段時間縮短，建議鎖定想買的品項。",
           "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1535.jpg/1280px-Melbourne_%28AU%29%2C_Queen_Victoria_Market_--_2019_--_1535.jpg",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Queen+Victoria+Market+Melbourne",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b8012ac9be726eaebf123",
@@ -3886,7 +4120,7 @@
             "shopping"
           ],
           "attractionGuide": {
-            "intro": "Queen Victoria Market 是墨爾本市中心代表性市場，這段建議以短時間採買與快速逛重點為主。",
+            "intro": "Queen Victoria Market 是墨爾本市中心代表性市場。這次停留時間縮短，建議以快速採買、補伴手禮與看市場棚架區為主。",
             "highlights": [
               {
                 "name": "Market Sheds",
@@ -3921,13 +4155,13 @@
         },
         {
           "id": "3712f57c-ec1b-8045-9d9b-e9f926fe9996",
-          "time": "11:30",
-          "title": "步行前往 Flagstaff Gardens",
+          "time": "10:30",
+          "title": "步行前往 State Library Victoria",
           "type": "walk",
-          "location": "Queen Victoria Market → Flagstaff Gardens",
-          "summary": "11:30 到 11:35。從市場步行到 Flagstaff Gardens。",
-          "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/%E7%B6%AD%E5%A4%9A%E5%88%A9%E4%BA%9E%E5%B8%82%E5%A0%B4+3000%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne,+Queen+St/%E6%97%97%E6%A1%BF%E8%8A%B1%E5%9C%92+3003%E6%BE%B3%E6%B4%B2+Victoria,+West+Melbourne,+William+St/@-37.8090687,144.9543693,18z/data=!3m1!4b1!4m18!4m17!1m5!1m1!1s0x6ad65d34379057b1:0xf0456760532d450!2m2!1d144.956785!2d-37.8075798!1m5!1m1!1s0x6ad65d49e9ed019d:0xf04567605318580!2m2!1d144.9545199!2d-37.8105577!2m3!6e0!7e2!8j1780302600!3e2",
+          "location": "Queen Victoria Market → State Library Victoria",
+          "summary": "10:30 到 10:45。從 Queen Victoria Market 步行前往 State Library Victoria。",
+          "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Queen+Victoria+Market+Melbourne&destination=State+Library+Victoria+Melbourne&travelmode=walking",
           "notionUrl": "https://www.notion.so/3712f57cec1b80459d9be9f926fe9996",
           "tags": [
             "Recommandation",
@@ -3936,263 +4170,12 @@
           ]
         },
         {
-          "id": "30f2f57c-ec1b-8074-8f51-d9bfa9ec2d18",
-          "time": "11:35",
-          "title": "Flagstaff Gardens 散步",
-          "type": "walk",
-          "location": "Flagstaff Gardens",
-          "summary": "11:35 到 12:00。短暫在 Flagstaff Gardens 放鬆散步，作為市場與 CBD 午餐之間的緩衝。",
-          "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6IjY5ZjMzZmJlLTdhNTItNDhjYy1hNWRiLWVhMDEzZjBlNDEyZiIsInB1ciI6ImJsb2JfaWQifX0=--91dd8e016e2a1f94c6c33175c95227b1d1254cba/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/Flagstaff-Gardens.jpg",
-          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Flagstaff+Gardens+Melbourne",
-          "notionUrl": "https://www.notion.so/30f2f57cec1b80748f51d9bfa9ec2d18",
-          "tags": [
-            "Recommandation",
-            "attraction",
-            "park"
-          ],
-          "attractionGuide": {
-            "intro": "Flagstaff Gardens 是 Melbourne CBD 北側的老公園，適合作為最後一天中段的短暫休息點。",
-            "highlights": [
-              {
-                "name": "Garden Lawns",
-                "zhName": "草地與林蔭",
-                "note": "短時間停留可在草地與樹蔭附近休息，補一點體力。",
-                "image": "https://whatson.melbourne.vic.gov.au/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsiZGF0YSI6IjY5ZjMzZmJlLTdhNTItNDhjYy1hNWRiLWVhMDEzZjBlNDEyZiIsInB1ciI6ImJsb2JfaWQifX0=--91dd8e016e2a1f94c6c33175c95227b1d1254cba/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMDAwLDYwMF19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--0d1dec94e96bf59e4e90ca4a7c11e516560ab297/Flagstaff-Gardens.jpg"
-              },
-              {
-                "name": "William Street Edge",
-                "zhName": "William Street 公園邊界",
-                "note": "從市場走過來會接近這一側，動線最自然。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Flagstaff_Gardens_sign_on_William_Street%2C_Melbourne.jpg"
-              },
-              {
-                "name": "Garden Paths",
-                "zhName": "公園步道",
-                "note": "不需要完整繞園，沿主要步道走到下一段 CBD 方向即可。",
-                "image": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Path_in_Flagstaff_Gardens_looking_south_near_King_Street%2C_Melbourne.jpg"
-              }
-            ],
-            "links": [
-              {
-                "label": "What's On Melbourne Flagstaff Gardens",
-                "url": "https://whatson.melbourne.vic.gov.au/things-to-do/flagstaff-gardens"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3722f57c-ec1b-80dd-b632-e62042a01cbe",
-          "time": "12:00",
-          "title": "沿途逛街步行前往 Chin Chin",
-          "type": "walk",
-          "location": "Flagstaff Gardens → Chin Chin",
-          "summary": "12:00 到 13:00。從 Flagstaff Gardens 往 Flinders Lane 方向步行，途中可順路逛 CBD。",
-          "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/%E6%97%97%E6%A1%BF%E8%8A%B1%E5%9C%92+3003%E6%BE%B3%E6%B4%B2+Victoria,+West+Melbourne,+William+St/Chin+Chin,+125+Flinders+Ln,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/@-37.8127437,144.9568922,15.67z/data=!4m14!4m13!1m5!1m1!1s0x6ad65d49e9ed019d:0xf04567605318580!2m2!1d144.9545199!2d-37.8105577!1m5!1m1!1s0x6ad642b7c4d2fdff:0x12d60c9c7ec005bd!2m2!1d144.9703757!2d-37.8156149!3e2",
-          "notionUrl": "https://www.notion.so/3722f57cec1b80ddb632e62042a01cbe",
-          "tags": [
-            "Recommandation",
-            "moving",
-            "walk",
-            "shopping"
-          ]
-        },
-        {
-          "id": "2e42f57c-ec1b-8074-8898-cdc03416938f",
-          "time": "13:00",
-          "title": "Chin Chin 午餐",
-          "type": "food",
-          "location": "Chin Chin, 125 Flinders Lane, Melbourne",
-          "summary": "13:00 到 14:00。午餐安排在 125 Flinders Lane 的 Chin Chin，主打 bold South East Asian flavours 與 sharing style 菜色；後面還有 Kumo Desserts、圖書館與機場移動，建議以 2-3 道分享菜加一份主食控制份量。",
-          "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Banquet-90-1360x910.jpg",
-          "mapsUrl": "https://maps.app.goo.gl/xW2ZuJxaLVDbJjWS8",
-          "bookingInfoUrl": "https://www.sevenrooms.com/explore/chinchinmelbourne/reservations/manage/?is_success=true&lang=en&token=MDUwMGIwNWIyNTg4ZDhiODQ0OWVmNzRlNmU0NTExYWQyMzRmZTk3MTp7ImFjdHVhbF9pZCI6ICJhaE56Zm5ObGRtVnVjbTl2YlhNdGMyVmpkWEpsY2lnTEVodHVhV2RvZEd4dmIzQmZVbVZ6WlhKMllYUnBiMjVCWTNSMVlXd1lnSURiLU9XdzRnc00iLCAiYWN0dWFsX2NyZWF0ZWRfdGltZXN0YW1wIjogIjE3ODM3NzAzOTguMTE2NjcxIn0%3D",
-          "notionUrl": "https://www.notion.so/2e42f57cec1b80748898cdc03416938f",
-          "tags": [
-            "Recommandation",
-            "food"
-          ],
-          "restaurantGuide": {
-            "intro": "Chin Chin Melbourne 位在 125 Flinders Lane，是 Melbourne CBD 的高人氣 South East Asian restaurant。官方網站標示午晚餐 7 天營業、11:00 開始，菜單適合 sharing style；Day 9 這餐接在市區步行後、又要銜接甜點與機場移動，建議避開完整 Feed Me banquet，改成幾道代表菜分食。",
-            "menuLinks": [
-              {
-                "label": "Chin Chin Melbourne official",
-                "url": "https://www.chinchin.melbourne/"
-              },
-              {
-                "label": "Chin Chin sample menu",
-                "url": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2026/06/CCM_MainMenu-Banchetto_26.05.26_Sample.pdf"
-              },
-              {
-                "label": "Google Maps: Chin Chin",
-                "url": "https://maps.app.goo.gl/xW2ZuJxaLVDbJjWS8"
-              }
-            ],
-            "recommendations": [
-              {
-                "name": "Kingfish Sashimi",
-                "zhName": "鰤魚生魚片",
-                "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Tuna-tartare-59-1360x910.jpg",
-                "note": "官方 sample menu 常見品項，搭配 lime、chilli、coconut 與 Thai basil，適合當午餐清爽開場。"
-              },
-              {
-                "name": "Chin Chin Pork Roll Ups",
-                "zhName": "Chin Chin 豬肉捲餅",
-                "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Pork-ribs-37-1360x910.jpg",
-                "note": "官方 sample menu 品項，以 pulled pork pancakes、slaw 與 plum sauce 組合，適合多人分食。"
-              },
-              {
-                "name": "Braised Wagyu Beef Pad Seuw",
-                "zhName": "燉和牛河粉",
-                "image": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2023/07/Butter-chicken-32-1360x910.jpg",
-                "note": "官方 sample menu 的 rice noodles 類品項，搭配 gai lan 與 crispy shallots，適合補一份主食但不會像 banquet 一樣太重。"
-              },
-              {
-                "name": "Chicken Pad Thai",
-                "zhName": "雞肉泰式炒河粉",
-                "image": "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=900&q=80",
-                "note": "官方 sample menu 品項，包含 dried shrimp、bean sprouts 與 peanuts；若想選穩定、容易分食的主食可點。"
-              },
-              {
-                "name": "BBQ King Salmon in Banana Leaf",
-                "zhName": "香蕉葉椰香紅咖哩烤鮭魚",
-                "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80",
-                "note": "官方 sample menu 品項，banana leaf、coconut red curry 的方向比較有特色，適合想吃海鮮主菜時選。"
-              }
-            ],
-            "sources": [
-              {
-                "label": "Chin Chin Melbourne official",
-                "url": "https://www.chinchin.melbourne/"
-              },
-              {
-                "label": "Chin Chin sample menu",
-                "url": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2026/06/CCM_MainMenu-Banchetto_26.05.26_Sample.pdf"
-              },
-              {
-                "label": "Google Maps: Chin Chin",
-                "url": "https://maps.app.goo.gl/xW2ZuJxaLVDbJjWS8"
-              }
-            ],
-            "menuEmbeds": [
-              {
-                "label": "Chin Chin sample menu",
-                "url": "https://www.chinchinrestaurant.com.au/melbourne/wp-content/uploads/sites/2/2026/06/CCM_MainMenu-Banchetto_26.05.26_Sample.pdf"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3722f57c-ec1b-80be-858a-dbda59ba86b1",
-          "time": "14:00",
-          "title": "CBD Shopping 並步行前往 Kumo Desserts",
-          "type": "walk",
-          "location": "Chin Chin → Kumo Desserts Melbourne",
-          "summary": "14:00 到 15:00。此段同時安排 CBD Shopping 與步行前往 Kumo Desserts，從 Chin Chin 往 Little Lonsdale Street 移動時順路逛街。",
-          "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/Chin+Chin,+125+Flinders+Ln,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/Kumo+Desserts+Melbourne,+198+Little+Lonsdale+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/@-37.8119045,144.9613473,15.96z/data=!3m1!5s0x6ad642cae96e5483:0xe2c955d3c4c52ef5!4m14!4m13!1m5!1m1!1s0x6ad642b7c4d2fdff:0x12d60c9c7ec005bd!2m2!1d144.9703757!2d-37.8156149!1m5!1m1!1s0x6ad643a164cbbf61:0x9ab8957462ee32ee!2m2!1d144.9635272!2d-37.8107337!3e2",
-          "notionUrl": "https://www.notion.so/3722f57cec1b80be858adbda59ba86b1",
-          "tags": [
-            "Recommandation",
-            "moving",
-            "walk",
-            "shopping"
-          ]
-        },
-        {
-          "id": "3722f57c-ec1b-80ee-91c0-f12e0aac6477",
-          "time": "15:00",
-          "title": "Kumo Desserts 點心",
-          "type": "food",
-          "location": "Kumo Desserts Melbourne, 198 Little Lonsdale Street, Melbourne",
-          "summary": "15:00 到 15:30。Kumo Desserts 位於 198 Little Lonsdale Street，主打日式 cloud-like soufflé pancakes、house-made drinks 與 specialty lattes；pancakes 僅限內用且需約 20 分鐘製作，這段 30 分鐘會偏緊，建議提前決定口味。",
-          "image": "https://static.wixstatic.com/media/28bb98_bb72c45b43274a3e9a54c30817cb8959~mv2.jpg",
-          "mapsUrl": "https://maps.app.goo.gl/xoyPLTA11yMm5d2n8",
-          "notionUrl": "https://www.notion.so/3722f57cec1b80ee91c0f12e0aac6477",
-          "tags": [
-            "Recommandation",
-            "food",
-            "dessert"
-          ],
-          "restaurantGuide": {
-            "intro": "Kumo Desserts Melbourne 是 198 Little Lonsdale Street 的日式 soufflé pancake 甜點店。官方說明 pancakes 只限內用，因為蓬鬆口感約 15 分鐘後會開始下降；每份也需要約 20 分鐘製作，並有 60 分鐘內用時間限制。Day 9 這站建議以一份 pancake 分食加一杯 house drink 為主，避免影響後續 State Library 與機場節奏。",
-            "menuLinks": [
-              {
-                "label": "Kumo Desserts official",
-                "url": "https://www.kumodesserts.com/"
-              },
-              {
-                "label": "Google Maps: Kumo Desserts",
-                "url": "https://maps.app.goo.gl/xoyPLTA11yMm5d2n8"
-              }
-            ],
-            "recommendations": [
-              {
-                "name": "Sunny Honey",
-                "zhName": "蜂蜜舒芙蕾鬆餅",
-                "image": "https://static.wixstatic.com/media/28bb98_bb72c45b43274a3e9a54c30817cb8959~mv2.jpg",
-                "note": "官方列為 classic，搭配 Manuka honey；第一次到 Kumo 想吃最基本的 fluffy texture，可選這款。"
-              },
-              {
-                "name": "Strawberry Skies",
-                "zhName": "草莓舒芙蕾鬆餅",
-                "image": "https://static.wixstatic.com/media/28bb98_0ec8d290ab1e4e3d8dd63ea8466ecab5~mv2.jpg",
-                "note": "官方 pancake 口味，搭配 strawberry coulis 與 strawberry compote，水果感比較明顯，適合多人分食。"
-              },
-              {
-                "name": "Boba Brulee Bomb",
-                "zhName": "珍珠布蕾舒芙蕾鬆餅",
-                "image": "https://static.wixstatic.com/media/28bb98_969242c43247450d8c45635b6743254d~mv2.jpg",
-                "note": "官方 pancake 口味，搭配 caramelised custard 與 black sugar boba，甜度與份量感較高，適合想吃特色款時選。"
-              },
-              {
-                "name": "Biscoffee",
-                "zhName": "Biscoff 咖啡舒芙蕾鬆餅",
-                "image": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80",
-                "note": "官方 pancake 口味，以 Biscoff 與 coffee stuffed soufflé pancake 搭配 mascarpone；喜歡咖啡甜點的人可優先考慮。"
-              },
-              {
-                "name": "Mont Blanc / Mandarin Yuzu",
-                "zhName": "蒙布朗咖啡 / 柑橘柚子氣泡飲",
-                "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=80",
-                "note": "官方 house drinks，若 pancake 來不及等，飲品可外帶；Mont Blanc 是 coffee cream foam，Mandarin Yuzu 則比較清爽。"
-              }
-            ],
-            "sources": [
-              {
-                "label": "Kumo Desserts official",
-                "url": "https://www.kumodesserts.com/"
-              },
-              {
-                "label": "Google Maps: Kumo Desserts",
-                "url": "https://maps.app.goo.gl/xoyPLTA11yMm5d2n8"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3722f57c-ec1b-80d4-ba3e-f07c55dc2986",
-          "time": "15:30",
-          "title": "步行前往 State Library Victoria",
-          "type": "walk",
-          "location": "Kumo Desserts Melbourne → State Library Victoria",
-          "summary": "15:30 到 15:40。從 Kumo Desserts 步行到 State Library Victoria。",
-          "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/Kumo+Desserts+Melbourne,+198+Little+Lonsdale+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/State+Library+Victoria,+328+Swanston+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/@-37.8100723,144.9650256,16.16z/data=!3m1!5s0x6ad642cae96e5483:0xe2c955d3c4c52ef5!4m14!4m13!1m5!1m1!1s0x6ad643a164cbbf61:0x9ab8957462ee32ee!2m2!1d144.9635272!2d-37.8107337!1m5!1m1!1s0x6ad642cb954b1ce9:0xf187674ba9830e78!2m2!1d144.9654504!2d-37.8097255!3e2",
-          "notionUrl": "https://www.notion.so/3722f57cec1b80d4ba3ef07c55dc2986",
-          "tags": [
-            "Recommandation",
-            "moving",
-            "walk"
-          ]
-        },
-        {
           "id": "2dd2f57c-ec1b-803c-8ac8-f2d711d0a333",
-          "time": "15:40",
-          "title": "State Library Victoria 與最後逛街",
+          "time": "10:45",
+          "title": "State Library Victoria",
           "type": "landmark",
-          "location": "State Library Victoria / Melbourne CBD",
-          "summary": "15:40 到 16:50。先看 State Library Victoria 的閱讀室與公共空間，再把剩餘時間留給 CBD 最後採買。",
+          "location": "State Library Victoria",
+          "summary": "10:45 到 11:30。先看 State Library Victoria 的 La Trobe Reading Room 與公共空間，再搭電車往 DFO South Wharf。",
           "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/State_Library_Victoria%2C_La_Trobe_Reading_Room_Dome.jpg",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=State+Library+Victoria+Melbourne",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b803c8ac8f2d711d0a333",
@@ -4202,7 +4185,7 @@
             "shopping"
           ],
           "attractionGuide": {
-            "intro": "State Library Victoria 是 Melbourne CBD 內最適合短暫停留的室內景點之一。這段可先看 La Trobe Reading Room，再依時間在 Swanston / Melbourne Central 一帶採買。",
+            "intro": "State Library Victoria 是 Melbourne CBD 內最適合短暫停留的室內景點之一。這段可優先看 La Trobe Reading Room，再銜接電車前往 DFO South Wharf。",
             "highlights": [
               {
                 "name": "La Trobe Reading Room",
@@ -4236,104 +4219,15 @@
           }
         },
         {
-          "id": "3722f57c-ec1b-808f-a35c-ea59e8d5344b",
-          "time": "16:50",
-          "title": "Stalactites Restaurant 外帶晚餐",
-          "type": "food",
-          "location": "Stalactites Restaurant, 177/183 Lonsdale Street, Melbourne",
-          "summary": "16:50 到 17:20。回飯店取行李前先到 Lonsdale Street 的 Stalactites Restaurant 外帶晚餐；這間是 1978 年開始的 Melbourne Greek institution，建議以 chicken gyros souvlaki、mixed gyros 或可快速分食的 Greek takeaway 為主。",
-          "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327777-7CE6UYV0P0BT7BWIADGC/DSC01004+copy.jpg?format=1000w",
-          "mapsUrl": "https://maps.app.goo.gl/Ve4GZ4rETPqgY8LdA",
-          "notionUrl": "https://www.notion.so/3722f57cec1b808fa35cea59e8d5344b",
-          "tags": [
-            "Recommandation",
-            "food",
-            "takeaway"
-          ],
-          "restaurantGuide": {
-            "intro": "Stalactites Restaurant 位在 177/183 Lonsdale Street，是 Melbourne CBD 長年營業的 Greek restaurant / takeaway，Konstandakopoulos family 自 1978 年經營至今。官方菜單的重點是 warm signature pita、house-made tzatziki、spit-roasted chicken / lamb gyros、Greek dips、grilled meats 與 Peloponnese home-style dishes。Day 9 這段要接回飯店取行李與機場巴士，最實用的做法是外帶 souvlaki，不建議點需要坐下慢慢吃的分享盤。",
-            "menuLinks": [
-              {
-                "label": "Stalactites Restaurant",
-                "url": "https://www.stalactites.com.au/"
-              },
-              {
-                "label": "Stalactites menu",
-                "url": "https://www.stalactites.com.au/menu"
-              },
-              {
-                "label": "Google Maps: Stalactites Restaurant",
-                "url": "https://maps.app.goo.gl/Ve4GZ4rETPqgY8LdA"
-              }
-            ],
-            "recommendations": [
-              {
-                "name": "Chicken Gyros Souvlaki",
-                "zhName": "雞肉希臘烤肉捲",
-                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327753-TIMGANQIHNYSERUGXKFS/Salactites_hr+57+copy.jpg?format=1000w",
-                "note": "官方 menu 的 famous souvlaki 類別品項，使用 spit-roasted hand-carved chicken gyros，包進 signature pita、lettuce、tomato、onion 與 house-made tzatziki；最適合這段外帶。"
-              },
-              {
-                "name": "Mixed Gyros Souvlaki",
-                "zhName": "雞羊綜合希臘烤肉捲",
-                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327790-CXCU853ZO0YMRHR3F23R/Salactites_hr+92.jpg?format=1000w",
-                "note": "官方 menu 品項，混合 lamb 與 chicken gyros；若想比單一雞肉更有份量與風味，可選這款。"
-              },
-              {
-                "name": "Lamb Gyros Souvlaki",
-                "zhName": "羊肉希臘烤肉捲",
-                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327790-CXCU853ZO0YMRHR3F23R/Salactites_hr+92.jpg?format=1000w",
-                "note": "官方 menu 品項，使用 spit-roasted lamb shoulder；喜歡羊肉的人可點，但上車前建議避免加太多醬。"
-              },
-              {
-                "name": "Chicken Gyros Plate",
-                "zhName": "雞肉 Gyros 盤",
-                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327898-KU2NMJGWHMALGR48WJOM/DSC00634.jpg?format=1000w",
-                "note": "官方 gyros plate 類別品項，搭配 Greek garden salad 與 chips；如果決定在店內快速吃完，比外帶捲餅更完整。"
-              },
-              {
-                "name": "Appetiser Platter",
-                "zhName": "希臘前菜拼盤",
-                "image": "https://images.squarespace-cdn.com/content/v1/69f2c6f68524b6753a47ee0d/1777518327898-KU2NMJGWHMALGR48WJOM/DSC00634.jpg?format=1000w",
-                "note": "官方 menu 包含 tzatziki、hommus、taramá、féta、dolmadákia 等；只有時間充裕、想多人分食時才建議。"
-              }
-            ],
-            "sources": [
-              {
-                "label": "Stalactites Restaurant",
-                "url": "https://www.stalactites.com.au/"
-              },
-              {
-                "label": "Stalactites menu",
-                "url": "https://www.stalactites.com.au/menu"
-              },
-              {
-                "label": "Google Maps: Stalactites Restaurant",
-                "url": "https://maps.app.goo.gl/Ve4GZ4rETPqgY8LdA"
-              },
-              {
-                "label": "What's On Melbourne: Stalactites Restaurant",
-                "url": "https://whatson.melbourne.vic.gov.au/eat-and-drink/stalactites-restaurant"
-              }
-            ],
-            "menuEmbeds": [
-              {
-                "label": "Stalactites Melbourne Menu PDF",
-                "url": "/notion-menus/stalactites-melbourne-menu.pdf"
-              }
-            ]
-          }
-        },
-        {
-          "id": "3722f57c-ec1b-80f7-8898-f7b5a3ba7181",
-          "time": "17:20",
-          "title": "搭電車回飯店取行李",
+          "id": "3722f57c-ec1b-80dd-b632-e62042a01cbe",
+          "time": "11:30",
+          "title": "搭電車前往 DFO South Wharf",
           "type": "transit",
-          "location": "Stalactites Restaurant → Melbourne Lifestyle Apartments",
-          "summary": "17:20 到 17:50。從 Stalactites 搭電車回 Docklands 住宿處取行李。",
+          "location": "State Library Victoria → DFO South Wharf",
+          "summary": "11:30 到 12:00。從 State Library Victoria / CBD 一帶搭電車前往 DFO South Wharf，銜接午餐與 Outlet 採買。",
           "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/Stalactites+Restaurant,+177%2F183+Lonsdale+St,+Melbourne+VIC+3000%E6%BE%B3%E6%B4%B2/Melbourne+Lifestyle+Apartments+-+Best+Views+on+Collins,+893A+Collins+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/@-37.8152502,144.945625,15z/data=!3m2!4b1!5s0x6ad642cbc00ace7f:0xdda4724d97e5def5!4m14!4m13!1m5!1m1!1s0x6ad642c97c8b639f:0x87e73340c32b8f32!2m2!1d144.9670491!2d-37.8110808!1m5!1m1!1s0x6ad65dbc86c175e3:0x9027995d87247ad7!2m2!1d144.9417445!2d-37.8209756!3e3",
-          "notionUrl": "https://www.notion.so/3722f57cec1b80f78898f7b5a3ba7181",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=State+Library+Victoria+Melbourne&destination=DFO+South+Wharf+Melbourne&travelmode=transit",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80ddb632e62042a01cbe",
           "tags": [
             "Recommandation",
             "moving",
@@ -4341,12 +4235,206 @@
           ]
         },
         {
+          "id": "2e42f57c-ec1b-8074-8898-cdc03416938f",
+          "time": "12:00",
+          "title": "DFO South Wharf 午餐",
+          "type": "food",
+          "location": "DFO South Wharf",
+          "summary": "12:00 到 13:00。在 DFO South Wharf 內用午餐，優先選 food court / takeaway 的快速餐點；若想坐下休息，可走到 South Wharf Promenade 的河畔餐廳。",
+          "image": "https://cdn.broadsheet.com.au/cache/6c/ff/6cffd44a5b0119fdd9f34037fac5f8ef.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=DFO+South+Wharf+Melbourne",
+          "notionUrl": "https://www.notion.so/2e42f57cec1b80748898cdc03416938f",
+          "tags": [
+            "Recommandation",
+            "food",
+            "outlet"
+          ],
+          "restaurantGuide": {
+            "intro": "DFO South Wharf 的餐飲分成 food court / takeaway 與 South Wharf Promenade 河畔餐廳兩種節奏。Day 9 午餐只有 1 小時，建議先用快速餐點補體力，把長時間用餐留給需要坐下休息時再選。",
+            "menuLinks": [
+              {
+                "label": "官方 Food & Dining 目錄",
+                "url": "https://www.south-wharf.dfo.com.au/dining/food-dining"
+              },
+              {
+                "label": "DFO South Wharf Centre Services",
+                "url": "https://www.south-wharf.dfo.com.au/centre-info/centre-services"
+              },
+              {
+                "label": "Broadsheet 河畔餐廳指南",
+                "url": "https://www.broadsheet.com.au/melbourne/food-and-drink/article/guide-eating-deliciously-dfo-south-wharf"
+              },
+              {
+                "label": "Google Maps: DFO South Wharf",
+                "url": "https://www.google.com/maps/search/?api=1&query=DFO+South+Wharf+Melbourne"
+              }
+            ],
+            "recommendations": [
+              {
+                "name": "Food court quick lunch",
+                "zhName": "快速午餐",
+                "note": "適合 12:00-13:00 快速解決：Rice Workshop、Roll'd、Soul Origin、SpudBAR、Sushi Jiro、Taiwan House、Thailander、Dumpling Chef、Oporto、Subway。"
+              },
+              {
+                "name": "Coffee / drinks break",
+                "zhName": "咖啡與飲料",
+                "note": "中途補水或咖啡可找 Boost Juice、Piccolo Espresso、Studio Coffee、Espresso Room、Tea Mode、Yo Way。"
+              },
+              {
+                "name": "South Wharf Promenade",
+                "zhName": "河畔坐下吃",
+                "image": "https://cdn.broadsheet.com.au/cache/6c/ff/6cffd44a5b0119fdd9f34037fac5f8ef.jpg",
+                "note": "如果想坐久一點，可看 Bangpop、Munich Brauhaus、Plus 5 Bar、The General Assembly、Melbourne Public、Ruby Riviera、Melbourne Cellar Door。"
+              },
+              {
+                "name": "Shopping-friendly choice",
+                "zhName": "採買友善選擇",
+                "note": "下午要逛 outlet，午餐建議選飯碗、壽司、捲餅或三明治類，避免太重、太慢或需要排隊很久的餐廳。"
+              }
+            ],
+            "sources": [
+              {
+                "label": "DFO South Wharf Food & Dining",
+                "url": "https://www.south-wharf.dfo.com.au/dining/food-dining"
+              },
+              {
+                "label": "DFO South Wharf Centre Services",
+                "url": "https://www.south-wharf.dfo.com.au/centre-info/centre-services"
+              },
+              {
+                "label": "Broadsheet DFO South Wharf dining guide",
+                "url": "https://www.broadsheet.com.au/melbourne/food-and-drink/article/guide-eating-deliciously-dfo-south-wharf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3722f57c-ec1b-80ee-91c0-f12e0aac6477",
+          "time": "13:00",
+          "title": "DFO South Wharf Outlet 採買",
+          "type": "shopping",
+          "location": "DFO South Wharf",
+          "summary": "13:00 到 17:00。下午集中在 DFO South Wharf Outlet 採買，優先看運動鞋服、精品包款、澳洲伴手禮與小型居家用品；先開官方 centre directory / map 確認樓層動線。",
+          "image": "https://a.storyblok.com/f/129601/1920x1282/99de85f49d/dfo-south-wharf_exterior-purplesky.jpg",
+          "mapsUrl": "https://www.google.com/maps/search/?api=1&query=DFO+South+Wharf+Melbourne",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80ee91c0f12e0aac6477",
+          "tags": [
+            "Recommandation",
+            "shopping",
+            "outlet"
+          ],
+          "attractionGuide": {
+            "intro": "DFO South Wharf 是 Yarra River 旁的多樓層 outlet centre，結合 outlet mall、homemaker precinct 與 South Wharf Promenade 河畔餐飲。Day 9 是週五，官方營業時間到 21:00，但行程 17:20 要回住宿取行李，建議把 13:00-17:00 當作集中採買時段。",
+            "highlights": [
+              {
+                "name": "Sport / outdoor / sneakers",
+                "zhName": "運動、戶外與鞋款",
+                "image": "https://a.storyblok.com/f/129601/1920x1282/99de85f49d/dfo-south-wharf_exterior-purplesky.jpg",
+                "note": "重點店：Adidas、Asics、Brooks、HOKA、New Balance、Nike Unite、Puma、Reebok、Salomon、Saucony、Skechers、2XU、Kathmandu、Macpac、Icebreaker、The North Face、Timberland。熱門商品建議看跑鞋、球鞋、運動服、雨衣、保暖層與輕量戶外用品。"
+              },
+              {
+                "name": "Fashion / bags / leather",
+                "zhName": "時裝、包款與皮件",
+                "note": "重點店：Armani Outlet、BOSS、Calvin Klein、Coach、Kate Spade、Lacoste、Levi's、M.J. Bale、Maje、Max Mara、Michael Kors、Mimco、Mulberry、Oroton Outlet、Polo Ralph Lauren、R.M.Williams、Tommy Hilfiger。熱門商品建議看牛仔褲、polo 衫、皮夾、包款、皮鞋與上班服飾。"
+              },
+              {
+                "name": "Australia gifts / restock",
+                "zhName": "澳洲伴手禮與補貨",
+                "note": "重點店：The Ugg Shop、Ugg Express、Ugg Outlet、Bonds Outlet、Peter Alexander、Lindt、The Cosmetics Company Store、Chemist Warehouse、Sunglass Hut、Swarovski、Bath & Body Works。熱門商品建議看 UGG、內著襪子、睡衣、巧克力、保養彩妝、墨鏡與小飾品。"
+              },
+              {
+                "name": "Homemaker / tech",
+                "zhName": "居家、廚具與電器",
+                "note": "重點店：Adairs、Bed Bath N' Table、Le Creuset、House、Freedom Furniture、Forty Winks、Focus On Furniture、Howards Storage World、JB Hi-Fi Home、Koala Living、Nick Scali、Snooze。回國前避免大型家具，優先看小型廚具、收納、寢具小物與 3C 配件。"
+              },
+              {
+                "name": "Map / services",
+                "zhName": "地圖、置物與服務",
+                "note": "官方 centre directory 可下載地圖 PDF；Customer Service Desk 在 Ground Floor Oakley 旁。若手上行李太多，官方服務頁列出 1st level、Tourist Lounge 附近、JB Hi-Fi 對面的 smartelocke luggage lockers。"
+              },
+              {
+                "name": "4-hour shopping route",
+                "zhName": "建議採買動線",
+                "note": "建議 13:00 先看運動鞋服與戶外，14:15 轉精品包款與服飾，15:30 補澳洲伴手禮與美妝，16:20 前結帳、整理戰利品並預留回飯店取行李時間。"
+              }
+            ],
+            "links": [
+              {
+                "label": "官方 Shopping Directory",
+                "url": "https://www.south-wharf.dfo.com.au/shopping"
+              },
+              {
+                "label": "官方 Food & Dining",
+                "url": "https://www.south-wharf.dfo.com.au/dining/food-dining"
+              },
+              {
+                "label": "官方 Centre Directory / Map",
+                "url": "https://www.south-wharf.dfo.com.au/centre-info/centre-directory"
+              },
+              {
+                "label": "下載官方 Centre Directory PDF",
+                "url": "https://a.storyblok.com/f/62277/x/5d0765cccd/19908_dfosw_directory_may24_fa.pdf"
+              },
+              {
+                "label": "DFO Centre & Tourist Services",
+                "url": "https://www.south-wharf.dfo.com.au/centre-info/centre-services"
+              },
+              {
+                "label": "Google Maps: DFO South Wharf",
+                "url": "https://www.google.com/maps/search/?api=1&query=DFO+South+Wharf+Melbourne"
+              },
+              {
+                "label": "Vicinity DFO South Wharf",
+                "url": "https://www.vicinity.com.au/portfolio/our-properties/dfo-south-wharf"
+              }
+            ],
+            "sources": [
+              {
+                "label": "DFO South Wharf Shopping Directory",
+                "url": "https://www.south-wharf.dfo.com.au/shopping"
+              },
+              {
+                "label": "DFO South Wharf Food & Dining",
+                "url": "https://www.south-wharf.dfo.com.au/dining/food-dining"
+              },
+              {
+                "label": "DFO South Wharf Centre Directory",
+                "url": "https://www.south-wharf.dfo.com.au/centre-info/centre-directory"
+              },
+              {
+                "label": "DFO South Wharf Centre Services",
+                "url": "https://www.south-wharf.dfo.com.au/centre-info/centre-services"
+              },
+              {
+                "label": "Vicinity Centres: DFO South Wharf",
+                "url": "https://www.vicinity.com.au/portfolio/our-properties/dfo-south-wharf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "3722f57c-ec1b-80f7-8898-f7b5a3ba7181",
+          "time": "17:20",
+          "title": "步行回飯店取行李",
+          "type": "walk",
+          "location": "DFO South Wharf → Melbourne Lifestyle Apartments",
+          "summary": "17:20 到 17:30。從 DFO South Wharf 返回 Docklands 住宿處取行李；若採買較多，提早離開 Outlet 比較穩。",
+          "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=1200&q=80",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=DFO+South+Wharf+Melbourne&destination=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&travelmode=walking",
+          "notionUrl": "https://www.notion.so/3722f57cec1b80f78898f7b5a3ba7181",
+          "tags": [
+            "Recommandation",
+            "moving",
+            "walk"
+          ]
+        },
+        {
           "id": "3722f57c-ec1b-801f-a523-d297cbc2522a",
-          "time": "17:50",
+          "time": "17:30",
           "title": "飯店取行李",
           "type": "hotel",
           "location": "Melbourne Lifestyle Apartments",
-          "summary": "17:50 到 18:00。回住宿處取回寄放行李，準備前往 Southern Cross 銜接機場巴士。",
+          "summary": "17:30 到 17:40。回住宿處取回寄放行李，確認護照、機票與隨身物後準備前往 Southern Cross。",
           "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins",
           "notionUrl": "https://www.notion.so/3722f57cec1b801fa523d297cbc2522a",
@@ -4357,11 +4445,11 @@
         },
         {
           "id": "3722f57c-ec1b-8042-a206-d175a4aaaf3a",
-          "time": "18:00",
+          "time": "17:40",
           "title": "搭電車前往 Southern Cross",
           "type": "transit",
           "location": "Melbourne Lifestyle Apartments → Southern Cross Station",
-          "summary": "18:00 到 18:20。從住宿處搭電車前往 Southern Cross，銜接 Stop A / Bay 75 的機場巴士。",
+          "summary": "17:40 到 18:00。從住宿處搭電車前往 Southern Cross，銜接 Stop A / Bay 75 的 SkyBus。",
           "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/Melbourne+Lifestyle+Apartments+-+Best+Views+on+Collins,+893A+Collins+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/Southern+Cross,+Spencer+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/@-37.8199215,144.9419193,16z/data=!3m2!4b1!5s0x6ad65d4fd0dc81b5:0x7f9ae22ad7e0c9b5!4m14!4m13!1m5!1m1!1s0x6ad65dbc86c175e3:0x9027995d87247ad7!2m2!1d144.9417445!2d-37.8209756!1m5!1m1!1s0x6ad65d4e2e5ae775:0x1d04567609f4e540!2m2!1d144.9525!2d-37.81839!3e3",
           "notionUrl": "https://www.notion.so/3722f57cec1b8042a206d175a4aaaf3a",
@@ -4373,20 +4461,27 @@
         },
         {
           "id": "2e62f57c-ec1b-804e-b404-eeb6f6e6a668",
-          "time": "18:20",
-          "title": "Bus（Stop A / Bay 75）前往 Melbourne Airport T2",
+          "time": "18:00",
+          "title": "SkyBus（Stop A / Bay 75）前往 Melbourne Airport T2",
           "type": "transit",
           "location": "Southern Cross Station → Melbourne Airport T2",
-          "summary": "18:20 到 19:00。從 Southern Cross Stop A / Bay 75 搭 Bus 前往 Melbourne Airport 第二航廈。",
+          "summary": "18:00 到 18:40。從 Southern Cross Stop A / Bay 75 搭 SkyBus 前往 Melbourne Airport 第二航廈；SkyBus 需另買票，不可使用 myki。",
           "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
-          "mapsUrl": "https://www.google.com/maps/dir/Melbourne+Lifestyle+Apartments+-+Best+Views+on+Collins,+893A+Collins+St,+Docklands+VIC+3008%E6%BE%B3%E6%B4%B2/%E5%A2%A8%E7%88%BE%E6%9C%AC%E6%A9%9F%E5%A0%B4+3045%E6%BE%B3%E6%B4%B2+Victoria,+Melbourne+Airport,+Arrival+Dr/@-37.7457403,144.8160522,12z/am=t/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x6ad65dbc86c175e3:0x9027995d87247ad7!2m2!1d144.9417445!2d-37.8209756!1m5!1m1!1s0x6ad659a9ebaa3917:0xf045676052ff090!2m2!1d144.8429763!2d-37.6708228!3e3",
+          "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=Southern+Cross+Station+Melbourne&destination=Melbourne+Airport+Terminal+2&travelmode=transit",
           "notionUrl": "https://www.notion.so/2e62f57cec1b804eb404eeb6f6e6a668",
           "tags": [
             "Recommandation",
             "moving",
             "bus",
             "skybus"
-          ]
+          ],
+          "expense": {
+            "amount": 3000,
+            "currency": "TWD",
+            "category": "transport",
+            "status": "pending",
+            "source": "Notion Schedule Payment"
+          }
         },
         {
           "id": "2dc2f57c-ec1b-80ba-a36f-db3e77970d58",
@@ -4660,6 +4755,19 @@
       "location": "Melbourne to Taipei",
       "source": "Notion Schedule Payment",
       "notionUrl": "https://www.notion.so/2d62f57cec1b8021b33cfc45eeb26fdd"
+    },
+    {
+      "id": "2e62f57c-ec1b-80bf-b42b-d5a54ba81ed4",
+      "title": "Sky Bus",
+      "amount": 3000,
+      "currency": "TWD",
+      "category": "transport",
+      "status": "pending",
+      "day": "Day 9",
+      "date": "2026-10-02",
+      "location": "Southern Cross Station to Melbourne Airport T2",
+      "source": "Notion Schedule Payment",
+      "notionUrl": "https://www.notion.so/2e62f57cec1b80bfb42bd5a54ba81ed4"
     }
   ]
 }

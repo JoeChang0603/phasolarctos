@@ -635,6 +635,77 @@ function mapQueryFromUrl(mapsUrl?: string) {
   }
 }
 
+function mapRouteEmbedFromUrl(mapsUrl?: string, fallbackTravelMode?: string) {
+  if (!mapsUrl) return "";
+
+  try {
+    const url = new URL(mapsUrl);
+    const isGoogleMapsUrl =
+      url.hostname.includes("google.com") || url.hostname.includes("google.com.au");
+    if (!isGoogleMapsUrl || !url.pathname.includes("/maps/dir")) return "";
+
+    const origin = url.searchParams.get("origin");
+    const destination = url.searchParams.get("destination");
+    const travelmode = url.searchParams.get("travelmode") ?? fallbackTravelMode;
+
+    if (origin && destination) {
+      return legacyRouteEmbedUrl(origin, [destination], travelmode ?? undefined);
+    }
+
+    const routeParts: string[] = [];
+    const pathParts = url.pathname
+      .split("/")
+      .map((part) => part.trim())
+      .filter(Boolean);
+    const dirIndex = pathParts.findIndex((part) => part === "dir");
+
+    for (const part of pathParts.slice(dirIndex + 1)) {
+      if (part.startsWith("@") || part.startsWith("data=") || part.startsWith("am=")) break;
+      routeParts.push(decodeURIComponent(part.replace(/\+/g, " ")));
+    }
+
+    if (routeParts.length < 2) return "";
+
+    const [routeOrigin, ...routeStops] = routeParts;
+    return legacyRouteEmbedUrl(routeOrigin, routeStops, travelmode ?? undefined);
+  } catch {
+    return "";
+  }
+}
+
+function mapTravelModeForMovingItem(item: TravelItem) {
+  const text = `${item.title} ${item.location ?? ""} ${item.summary} ${item.tags?.join(" ") ?? ""}`.toLowerCase();
+
+  if (item.type === "walk") return "walking";
+  if (
+    item.tags?.some((tag) => ["driving", "drive", "car", "rental-car"].includes(tag.toLowerCase())) ||
+    /\bdriving\b|\bdrive\b|\bcar\b/.test(text) ||
+    text.includes("自駕") ||
+    text.includes("租車")
+  ) {
+    return "driving";
+  }
+
+  return "transit";
+}
+
+function legacyRouteEmbedUrl(origin: string, stops: string[], travelmode?: string) {
+  if (!origin || !stops.length) return "";
+
+  const dirflgByTravelMode: Record<string, string> = {
+    driving: "d",
+    transit: "r",
+    walking: "w",
+    bicycling: "b",
+  };
+  const dirflg = travelmode ? dirflgByTravelMode[travelmode] : "";
+  const routeUrl = `https://maps.google.com/maps?saddr=${encodeURIComponent(origin)}&daddr=${stops
+    .map((stop) => encodeURIComponent(stop))
+    .join("+to:")}&output=embed`;
+
+  return dirflg ? `${routeUrl}&dirflg=${dirflg}` : routeUrl;
+}
+
 function routePoint(day: TravelDay, item: TravelItem) {
   return mapQueryFromUrl(item.mapsUrl) || item.location || `${item.title} ${day.city}`;
 }
@@ -3737,16 +3808,47 @@ function ReminderDetailModal({
           {reminder.detail?.summary ? <p>{reminder.detail.summary}</p> : null}
         </div>
         <div className="reminder-modal-content">
-          {reminder.detail?.sections.map((section) => (
-            <section key={section.title}>
-              <h4>{section.title}</h4>
-              <ul>
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </section>
-          ))}
+          {reminder.detail?.sections.map((section) => {
+            const isFlow = section.variant === "flow";
+            const isFareTable = section.variant === "fareTable";
+            const isRuleTable = section.variant === "ruleTable";
+
+            return (
+              <section
+                className={
+                  isFlow
+                    ? "reminder-flow-section"
+                    : isFareTable || isRuleTable
+                      ? "reminder-fare-section"
+                      : undefined
+                }
+                key={section.title}
+              >
+                <h4>{section.title}</h4>
+                {section.image ? (
+                  <figure className="reminder-section-image">
+                    <img src={section.image.url} alt={section.image.alt} loading="lazy" />
+                    {section.image.caption ? <figcaption>{section.image.caption}</figcaption> : null}
+                  </figure>
+                ) : null}
+                {isFareTable ? (
+                  <ReminderFareTable items={section.items} />
+                ) : isRuleTable ? (
+                  <ReminderRuleTable items={section.items} />
+                ) : (
+                  <ul>
+                    {section.items.map((item) =>
+                      isFlow ? (
+                        <ReminderFlowItem item={item} key={item} />
+                      ) : (
+                        <li key={item}>{item}</li>
+                      ),
+                    )}
+                  </ul>
+                )}
+              </section>
+            );
+          })}
         </div>
         {detailLinks.length || shouldShowNotionLink ? (
           <div className="reminder-modal-actions">
@@ -3770,8 +3872,71 @@ function ReminderDetailModal({
   );
 }
 
+function ReminderRuleTable({ items }: { items: string[] }) {
+  return (
+    <div className="reminder-fare-table reminder-rule-table" role="table" aria-label="Myki usage rules">
+      <div className="reminder-fare-row is-header" role="row">
+        <span role="columnheader">情境</span>
+        <span role="columnheader">是否刷卡</span>
+        <span role="columnheader">做法</span>
+      </div>
+      {items.map((item) => {
+        const [scenario, tapRule, action] = item.split("::");
+
+        return (
+          <div className="reminder-fare-row" role="row" key={item}>
+            <span role="cell">{scenario}</span>
+            <span role="cell">{tapRule}</span>
+            <span role="cell">{action}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ReminderFareTable({ items }: { items: string[] }) {
+  return (
+    <div className="reminder-fare-table" role="table" aria-label="Opal fare estimate">
+      <div className="reminder-fare-row is-header" role="row">
+        <span role="columnheader">日期</span>
+        <span role="columnheader">行程</span>
+        <span role="columnheader">估算</span>
+      </div>
+      {items.map((item) => {
+        const [date, route, estimate] = item.split("::");
+
+        return (
+          <div className="reminder-fare-row" role="row" key={item}>
+            <span role="cell">{date}</span>
+            <span role="cell">{route}</span>
+            <span role="cell">{estimate}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function ReminderFlowItem({ item }: { item: string }) {
+  const [icon, title, description] = item.split("::");
+
+  return (
+    <li className="reminder-flow-item">
+      <span className="reminder-flow-icon" aria-hidden="true">
+        {icon}
+      </span>
+      <span>
+        <strong>{title}</strong>
+        {description ? <small>{description}</small> : null}
+      </span>
+    </li>
+  );
+}
+
 function Timeline({ day, now }: { day: TravelDay; now: Date }) {
   const [activeGuideItem, setActiveGuideItem] = useState<TravelItem | null>(null);
+  const [activeBookingItem, setActiveBookingItem] = useState<TravelItem | null>(null);
   const nowMinutes = now.getHours() * 60 + now.getMinutes();
   const shouldShowNowMarker = day.date === localDateKey(now);
   const markerIndex = shouldShowNowMarker ? currentMarkerIndex(day.items, nowMinutes) : -1;
@@ -3791,7 +3956,8 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
         {day.items.map((item, index) => {
           const showInlineMoving = isMovingConnectorItem(item);
           const hasGuide = !!(item.restaurantGuide || item.attractionGuide);
-          const hasCardActions = !!item.mapsUrl || !!item.bookingInfoUrl || hasGuide;
+          const hasBooking = !!(item.bookingInfoUrl || item.bookingImage);
+          const hasCardActions = !!item.mapsUrl || hasBooking || hasGuide;
 
           return (
             <Fragment key={item.id}>
@@ -3840,7 +4006,18 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                         {hasGuide ? (
                           <GuideButton item={item} onOpenGuide={setActiveGuideItem} />
                         ) : null}
-                        {item.bookingInfoUrl ? (
+                        {item.bookingImage ? (
+                          <button
+                            className="item-booking-link"
+                            type="button"
+                            onClick={() => setActiveBookingItem(item)}
+                            aria-label={`開啟 ${item.title} 預訂資訊`}
+                            data-tooltip="預訂資訊"
+                            title="預訂資訊"
+                          >
+                            <TicketCheck size={18} strokeWidth={2.5} />
+                          </button>
+                        ) : item.bookingInfoUrl ? (
                           <a
                             className="item-booking-link"
                             href={item.bookingInfoUrl}
@@ -3888,6 +4065,12 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
             onClose={() => setActiveGuideItem(null)}
           />
         ) : null}
+        {activeBookingItem?.bookingImage ? (
+          <BookingInfoModal
+            item={activeBookingItem}
+            onClose={() => setActiveBookingItem(null)}
+          />
+        ) : null}
       </AnimatePresence>
     </>
   );
@@ -3932,6 +4115,7 @@ function MovingConnector({
   const endpoints = movingEndpoints(day, items, index);
   const modeLabel = item.type === "walk" ? "步行移動" : "交通移動";
   const durationLabel = movingDurationLabel(item);
+  const routeEmbedUrl = mapRouteEmbedFromUrl(item.mapsUrl, mapTravelModeForMovingItem(item));
   const [isOpen, setIsOpen] = useState(false);
   const connectorRef = useRef<HTMLDivElement | null>(null);
 
@@ -3969,13 +4153,22 @@ function MovingConnector({
           <Icon size={18} strokeWidth={2.5} />
         </span>
       </button>
-      <div className="moving-connector-popover" onClick={() => setIsOpen(false)}>
+      <div className="moving-connector-popover">
         <strong>{modeLabel}</strong>
         <em>{item.title}</em>
         <span>{endpoints.from}</span>
         <span>{endpoints.to}</span>
         <b>大約時間 {durationLabel}</b>
         <small>{item.summary}</small>
+        {isOpen && routeEmbedUrl ? (
+          <iframe
+            className="moving-route-map"
+            src={routeEmbedUrl}
+            title={`${item.title} Google Maps 路線圖`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        ) : null}
         {item.mapsUrl ? (
           <a className="moving-map-link" href={item.mapsUrl} target="_blank" rel="noreferrer">
             路線
@@ -4113,6 +4306,62 @@ function GuideButton({
     >
       <GuideIcon size={18} strokeWidth={2.5} />
     </button>
+  );
+}
+
+function BookingInfoModal({ item, onClose }: { item: TravelItem; onClose: () => void }) {
+  const bookingImage = item.bookingImage;
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  if (!bookingImage) return null;
+
+  return createPortal(
+    <motion.div
+      className="booking-modal-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${item.title} 預訂資訊`}
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+    >
+      <motion.article
+        className="booking-info-modal"
+        onClick={(event) => event.stopPropagation()}
+        initial={{ opacity: 0, y: 18, scale: 0.965 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 10, scale: 0.975 }}
+        transition={{ duration: 0.22, ease: "easeOut" }}
+      >
+        <button
+          className="booking-modal-close"
+          type="button"
+          onClick={onClose}
+          aria-label={`關閉 ${item.title} 預訂資訊`}
+        >
+          <X size={19} strokeWidth={2.6} />
+        </button>
+        <figure className="booking-modal-image">
+          <img src={bookingImage.url} alt={bookingImage.alt} />
+        </figure>
+      </motion.article>
+    </motion.div>,
+    document.body,
   );
 }
 

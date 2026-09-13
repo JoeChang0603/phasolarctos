@@ -760,12 +760,13 @@ h1 {
 
 .map-quick-actions {
   position: fixed;
-  right: calc(env(safe-area-inset-right, 0px) + 24px);
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+  left: calc(env(safe-area-inset-left, 0px) + clamp(16px, 3vw, 30px));
+  right: auto;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(86px, 8vw, 98px));
   z-index: 116;
   display: grid;
-  gap: 44px;
-  justify-items: end;
+  gap: 12px;
+  justify-items: start;
   isolation: isolate;
   pointer-events: none;
 }
@@ -861,14 +862,15 @@ h1 {
 
 .map-city-actions {
   position: absolute;
-  right: calc(100% + 10px);
+  left: calc(100% + 10px);
+  right: auto;
   top: 50%;
   z-index: 2;
   display: flex;
   gap: 8px;
   opacity: 0;
   pointer-events: none;
-  transform: translate(8px, -50%);
+  transform: translate(-8px, -50%);
   transition:
     opacity 160ms ease,
     transform 160ms ease;
@@ -908,8 +910,10 @@ h1 {
 .transit-map-button::after {
   content: attr(data-tooltip);
   position: absolute;
-  right: calc(100% + 12px);
-  top: 50%;
+  left: 50%;
+  right: auto;
+  top: auto;
+  bottom: calc(100% + 10px);
   min-height: 32px;
   display: inline-flex;
   align-items: center;
@@ -924,7 +928,7 @@ h1 {
   line-height: 1;
   opacity: 0;
   pointer-events: none;
-  transform: translate(6px, -50%);
+  transform: translate(-50%, 6px);
   transition:
     opacity 160ms ease,
     transform 160ms ease;
@@ -935,7 +939,7 @@ h1 {
 .transit-map-button:focus-visible::after,
 .transit-map-button:active::after {
   opacity: 1;
-  transform: translate(0, -50%);
+  transform: translate(-50%, 0);
 }
 
 .transit-map-button:hover {
@@ -2497,6 +2501,105 @@ h1 {
   line-height: 1.55;
 }
 
+.reminder-section-image {
+  overflow: hidden;
+  margin: 0 0 12px;
+  border: 1px solid rgba(16, 32, 42, 0.1);
+  border-radius: 8px;
+  background: #f7faf9;
+}
+
+.reminder-section-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.reminder-section-image figcaption {
+  padding: 8px 10px;
+  color: #60717b;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.reminder-modal-content .reminder-flow-section ul {
+  gap: 10px;
+  padding-left: 0;
+}
+
+.reminder-flow-item {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  border: 1px solid rgba(31, 159, 182, 0.14);
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(244, 250, 251, 0.78);
+  list-style: none;
+}
+
+.reminder-flow-icon {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e1f2f5;
+  font-size: 1.18rem;
+}
+
+.reminder-flow-item strong {
+  display: block;
+  color: #10202a;
+  font-size: 0.95rem;
+}
+
+.reminder-flow-item small {
+  display: block;
+  margin-top: 3px;
+  color: #4f5f69;
+  font-size: 0.87rem;
+  line-height: 1.55;
+}
+
+.reminder-fare-table {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgba(16, 32, 42, 0.1);
+  border-radius: 8px;
+}
+
+.reminder-fare-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 0.9fr) minmax(0, 2fr) minmax(104px, 0.9fr);
+  gap: 12px;
+  align-items: start;
+  border-top: 1px solid rgba(16, 32, 42, 0.08);
+  padding: 10px 12px;
+  color: #4f5f69;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.reminder-fare-row:first-child {
+  border-top: 0;
+}
+
+.reminder-fare-row.is-header {
+  background: #edf6f7;
+  color: #10202a;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.reminder-fare-row span {
+  min-width: 0;
+}
+
 .reminder-modal-actions {
   display: flex;
   flex-wrap: wrap;
@@ -3030,7 +3133,7 @@ h1 {
   top: 50%;
   z-index: 4;
   display: grid;
-  width: min(360px, calc(100vw - 52px));
+  width: min(540px, calc(100vw - 52px));
   gap: 7px;
   border: 1px solid rgba(16, 32, 42, 0.12);
   border-radius: 8px;
@@ -3117,6 +3220,17 @@ h1 {
   font-size: 0.84rem;
   font-weight: 700;
   line-height: 1.55;
+}
+
+.moving-route-map {
+  display: block;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #e5e7eb;
+  box-shadow: inset 0 0 0 1px rgba(16, 32, 42, 0.1);
 }
 
 .moving-map-link {
@@ -3655,6 +3769,109 @@ h1 {
   color: #10202a;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 12px 30px rgba(16, 32, 42, 0.18);
+}
+
+.booking-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 58px);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.24), transparent 34%),
+    linear-gradient(135deg, rgba(7, 18, 24, 0.9), rgba(16, 32, 42, 0.82));
+  backdrop-filter: blur(18px) saturate(116%);
+}
+
+.booking-info-modal {
+  position: relative;
+  width: min(760px, 92vw);
+  margin: 0;
+  isolation: isolate;
+}
+
+.booking-info-modal::before,
+.booking-info-modal::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: -1;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  transform: rotate(-2.2deg) translate(-8px, 8px);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+}
+
+.booking-info-modal::after {
+  inset: 10px;
+  background: rgba(255, 255, 255, 0.48);
+  transform: rotate(1.5deg) translate(10px, 6px);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.2);
+}
+
+.booking-modal-image {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: 14px;
+  padding: clamp(10px, 1.8vw, 16px);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 250, 0.88)),
+    #fff;
+  box-shadow:
+    0 32px 110px rgba(0, 0, 0, 0.48),
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+}
+
+.booking-modal-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.42), transparent 28%),
+    linear-gradient(0deg, rgba(16, 32, 42, 0.04), transparent 40%);
+}
+
+.booking-modal-image img {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-height: min(68vh, 640px);
+  border-radius: 9px;
+  object-fit: contain;
+  background: #ffffff;
+  box-shadow:
+    0 1px 0 rgba(16, 32, 42, 0.08),
+    inset 0 0 0 1px rgba(16, 32, 42, 0.08);
+}
+
+.booking-modal-close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  z-index: 3;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: 999px;
+  color: #10202a;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.26);
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.booking-modal-close:hover,
+.booking-modal-close:focus-visible {
+  background: #ffffff;
+  transform: translateY(-1px) scale(1.04);
 }
 
 .restaurant-modal-header {
@@ -4319,9 +4536,10 @@ h1 {
   }
 
   .map-quick-actions {
-    right: calc(env(safe-area-inset-right, 0px) + 12px);
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
-    gap: 44px;
+    left: calc(env(safe-area-inset-left, 0px) + 14px);
+    right: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+    gap: 10px;
   }
 
   .map-city-toggle {
@@ -4331,10 +4549,13 @@ h1 {
 
   .map-city-actions {
     display: flex;
+    flex-wrap: wrap;
     top: 50%;
-    right: calc(100% + 8px);
+    left: calc(100% + 8px);
+    right: auto;
     gap: 7px;
-    transform: translate(8px, -50%);
+    max-width: calc(100vw - 92px);
+    transform: translate(-8px, -50%);
   }
 
   .map-city-group:hover .map-city-actions,
@@ -4357,16 +4578,17 @@ h1 {
   }
 
   .transit-map-button::after {
-    right: 0;
+    left: 50%;
+    right: auto;
     top: auto;
     bottom: calc(100% + 10px);
-    transform: translateY(6px);
+    transform: translate(-50%, 6px);
   }
 
   .transit-map-button:hover::after,
   .transit-map-button:focus-visible::after,
   .transit-map-button:active::after {
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
 
   .map-modal-backdrop {
@@ -4722,6 +4944,16 @@ h1 {
     padding: 14px;
   }
 
+  .reminder-fare-row,
+  .reminder-fare-row.is-header {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .reminder-fare-row.is-header {
+    display: none;
+  }
+
   .reminder-modal-actions a {
     width: 100%;
     justify-content: center;
@@ -4813,7 +5045,7 @@ h1 {
     bottom: auto;
     z-index: 5;
     display: none;
-    width: min(320px, 100%);
+    width: min(360px, 100%);
     max-width: none;
     max-height: none;
     margin-top: 76px;
@@ -4858,6 +5090,10 @@ h1 {
   .moving-connector-popover small,
   .moving-map-link {
     font-size: 0.94rem;
+  }
+
+  .moving-route-map {
+    height: 220px;
   }
 
   .itinerary-card {
@@ -4957,6 +5193,37 @@ h1 {
   .restaurant-modal {
     width: calc(100vw - 24px);
     max-height: 86vh;
+  }
+
+  .booking-modal-backdrop {
+    padding: 16px;
+  }
+
+  .booking-info-modal {
+    width: min(100%, 680px);
+  }
+
+  .booking-info-modal::before,
+  .booking-info-modal::after {
+    inset: 10px;
+    transform: translateY(6px);
+  }
+
+  .booking-modal-image {
+    border-radius: 10px;
+    padding: 8px;
+  }
+
+  .booking-modal-image img {
+    max-height: 72vh;
+    border-radius: 7px;
+  }
+
+  .booking-modal-close {
+    top: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
   }
 
   .restaurant-modal-header {
