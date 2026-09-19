@@ -25,6 +25,7 @@ import {
   Dessert,
   Droplets,
   Drumstick,
+  Dumbbell,
   EggFried,
   ExternalLink,
   Fish,
@@ -59,6 +60,7 @@ import {
   TrainTrack,
   Utensils,
   Waves,
+  WashingMachine,
   Wind,
   X,
 } from "lucide-react";
@@ -159,6 +161,13 @@ type WeatherStatus = {
   type: "idle" | "loading" | "success" | "error";
   message: string;
   readings: WeatherReading[];
+};
+
+type TripWeatherDayStatus = {
+  day: TravelDay;
+  index: number;
+  readings: WeatherReading[];
+  error?: string;
 };
 
 type HeroSlide = {
@@ -951,6 +960,14 @@ function weatherConditionForCode(code: number): { label: string; icon: typeof Su
   return { label: "天氣更新中", icon: CloudSun, tone: "#0ea5e9" };
 }
 
+function weatherConditionPriority(code: number) {
+  if ([95, 96, 99].includes(code)) return 5;
+  if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return 4;
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return 3;
+  if ([45, 48, 3].includes(code)) return 2;
+  return 1;
+}
+
 function formatObservedTime(value: string) {
   const observedAt = new Date(value);
   if (Number.isNaN(observedAt.getTime())) return "剛剛更新";
@@ -996,35 +1013,15 @@ function dailyValue<T>(daily: Record<string, T[] | undefined>, key: string, inde
   return daily[key]?.[index];
 }
 
-function clothingAdviceForWeather(reading: WeatherReading) {
-  const apparentTemperature = reading.apparentTemperature;
-  const advice: string[] = [];
+function outfitPlanForWeather(reading: WeatherReading) {
+  const temperature = reading.apparentTemperature;
+  const variant: "cold" | "cool" | "mild" | "warm" | "hot" =
+    temperature <= 8 ? "cold" : temperature <= 14 ? "cool" : temperature <= 20 ? "mild" : temperature <= 26 ? "warm" : "hot";
+  const rainy =
+    reading.precipitation > 0 ||
+    [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(reading.weatherCode);
 
-  if (apparentTemperature <= 8) {
-    advice.push("發熱衣或厚長袖 + 毛衣/刷毛上衣 + 厚外套，搭長褲與保暖襪");
-  } else if (apparentTemperature <= 14) {
-    advice.push("長袖上衣 + 薄毛衣或帽T + 防風外套，搭長褲");
-  } else if (apparentTemperature <= 20) {
-    advice.push("短袖或薄長袖 + 可收納薄外套，搭長褲或寬鬆長裙");
-  } else if (apparentTemperature <= 26) {
-    advice.push("透氣短袖 + 薄襯衫/薄外套備用，搭短褲、七分褲或輕薄長褲");
-  } else {
-    advice.push("排汗短袖或背心 + 短褲/輕薄長褲，搭帽子、太陽眼鏡與防曬");
-  }
-
-  if (reading.precipitation > 0 || [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99].includes(reading.weatherCode)) {
-    advice.push("外層改防水外套，鞋子選防滑防水款，帶折傘或輕便雨衣");
-  }
-
-  if (reading.windSpeed >= 24) {
-    advice.push("風大時避免太寬鬆的帽子/裙襬，外層加防風外套");
-  }
-
-  if (reading.humidity >= 85 && apparentTemperature >= 20) {
-    advice.push("濕度高建議選快乾排汗材質，包包放一件替換上衣");
-  }
-
-  return advice.join("；");
+  return { variant, rainy, windy: reading.windSpeed >= 24 };
 }
 
 async function fetchWeatherReading(
@@ -1420,6 +1417,31 @@ function foodIconForItem(item: TravelItem): OverviewIcon {
   }
 
   return { key: "food-meal", label: "餐點", icon: Utensils };
+}
+
+function hotelHasGym(item: TravelItem) {
+  if (item.type !== "hotel") return false;
+
+  const text = `${item.title} ${item.location ?? ""}`.toLowerCase();
+  return [
+    "furama darling harbour",
+    "novotel melbourne airport",
+    "balgownie estate",
+    "melbourne lifestyle apartments",
+  ].some((hotelName) => text.includes(hotelName));
+}
+
+function hotelLaundryFacilities(item: TravelItem) {
+  if (item.type !== "hotel") return [];
+
+  const text = `${item.title} ${item.location ?? ""}`.toLowerCase();
+  if (text.includes("furama darling harbour") || text.includes("melbourne lifestyle apartments")) {
+    return ["wash", "dry"] as const;
+  }
+  if (text.includes("novotel melbourne airport") || text.includes("hilltop apartments")) {
+    return ["wash"] as const;
+  }
+  return [] as const;
 }
 
 function overviewIconForItem(item: TravelItem): OverviewIcon | null {
@@ -2329,6 +2351,14 @@ function TripExperience({
           }}
         />
       </section>
+
+      <TripWeatherOverview
+        days={days}
+        onSelectDay={(index) => {
+          setActiveIndex(index);
+          document.querySelector("#journey")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+      />
 
       <section className="day-rail-band" ref={dayRailBandRef} aria-label="每日行程選單">
         <DayRail
@@ -3328,6 +3358,132 @@ function TransitMapModal({ map, onClose }: { map: TransitMap; onClose: () => voi
   );
 }
 
+function TripWeatherOverview({
+  days,
+  onSelectDay,
+}: {
+  days: TravelDay[];
+  onSelectDay: (index: number) => void;
+}) {
+  const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
+  const [dayStatuses, setDayStatuses] = useState<TripWeatherDayStatus[]>([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    setStatus("loading");
+
+    Promise.all(
+      days.map(async (day, index): Promise<TripWeatherDayStatus> => {
+        const results = await Promise.allSettled(
+          weatherLocationsForDay(day).map((location) => fetchWeatherReading(location, day.date, controller.signal)),
+        );
+        const readings = results
+          .filter((result): result is PromiseFulfilledResult<WeatherReading> => result.status === "fulfilled")
+          .map((result) => result.value);
+        const rejected = results.find(
+          (result): result is PromiseRejectedResult => result.status === "rejected",
+        );
+
+        return {
+          day,
+          index,
+          readings,
+          error: readings.length ? undefined : rejected?.reason instanceof Error ? rejected.reason.message : "天氣資料暫時無法取得。",
+        };
+      }),
+    )
+      .then((nextDayStatuses) => {
+        if (controller.signal.aborted) return;
+        setDayStatuses(nextDayStatuses);
+        setStatus(nextDayStatuses.some(({ readings }) => readings.length > 0) ? "success" : "error");
+      })
+      .catch(() => {
+        if (!controller.signal.aborted) setStatus("error");
+      });
+
+    return () => controller.abort();
+  }, [days]);
+
+  return (
+    <section className="trip-weather-overview" aria-labelledby="trip-weather-title">
+      <div className="trip-weather-heading">
+        <span className="trip-weather-heading-icon" aria-hidden="true">
+          <CloudSun size={22} strokeWidth={2.4} />
+        </span>
+        <div>
+          <h2 id="trip-weather-title">整趟行程天氣</h2>
+          <p>
+            {status === "success"
+              ? "依每日主要地點更新，點選日期可直接查看該日行程。"
+              : status === "error"
+                ? "目前無法取得預報，請稍後重新整理。"
+                : "正在讀取每一天的主要地點預報..."}
+          </p>
+        </div>
+      </div>
+      {status === "success" ? (
+        <div className="trip-weather-track" aria-label="整趟行程天氣預報">
+          {dayStatuses.map(({ day, index, readings, error }) => {
+            if (!readings.length) {
+              return (
+                <article className="trip-weather-day is-unavailable" key={day.id}>
+                  <span className="trip-weather-date">{formatRailDate(day.date)}</span>
+                  <CloudSun size={28} strokeWidth={2.2} aria-hidden="true" />
+                  <strong>{day.city}</strong>
+                  <small>{error}</small>
+                </article>
+              );
+            }
+
+            const standoutReading = readings.reduce((selected, reading) =>
+              weatherConditionPriority(reading.weatherCode) > weatherConditionPriority(selected.weatherCode)
+                ? reading
+                : selected,
+            );
+            const condition = weatherConditionForCode(standoutReading.weatherCode);
+            const ConditionIcon = condition.icon;
+            const highTemperature = Math.max(...readings.map((reading) => reading.highTemperature ?? reading.temperature));
+            const lowTemperature = Math.min(...readings.map((reading) => reading.lowTemperature ?? reading.temperature));
+            const maxPrecipitation = Math.max(...readings.map((reading) => reading.precipitation));
+            const maxWindSpeed = Math.max(...readings.map((reading) => reading.windSpeed));
+
+            return (
+              <button
+                className="trip-weather-day"
+                type="button"
+                key={day.id}
+                onClick={() => onSelectDay(index)}
+                style={{ "--weather-tone": condition.tone } as CSSProperties}
+                aria-label={`查看 ${day.title} 的行程與天氣`}
+              >
+                <span className="trip-weather-date">{formatRailDate(day.date)}</span>
+                <span className="trip-weather-icon" aria-hidden="true">
+                  <ConditionIcon size={34} strokeWidth={2.25} />
+                </span>
+                <strong>{condition.label}</strong>
+                <span className="trip-weather-place">{readings.map((reading) => reading.label).join(" / ")}</span>
+                <span className="trip-weather-temperature">
+                  <b>{Math.round(highTemperature)}°</b>
+                  <small>{Math.round(lowTemperature)}°</small>
+                </span>
+                <span className="trip-weather-details">
+                  <span><CloudRain size={14} aria-hidden="true" />{maxPrecipitation.toFixed(1)} mm</span>
+                  <span><Wind size={14} aria-hidden="true" />{Math.round(maxWindSpeed)} km/h</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <div className={`trip-weather-state is-${status}`}>
+          <CloudSun size={22} strokeWidth={2.3} aria-hidden="true" />
+          <span>{status === "loading" ? "天氣資料準備中..." : "天氣資料暫時無法取得。"}</span>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function DayRail({
   days,
   activeIndex,
@@ -3484,6 +3640,90 @@ function DayOverview({ day, dayNumber }: { day: TravelDay; dayNumber: string }) 
   );
 }
 
+function OutfitFigure({ reading }: { reading: WeatherReading }) {
+  const { variant, rainy, windy } = outfitPlanForWeather(reading);
+  const labelByVariant = {
+    cold: "厚外套、長褲與保暖靴",
+    cool: "薄外套、長褲與包覆鞋",
+    mild: "短袖、薄外套與長褲",
+    warm: "透氣上衣、短褲與帽子",
+    hot: "排汗上衣、短褲與防曬配件",
+  } as const;
+  const isLayered = variant === "cold" || variant === "cool" || variant === "mild";
+  const wearsShorts = variant === "warm" || variant === "hot";
+  const topLabelLines = {
+    cold: ["保暖內層＋長袖", "毛衣／厚外套"],
+    cool: ["長袖＋薄毛衣／帽T", "防風外套"],
+    mild: ["短袖／薄長袖", "可收納薄外套"],
+    warm: ["透氣短袖", "薄襯衫備用"],
+    hot: ["排汗短袖／背心", "防曬薄外套"],
+  } as const;
+  const bottomLabel = wearsShorts ? "短褲" : "長褲";
+  const shoeLabel = variant === "cold" ? "靴子" : variant === "hot" ? "透氣鞋" : "運動鞋";
+
+  return (
+    <figure className="outfit-figure-wrap">
+      <svg
+        className={`outfit-figure is-${variant}`}
+        viewBox="0 0 240 176"
+        role="img"
+        aria-label={`${labelByVariant[variant]}${rainy ? "，加上雨具" : ""}${windy ? "，加上防風外層" : ""}`}
+      >
+        <g transform="translate(66 0)">
+          <circle className="outfit-skin" cx="54" cy="22" r="13" />
+          <path className="outfit-base" d="M46 34h16l7 18-6 43h-8v47h-8V95h-8l-6-43z" />
+          {wearsShorts ? (
+            <path className="outfit-bottom" d="M39 82h30l-3 28H55V96h-2v14H42z" />
+          ) : (
+            <path className="outfit-bottom" d="M40 82h28l-3 60H55v-39h-2v39H43z" />
+          )}
+          <path className="outfit-shoes" d="M39 140h17v9H35c0-5 2-8 4-9zm24 0h17c3 1 5 4 5 9H63z" />
+          <path className="outfit-sole" d="M35 148h21m7 0h22" />
+          <path className="outfit-top" d="M37 41l10-6h15l10 6 8 23-10 4-4-12v31H42V56l-4 12-10-4z" />
+          {isLayered ? (
+            <>
+              <path className="outfit-outer" d="M35 40l12-7h15l12 7 9 25-11 5-5-14v38H41V56l-5 14-11-5z" />
+              <path className="outfit-zip" d="M54 41v49m-10-48 10 10 10-10m-19 25 9 5 9-5" />
+            </>
+          ) : <path className="outfit-seam" d="M54 43v42" />}
+          {!wearsShorts ? <path className="outfit-seam" d="M54 87v53" /> : null}
+          {variant === "cold" ? (
+            <>
+              <path className="outfit-scarf" d="M43 35c4 4 18 4 22 0l2 7c-6 5-19 5-26 0z" />
+              <path className="outfit-socks" d="M43 130h11v13H41zm13 0h11v13H55z" />
+            </>
+          ) : null}
+          {(variant === "warm" || variant === "hot") ? <path className="outfit-cap" d="M40 19c4-12 25-12 29 0v4H40z" /> : null}
+          {variant === "hot" ? <path className="outfit-glasses" d="M40 23h9l2 4h6l2-4h9v7h-9l-2-3h-6l-2 3h-9z" /> : null}
+          {rainy ? (
+            <g className="outfit-rain">
+              <path d="M77 31c9-13 27-8 29 6H77z" />
+              <path d="M91 37v57c0 6 7 7 9 2" />
+              <path d="M82 47l-3 7m13-8-3 7m13-5-3 7" />
+            </g>
+          ) : null}
+          {windy ? <path className="outfit-wind" d="M67 48c14-7 22 1 14 8-5 4-10 1-8-3m-6 8c18-6 27 6 12 12-7 3-12-1-9-5" /> : null}
+        </g>
+        <g className="outfit-callout">
+          <path d="M16 72h54l27 1" />
+          <text x="16" y="53">
+            {topLabelLines[variant].map((line, index) => (
+              <tspan key={line} x="16" dy={index === 0 ? 0 : 13}>{line}</tspan>
+            ))}
+          </text>
+          <path d="M225 112h-49l-30 10" />
+          <text x="225" y="106" textAnchor="end">{bottomLabel}</text>
+          <path d="M16 157h61l28-12" />
+          <text x="16" y="170">{shoeLabel}</text>
+          {variant === "warm" || variant === "hot" ? <><path d="M218 30h-55l-39-8" /><text x="218" y="24" textAnchor="end">帽子{variant === "hot" ? "／太陽眼鏡" : ""}</text></> : null}
+          {rainy ? <><path d="M225 54h-31l-11-4" /><text x="225" y="48" textAnchor="end">雨傘</text></> : null}
+          {windy ? <><path d="M16 96h51l29-22" /><text x="16" y="90">防風外層</text></> : null}
+        </g>
+      </svg>
+    </figure>
+  );
+}
+
 function DayWeatherPanel({ day }: { day: TravelDay }) {
   const locations = useMemo(() => weatherLocationsForDay(day), [day]);
   const targetDate = day.date;
@@ -3555,26 +3795,34 @@ function DayWeatherPanel({ day }: { day: TravelDay }) {
                 key={reading.id}
                 style={{ "--weather-tone": condition.tone } as CSSProperties}
               >
-                <div className="weather-card-main">
-                  <span className="weather-condition-icon" aria-hidden="true">
-                    <ConditionIcon size={18} strokeWidth={2.5} />
-                  </span>
-                  <div>
-                    <strong>{reading.label}</strong>
-                    <span>{reading.detail}</span>
+                <div className="weather-card-snapshot">
+                  <div className="weather-card-main">
+                    <span className="weather-condition-icon" aria-hidden="true">
+                      <ConditionIcon size={29} strokeWidth={2.2} />
+                    </span>
+                    <div>
+                      <strong>{reading.label}</strong>
+                      <span>{reading.detail}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="weather-temperature">
-                  <strong>{Math.round(reading.temperature)}°</strong>
-                  <span>
-                    {condition.label}
-                    <small>{weatherSourceLabel(reading.source)}</small>
-                  </span>
+                  <div className="weather-temperature">
+                    <strong>{Math.round(reading.temperature)}°</strong>
+                    <span>
+                      {condition.label}
+                      <small>{weatherSourceLabel(reading.source)}</small>
+                    </span>
+                  </div>
                 </div>
                 {typeof reading.highTemperature === "number" && typeof reading.lowTemperature === "number" ? (
                   <div className="weather-range">
-                    <span>高 {Math.round(reading.highTemperature)}°C</span>
-                    <span>低 {Math.round(reading.lowTemperature)}°C</span>
+                    <span aria-label={`最高溫 ${Math.round(reading.highTemperature)}°C`} title="最高溫">
+                      <Sun size={14} aria-hidden="true" />
+                      {Math.round(reading.highTemperature)}°C
+                    </span>
+                    <span aria-label={`最低溫 ${Math.round(reading.lowTemperature)}°C`} title="最低溫">
+                      <Snowflake size={14} aria-hidden="true" />
+                      {Math.round(reading.lowTemperature)}°C
+                    </span>
                   </div>
                 ) : null}
                 <dl className="weather-metrics">
@@ -3607,9 +3855,8 @@ function DayWeatherPanel({ day }: { day: TravelDay }) {
                     <dd>{Math.round(reading.windSpeed)} km/h</dd>
                   </div>
                 </dl>
-                <div className="weather-advice">
-                  <span>穿著建議</span>
-                  <strong>{clothingAdviceForWeather(reading)}</strong>
+                <div className="weather-advice" aria-label="穿著建議">
+                  <OutfitFigure reading={reading} />
                 </div>
                 <span className="weather-updated">
                   {weatherSourceLabel(reading.source)} {reading.source === "current" ? formatObservedTime(reading.observedAt) : reading.date}
@@ -4127,6 +4374,27 @@ function Timeline({ day, now }: { day: TravelDay; now: Date }) {
                     <div className="item-body">
                       <div className="item-meta">
                         <span>{item.location ?? day.city}</span>
+                        {hotelHasGym(item) ? (
+                          <span className="item-facility-badge" aria-label="設施：健身房" title="健身房">
+                            <Dumbbell size={14} strokeWidth={2.5} />
+                            健身房
+                          </span>
+                        ) : null}
+                        {hotelLaundryFacilities(item).map((facility) => (
+                          <span
+                            className="item-facility-badge"
+                            key={facility}
+                            aria-label={`設施：${facility === "wash" ? "洗衣" : "烘衣"}`}
+                            title={facility === "wash" ? "洗衣" : "烘衣"}
+                          >
+                            {facility === "wash" ? (
+                              <WashingMachine size={14} strokeWidth={2.5} />
+                            ) : (
+                              <Wind size={14} strokeWidth={2.5} />
+                            )}
+                            {facility === "wash" ? "洗衣" : "烘衣"}
+                          </span>
+                        ))}
                       </div>
                       <h3>{item.title}</h3>
                       <p>{item.summary}</p>
