@@ -711,12 +711,8 @@
               }
             ]
           },
-          "bookingNote": "已訂位：IYun Chang，2026/9/24 Thu，Dinner 7:00 PM，4 guests，Booking Reference 75383001，Additional Information: 1st Time Visitor。",
-          "bookingImage": {
-            "url": "/macelleria-newtown-booking-confirmation.png",
-            "alt": "Macelleria Newtown reservation confirmation for IYun Chang on September 24, 2026",
-            "caption": "Macelleria Newtown 訂位確認：Booking Reference 75383001"
-          }
+          "bookingInfoUrl": "https://mail.google.com/mail/u/0/#label/2026+-+Sydney/FMfcgzQhWTsMpVDsVJZwHrTgJClDhklf",
+          "bookingNote": "已訂位：IYun Chang，2026/9/24 Thu，Dinner 7:00 PM，4 guests，Booking Reference 75383001，Additional Information: 1st Time Visitor。"
         },
         {
           "id": "3712f57c-ec1b-80b7-ada2-d9ae093ef201",
@@ -2692,11 +2688,11 @@
         },
         {
           "id": "2dc2f57c-ec1b-80f6-848c-d8f960a45de7",
-          "time": "18:00",
+          "time": "18:30",
           "title": "Sher Singh 晚餐",
           "type": "food",
           "location": "Sher Singh, 807-809 Bourke St, Docklands",
-          "summary": "18:00 到 19:00。還車與入住後安排 Docklands 附近的 Sher Singh 晚餐，主軸是北印度料理、tandoor 烤物、咖哩與 biryani。",
+          "summary": "18:30 到 19:30。還車與入住後安排 Docklands 附近的 Sher Singh 晚餐，主軸是北印度料理、tandoor 烤物、咖哩與 biryani。",
           "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://maps.app.goo.gl/noQambW34JBFtY6o",
           "bookingInfoUrl": "https://www.opentable.com.au/booking/restref/confirmation?rid=192161&dateTime=2026-02-23T19%3A00&correlationId=7792a567-6eb4-4c33-a51e-30154610878c&confirmationNumber=3414&partySize=4&securityToken=011X_Hp1AuNyCIJ5_uf1qN7Lg5b3b_RVJowK0ryBI7YUc1",
@@ -3130,14 +3126,14 @@
         },
         {
           "id": "2dd2f57c-ec1b-803d-8d83-f673aeb3fd36",
-          "time": "19:00",
+          "time": "19:30",
           "title": "Max on Hardware 晚餐",
           "type": "food",
           "location": "Max on Hardware, 54-58 Hardware Lane, Melbourne",
-          "summary": "19:00 到 21:00。晚上安排 Hardware Lane 的 Max on Hardware；Notion Schedule 顯示訂位/預訂狀態為 Done，可作為當天收尾晚餐。",
+          "summary": "19:30 到 21:30。晚上安排 Hardware Lane 的 Max on Hardware；Notion Schedule 顯示訂位/預訂狀態為 Done，可作為當天收尾晚餐。",
           "image": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://maps.app.goo.gl/Z22ueJJDVELPS7SF6",
-          "bookingInfoUrl": "https://mail.google.com/mail/u/0/#label/2026+Melbourne/FMfcgzQhVNWQTGCstgNdGszZkShPbbCM",
+          "bookingInfoUrl": "https://mail.google.com/mail/u/0/#label/2026+Melbourne/FMfcgzQhVhhQmzBtxcFqbVVnxhxJcRxM",
           "notionUrl": "https://www.notion.so/2dd2f57cec1b803d8d83f673aeb3fd36",
           "tags": [
             "Recommandation",
@@ -3786,11 +3782,11 @@
         },
         {
           "id": "2dd2f57c-ec1b-8055-8afe-ff016a00d232",
-          "time": "17:30",
+          "time": "18:00",
           "title": "San Telmo 晚餐",
           "type": "food",
           "location": "San Telmo, 14 Meyers Place, Melbourne",
-          "summary": "17:30 到 19:30。San Telmo 位於 14 Meyers Place，是 Melbourne CBD 的 Argentine restaurant，菜單核心是 sharing plates、empanadas、charcoal parrilla、premium steak、chimichurri 與 dulce de leche 甜點，適合作為 Day 8 正式晚餐。",
+          "summary": "18:00 到 20:00。San Telmo 位於 14 Meyers Place，是 Melbourne CBD 的 Argentine restaurant，菜單核心是 sharing plates、empanadas、charcoal parrilla、premium steak、chimichurri 與 dulce de leche 甜點，適合作為 Day 8 正式晚餐。",
           "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://maps.app.goo.gl/SQ7XqES3HyCaZKwv5",
           "bookingInfoUrl": "https://www.sevenrooms.com/explore/santelmo/reservations/manage/?is_success=true&lang=en&token=NjYyNDM0NTg0MTY1NDg4Y2ZjYjE2ODVjOWE1YzFjMDNkMmNjYTA4Njp7ImFjdHVhbF9pZCI6ICJhaE56Zm5ObGRtVnVjbTl2YlhNdGMyVmpkWEpsY2lnTEVodHVhV2RvZEd4dmIzQmZVbVZ6WlhKMllYUnBiMjVCWTNSMVlXd1lnSURiaE1ERnpRa00iLCAiYWN0dWFsX2NyZWF0ZWRfdGltZXN0YW1wIjogIjE3ODM3NzA3OTQuNTMyNzAwIn0%3D",
@@ -3864,11 +3860,11 @@
         },
         {
           "id": "3712f57c-ec1b-801a-80af-cfc56cfa20b8",
-          "time": "19:30",
+          "time": "20:00",
           "title": "搭電車返回飯店",
           "type": "transit",
           "location": "San Telmo → Melbourne Lifestyle Apartments",
-          "summary": "19:30 到 20:00。晚餐後從 CBD 搭電車回 Docklands 住宿。",
+          "summary": "20:00 到 20:30。晚餐後從 CBD 搭電車回 Docklands 住宿。",
           "image": "https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=1200&q=80",
           "mapsUrl": "https://www.google.com/maps/dir/?api=1&origin=San+Telmo+14+Meyers+Pl+Melbourne&destination=Melbourne+Lifestyle+Apartments+Best+Views+on+Collins&travelmode=transit",
           "notionUrl": "https://www.notion.so/3712f57cec1b801a80afcfc56cfa20b8",
